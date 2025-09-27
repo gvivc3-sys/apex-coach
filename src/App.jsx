@@ -4,7 +4,7 @@ import { supabase } from './supabase';
 import Auth from './Auth';
 import Dashboard from './Dashboard';
 
-function App() {
+function App({ showAuth = false }) {
     const [session, setSession] = useState(null);
     const [loading, setLoading] = useState(true);
 
@@ -27,14 +27,12 @@ function App() {
         return <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>Loading...</div>;
     }
 
-    // If user is logged in, show dashboard
     if (session) {
         return <Dashboard user={session.user} />;
     }
 
-    // If user clicked "Get Started" or pricing button, show auth
-    const urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.get('auth') === 'true') {
+    // Use prop or URL param
+    if (showAuth || new URLSearchParams(window.location.search).get('auth') === 'true') {
         return <Auth />;
     }
 
