@@ -1,7 +1,44 @@
 ﻿import './App.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { supabase } from './supabase';
+import Auth from './Auth';
+import Dashboard from './Dashboard';
 
 function App() {
+    const [session, setSession] = useState(null);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        // Check active session
+        supabase.auth.getSession().then(({ data: { session } }) => {
+            setSession(session);
+            setLoading(false);
+        });
+
+        // Listen for auth changes
+        const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+            setSession(session);
+        });
+
+        return () => subscription.unsubscribe();
+    }, []);
+
+    if (loading) {
+        return <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>Loading...</div>;
+    }
+
+    // If user is logged in, show dashboard
+    if (session) {
+        return <Dashboard user={session.user} />;
+    }
+
+    // If user clicked "Get Started" or pricing button, show auth
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('auth') === 'true') {
+        return <Auth />;
+    }
+
+    // Otherwise show landing page
     const handleCheckout = (tier) => {
         const links = {
             starter: 'https://buy.stripe.com/test_eVqfZg7083Zz2xU3Dt1ck00',
