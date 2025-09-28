@@ -1,4 +1,4 @@
-﻿import import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { supabase } from './supabase';
 import AICoach from './AICoach';  // Uncomment this
 import './App.css';
