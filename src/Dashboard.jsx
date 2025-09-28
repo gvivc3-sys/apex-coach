@@ -1,5 +1,6 @@
-﻿import { useState, useEffect } from 'react';
+﻿import import { useState, useEffect } from 'react';
 import { supabase } from './supabase';
+import AICoach from './AICoach';  // Uncomment this
 import './App.css';
 
 function Dashboard({ user }) {
@@ -54,11 +55,16 @@ function Dashboard({ user }) {
                             </li>
                         </ul>
 
-                        <button className="primary-button" style={{ width: '100%', marginTop: '30px' }}>
-                            AI Coach Coming Soon
+                        <button
+                            className="primary-button"
+                            style={{ width: '100%', marginTop: '30px' }}
+                            onClick={() => setShowCoach(!showCoach)}
+                        >
+                            {showCoach ? 'Hide' : 'Talk to Your'} AI Coach
                         </button>
 
-                        
+                        {showCoach && <AICoach />}  {/* Uncomment this */}
+
                     </div>
                 </div>
             </section>
