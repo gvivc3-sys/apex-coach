@@ -1,10 +1,10 @@
 ﻿import { useState, useEffect } from 'react';
 import { supabase } from './supabase';
-import AICoach from './AICoach';  // Add this
+// import AICoach from './AICoach'; // Comment this out for now
 import './App.css';
 
 function Dashboard({ user }) {
-    const [showCoach, setShowCoach] = useState(false);  // Add this
+    const [showCoach, setShowCoach] = useState(false);
 
     const handleSignOut = async () => {
         await supabase.auth.signOut();
@@ -55,15 +55,11 @@ function Dashboard({ user }) {
                             </li>
                         </ul>
 
-                        <button
-                            className="primary-button"
-                            style={{ width: '100%', marginTop: '30px' }}
-                            onClick={() => setShowCoach(!showCoach)}  // Toggle coach
-                        >
-                            {showCoach ? 'Hide' : 'Talk to Your'} AI Coach
+                        <button className="primary-button" style={{ width: '100%', marginTop: '30px' }}>
+                            AI Coach Coming Soon
                         </button>
 
-                        {showCoach && <AICoach />}
+                        {/* {showCoach && <AICoach />}  Remove this line */}
                     </div>
                 </div>
             </section>
