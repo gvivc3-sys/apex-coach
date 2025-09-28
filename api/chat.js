@@ -1,5 +1,5 @@
 export default async function handler(req, res) {
-    // Enable CORS
+    // Enable CORS for your frontend
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'POST');
 
@@ -21,7 +21,11 @@ export default async function handler(req, res) {
                 messages: [
                     {
                         role: 'system',
-                        content: 'You are APEX Coach, an elite internet money strategist...'
+                        content: `You are APEX Coach, an elite internet money strategist. 
+            Focus on: dropshipping, affiliate marketing, digital products, flipping.
+            Be aggressive and direct. Push for immediate action.
+            Give specific platforms and dollar amounts.
+            Always end with a clear next step.`
                     },
                     ...messages
                 ],
@@ -33,6 +37,7 @@ export default async function handler(req, res) {
         const data = await response.json();
         return res.status(200).json(data);
     } catch (error) {
-        return res.status(500).json({ error: 'Failed to get AI response' });
+        console.error('OpenAI Error:', error);
+        return res.status(500).json({ error: 'Failed to get response' });
     }
 }
