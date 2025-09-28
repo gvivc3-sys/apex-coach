@@ -28,16 +28,18 @@ function App() {
         return <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>Loading...</div>;
     }
 
+    // If user is logged in, show dashboard
     if (session) {
         return <Dashboard user={session.user} />;
     }
 
-    // Use prop or URL param
-    if (showAuth || new URLSearchParams(window.location.search).get('auth') === 'true') {
+    // Check URL params for auth
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('auth') === 'true') {
         return <Auth />;
     }
 
-    // Otherwise show landing page
+    // Show landing page
     const handleCheckout = (tier) => {
         const links = {
             starter: 'https://buy.stripe.com/test_eVqfZg7083Zz2xU3Dt1ck00',
@@ -65,7 +67,12 @@ function App() {
                         >
                             Login
                         </button>
-                        <button className="cta-button">Get Started</button>
+                        <button
+                            className="cta-button"
+                            onClick={() => window.location.href = '/?auth=true'}
+                        >
+                            Get Started
+                        </button>
                     </div>
                 </div>
             </nav>
