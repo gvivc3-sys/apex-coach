@@ -1,16 +1,44 @@
 ﻿import { useState, useEffect } from 'react';
 import { supabase } from './supabase';
 import AICoach from './AICoach';
-import UserProfile from './UserProfile'; // Add this
+import UserProfile from './UserProfile';
+import Onboarding from './Onboarding'; // Add this
 import './App.css';
 
 function Dashboard({ user }) {
     const [showCoach, setShowCoach] = useState(false);
-    const [showProfile, setShowProfile] = useState(false); // Add this
+    const [showProfile, setShowProfile] = useState(false);
+    const [hasPreferences, setHasPreferences] = useState(false);
+    const [loading, setLoading] = useState(true);
 
-    const handleSignOut = async () => {
-        await supabase.auth.signOut();
+    useEffect(() => {
+        checkOnboarding();
+    }, []);
+
+    const checkOnboarding = async () => {
+        try {
+            const { data, error } = await supabase
+                .from('user_preferences')
+                .select('*')
+                .eq('id', user.id)
+                .single();
+
+            setHasPreferences(!!data);
+        } catch (error) {
+            setHasPreferences(false);
+        } finally {
+            setLoading(false);
+        }
     };
+
+    if (loading) {
+        return <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>Loading...</div>;
+    }
+
+    if (!hasPreferences) {
+        return <Onboarding user={user} onComplete={() => setHasPreferences(true)} />;
+    }
+
 
     return (
         <div className="apex-app">

@@ -22,11 +22,14 @@ function AICoach() {
                 ? '/api/chat'
                 : 'https://apex-coach-sage.vercel.app/api/chat';
 
+            const { data: { user } } = await supabase.auth.getUser();
+
             const response = await fetch(apiUrl, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                    messages: newMessages.slice(-10) // Only send last 10 messages to save tokens
+                    messages: newMessages.slice(-10),
+                    userId: user.id  // Add this
                 }),
             });
 

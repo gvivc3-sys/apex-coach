@@ -51,9 +51,7 @@ function UserProfile({ user, onClose }) {
   };
 
   const handleManageBilling = () => {
-    // This would redirect to Stripe Customer Portal
-    window.location.href = 'https://billing.stripe.com/p/login/test_YOUR_LINK';
-    // You'll get this link from Stripe Dashboard → Customer Portal
+      window.location.href = 'https://billing.stripe.com/p/login/test_eVqfZg7083Zz2xU3Dt1ck00';
   };
 
   return (
