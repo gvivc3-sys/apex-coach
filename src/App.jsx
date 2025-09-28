@@ -57,6 +57,13 @@ function App({ showAuth = false }) {
                         <a href="#features">Features</a>
                         <a href="#pricing">Pricing</a>
                         <a href="#demo">Demo</a>
+                        <button
+                            className="secondary-button"
+                            style={{ marginRight: '10px', padding: '12px 30px' }}
+                            onClick={() => window.location.href = '/?auth=true'}
+                        >
+                            Login
+                        </button>
                         <button className="cta-button">Get Started</button>
                     </div>
                 </div>

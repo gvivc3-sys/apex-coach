@@ -1,10 +1,12 @@
 ﻿import { useState, useEffect } from 'react';
 import { supabase } from './supabase';
-import AICoach from './AICoach';  // Uncomment this
+import AICoach from './AICoach';
+import UserProfile from './UserProfile'; // Add this
 import './App.css';
 
 function Dashboard({ user }) {
     const [showCoach, setShowCoach] = useState(false);
+    const [showProfile, setShowProfile] = useState(false); // Add this
 
     const handleSignOut = async () => {
         await supabase.auth.signOut();
@@ -16,7 +18,19 @@ function Dashboard({ user }) {
                 <div className="nav-container">
                     <div className="logo">APEX COACH</div>
                     <div className="nav-links">
-                        <span style={{ color: 'var(--text-gray)' }}>{user.email}</span>
+                        <button
+                            onClick={() => setShowProfile(true)}
+                            style={{
+                                background: 'transparent',
+                                border: '1px solid var(--border-gray)',
+                                color: 'var(--text-white)',
+                                padding: '8px 16px',
+                                cursor: 'pointer',
+                                marginRight: '10px'
+                            }}
+                        >
+                            {user.email.split('@')[0]}
+                        </button>
                         <button className="cta-button" onClick={handleSignOut}>
                             Sign Out
                         </button>
@@ -68,6 +82,9 @@ function Dashboard({ user }) {
                     </div>
                 </div>
             </section>
+            {showProfile && (
+                <UserProfile user={user} onClose={() => setShowProfile(false)} />
+            )}
         </div>
     );
 }
