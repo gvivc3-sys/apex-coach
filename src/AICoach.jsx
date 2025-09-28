@@ -53,3 +53,5 @@
         setLoading(false);
     }
 };
+
+export default AICoach;
