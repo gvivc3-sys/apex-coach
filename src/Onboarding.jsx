@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { supabase } from './supabase';
+import Header from './Header';
 import './App.css';
 
 function Onboarding({ user, onComplete }) {
@@ -15,22 +16,34 @@ function Onboarding({ user, onComplete }) {
 
     const handleSubmit = async () => {
         try {
-            const { error } = await supabase
+            // Log what we're trying to save
+            console.log('Saving preferences:', {
+                id: user.id,
+                ...preferences,
+                monthly_target: parseInt(preferences.monthly_target),
+            });
+
+            const { data, error } = await supabase
                 .from('user_preferences')
                 .upsert({
                     id: user.id,
-                    ...preferences,
+                    skill_level: preferences.skill_level,
+                    goals: preferences.goals,
                     monthly_target: parseInt(preferences.monthly_target),
-                    hours_available: parseInt(preferences.hours_available) || 10
+                    hours_available: 20, // Default value
+                    current_income: 0, // Default value
+                    strengths: preferences.strengths || ''
                 });
 
-            if (error) throw error;
+            if (error) {
+                console.error('Supabase error:', error);
+                throw error;
+            }
 
-            // Call the onComplete callback to show the dashboard
             onComplete();
         } catch (error) {
             console.error('Error saving preferences:', error);
-            alert('Error saving preferences. Please try again.');
+            alert(`Error: ${error.message}`);
         }
     };
 
@@ -44,13 +57,18 @@ function Onboarding({ user, onComplete }) {
     };
 
     return (
-        <div style={{
-            minHeight: '100vh',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            background: 'var(--primary-black)'
-        }}>
+        <div className="apex-app">
+            <Header user={user} />
+
+            <div style={{
+                minHeight: '100vh',
+                paddingTop: '100px', // Account for fixed header
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                background: 'var(--primary-black)'
+            }}>
+
             <div style={{
                 maxWidth: '600px',
                 width: '90%',
