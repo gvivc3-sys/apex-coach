@@ -1,6 +1,5 @@
 ﻿import { useState, useEffect } from 'react';
 import { supabase } from './supabase';
-// import AICoach from './AICoach'; // Comment this out for now
 import './App.css';
 
 function Dashboard({ user }) {
@@ -59,7 +58,7 @@ function Dashboard({ user }) {
                             AI Coach Coming Soon
                         </button>
 
-                        {/* {showCoach && <AICoach />}  Remove this line */}
+                        
                     </div>
                 </div>
             </section>
