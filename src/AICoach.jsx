@@ -4,7 +4,7 @@ import './App.css';
 
 function AICoach() {
     const [messages, setMessages] = useState([
-        { role: 'assistant', content: 'Ready to make internet money? Ask me anything about online business, passive income, or getting your first $10K.' }
+        { role: 'assistant', content: 'Hey! Ready to build your online business? Ask me anything - from finding your first product to scaling to $10K/month.' }
     ]);
     const [input, setInput] = useState('');
     const [loading, setLoading] = useState(false);
@@ -21,10 +21,6 @@ function AICoach() {
         try {
             const { data: { user } } = await supabase.auth.getUser();
 
-            if (!user) {
-                throw new Error('No user found');
-            }
-
             const apiUrl = window.location.hostname === 'localhost'
                 ? 'http://localhost:5173/api/chat'
                 : `https://${window.location.hostname}/api/chat`;
@@ -34,13 +30,9 @@ function AICoach() {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     messages: newMessages.slice(-10),
-                    userId: user.id
+                    userId: user?.id
                 }),
             });
-
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
 
             const data = await response.json();
 
@@ -51,10 +43,10 @@ function AICoach() {
                 }]);
             }
         } catch (error) {
-            console.error('Full error:', error);
+            console.error('Error:', error);
             setMessages(prev => [...prev, {
                 role: 'assistant',
-                content: `Error: ${error.message}`
+                content: 'Connection issue. Please try again.'
             }]);
         } finally {
             setLoading(false);
@@ -63,104 +55,77 @@ function AICoach() {
 
     return (
         <div style={{
-            height: '500px',
+            height: '600px',
             display: 'flex',
             flexDirection: 'column',
-            background: '#0f0f0f',
-            border: '1px solid #1a1a1a',
-            marginTop: '30px',
-            borderRadius: '0px'
+            background: 'white',
+            borderRadius: '12px',
+            overflow: 'hidden',
+            boxShadow: '0 1px 3px rgba(0,0,0,0.1)'
         }}>
-            <div style={{
-                padding: '15px 20px',
-                borderBottom: '1px solid #1a1a1a',
-                background: '#0a0a0a',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'space-between'
-            }}>
-                <div>
-                    <h4 style={{ margin: 0, fontSize: '14px', letterSpacing: '1px' }}>APEX COACH</h4>
-                    <p style={{ margin: '2px 0 0 0', fontSize: '10px', color: '#666', letterSpacing: '0.5px' }}>
-                        AI STRATEGIST
-                    </p>
-                </div>
-                <div style={{ width: '8px', height: '8px', background: '#22c55e', borderRadius: '50%' }} />
-            </div>
-
             <div style={{
                 flex: 1,
                 overflow: 'auto',
-                padding: '20px',
+                padding: '30px',
                 display: 'flex',
                 flexDirection: 'column',
-                gap: '12px',
-                background: '#0a0a0a'
+                gap: '16px'
             }}>
                 {messages.map((msg, i) => (
                     <div key={i} style={{
-                        padding: '12px 16px',
-                        background: msg.role === 'user' ? '#1a1a1a' : '#0f0f0f',
-                        border: '1px solid #2a2a2a',
-                        marginLeft: msg.role === 'user' ? 'auto' : '0',
-                        marginRight: msg.role === 'user' ? '0' : 'auto',
-                        maxWidth: '75%',
-                        fontSize: '14px',
-                        lineHeight: '1.5',
-                        color: msg.role === 'user' ? '#999' : '#fff',
-                        borderRadius: '0px'
+                        display: 'flex',
+                        justifyContent: msg.role === 'user' ? 'flex-end' : 'flex-start'
                     }}>
-                        {msg.role === 'assistant' && (
-                            <span style={{
-                                fontSize: '10px',
-                                color: '#666',
-                                textTransform: 'uppercase',
-                                letterSpacing: '1px',
-                                display: 'block',
-                                marginBottom: '8px'
-                            }}>
-                                APEX
-                            </span>
-                        )}
-                        {msg.content}
+                        <div style={{
+                            maxWidth: '70%',
+                            padding: '12px 16px',
+                            background: msg.role === 'user' ? '#000' : '#f0f0f0',
+                            color: msg.role === 'user' ? 'white' : '#000',
+                            borderRadius: msg.role === 'user' ? '18px 18px 4px 18px' : '18px 18px 18px 4px',
+                            fontSize: '15px',
+                            lineHeight: '1.5'
+                        }}>
+                            {msg.content}
+                        </div>
                     </div>
                 ))}
                 {loading && (
-                    <div style={{
-                        color: '#666',
-                        fontSize: '12px',
-                        padding: '12px 16px',
-                        background: '#0f0f0f',
-                        border: '1px solid #2a2a2a',
-                        maxWidth: '75%'
-                    }}>
-                        Analyzing...
+                    <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
+                        <div style={{
+                            padding: '12px 16px',
+                            background: '#f0f0f0',
+                            borderRadius: '18px 18px 18px 4px',
+                            fontSize: '15px'
+                        }}>
+                            <span style={{ animation: 'pulse 1.5s infinite' }}>...</span>
+                        </div>
                     </div>
                 )}
             </div>
 
             <div style={{
-                padding: '15px',
-                borderTop: '1px solid #1a1a1a',
+                padding: '20px 30px',
+                borderTop: '1px solid #e0e0e0',
                 display: 'flex',
-                gap: '10px',
-                background: '#0a0a0a'
+                gap: '12px',
+                background: '#f8f9fa'
             }}>
                 <input
                     type="text"
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
                     onKeyPress={(e) => e.key === 'Enter' && !loading && sendMessage()}
-                    placeholder="Ask about strategies..."
+                    placeholder="Type your question..."
                     style={{
                         flex: 1,
-                        padding: '12px 16px',
-                        background: '#0f0f0f',
-                        border: '1px solid #2a2a2a',
-                        color: 'white',
-                        fontSize: '14px',
+                        padding: '12px 20px',
+                        background: 'white',
+                        border: '1px solid #e0e0e0',
+                        borderRadius: '24px',
+                        fontSize: '15px',
                         outline: 'none',
-                        borderRadius: '0px'
+                        transition: 'border-color 0.2s',
+                        ':focus': { borderColor: '#000' }
                     }}
                     disabled={loading}
                 />
@@ -169,17 +134,17 @@ function AICoach() {
                     disabled={loading}
                     style={{
                         padding: '12px 24px',
-                        background: loading ? '#1a1a1a' : '#fff',
-                        color: loading ? '#666' : '#000',
+                        background: loading ? '#666' : '#000',
+                        color: 'white',
                         border: 'none',
-                        fontSize: '12px',
-                        fontWeight: 'bold',
-                        letterSpacing: '1px',
+                        borderRadius: '24px',
+                        fontSize: '15px',
+                        fontWeight: '500',
                         cursor: loading ? 'default' : 'pointer',
-                        borderRadius: '0px'
+                        transition: 'background 0.2s'
                     }}
                 >
-                    {loading ? 'WAIT' : 'SEND'}
+                    Send
                 </button>
             </div>
         </div>
