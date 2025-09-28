@@ -19,13 +19,18 @@ function Onboarding({ user, onComplete }) {
                 .from('user_preferences')
                 .upsert({
                     id: user.id,
-                    ...preferences
+                    ...preferences,
+                    monthly_target: parseInt(preferences.monthly_target),
+                    hours_available: parseInt(preferences.hours_available) || 10
                 });
 
             if (error) throw error;
+
+            // Call the onComplete callback to show the dashboard
             onComplete();
         } catch (error) {
             console.error('Error saving preferences:', error);
+            alert('Error saving preferences. Please try again.');
         }
     };
 

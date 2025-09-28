@@ -2,7 +2,7 @@
 import { supabase } from './supabase';
 import AICoach from './AICoach';
 import UserProfile from './UserProfile';
-import Onboarding from './Onboarding'; // Add this
+import Onboarding from './Onboarding';
 import './App.css';
 
 function Dashboard({ user }) {
@@ -23,12 +23,18 @@ function Dashboard({ user }) {
                 .eq('id', user.id)
                 .single();
 
-            setHasPreferences(!!data);
+            setHasPreferences(!!data && !error);
         } catch (error) {
             setHasPreferences(false);
         } finally {
             setLoading(false);
         }
+    };
+
+    // Add this function
+    const handleSignOut = async () => {
+        await supabase.auth.signOut();
+        window.location.href = '/';
     };
 
     if (loading) {
@@ -38,7 +44,6 @@ function Dashboard({ user }) {
     if (!hasPreferences) {
         return <Onboarding user={user} onComplete={() => setHasPreferences(true)} />;
     }
-
 
     return (
         <div className="apex-app">
@@ -105,11 +110,11 @@ function Dashboard({ user }) {
                             {showCoach ? 'Hide' : 'Talk to Your'} AI Coach
                         </button>
 
-                        {showCoach && <AICoach />}  {/* Uncomment this */}
-
+                        {showCoach && <AICoach />}
                     </div>
                 </div>
             </section>
+
             {showProfile && (
                 <UserProfile user={user} onClose={() => setShowProfile(false)} />
             )}

@@ -4,7 +4,7 @@ import { supabase } from './supabase';
 import Auth from './Auth';
 import Dashboard from './Dashboard';
 
-function App({ showAuth = false }) {
+function App() {
     const [session, setSession] = useState(null);
     const [loading, setLoading] = useState(true);
 
@@ -18,6 +18,7 @@ function App({ showAuth = false }) {
         // Listen for auth changes
         const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
             setSession(session);
+            setLoading(false);
         });
 
         return () => subscription.unsubscribe();
