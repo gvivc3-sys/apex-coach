@@ -4,7 +4,8 @@ import './App.css';
 function Header({ user, showProfile, setShowProfile }) {
     const handleSignOut = async () => {
         await supabase.auth.signOut();
-        window.location.href = '/';
+        // Force a full page reload to clear everything
+        window.location.replace(window.location.origin);
     };
 
     return (
