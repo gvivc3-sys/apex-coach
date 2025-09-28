@@ -8,3 +8,5 @@ const response = await fetch(apiUrl, {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ messages: newMessages }),
 });
+
+export default AICoach;
