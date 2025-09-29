@@ -4,7 +4,7 @@ import './App.css';
 
 function AICoach() {
     const [messages, setMessages] = useState([
-        { role: 'assistant', content: 'Hey! Ready to build your online business? Ask me anything - from finding your first product to scaling to $10K/month.' }
+        { role: 'assistant', content: 'Ready to build your online empire? Ask me anything - from finding winning products to scaling past $10K/month. No fluff, just actionable strategies.' }
     ]);
     const [input, setInput] = useState('');
     const [loading, setLoading] = useState(false);
@@ -58,10 +58,10 @@ function AICoach() {
             height: '600px',
             display: 'flex',
             flexDirection: 'column',
-            background: 'white',
-            borderRadius: '12px',
+            background: '#141414',
+            borderRadius: '16px',
             overflow: 'hidden',
-            boxShadow: '0 1px 3px rgba(0,0,0,0.1)'
+            border: '1px solid #2a2a2a'
         }}>
             <div style={{
                 flex: 1,
@@ -78,13 +78,19 @@ function AICoach() {
                     }}>
                         <div style={{
                             maxWidth: '70%',
-                            padding: '12px 16px',
-                            background: msg.role === 'user' ? '#000' : '#f0f0f0',
-                            color: msg.role === 'user' ? 'white' : '#000',
+                            padding: '14px 18px',
+                            background: msg.role === 'user' ? '#2a2a2a' : '#0a0a0a',
+                            color: msg.role === 'user' ? '#ccc' : '#fff',
                             borderRadius: msg.role === 'user' ? '18px 18px 4px 18px' : '18px 18px 18px 4px',
                             fontSize: '15px',
-                            lineHeight: '1.5'
+                            lineHeight: '1.6',
+                            border: '1px solid #2a2a2a'
                         }}>
+                            {msg.role === 'assistant' && (
+                                <div style={{ fontSize: '11px', color: '#666', marginBottom: '8px', letterSpacing: '0.5px' }}>
+                                    APEX COACH
+                                </div>
+                            )}
                             {msg.content}
                         </div>
                     </div>
@@ -92,12 +98,15 @@ function AICoach() {
                 {loading && (
                     <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
                         <div style={{
-                            padding: '12px 16px',
-                            background: '#f0f0f0',
+                            padding: '14px 18px',
+                            background: '#0a0a0a',
                             borderRadius: '18px 18px 18px 4px',
-                            fontSize: '15px'
+                            border: '1px solid #2a2a2a'
                         }}>
-                            <span style={{ animation: 'pulse 1.5s infinite' }}>...</span>
+                            <div style={{ fontSize: '11px', color: '#666', marginBottom: '8px', letterSpacing: '0.5px' }}>
+                                APEX COACH
+                            </div>
+                            <span style={{ color: '#666' }}>Thinking...</span>
                         </div>
                     </div>
                 )}
@@ -105,43 +114,45 @@ function AICoach() {
 
             <div style={{
                 padding: '20px 30px',
-                borderTop: '1px solid #e0e0e0',
+                borderTop: '1px solid #2a2a2a',
                 display: 'flex',
                 gap: '12px',
-                background: '#f8f9fa'
+                background: '#0a0a0a'
             }}>
                 <input
                     type="text"
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
                     onKeyPress={(e) => e.key === 'Enter' && !loading && sendMessage()}
-                    placeholder="Type your question..."
+                    placeholder="Ask about strategies, products, scaling..."
                     style={{
                         flex: 1,
-                        padding: '12px 20px',
-                        background: 'white',
-                        border: '1px solid #e0e0e0',
+                        padding: '14px 20px',
+                        background: '#1a1a1a',
+                        border: '1px solid #2a2a2a',
                         borderRadius: '24px',
                         fontSize: '15px',
                         outline: 'none',
-                        transition: 'border-color 0.2s',
-                        ':focus': { borderColor: '#000' }
+                        color: '#fff',
+                        transition: 'border-color 0.2s'
                     }}
+                    onFocus={(e) => e.target.style.borderColor = '#444'}
+                    onBlur={(e) => e.target.style.borderColor = '#2a2a2a'}
                     disabled={loading}
                 />
                 <button
                     onClick={sendMessage}
                     disabled={loading}
                     style={{
-                        padding: '12px 24px',
-                        background: loading ? '#666' : '#000',
-                        color: 'white',
+                        padding: '14px 28px',
+                        background: loading ? '#2a2a2a' : '#fff',
+                        color: loading ? '#666' : '#000',
                         border: 'none',
                         borderRadius: '24px',
                         fontSize: '15px',
-                        fontWeight: '500',
+                        fontWeight: '600',
                         cursor: loading ? 'default' : 'pointer',
-                        transition: 'background 0.2s'
+                        transition: 'all 0.2s'
                     }}
                 >
                     Send

@@ -41,89 +41,45 @@ function Dashboard({ user }) {
     }
 
     return (
-        <div className="apex-app" style={{ background: '#f8f9fa', minHeight: '100vh' }}>
+        <div className="apex-app" style={{ background: '#0a0a0a', minHeight: '100vh' }}>
             <Header user={user} showProfile={showProfile} setShowProfile={setShowProfile} />
 
             {/* Secondary Navigation */}
             <div style={{
-                marginTop: '70px',
-                background: 'white',
-                borderBottom: '1px solid #e0e0e0',
+                marginTop: '100px',
                 padding: '0 5%',
-                position: 'sticky',
-                top: '70px',
-                zIndex: 100
+                display: 'flex',
+                justifyContent: 'center'
             }}>
                 <div style={{
-                    maxWidth: '1200px',
-                    margin: '0 auto',
                     display: 'flex',
-                    gap: '40px'
+                    gap: '10px',
+                    background: '#141414',
+                    padding: '8px',
+                    borderRadius: '30px',
+                    border: '1px solid #2a2a2a'
                 }}>
-                    <button
-                        onClick={() => setActiveTab('chat')}
-                        style={{
-                            background: 'transparent',
-                            border: 'none',
-                            padding: '20px 0',
-                            cursor: 'pointer',
-                            fontSize: '14px',
-                            fontWeight: activeTab === 'chat' ? '600' : '400',
-                            color: activeTab === 'chat' ? '#000' : '#666',
-                            borderBottom: activeTab === 'chat' ? '2px solid #000' : 'none',
-                            marginBottom: '-1px'
-                        }}
-                    >
-                        AI Coach
-                    </button>
-                    <button
-                        onClick={() => setActiveTab('tutorials')}
-                        style={{
-                            background: 'transparent',
-                            border: 'none',
-                            padding: '20px 0',
-                            cursor: 'pointer',
-                            fontSize: '14px',
-                            fontWeight: activeTab === 'tutorials' ? '600' : '400',
-                            color: activeTab === 'tutorials' ? '#000' : '#666',
-                            borderBottom: activeTab === 'tutorials' ? '2px solid #000' : 'none',
-                            marginBottom: '-1px'
-                        }}
-                    >
-                        Tutorials
-                    </button>
-                    <button
-                        onClick={() => setActiveTab('roadmap')}
-                        style={{
-                            background: 'transparent',
-                            border: 'none',
-                            padding: '20px 0',
-                            cursor: 'pointer',
-                            fontSize: '14px',
-                            fontWeight: activeTab === 'roadmap' ? '600' : '400',
-                            color: activeTab === 'roadmap' ? '#000' : '#666',
-                            borderBottom: activeTab === 'roadmap' ? '2px solid #000' : 'none',
-                            marginBottom: '-1px'
-                        }}
-                    >
-                        Roadmaps
-                    </button>
-                    <button
-                        onClick={() => setActiveTab('glossary')}
-                        style={{
-                            background: 'transparent',
-                            border: 'none',
-                            padding: '20px 0',
-                            cursor: 'pointer',
-                            fontSize: '14px',
-                            fontWeight: activeTab === 'glossary' ? '600' : '400',
-                            color: activeTab === 'glossary' ? '#000' : '#666',
-                            borderBottom: activeTab === 'glossary' ? '2px solid #000' : 'none',
-                            marginBottom: '-1px'
-                        }}
-                    >
-                        Glossary
-                    </button>
+                    {['chat', 'tutorials', 'roadmap', 'glossary'].map((tab) => (
+                        <button
+                            key={tab}
+                            onClick={() => setActiveTab(tab)}
+                            style={{
+                                background: activeTab === tab ? '#fff' : 'transparent',
+                                color: activeTab === tab ? '#000' : '#999',
+                                border: 'none',
+                                padding: '10px 24px',
+                                borderRadius: '22px',
+                                cursor: 'pointer',
+                                fontSize: '14px',
+                                fontWeight: activeTab === tab ? '600' : '400',
+                                textTransform: 'capitalize',
+                                transition: 'all 0.2s',
+                                letterSpacing: '0.3px'
+                            }}
+                        >
+                            {tab === 'chat' ? 'AI Coach' : tab}
+                        </button>
+                    ))}
                 </div>
             </div>
 
@@ -137,12 +93,12 @@ function Dashboard({ user }) {
 
                 {activeTab === 'tutorials' && (
                     <div style={{
-                        background: 'white',
-                        borderRadius: '12px',
+                        background: '#141414',
+                        borderRadius: '16px',
                         padding: '40px',
-                        boxShadow: '0 1px 3px rgba(0,0,0,0.1)'
+                        border: '1px solid #2a2a2a'
                     }}>
-                        <h2 style={{ marginBottom: '30px' }}>Quick Start Tutorials</h2>
+                        <h2 style={{ marginBottom: '30px', color: '#fff' }}>Quick Start Tutorials</h2>
                         <div style={{ display: 'grid', gap: '20px' }}>
                             {[
                                 { title: 'Dropshipping 101', time: '15 min', level: 'Beginner' },
@@ -152,15 +108,18 @@ function Dashboard({ user }) {
                             ].map((tutorial, i) => (
                                 <div key={i} style={{
                                     padding: '20px',
-                                    background: '#f8f9fa',
-                                    borderRadius: '8px',
+                                    background: '#0a0a0a',
+                                    borderRadius: '12px',
+                                    border: '1px solid #2a2a2a',
                                     cursor: 'pointer',
-                                    transition: 'all 0.2s',
-                                    ':hover': { background: '#f0f0f0' }
-                                }}>
+                                    transition: 'all 0.2s'
+                                }}
+                                    onMouseEnter={(e) => e.currentTarget.style.borderColor = '#444'}
+                                    onMouseLeave={(e) => e.currentTarget.style.borderColor = '#2a2a2a'}
+                                >
                                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                                         <div>
-                                            <h3 style={{ margin: '0 0 5px 0', fontSize: '16px' }}>{tutorial.title}</h3>
+                                            <h3 style={{ margin: '0 0 5px 0', fontSize: '16px', color: '#fff' }}>{tutorial.title}</h3>
                                             <p style={{ margin: 0, fontSize: '14px', color: '#666' }}>
                                                 {tutorial.time} • {tutorial.level}
                                             </p>
@@ -175,12 +134,12 @@ function Dashboard({ user }) {
 
                 {activeTab === 'roadmap' && (
                     <div style={{
-                        background: 'white',
-                        borderRadius: '12px',
+                        background: '#141414',
+                        borderRadius: '16px',
                         padding: '40px',
-                        boxShadow: '0 1px 3px rgba(0,0,0,0.1)'
+                        border: '1px solid #2a2a2a'
                     }}>
-                        <h2 style={{ marginBottom: '30px' }}>Your $10K/Month Roadmap</h2>
+                        <h2 style={{ marginBottom: '30px', color: '#fff' }}>Your $10K/Month Roadmap</h2>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
                             {[
                                 { week: 'Week 1', goal: 'First $100', status: 'complete' },
@@ -197,17 +156,18 @@ function Dashboard({ user }) {
                                         width: '40px',
                                         height: '40px',
                                         borderRadius: '50%',
-                                        background: item.status === 'complete' ? '#22c55e' : item.status === 'current' ? '#000' : '#e0e0e0',
+                                        background: item.status === 'complete' ? '#22c55e' : item.status === 'current' ? '#fff' : '#2a2a2a',
                                         display: 'flex',
                                         alignItems: 'center',
                                         justifyContent: 'center',
-                                        color: 'white',
-                                        fontWeight: 'bold'
+                                        color: item.status === 'current' ? '#000' : '#fff',
+                                        fontWeight: 'bold',
+                                        border: item.status === 'locked' ? '1px solid #444' : 'none'
                                     }}>
                                         {item.status === 'complete' ? '✓' : i + 1}
                                     </div>
                                     <div style={{ flex: 1 }}>
-                                        <h3 style={{ margin: '0 0 5px 0', fontSize: '16px' }}>{item.week}</h3>
+                                        <h3 style={{ margin: '0 0 5px 0', fontSize: '16px', color: '#fff' }}>{item.week}</h3>
                                         <p style={{ margin: 0, fontSize: '14px', color: '#666' }}>{item.goal}</p>
                                     </div>
                                 </div>
@@ -218,21 +178,23 @@ function Dashboard({ user }) {
 
                 {activeTab === 'glossary' && (
                     <div style={{
-                        background: 'white',
-                        borderRadius: '12px',
+                        background: '#141414',
+                        borderRadius: '16px',
                         padding: '40px',
-                        boxShadow: '0 1px 3px rgba(0,0,0,0.1)'
+                        border: '1px solid #2a2a2a'
                     }}>
-                        <h2 style={{ marginBottom: '30px' }}>Internet Money Glossary</h2>
+                        <h2 style={{ marginBottom: '30px', color: '#fff' }}>Internet Money Glossary</h2>
                         <div style={{ display: 'grid', gap: '20px' }}>
                             {[
                                 { term: 'Dropshipping', def: 'Selling products without holding inventory' },
                                 { term: 'POD', def: 'Print on Demand - custom products printed per order' },
                                 { term: 'Affiliate Marketing', def: 'Earning commissions by promoting products' },
-                                { term: 'Digital Products', def: 'Downloadable products like templates, courses' }
+                                { term: 'Digital Products', def: 'Downloadable products like templates, courses' },
+                                { term: 'FBA', def: 'Fulfillment by Amazon - Amazon handles shipping for you' },
+                                { term: 'Arbitrage', def: 'Buying low in one market, selling high in another' }
                             ].map((item, i) => (
-                                <div key={i} style={{ borderBottom: '1px solid #e0e0e0', paddingBottom: '15px' }}>
-                                    <h4 style={{ margin: '0 0 5px 0', fontSize: '16px' }}>{item.term}</h4>
+                                <div key={i} style={{ borderBottom: '1px solid #2a2a2a', paddingBottom: '15px' }}>
+                                    <h4 style={{ margin: '0 0 5px 0', fontSize: '16px', color: '#fff' }}>{item.term}</h4>
                                     <p style={{ margin: 0, fontSize: '14px', color: '#666' }}>{item.def}</p>
                                 </div>
                             ))}
