@@ -41,7 +41,11 @@ function Dashboard({ user }) {
     }
 
     return (
-        <div className="apex-app" style={{ background: '#0a0a0a', minHeight: '100vh' }}>
+        <div className="apex-app" style={{
+            background: '#0a0a0a',
+            minHeight: '100vh',
+            fontFamily: '"Inter", sans-serif'
+        }}>
             <Header user={user} showProfile={showProfile} setShowProfile={setShowProfile} />
 
             {/* Secondary Navigation */}
@@ -52,42 +56,94 @@ function Dashboard({ user }) {
                 justifyContent: 'center'
             }}>
                 <div style={{
-                    display: 'flex',
-                    gap: '10px',
-                    background: '#141414',
-                    padding: '8px',
-                    borderRadius: '30px',
-                    border: '1px solid #2a2a2a'
+                    display: 'inline-flex',
+                    gap: '6px',
+                    background: 'rgba(255, 255, 255, 0.05)',
+                    padding: '6px',
+                    borderRadius: '40px',
+                    backdropFilter: 'blur(10px)',
+                    border: '1px solid rgba(255, 255, 255, 0.1)'
                 }}>
-                    {['chat', 'tutorials', 'roadmap', 'glossary'].map((tab) => (
+                    {[
+                        { id: 'chat', label: 'AI Coach', icon: '💬' },
+                        { id: 'tutorials', label: 'Tutorials', icon: '📚' },
+                        { id: 'roadmap', label: 'Roadmap', icon: '🗺️' },
+                        { id: 'glossary', label: 'Glossary', icon: '📖' }
+                    ].map((tab) => (
                         <button
-                            key={tab}
-                            onClick={() => setActiveTab(tab)}
+                            key={tab.id}
+                            onClick={() => setActiveTab(tab.id)}
                             style={{
-                                background: activeTab === tab ? '#fff' : 'transparent',
-                                color: activeTab === tab ? '#000' : '#999',
+                                position: 'relative',
+                                background: activeTab === tab.id
+                                    ? 'rgba(255, 255, 255, 0.95)'
+                                    : 'transparent',
+                                color: activeTab === tab.id ? '#000' : 'rgba(255, 255, 255, 0.7)',
                                 border: 'none',
-                                padding: '10px 24px',
-                                borderRadius: '22px',
+                                padding: '12px 24px',
+                                borderRadius: '34px',
                                 cursor: 'pointer',
                                 fontSize: '14px',
-                                fontWeight: activeTab === tab ? '600' : '400',
-                                textTransform: 'capitalize',
-                                transition: 'all 0.2s',
-                                letterSpacing: '0.3px'
+                                fontWeight: activeTab === tab.id ? '600' : '400',
+                                fontVariationSettings: activeTab === tab.id
+                                    ? '"wght" 600'
+                                    : '"wght" 400',
+                                transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                                letterSpacing: '-0.2px',
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: '8px',
+                                fontFamily: '"Inter", sans-serif',
+                                minWidth: '120px',
+                                justifyContent: 'center'
+                            }}
+                            onMouseEnter={(e) => {
+                                if (activeTab !== tab.id) {
+                                    e.currentTarget.style.background = 'rgba(255, 255, 255, 0.08)';
+                                    e.currentTarget.style.color = 'rgba(255, 255, 255, 0.9)';
+                                }
+                            }}
+                            onMouseLeave={(e) => {
+                                if (activeTab !== tab.id) {
+                                    e.currentTarget.style.background = 'transparent';
+                                    e.currentTarget.style.color = 'rgba(255, 255, 255, 0.7)';
+                                }
                             }}
                         >
-                            {tab === 'chat' ? 'AI Coach' : tab}
+                            <span style={{ fontSize: '16px', filter: activeTab === tab.id ? 'none' : 'grayscale(1)' }}>
+                                {tab.icon}
+                            </span>
+                            {tab.label}
                         </button>
                     ))}
                 </div>
             </div>
 
-            {/* Main Content Area */}
+            {/* Add some animation styles */}
+            <style>{`
+        @keyframes slideIn {
+          from {
+            opacity: 0;
+            transform: translateY(10px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        
+        button {
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+        }
+      `}</style>
+
+            {/* Main Content Area with animation */}
             <div style={{
                 maxWidth: '900px',
                 margin: '40px auto',
-                padding: '0 20px'
+                padding: '0 20px',
+                animation: 'slideIn 0.3s ease-out'
             }}>
                 {activeTab === 'chat' && <AICoach />}
 
