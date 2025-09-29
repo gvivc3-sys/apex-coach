@@ -2,10 +2,7 @@
 import { supabase } from './supabase';
 import './App.css';
 
-function AICoach() {
-    const [messages, setMessages] = useState([
-        { role: 'assistant', content: 'Ready to build your online empire? Ask me anything - from finding winning products to scaling past $10K/month. No fluff, just actionable strategies.' }
-    ]);
+function AICoach({ messages, setMessages, isMobile }) {
     const [input, setInput] = useState('');
     const [loading, setLoading] = useState(false);
 
@@ -55,18 +52,18 @@ function AICoach() {
 
     return (
         <div style={{
-            height: '600px',
+            height: isMobile ? 'calc(100vh - 250px)' : '600px',
             display: 'flex',
             flexDirection: 'column',
             background: '#141414',
-            borderRadius: '16px',
+            borderRadius: isMobile ? '12px' : '16px',
             overflow: 'hidden',
             border: '1px solid #2a2a2a'
         }}>
             <div style={{
                 flex: 1,
                 overflow: 'auto',
-                padding: '30px',
+                padding: isMobile ? '20px' : '30px',
                 display: 'flex',
                 flexDirection: 'column',
                 gap: '16px'
@@ -77,12 +74,12 @@ function AICoach() {
                         justifyContent: msg.role === 'user' ? 'flex-end' : 'flex-start'
                     }}>
                         <div style={{
-                            maxWidth: '70%',
-                            padding: '14px 18px',
+                            maxWidth: isMobile ? '85%' : '70%',
+                            padding: isMobile ? '12px 14px' : '14px 18px',
                             background: msg.role === 'user' ? '#2a2a2a' : '#0a0a0a',
                             color: msg.role === 'user' ? '#ccc' : '#fff',
                             borderRadius: msg.role === 'user' ? '18px 18px 4px 18px' : '18px 18px 18px 4px',
-                            fontSize: '15px',
+                            fontSize: isMobile ? '14px' : '15px',
                             lineHeight: '1.6',
                             border: '1px solid #2a2a2a'
                         }}>
@@ -98,7 +95,7 @@ function AICoach() {
                 {loading && (
                     <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
                         <div style={{
-                            padding: '14px 18px',
+                            padding: isMobile ? '12px 14px' : '14px 18px',
                             background: '#0a0a0a',
                             borderRadius: '18px 18px 18px 4px',
                             border: '1px solid #2a2a2a'
@@ -113,10 +110,10 @@ function AICoach() {
             </div>
 
             <div style={{
-                padding: '20px 30px',
+                padding: isMobile ? '15px' : '20px 30px',
                 borderTop: '1px solid #2a2a2a',
                 display: 'flex',
-                gap: '12px',
+                gap: isMobile ? '8px' : '12px',
                 background: '#0a0a0a'
             }}>
                 <input
@@ -124,14 +121,14 @@ function AICoach() {
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
                     onKeyPress={(e) => e.key === 'Enter' && !loading && sendMessage()}
-                    placeholder="Ask about strategies, products, scaling..."
+                    placeholder={isMobile ? "Ask..." : "Ask about strategies, products, scaling..."}
                     style={{
                         flex: 1,
-                        padding: '14px 20px',
+                        padding: isMobile ? '12px 16px' : '14px 20px',
                         background: '#1a1a1a',
                         border: '1px solid #2a2a2a',
                         borderRadius: '24px',
-                        fontSize: '15px',
+                        fontSize: isMobile ? '14px' : '15px',
                         outline: 'none',
                         color: '#fff',
                         transition: 'border-color 0.2s'
@@ -144,12 +141,12 @@ function AICoach() {
                     onClick={sendMessage}
                     disabled={loading}
                     style={{
-                        padding: '14px 28px',
+                        padding: isMobile ? '12px 20px' : '14px 28px',
                         background: loading ? '#2a2a2a' : '#fff',
                         color: loading ? '#666' : '#000',
                         border: 'none',
                         borderRadius: '24px',
-                        fontSize: '15px',
+                        fontSize: isMobile ? '14px' : '15px',
                         fontWeight: '600',
                         cursor: loading ? 'default' : 'pointer',
                         transition: 'all 0.2s'

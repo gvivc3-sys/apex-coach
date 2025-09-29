@@ -1,19 +1,24 @@
-﻿import { useState, useEffect } from 'react';
-import { supabase } from './supabase';
-import AICoach from './AICoach';
-import UserProfile from './UserProfile';
-import Header from './Header';
-import Onboarding from './Onboarding';
-import './App.css';
-
-function Dashboard({ user }) {
+﻿function Dashboard({ user }) {
     const [showProfile, setShowProfile] = useState(false);
     const [hasPreferences, setHasPreferences] = useState(false);
     const [loading, setLoading] = useState(true);
     const [activeTab, setActiveTab] = useState('chat');
+    const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+    const [chatMessages, setChatMessages] = useState([
+        { role: 'assistant', content: 'Ready to build your online empire? Ask me anything - from finding winning products to scaling past $10K/month. No fluff, just actionable strategies.' }
+    ]);
 
     useEffect(() => {
         checkOnboarding();
+    }, []);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth < 768);
+        };
+
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
     }, []);
 
     const checkOnboarding = async () => {
@@ -48,12 +53,14 @@ function Dashboard({ user }) {
         }}>
             <Header user={user} showProfile={showProfile} setShowProfile={setShowProfile} />
 
-            {/* Secondary Navigation */}
+            {/* Secondary Navigation - Mobile Responsive */}
             <div style={{
                 marginTop: '100px',
-                padding: '0 5%',
+                padding: '0 20px',
                 display: 'flex',
-                justifyContent: 'center'
+                justifyContent: 'center',
+                overflowX: 'auto',
+                WebkitOverflowScrolling: 'touch'
             }}>
                 <div style={{
                     display: 'inline-flex',
@@ -62,57 +69,38 @@ function Dashboard({ user }) {
                     padding: '6px',
                     borderRadius: '40px',
                     backdropFilter: 'blur(10px)',
-                    border: '1px solid rgba(255, 255, 255, 0.1)'
+                    border: '1px solid rgba(255, 255, 255, 0.1)',
+                    minWidth: 'fit-content'
                 }}>
                     {[
-                        { id: 'chat', label: 'AI Coach', icon: '💬' },
-                        { id: 'tutorials', label: 'Tutorials', icon: '📚' },
-                        { id: 'roadmap', label: 'Roadmap', icon: '🗺️' },
-                        { id: 'glossary', label: 'Glossary', icon: '📖' }
+                        { id: 'chat', label: 'AI Coach' },
+                        { id: 'tutorials', label: 'Tutorials' },
+                        { id: 'roadmap', label: 'Roadmap' },
+                        { id: 'glossary', label: 'Glossary' }
                     ].map((tab) => (
                         <button
                             key={tab.id}
                             onClick={() => setActiveTab(tab.id)}
                             style={{
-                                position: 'relative',
                                 background: activeTab === tab.id
                                     ? 'rgba(255, 255, 255, 0.95)'
                                     : 'transparent',
                                 color: activeTab === tab.id ? '#000' : 'rgba(255, 255, 255, 0.7)',
                                 border: 'none',
-                                padding: '12px 24px',
+                                padding: isMobile ? '10px 16px' : '12px 24px',
                                 borderRadius: '34px',
                                 cursor: 'pointer',
-                                fontSize: '14px',
+                                fontSize: isMobile ? '13px' : '14px',
                                 fontWeight: activeTab === tab.id ? '600' : '400',
                                 fontVariationSettings: activeTab === tab.id
                                     ? '"wght" 600'
                                     : '"wght" 400',
                                 transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
                                 letterSpacing: '-0.2px',
-                                display: 'flex',
-                                alignItems: 'center',
-                                gap: '8px',
                                 fontFamily: '"Inter", sans-serif',
-                                minWidth: '120px',
-                                justifyContent: 'center'
-                            }}
-                            onMouseEnter={(e) => {
-                                if (activeTab !== tab.id) {
-                                    e.currentTarget.style.background = 'rgba(255, 255, 255, 0.08)';
-                                    e.currentTarget.style.color = 'rgba(255, 255, 255, 0.9)';
-                                }
-                            }}
-                            onMouseLeave={(e) => {
-                                if (activeTab !== tab.id) {
-                                    e.currentTarget.style.background = 'transparent';
-                                    e.currentTarget.style.color = 'rgba(255, 255, 255, 0.7)';
-                                }
+                                whiteSpace: 'nowrap'
                             }}
                         >
-                            <span style={{ fontSize: '16px', filter: activeTab === tab.id ? 'none' : 'grayscale(1)' }}>
-                                {tab.icon}
-                            </span>
                             {tab.label}
                         </button>
                     ))}
@@ -121,31 +109,36 @@ function Dashboard({ user }) {
 
             {/* Add some animation styles */}
             <style>{`
-        @keyframes slideIn {
-          from {
-            opacity: 0;
-            transform: translateY(10px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        
-        button {
-          -webkit-font-smoothing: antialiased;
-          -moz-osx-font-smoothing: grayscale;
-        }
-      `}</style>
+                @keyframes slideIn {
+                    from {
+                        opacity: 0;
+                        transform: translateY(10px);
+                    }
+                    to {
+                        opacity: 1;
+                        transform: translateY(0);
+                    }
+                }
+    
+                button {
+                    -webkit-font-smoothing: antialiased;
+                    -moz-osx-font-smoothing: grayscale;
+                }
+            `}</style>
 
             {/* Main Content Area with animation */}
             <div style={{
                 maxWidth: '900px',
-                margin: '40px auto',
-                padding: '0 20px',
-                animation: 'slideIn 0.3s ease-out'
+                margin: isMobile ? '20px auto' : '40px auto',
+                padding: isMobile ? '0 10px' : '0 20px'
             }}>
-                {activeTab === 'chat' && <AICoach />}
+                {activeTab === 'chat' && (
+                    <AICoach
+                        messages={chatMessages}
+                        setMessages={setChatMessages}
+                        isMobile={window.innerWidth < 768}
+                    />
+                )}
 
                 {activeTab === 'tutorials' && (
                     <div style={{
