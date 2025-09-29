@@ -1,4 +1,11 @@
-﻿function Dashboard({ user }) {
+﻿import { useState, useEffect } from 'react';
+import { supabase } from './supabase';
+import AICoach from './AICoach';
+import UserProfile from './UserProfile';
+import Header from './Header';
+import Onboarding from './Onboarding';
+import './App.css';
+function Dashboard({ user }) {
     const [showProfile, setShowProfile] = useState(false);
     const [hasPreferences, setHasPreferences] = useState(false);
     const [loading, setLoading] = useState(true);
