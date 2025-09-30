@@ -1,8 +1,7 @@
-/* Dashboard Layout */
+/* Dashboard Container */
 .dashboard-container {
-    background: #0a0a0a;
+    background: var(--primary-black);
     min-height: 100vh;
-    font-family: 'Inter', sans-serif;
     display: flex;
     flex-direction: column;
 }
@@ -10,12 +9,12 @@
 /* Secondary Navigation */
 .secondary-nav {
     margin-top: 100px;
-    padding: 0 20px;
+    padding: 0 var(--spacing-lg);
     display: flex;
     justify-content: center;
 }
 
-.nav-pill-container {
+.navPillContainer {
     display: inline-flex;
     gap: 6px;
     background: rgba(255, 255, 255, 0.05);
@@ -25,13 +24,13 @@
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.nav-pill-button {
+.navPillButton {
     border: none;
     padding: 12px 24px;
     border-radius: 34px;
     cursor: pointer;
-    font-size: 14px;
-    font-family: 'Inter', sans-serif;
+    font-size: var(--font-md);
+    font-family: inherit;
     font-weight: 400;
     font-variation-settings: 'wght' 400;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -41,172 +40,207 @@
     color: rgba(255, 255, 255, 0.7);
 }
 
-    .nav-pill-button.active {
-        background: rgba(255, 255, 255, 0.95);
-        color: #000;
-        font-weight: 600;
-        font-variation-settings: 'wght' 600;
+    .navPillButton:hover {
+        background: rgba(255, 255, 255, 0.08);
+        color: rgba(255, 255, 255, 0.9);
     }
+
+.navPillButtonActive {
+    background: rgba(255, 255, 255, 0.95);
+    color: var(--primary-black);
+    font-weight: 600;
+    font-variation-settings: 'wght' 600;
+}
+
+/* Main Content */
+.mainContent {
+    flex: 1;
+    max-width: 900px;
+    width: 100%;
+    margin: 40px auto;
+    padding: 0 var(--spacing-lg);
+    animation: slideIn 0.3s ease-out;
+}
 
 /* Content Cards */
-.content-card {
-    background: #141414;
-    border-radius: 16px;
-    padding: 40px;
-    border: 1px solid #2a2a2a;
+.contentCard {
+    background: var(--secondary-black);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+    border: 1px solid var(--border-gray);
 }
 
-    .content-card h2 {
+    .contentCard h2 {
         margin-bottom: 30px;
-        color: #fff;
+        color: var(--text-white);
+        font-size: var(--font-2xl);
     }
 
-/* Chat Styles */
-.chat-container {
-    height: 600px;
-    display: flex;
-    flex-direction: column;
-    background: #141414;
-    border-radius: 16px;
-    overflow: hidden;
-    border: 1px solid #2a2a2a;
+/* Tutorial Cards */
+.tutorialGrid {
+    display: grid;
+    gap: var(--spacing-lg);
 }
 
-.chat-messages {
-    flex: 1;
-    overflow: auto;
-    padding: 30px;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-}
-
-.chat-message {
-    display: flex;
-}
-
-    .chat-message.user {
-        justify-content: flex-end;
-    }
-
-.chat-bubble {
-    max-width: 70%;
-    padding: 14px 18px;
-    border-radius: 18px;
-    font-size: 15px;
-    line-height: 1.6;
-    border: 1px solid #2a2a2a;
-}
-
-    .chat-bubble.user {
-        background: #2a2a2a;
-        color: #ccc;
-        border-radius: 18px 18px 4px 18px;
-    }
-
-    .chat-bubble.assistant {
-        background: #0a0a0a;
-        color: #fff;
-        border-radius: 18px 18px 18px 4px;
-    }
-
-.chat-input-container {
-    padding: 20px 30px;
-    border-top: 1px solid #2a2a2a;
-    display: flex;
-    gap: 12px;
-    background: #0a0a0a;
-}
-
-.chat-input {
-    flex: 1;
-    padding: 14px 20px;
-    background: #1a1a1a;
-    border: 1px solid #2a2a2a;
-    border-radius: 24px;
-    font-size: 15px;
-    outline: none;
-    color: #fff;
-    transition: border-color 0.2s;
-}
-
-    .chat-input:focus {
-        border-color: #444;
-    }
-
-.chat-send-button {
-    padding: 14px 28px;
-    background: #fff;
-    color: #000;
-    border: none;
-    border-radius: 24px;
-    font-size: 15px;
-    font-weight: 600;
+.tutorialCard {
+    padding: var(--spacing-lg);
+    background: var(--primary-black);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-gray);
     cursor: pointer;
     transition: all 0.2s;
 }
 
-    .chat-send-button:disabled {
-        background: #2a2a2a;
-        color: #666;
-        cursor: default;
+    .tutorialCard:hover {
+        border-color: #444;
     }
 
+.tutorialHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tutorialTitle {
+    margin: 0 0 5px 0;
+    font-size: var(--font-lg);
+    color: var(--text-white);
+}
+
+.tutorialMeta {
+    margin: 0;
+    font-size: var(--font-md);
+    color: var(--text-dark-gray);
+}
+
+/* Roadmap */
+.roadmapItem {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+}
+
+.roadmapCircle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+.roadmapCircleComplete {
+    background: var(--success-green);
+    color: var(--text-white);
+}
+
+.roadmapCircleCurrent {
+    background: var(--text-white);
+    color: var(--primary-black);
+}
+
+.roadmapCircleLocked {
+    background: var(--border-gray);
+    color: var(--text-white);
+    border: 1px solid #444;
+}
+
 /* Footer */
-.dashboard-footer {
-    margin-top: 80px;
-    padding: 40px 20px;
-    background: #141414;
-    border-top: 1px solid #2a2a2a;
+.footer {
+    margin-top: var(--spacing-2xl);
+    padding: var(--spacing-xl) var(--spacing-lg);
+    background: var(--secondary-black);
+    border-top: 1px solid var(--border-gray);
+}
+
+.footerContent {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.footerBrand h3 {
+    margin: 0 0 15px 0;
+    font-size: var(--font-xl);
+    font-weight: 700;
+    background: linear-gradient(45deg, #fff, #999);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.footerLinks {
+    display: flex;
+    gap: var(--spacing-xl);
+}
+
+.footerLinkGroup h4 {
+    margin: 0 0 12px 0;
+    font-size: var(--font-sm);
+    color: var(--text-gray);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.footerLinkList {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+    .footerLinkList a {
+        color: var(--text-dark-gray);
+        text-decoration: none;
+        font-size: var(--font-md);
+        transition: color 0.2s;
+    }
+
+        .footerLinkList a:hover {
+            color: var(--text-gray);
+        }
+
+.footerBottom {
+    max-width: 900px;
+    margin: 30px auto 0;
+    padding-top: var(--spacing-lg);
+    border-top: 1px solid var(--border-gray);
+    text-align: center;
+    font-size: var(--font-sm);
+    color: var(--text-dark-gray);
 }
 
 /* Mobile Responsive */
 @media (max-width: 768px) {
-    .secondary-nav {
-        padding: 0 10px;
+    .secondaryNav {
         margin-top: 80px;
+        padding: 0 10px;
     }
 
-    .nav-pill-container {
+    .navPillContainer {
         gap: 3px;
         padding: 4px;
     }
 
-    .nav-pill-button {
+    .navPillButton {
         padding: 8px 12px;
-        font-size: 12px;
+        font-size: var(--font-sm);
     }
 
-    .content-card {
-        padding: 24px;
+    .mainContent {
+        margin: 20px auto;
+        padding: 0 10px;
     }
 
-    .chat-container {
-        height: calc(100vh - 250px);
+    .contentCard {
+        padding: var(--spacing-lg);
     }
 
-    .chat-messages {
-        padding: 20px;
-    }
-
-    .chat-bubble {
-        max-width: 85%;
-        font-size: 14px;
-        padding: 12px 14px;
-    }
-
-    .chat-input-container {
-        padding: 15px;
-        gap: 8px;
-    }
-
-    .chat-input {
-        padding: 12px 16px;
-        font-size: 14px;
-    }
-
-    .chat-send-button {
-        padding: 12px 20px;
-        font-size: 14px;
+    .footerContent {
+        flex-direction: column;
     }
 }

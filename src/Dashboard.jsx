@@ -4,7 +4,7 @@ import AICoach from './AICoach';
 import UserProfile from './UserProfile';
 import Header from './Header';
 import Onboarding from './Onboarding';
-import styles from './Dashboard.module.css';
+import './Dashboard.css';
 import './App.css';
 
 function Dashboard({ user }) {
@@ -16,6 +16,13 @@ function Dashboard({ user }) {
     const [chatMessages, setChatMessages] = useState([
         { role: 'assistant', content: 'Ready to build your online empire? Ask me anything - from finding winning products to scaling past $10K/month. No fluff, just actionable strategies.' }
     ]);
+
+    const tutorials = [
+        { title: 'Dropshipping 101', time: '15 min', level: 'Beginner' },
+        { title: 'Facebook Marketplace Flipping', time: '10 min', level: 'Beginner' },
+        { title: 'Creating Digital Products', time: '20 min', level: 'Intermediate' },
+        { title: 'TikTok Affiliate Marketing', time: '25 min', level: 'Intermediate' }
+    ];
 
     useEffect(() => {
         checkOnboarding();
@@ -106,7 +113,7 @@ function Dashboard({ user }) {
     }
 
     return (
-        <div className={styles.dashboardContainer}>
+        <div className="dashboard-container">
             <Header user={user} showProfile={showProfile} setShowProfile={setShowProfile} />
 
             <div className={styles.secondaryNav}>
