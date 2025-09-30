@@ -1,5 +1,4 @@
 ﻿import './App.css';
-
 function Success() {
     return (
         <div className="apex-app">
@@ -16,52 +15,44 @@ function Success() {
             </nav>
 
             {/* Success Hero */}
-            <section className="hero" style={{ minHeight: '100vh' }}>
+            <section className="hero hero-full">
                 <div className="hero-content">
-                    <div style={{ fontSize: '80px', marginBottom: '30px' }}>🚀</div>
+                    <div className="hero-emoji">🚀</div>
                     <h1 className="hero-title">
                         WELCOME TO<br />
                         <span className="accent">THE ELITE</span>
                     </h1>
-                    <p className="hero-subtitle" style={{ marginBottom: '30px' }}>
+                    <p className="hero-subtitle hero-subtitle-large">
                         Your journey to internet money starts NOW.
                     </p>
 
-                    <div style={{
-                        background: 'linear-gradient(135deg, rgba(20, 20, 20, 0.9), rgba(10, 10, 10, 0.9))',
-                        border: '1px solid var(--border-gray)',
-                        padding: '40px',
-                        maxWidth: '600px',
-                        margin: '0 auto',
-                        textAlign: 'left'
-                    }}>
-                        <h2 style={{ marginBottom: '20px', color: 'var(--accent-gold)' }}>
+                    <div className="success-box">
+                        <h2 className="success-title">
                             ✓ Payment Successful!
                         </h2>
-                        <p style={{ marginBottom: '20px', color: 'var(--text-gray)' }}>
+                        <p className="success-desc">
                             Check your email for login details. Your first daily tasks are already waiting.
                         </p>
 
-                        <h3 style={{ marginBottom: '15px' }}>What Happens Next:</h3>
-                        <ul style={{ listStyle: 'none', padding: 0 }}>
-                            <li style={{ marginBottom: '10px', color: 'var(--text-gray)' }}>
+                        <h3 className="success-next">What Happens Next:</h3>
+                        <ul className="success-list">
+                            <li>
                                 📧 <strong>Instant:</strong> Welcome email with your login
                             </li>
-                            <li style={{ marginBottom: '10px', color: 'var(--text-gray)' }}>
+                            <li>
                                 💰 <strong>Next 24 hours:</strong> Your first money-making task
                             </li>
-                            <li style={{ marginBottom: '10px', color: 'var(--text-gray)' }}>
+                            <li>
                                 📈 <strong>Day 7:</strong> Your first $100 milestone
                             </li>
-                            <li style={{ marginBottom: '10px', color: 'var(--text-gray)' }}>
+                            <li>
                                 🎯 <strong>Day 30:</strong> $1K-$10K revenue goal
                             </li>
                         </ul>
 
-                        <div style={{ marginTop: '30px' }}>
+                        <div className="success-btn-wrap">
                             <button
                                 className="primary-button"
-                                style={{ width: '100%' }}
                                 onClick={() => alert('Coach dashboard coming soon! Check your email for access.')}
                             >
                                 ACCESS YOUR DASHBOARD
@@ -69,7 +60,7 @@ function Success() {
                         </div>
                     </div>
 
-                    <p style={{ marginTop: '40px', fontSize: '14px', color: 'var(--text-gray)' }}>
+                    <p className="success-support">
                         Questions? Email support@apexcoach.com
                     </p>
                 </div>

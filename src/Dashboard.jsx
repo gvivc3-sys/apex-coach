@@ -52,7 +52,7 @@ function Dashboard({ user }) {
     }
 
     return (
-        <div style={{ background: '#0a0a0a', minHeight: '100vh' }}>
+        <div className="dashboard-container">
             <Header user={user} showProfile={showProfile} setShowProfile={setShowProfile} />
 
             <div style={{ marginTop: '100px', padding: '0 20px', display: 'flex', justifyContent: 'center' }}>

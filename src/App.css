@@ -1,4 +1,4 @@
-/* Keep all your original landing page styles */
+/* Reset and base styles */
 * {
     margin: 0;
     padding: 0;
@@ -16,33 +16,425 @@
 }
 
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: Arial, sans-serif;
     background: var(--primary-black);
     color: var(--text-white);
     overflow-x: hidden;
+    min-height: 100vh;
+    line-height: 1.5;
 }
 
-/* Navigation - YOUR ORIGINAL STYLES */
+/* Navigation */
 .nav-fixed {
     position: fixed;
-    width: 100%;
     top: 0;
+    left: 0;
+    width: 100%;
     background: rgba(10, 10, 10, 0.95);
     backdrop-filter: blur(10px);
     z-index: 1000;
     padding: 20px 5%;
     border-bottom: 1px solid var(--border-gray);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 
-/* Hero Section - YOUR ORIGINAL STYLES */
+/* Hero Section */
 .hero {
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    position: relative;
+    position: relative; 
     margin-top: 70px;
-    background: radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.1) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(220, 38, 38, 0.05) 0%, transparent 50%);
+    background:
+        radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(220, 38, 38, 0.05) 0%, transparent 50%);
 }
 
-/* Add ALL your other original landing page styles here */
+/* Example: Add more landing page styles below as needed */
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+    color: var(--accent-gold);
+    font-weight: 700;
+    margin-bottom: 0.5em;
+}
+
+/* Links */
+a {
+    color: var(--accent-gold);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+a:hover {
+    color: var(--accent-red);
+}
+
+/* Buttons */
+button {
+    background: var(--accent-gold);
+    color: var(--primary-black);
+    border: none;
+    padding: 0.75em 1.5em;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.2s, color 0.2s;
+}
+button:hover {
+    background: var(--accent-red);
+    color: var(--text-white);
+}
+
+/* Utility classes */
+.text-center {
+    text-align: center;
+}
+.mt-2 {
+    margin-top: 2rem;
+}
+.mb-2 {
+    margin-bottom: 2rem;
+}
+
+.dashboard-container {
+    background: var(--primary-black);
+    min-height: 100vh;
+}
+
+/* Dashboard Container */
+.dashboard-container {
+    background: var(--primary-black);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Secondary Navigation */
+.secondary-nav {
+    margin-top: 100px;
+    padding: 0 var(--spacing-lg);
+    display: flex;
+    justify-content: center;
+}
+
+.navPillContainer {
+    display: inline-flex;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px;
+    border-radius: 40px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navPillButton {
+    border: none;
+    padding: 12px 24px;
+    border-radius: 34px;
+    cursor: pointer;
+    font-size: var(--font-md);
+    font-family: inherit;
+    font-weight: 400;
+    font-variation-settings: 'wght' 400;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    letter-spacing: -0.2px;
+    white-space: nowrap;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+    .navPillButton:hover {
+        background: rgba(255, 255, 255, 0.08);
+        color: rgba(255, 255, 255, 0.9);
+    }
+
+.navPillButtonActive {
+    background: rgba(255, 255, 255, 0.95);
+    color: var(--primary-black);
+    font-weight: 600;
+    font-variation-settings: 'wght' 600;
+}
+
+/* Main Content */
+.mainContent {
+    flex: 1;
+    max-width: 900px;
+    width: 100%;
+    margin: 40px auto;
+    padding: 0 var(--spacing-lg);
+    animation: slideIn 0.3s ease-out;
+}
+
+/* Content Cards */
+.contentCard {
+    background: var(--secondary-black);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+    border: 1px solid var(--border-gray);
+}
+
+    .contentCard h2 {
+        margin-bottom: 30px;
+        color: var(--text-white);
+        font-size: var(--font-2xl);
+    }
+
+/* Tutorial Cards */
+.tutorialGrid {
+    display: grid;
+    gap: var(--spacing-lg);
+}
+
+.tutorialCard {
+    padding: var(--spacing-lg);
+    background: var(--primary-black);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-gray);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+    .tutorialCard:hover {
+        border-color: #444;
+    }
+
+.tutorialHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tutorialTitle {
+    margin: 0 0 5px 0;
+    font-size: var(--font-lg);
+    color: var(--text-white);
+}
+
+.tutorialMeta {
+    margin: 0;
+    font-size: var(--font-md);
+    color: var(--text-dark-gray);
+}
+
+/* Roadmap */
+.roadmapItem {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+}
+
+.roadmapCircle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+.roadmapCircleComplete {
+    background: var(--success-green);
+    color: var(--text-white);
+}
+
+.roadmapCircleCurrent {
+    background: var(--text-white);
+    color: var(--primary-black);
+}
+
+.roadmapCircleLocked {
+    background: var(--border-gray);
+    color: var(--text-white);
+    border: 1px solid #444;
+}
+
+/* Footer */
+.footer {
+    margin-top: var(--spacing-2xl);
+    padding: var(--spacing-xl) var(--spacing-lg);
+    background: var(--secondary-black);
+    border-top: 1px solid var(--border-gray);
+}
+
+.footerContent {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.footerBrand h3 {
+    margin: 0 0 15px 0;
+    font-size: var(--font-xl);
+    font-weight: 700;
+    background: linear-gradient(45deg, #fff, #999);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.footerLinks {
+    display: flex;
+    gap: var(--spacing-xl);
+}
+
+.footerLinkGroup h4 {
+    margin: 0 0 12px 0;
+    font-size: var(--font-sm);
+    color: var(--text-gray);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.footerLinkList {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+    .footerLinkList a {
+        color: var(--text-dark-gray);
+        text-decoration: none;
+        font-size: var(--font-md);
+        transition: color 0.2s;
+    }
+
+        .footerLinkList a:hover {
+            color: var(--text-gray);
+        }
+
+.footerBottom {
+    max-width: 900px;
+    margin: 30px auto 0;
+    padding-top: var(--spacing-lg);
+    border-top: 1px solid var(--border-gray);
+    text-align: center;
+    font-size: var(--font-sm);
+    color: var(--text-dark-gray);
+}
+
+/* SuccessPage styles */
+.hero-full {
+    min-height: 100vh;
+}
+
+.hero-emoji {
+    font-size: 80px;
+    margin-bottom: 30px;
+}
+
+.hero-subtitle-large {
+    margin-bottom: 30px;
+}
+
+.success-box {
+    background: linear-gradient(135deg, rgba(20, 20, 20, 0.9), rgba(10, 10, 10, 0.9));
+    border: 1px solid var(--border-gray);
+    padding: 40px;
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: left;
+    border-radius: 16px;
+}
+
+.success-title {
+    margin-bottom: 20px;
+    color: var(--accent-gold);
+}
+
+.success-desc {
+    margin-bottom: 20px;
+    color: var(--text-gray);
+}
+
+.success-next {
+    margin-bottom: 15px;
+}
+
+.success-list {
+    list-style: none;
+    padding: 0;
+}
+
+.success-list li {
+    margin-bottom: 10px;
+    color: var(--text-gray);
+}
+
+.success-btn-wrap {
+    margin-top: 30px;
+}
+
+.primary-button {
+    width: 100%;
+    background: var(--accent-gold);
+    color: var(--primary-black);
+    border: none;
+    padding: 0.75em 1.5em;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 16px;
+    transition: background 0.2s, color 0.2s;
+}
+
+.primary-button:hover {
+    background: var(--accent-red);
+    color: var(--text-white);
+}
+
+.success-support {
+    margin-top: 40px;
+    font-size: 14px;
+    color: var(--text-gray);
+    text-align: center;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .secondaryNav {
+        margin-top: 80px;
+        padding: 0 10px;
+    }
+
+    .navPillContainer {
+        gap: 3px;
+        padding: 4px;
+    }
+
+    .navPillButton {
+        padding: 8px 12px;
+        font-size: var(--font-sm);
+    }
+
+    .mainContent {
+        margin: 20px auto;
+        padding: 0 10px;
+    }
+
+    .contentCard {
+        padding: var(--spacing-lg);
+    }
+
+    .footerContent {
+        flex-direction: column;
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .nav-fixed {
+        padding: 15px 2%;
+    }
+    .hero {
+        margin-top: 60px;
+        padding: 2rem 1rem;
+        flex-direction: column;
+        text-align: center;
+    }
+}
