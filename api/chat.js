@@ -15,16 +15,16 @@
     try {
         const { messages } = req.body;
 
-                    const appContent = {
-                        tutorials: [
-                            { title: 'Dropshipping 101', topics: ['product research', 'supplier finding', 'store setup'], level: 'beginner' },
-                            { title: 'Facebook Marketplace Flipping', topics: ['finding deals', 'negotiation', 'listing optimization'], level: 'beginner' },
-                            { title: 'Creating Digital Products', topics: ['Notion templates', 'Canva designs', 'pricing strategy'], level: 'intermediate' },
-                            { title: 'TikTok Affiliate Marketing', topics: ['content creation', 'product selection', 'link placement'], level: 'intermediate' }
-                        ],
-                        roadmap: ['Week 1: First $100', 'Week 2: Scale to $500', 'Week 3: Hit $1,000', 'Week 4: Optimize & Automate'],
-                        features: ['AI Coach', 'Tutorials', 'Roadmap', 'Glossary', 'Goals Dashboard']
-                    };
+        const appContent = {
+            tutorials: [
+                { title: 'Dropshipping 101', topics: ['product research', 'supplier finding', 'store setup'], level: 'beginner' },
+                { title: 'Facebook Marketplace Flipping', topics: ['finding deals', 'negotiation', 'listing optimization'], level: 'beginner' },
+                { title: 'Creating Digital Products', topics: ['Notion templates', 'Canva designs', 'pricing strategy'], level: 'intermediate' },
+                { title: 'TikTok Affiliate Marketing', topics: ['content creation', 'product selection', 'link placement'], level: 'intermediate' }
+            ],
+            roadmap: ['Week 1: First $100', 'Week 2: Scale to $500', 'Week 3: Hit $1,000', 'Week 4: Optimize & Automate'],
+            features: ['AI Coach', 'Tutorials', 'Roadmap', 'Glossary', 'Goals Dashboard']
+        };
 
         const systemPrompt = `You are APEX Coach, the AI assistant for the APEX platform.
   
@@ -78,4 +78,3 @@
         console.error('Server error:', error);
         return res.status(500).json({ error: error.message });
     }
-}
