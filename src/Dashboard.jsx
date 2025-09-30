@@ -4,7 +4,6 @@ import AICoach from './AICoach';
 import UserProfile from './UserProfile';
 import Header from './Header';
 import Onboarding from './Onboarding';
-import './Dashboard.css';
 import './App.css';
 
 function Dashboard({ user }) {
@@ -28,15 +27,6 @@ function Dashboard({ user }) {
         checkOnboarding();
     }, []);
 
-    useEffect(() => {
-        const handleResize = () => {
-            setIsMobile(window.innerWidth < 768);
-        };
-
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
-    }, []);
-
     const checkOnboarding = async () => {
         try {
             const { data, error } = await supabase
@@ -53,57 +43,6 @@ function Dashboard({ user }) {
         }
     };
 
-    // In Dashboard.jsx
-    useEffect(() => {
-        // Load chat from localStorage on mount
-        const savedChat = localStorage.getItem(`apex_chat_${user.id}`);
-        if (savedChat) {
-            setChatMessages(JSON.parse(savedChat));
-        } else {
-            // Load from Supabase if not in localStorage
-            loadChatHistory();
-        }
-    }, [user.id]);
-
-    // Save to localStorage whenever messages change
-    useEffect(() => {
-        if (chatMessages.length > 1) { // Don't save just the initial message
-            localStorage.setItem(`apex_chat_${user.id}`, JSON.stringify(chatMessages));
-            // Also save to Supabase for long-term storage
-            saveChatToSupabase();
-        }
-    }, [chatMessages]);
-
-    const loadChatHistory = async () => {
-        const { data } = await supabase
-            .from('chat_history')
-            .select('message, role')
-            .eq('user_id', user.id)
-            .order('created_at', { ascending: true })
-            .limit(50); // Last 50 messages
-
-        if (data && data.length > 0) {
-            setChatMessages(data);
-        }
-    };
-
-    const saveChatToSupabase = async () => {
-        // Save last message to Supabase
-        const lastMessage = chatMessages[chatMessages.length - 1];
-        await supabase
-            .from('chat_history')
-            .insert({
-                user_id: user.id,
-                message: lastMessage.content,
-                role: lastMessage.role
-            });
-    };
-
-    const handleSignOut = async () => {
-        await supabase.auth.signOut();
-        window.location.href = '/';
-    };
-
     if (loading) {
         return <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>Loading...</div>;
     }
@@ -113,11 +52,19 @@ function Dashboard({ user }) {
     }
 
     return (
-        <div className="dashboard-container">
+        <div style={{ background: '#0a0a0a', minHeight: '100vh' }}>
             <Header user={user} showProfile={showProfile} setShowProfile={setShowProfile} />
 
-            <div className={styles.secondaryNav}>
-                <div className={styles.navPillContainer}>
+            <div style={{ marginTop: '100px', padding: '0 20px', display: 'flex', justifyContent: 'center' }}>
+                <div style={{
+                    display: 'inline-flex',
+                    gap: '6px',
+                    background: 'rgba(255, 255, 255, 0.05)',
+                    padding: '6px',
+                    borderRadius: '40px',
+                    backdropFilter: 'blur(10px)',
+                    border: '1px solid rgba(255, 255, 255, 0.1)'
+                }}>
                     {[
                         { id: 'chat', label: 'AI Coach' },
                         { id: 'tutorials', label: 'Tutorials' },
@@ -127,16 +74,26 @@ function Dashboard({ user }) {
                         <button
                             key={tab.id}
                             onClick={() => setActiveTab(tab.id)}
-                            className={`${styles.navPillButton} ${activeTab === tab.id ? styles.navPillButtonActive : ''
-                                }`}
+                            style={{
+                                background: activeTab === tab.id ? 'rgba(255, 255, 255, 0.95)' : 'transparent',
+                                color: activeTab === tab.id ? '#000' : 'rgba(255, 255, 255, 0.7)',
+                                border: 'none',
+                                padding: '12px 24px',
+                                borderRadius: '34px',
+                                cursor: 'pointer',
+                                fontSize: '14px',
+                                fontWeight: activeTab === tab.id ? '600' : '400',
+                                transition: 'all 0.3s',
+                                letterSpacing: '-0.2px'
+                            }}
                         >
-                            {isMobile && tab.id === 'chat' ? 'Coach' : tab.label}
+                            {tab.label}
                         </button>
                     ))}
                 </div>
             </div>
 
-            <div className={styles.mainContent}>
+            <div style={{ maxWidth: '900px', margin: '40px auto', padding: '0 20px' }}>
                 {activeTab === 'chat' && (
                     <AICoach
                         messages={chatMessages}
@@ -146,20 +103,24 @@ function Dashboard({ user }) {
                 )}
 
                 {activeTab === 'tutorials' && (
-                    <div className={styles.contentCard}>
-                        <h2>Quick Start Tutorials</h2>
-                        <div className={styles.tutorialGrid}>
+                    <div style={{
+                        background: '#141414',
+                        borderRadius: '16px',
+                        padding: '40px',
+                        border: '1px solid #2a2a2a'
+                    }}>
+                        <h2 style={{ color: '#fff' }}>Quick Start Tutorials</h2>
+                        <div style={{ display: 'grid', gap: '20px' }}>
                             {tutorials.map((tutorial, i) => (
-                                <div key={i} className={styles.tutorialCard}>
-                                    <div className={styles.tutorialHeader}>
-                                        <div>
-                                            <h3 className={styles.tutorialTitle}>{tutorial.title}</h3>
-                                            <p className={styles.tutorialMeta}>
-                                                {tutorial.time} • {tutorial.level}
-                                            </p>
-                                        </div>
-                                        <span>→</span>
-                                    </div>
+                                <div key={i} style={{
+                                    padding: '20px',
+                                    background: '#0a0a0a',
+                                    borderRadius: '12px',
+                                    border: '1px solid #2a2a2a',
+                                    cursor: 'pointer'
+                                }}>
+                                    <h3 style={{ color: '#fff' }}>{tutorial.title}</h3>
+                                    <p style={{ color: '#666' }}>{tutorial.time} • {tutorial.level}</p>
                                 </div>
                             ))}
                         </div>
@@ -167,30 +128,9 @@ function Dashboard({ user }) {
                 )}
             </div>
 
-            <footer className={styles.footer}>
-                <div className={styles.footerContent}>
-                    <div className={styles.footerBrand}>
-                        <h3>APEX</h3>
-                        <p>Your AI-powered path to internet money.<br />
-                            No fluff. Just strategies that work.</p>
-                    </div>
-
-                    <div className={styles.footerLinks}>
-                        <div className={styles.footerLinkGroup}>
-                            <h4>Resources</h4>
-                            <div className={styles.footerLinkList}>
-                                <a href="#">Documentation</a>
-                                <a href="#">Community</a>
-                                <a href="#">Blog</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div className={styles.footerBottom}>
-                    <p>© 2025 APEX. Built for hustlers, by hustlers.</p>
-                </div>
-            </footer>
+            {showProfile && (
+                <UserProfile user={user} onClose={() => setShowProfile(false)} />
+            )}
         </div>
     );
 }

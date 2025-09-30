@@ -1,109 +1,48 @@
-/* Global Variables */
-:root {
-    --primary-black: #0a0a0a;
-    --secondary-black: #141414;
-    --tertiary-black: #1a1a1a;
-    --border-gray: #2a2a2a;
-    --text-white: #ffffff;
-    --text-gray: #999999;
-    --text-dark-gray: #666666;
-    --accent-gold: #d4af37;
-    --accent-red: #dc2626;
-    --success-green: #22c55e;
-    /* Spacing */
-    --spacing-xs: 4px;
-    --spacing-sm: 8px;
-    --spacing-md: 16px;
-    --spacing-lg: 24px;
-    --spacing-xl: 40px;
-    --spacing-2xl: 80px;
-    /* Border Radius */
-    --radius-sm: 8px;
-    --radius-md: 12px;
-    --radius-lg: 16px;
-    --radius-xl: 24px;
-    --radius-full: 9999px;
-    /* Font Sizes */
-    --font-xs: 11px;
-    --font-sm: 12px;
-    --font-md: 14px;
-    --font-lg: 16px;
-    --font-xl: 20px;
-    --font-2xl: 24px;
-    --font-3xl: 48px;
-    /* Breakpoints */
-    --mobile: 768px;
-    --tablet: 1024px;
-}
-
-/* Global Resets */
+/* Keep all your original landing page styles */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+:root {
+    --primary-black: #0a0a0a;
+    --secondary-black: #141414;
+    --accent-gold: #d4af37;
+    --accent-red: #dc2626;
+    --text-white: #ffffff;
+    --text-gray: #9ca3af;
+    --border-gray: #2a2a2a;
+}
+
 body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-family: 'Arial', sans-serif;
     background: var(--primary-black);
     color: var(--text-white);
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
 }
 
-/* Utility Classes */
-.container {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 0 var(--spacing-lg);
+/* Navigation - YOUR ORIGINAL STYLES */
+.nav-fixed {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    background: rgba(10, 10, 10, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    padding: 20px 5%;
+    border-bottom: 1px solid var(--border-gray);
 }
 
-.flex-center {
+/* Hero Section - YOUR ORIGINAL STYLES */
+.hero {
+    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
+    margin-top: 70px;
+    background: radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.1) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(220, 38, 38, 0.05) 0%, transparent 50%);
 }
 
-.text-center {
-    text-align: center;
-}
-
-.loading-screen {
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* Animations */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
-}
-
-@keyframes slideIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes pulse {
-    0%, 100% {
-        opacity: 1;
-    }
-
-    50% {
-        opacity: 0.5;
-    }
-}
+/* Add ALL your other original landing page styles here */
