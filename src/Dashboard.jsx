@@ -126,7 +126,116 @@ function Dashboard({ user }) {
                         </div>
                     </div>
                 )}
+
+                {activeTab === 'roadmap' && (
+                    <div style={{
+                        background: 'white',
+                        borderRadius: '12px',
+                        padding: '40px',
+                        boxShadow: '0 1px 3px rgba(0,0,0,0.1)'
+                    }}>
+                        <h2 style={{ marginBottom: '30px' }}>Your $10K/Month Roadmap</h2>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                            {[
+                                { week: 'Week 1', goal: 'First $100', status: 'complete' },
+                                { week: 'Week 2', goal: 'Scale to $500', status: 'current' },
+                                { week: 'Week 3', goal: 'Hit $1,000', status: 'locked' },
+                                { week: 'Week 4', goal: 'Optimize & Automate', status: 'locked' }
+                            ].map((item, i) => (
+                                <div key={i} style={{
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    gap: '20px'
+                                }}>
+                                    <div style={{
+                                        width: '40px',
+                                        height: '40px',
+                                        borderRadius: '50%',
+                                        background: item.status === 'complete' ? '#22c55e' : item.status === 'current' ? '#000' : '#e0e0e0',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        color: 'white',
+                                        fontWeight: 'bold'
+                                    }}>
+                                        {item.status === 'complete' ? '✓' : i + 1}
+                                    </div>
+                                    <div style={{ flex: 1 }}>
+                                        <h3 style={{ margin: '0 0 5px 0', fontSize: '16px' }}>{item.week}</h3>
+                                        <p style={{ margin: 0, fontSize: '14px', color: '#666' }}>{item.goal}</p>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                )}
+
+                {activeTab === 'glossary' && (
+                    <div style={{
+                        background: 'white',
+                        borderRadius: '12px',
+                        padding: '40px',
+                        boxShadow: '0 1px 3px rgba(0,0,0,0.1)'
+                    }}>
+                        <h2 style={{ marginBottom: '30px' }}>Internet Money Glossary</h2>
+                        <div style={{ display: 'grid', gap: '20px' }}>
+                            {[
+                                { term: 'Dropshipping', def: 'Selling products without holding inventory' },
+                                { term: 'POD', def: 'Print on Demand - custom products printed per order' },
+                                { term: 'Affiliate Marketing', def: 'Earning commissions by promoting products' },
+                                { term: 'Digital Products', def: 'Downloadable products like templates, courses' }
+                            ].map((item, i) => (
+                                <div key={i} style={{ borderBottom: '1px solid #e0e0e0', paddingBottom: '15px' }}>
+                                    <h4 style={{ margin: '0 0 5px 0', fontSize: '16px' }}>{item.term}</h4>
+                                    <p style={{ margin: 0, fontSize: '14px', color: '#666' }}>{item.def}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                )}
+
             </div>
+
+            <footer className={`site-footer ${isMobile ? 'is-mobile' : ''}`}>
+                <div className="footer__inner">
+                    <div className="footer__brand">
+                        <h3 className="footer__brandTitle">APEX</h3>
+                        <p className="footer__brandText">
+                            Your AI-powered path to internet money.<br />
+                            No fluff. Just strategies that work.
+                        </p>
+                    </div>
+
+                    <div className="footer__cols">
+                        <div className="footer__col">
+                            <h4 className="footer__heading">Resources</h4>
+                            <div className="footer__list">
+                                <a href="#" className="footer__link">Documentation</a>
+                                <a href="#" className="footer__link">Community</a>
+                                <a href="#" className="footer__link">Blog</a>
+                            </div>
+                        </div>
+
+                        <div className="footer__col">
+                            <h4 className="footer__heading">Support</h4>
+                            <div className="footer__list">
+                                <a href="#" className="footer__link">Contact</a>
+                                <a href="#" className="footer__link">FAQ</a>
+                                <a href="#" className="footer__link">Terms</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="footer__bottom">
+                    <p className="footer__copyright">
+                        © 2025 APEX. Built for hustlers, by hustlers.
+                    </p>
+                </div>
+            </footer>
+            );
+}
+
 
             {showProfile && (
                 <UserProfile user={user} onClose={() => setShowProfile(false)} />

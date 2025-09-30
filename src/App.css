@@ -705,3 +705,97 @@ footer {
         grid-template-columns: 1fr;
     }
 }
+
+
+.site-footer {
+    margin-top: 80px;
+    padding: 40px 20px;
+    background: #141414;
+    border-top: 1px solid #2a2a2a;
+    color: #fff;
+}
+
+/* Inner layout */
+.footer__inner {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+/* Mobile modifier */
+.site-footer.is-mobile .footer__inner {
+    flex-direction: column;
+}
+
+/* Brand */
+.footer__brandTitle {
+    margin: 0 0 15px 0;
+    font-size: 20px;
+    font-weight: 700;
+    background: linear-gradient(45deg, #fff, #999);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+}
+
+.footer__brandText {
+    margin: 0;
+    font-size: 14px;
+    color: #666;
+    line-height: 1.6;
+}
+
+/* Columns */
+.footer__cols {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.footer__col {
+}
+
+/* Headings & lists */
+.footer__heading {
+    margin: 0 0 12px 0;
+    font-size: 12px;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.footer__list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.footer__link {
+    color: #666;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+    .footer__link:hover {
+        color: #aaa;
+        text-decoration: none;
+    }
+
+/* Bottom bar */
+.footer__bottom {
+    max-width: 900px;
+    margin: 30px auto 0;
+    padding-top: 20px;
+    border-top: 1px solid #2a2a2a;
+    text-align: center;
+}
+
+.footer__copyright {
+    margin: 0;
+    font-size: 12px;
+    color: #666;
+}
