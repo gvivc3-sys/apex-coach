@@ -104,10 +104,6 @@ function AICoach({ messages, setMessages, isMobile }) {
     };
 
     return (
-        // AICoach.jsx
-import './styles/AICoach.css';
-
-    return (
         <div className={`ai-coach ${isMobile ? 'is-mobile' : ''}`}>
             <div className="ai-coach__scroll">
                 {messages.map((msg, i) => (
