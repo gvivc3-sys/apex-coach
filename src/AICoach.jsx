@@ -1,6 +1,6 @@
 ﻿import { useState } from 'react';
 import { supabase } from './supabase';
-import './App.css';
+import styles from './AICoach.module.css';
 
 function AICoach({ messages, setMessages, isMobile }) {
     const [input, setInput] = useState('');
@@ -118,59 +118,22 @@ function AICoach({ messages, setMessages, isMobile }) {
     };
 
     return (
-        <div
-            style={{
-                height: isMobile ? 'calc(100vh - 250px)' : '600px',
-                display: 'flex',
-                flexDirection: 'column',
-                background: '#141414',
-                borderRadius: isMobile ? '12px' : '16px',
-                overflow: 'hidden',
-                border: '1px solid #2a2a2a',
-            }}
-        >
-            <div
-                style={{
-                    flex: 1,
-                    overflow: 'auto',
-                    padding: isMobile ? '20px' : '30px',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    gap: '16px',
-                }}
-            >
+        <div className={styles.chatContainer}>
+            <div className={styles.chatMessages}>
                 {messages.map((msg, i) => (
                     <div
                         key={i}
-                        style={{
-                            display: 'flex',
-                            justifyContent: msg.role === 'user' ? 'flex-end' : 'flex-start',
-                        }}
+                        className={`${styles.chatMessage} ${msg.role === 'user'
+                                ? styles.chatMessageUser
+                                : styles.chatMessageAssistant
+                            }`}
                     >
-                        <div
-                            style={{
-                                maxWidth: isMobile ? '85%' : '70%',
-                                padding: isMobile ? '12px 14px' : '14px 18px',
-                                background: msg.role === 'user' ? '#2a2a2a' : '#0a0a0a',
-                                color: msg.role === 'user' ? '#ccc' : '#fff',
-                                borderRadius:
-                                    msg.role === 'user'
-                                        ? '18px 18px 4px 18px'
-                                        : '18px 18px 18px 4px',
-                                fontSize: isMobile ? '14px' : '15px',
-                                lineHeight: '1.6',
-                                border: '1px solid #2a2a2a',
-                            }}
-                        >
+                        <div className={`${styles.chatBubble} ${msg.role === 'user'
+                                ? styles.chatBubbleUser
+                                : styles.chatBubbleAssistant
+                            }`}>
                             {msg.role === 'assistant' && (
-                                <div
-                                    style={{
-                                        fontSize: '11px',
-                                        color: '#666',
-                                        marginBottom: '8px',
-                                        letterSpacing: '0.5px',
-                                    }}
-                                >
+                                <div className={styles.assistantLabel}>
                                     APEX COACH
                                 </div>
                             )}
@@ -179,75 +142,29 @@ function AICoach({ messages, setMessages, isMobile }) {
                     </div>
                 ))}
                 {loading && (
-                    <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
-                        <div
-                            style={{
-                                padding: isMobile ? '12px 14px' : '14px 18px',
-                                background: '#0a0a0a',
-                                borderRadius: '18px 18px 18px 4px',
-                                border: '1px solid #2a2a2a',
-                            }}
-                        >
-                            <div
-                                style={{
-                                    fontSize: '11px',
-                                    color: '#666',
-                                    marginBottom: '8px',
-                                    letterSpacing: '0.5px',
-                                }}
-                            >
-                                APEX COACH
-                            </div>
-                            <span style={{ color: '#666' }}>Thinking...</span>
+                    <div className={styles.chatLoading}>
+                        <div className={styles.chatLoadingBubble}>
+                            <div className={styles.assistantLabel}>APEX COACH</div>
+                            <span className={styles.loadingDots}>Thinking...</span>
                         </div>
                     </div>
                 )}
             </div>
 
-            <div
-                style={{
-                    padding: isMobile ? '15px' : '20px 30px',
-                    borderTop: '1px solid #2a2a2a',
-                    display: 'flex',
-                    gap: isMobile ? '8px' : '12px',
-                    background: '#0a0a0a',
-                }}
-            >
+            <div className={styles.chatInputContainer}>
                 <input
                     type="text"
                     value={input}
-                    onChange={e => setInput(e.target.value)}
-                    onKeyDown={e => e.key === 'Enter' && !loading && sendMessage()}
-                    placeholder={isMobile ? 'Ask...' : 'Ask about strategies, products, scaling...'}
-                    style={{
-                        flex: 1,
-                        padding: isMobile ? '12px 16px' : '14px 20px',
-                        background: '#1a1a1a',
-                        border: '1px solid #2a2a2a',
-                        borderRadius: '24px',
-                        fontSize: isMobile ? '14px' : '15px',
-                        outline: 'none',
-                        color: '#fff',
-                        transition: 'border-color 0.2s',
-                    }}
-                    onFocus={e => (e.target.style.borderColor = '#444')}
-                    onBlur={e => (e.target.style.borderColor = '#2a2a2a')}
+                    onChange={(e) => setInput(e.target.value)}
+                    onKeyPress={(e) => e.key === 'Enter' && !loading && sendMessage()}
+                    placeholder={isMobile ? "Ask..." : "Ask about strategies, products, scaling..."}
+                    className={styles.chatInput}
                     disabled={loading}
                 />
                 <button
                     onClick={sendMessage}
                     disabled={loading}
-                    style={{
-                        padding: isMobile ? '12px 20px' : '14px 28px',
-                        background: loading ? '#2a2a2a' : '#fff',
-                        color: loading ? '#666' : '#000',
-                        border: 'none',
-                        borderRadius: '24px',
-                        fontSize: isMobile ? '14px' : '15px',
-                        fontWeight: '600',
-                        cursor: loading ? 'default' : 'pointer',
-                        transition: 'all 0.2s',
-                    }}
+                    className={styles.chatSendButton}
                 >
                     Send
                 </button>
