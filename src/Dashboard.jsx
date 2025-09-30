@@ -114,22 +114,6 @@ function Dashboard({ user }) {
         }}>
             <Header user={user} showProfile={showProfile} setShowProfile={setShowProfile} />
 
-            // In Dashboard header area
-            <div style={{
-                position: 'fixed',
-                bottom: '20px',
-                right: '20px',
-                background: '#141414',
-                border: '1px solid #2a2a2a',
-                borderRadius: '12px',
-                padding: '12px 20px',
-                fontSize: '12px',
-                color: '#666'
-            }}>
-                Messages: {currentUsage}/{limit} this month
-            </div>
-
-            {/* Secondary Navigation - Better Mobile Responsive */}
             <div style={{
                 marginTop: '100px',
                 padding: isMobile ? '0 10px' : '0 20px',
