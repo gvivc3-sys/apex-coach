@@ -541,6 +541,151 @@ footer {
     font-size: 12px;
 }
 
+/* Container */
+.ai-coach {
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    background: #141414;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid #2a2a2a;
+}
+
+    /* Mobile overrides when you add the .is-mobile class */
+    .ai-coach.is-mobile {
+        height: calc(100vh - 250px);
+        border-radius: 12px;
+    }
+
+/* Scroll area */
+.ai-coach__scroll {
+    flex: 1;
+    overflow: auto;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.ai-coach.is-mobile .ai-coach__scroll {
+    padding: 20px;
+}
+
+/* Message row alignment */
+.msg-row {
+    display: flex;
+}
+
+    .msg-row.align-start {
+        justify-content: flex-start;
+    }
+
+    .msg-row.align-end {
+        justify-content: flex-end;
+    }
+
+/* Message bubble */
+.bubble {
+    max-width: 70%;
+    padding: 14px 18px;
+    line-height: 1.6;
+    border: 1px solid #2a2a2a;
+    font-size: 15px;
+}
+
+.ai-coach.is-mobile .bubble {
+    max-width: 85%;
+    padding: 12px 14px;
+    font-size: 14px;
+}
+
+/* Role variants */
+.bubble.from-user {
+    background: #2a2a2a;
+    color: #ccc;
+    border-radius: 18px 18px 4px 18px;
+}
+
+.bubble.from-assistant {
+    background: #0a0a0a;
+    color: #fff;
+    border-radius: 18px 18px 18px 4px;
+}
+
+/* Assistant label & muted text */
+.assistant-label {
+    font-size: 11px;
+    color: #666;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+}
+
+.muted {
+    color: #666;
+}
+
+/* Composer bar */
+.composer {
+    padding: 20px 30px;
+    border-top: 1px solid #2a2a2a;
+    display: flex;
+    gap: 12px;
+    background: #0a0a0a;
+}
+
+.ai-coach.is-mobile .composer {
+    padding: 15px;
+    gap: 8px;
+}
+
+/* Input */
+.composer__input {
+    flex: 1;
+    padding: 14px 20px;
+    background: #1a1a1a;
+    border: 1px solid #2a2a2a;
+    border-radius: 24px;
+    font-size: 15px;
+    outline: none;
+    color: #fff;
+    transition: border-color 0.2s;
+}
+
+.ai-coach.is-mobile .composer__input {
+    padding: 12px 16px;
+    font-size: 14px;
+}
+
+.composer__input:focus {
+    border-color: #444;
+}
+
+/* Send button */
+.composer__sendBtn {
+    padding: 14px 28px;
+    background: #fff;
+    color: #000;
+    border: none;
+    border-radius: 24px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.ai-coach.is-mobile .composer__sendBtn {
+    padding: 12px 20px;
+    font-size: 14px;
+}
+
+.composer__sendBtn:disabled {
+    background: #2a2a2a;
+    color: #666;
+    cursor: default;
+}
+
+
 /* Responsive */
 @media (max-width: 768px) {
     .nav-links {
