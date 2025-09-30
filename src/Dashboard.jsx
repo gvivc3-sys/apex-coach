@@ -55,16 +55,8 @@ function Dashboard({ user }) {
         <div className="dashboard-container">
             <Header user={user} showProfile={showProfile} setShowProfile={setShowProfile} />
 
-            <div style={{ marginTop: '100px', padding: '0 20px', display: 'flex', justifyContent: 'center' }}>
-                <div style={{
-                    display: 'inline-flex',
-                    gap: '6px',
-                    background: 'rgba(255, 255, 255, 0.05)',
-                    padding: '6px',
-                    borderRadius: '40px',
-                    backdropFilter: 'blur(10px)',
-                    border: '1px solid rgba(255, 255, 255, 0.1)'
-                }}>
+            <div className="secondary-nav">
+                <div className="navPillContainer">
                     {[
                         { id: 'chat', label: 'AI Coach' },
                         { id: 'tutorials', label: 'Tutorials' },
@@ -74,18 +66,7 @@ function Dashboard({ user }) {
                         <button
                             key={tab.id}
                             onClick={() => setActiveTab(tab.id)}
-                            style={{
-                                background: activeTab === tab.id ? 'rgba(255, 255, 255, 0.95)' : 'transparent',
-                                color: activeTab === tab.id ? '#000' : 'rgba(255, 255, 255, 0.7)',
-                                border: 'none',
-                                padding: '12px 24px',
-                                borderRadius: '34px',
-                                cursor: 'pointer',
-                                fontSize: '14px',
-                                fontWeight: activeTab === tab.id ? '600' : '400',
-                                transition: 'all 0.3s',
-                                letterSpacing: '-0.2px'
-                            }}
+                            className={`navPillButton${activeTab === tab.id ? ' navPillButtonActive' : ''}`}
                         >
                             {tab.label}
                         </button>
@@ -93,7 +74,7 @@ function Dashboard({ user }) {
                 </div>
             </div>
 
-            <div style={{ maxWidth: '900px', margin: '40px auto', padding: '0 20px' }}>
+            <div className="mainContent">
                 {activeTab === 'chat' && (
                     <AICoach
                         messages={chatMessages}
@@ -103,24 +84,13 @@ function Dashboard({ user }) {
                 )}
 
                 {activeTab === 'tutorials' && (
-                    <div style={{
-                        background: '#141414',
-                        borderRadius: '16px',
-                        padding: '40px',
-                        border: '1px solid #2a2a2a'
-                    }}>
-                        <h2 style={{ color: '#fff' }}>Quick Start Tutorials</h2>
-                        <div style={{ display: 'grid', gap: '20px' }}>
+                    <div className="contentCard">
+                        <h2>Quick Start Tutorials</h2>
+                        <div className="tutorialGrid">
                             {tutorials.map((tutorial, i) => (
-                                <div key={i} style={{
-                                    padding: '20px',
-                                    background: '#0a0a0a',
-                                    borderRadius: '12px',
-                                    border: '1px solid #2a2a2a',
-                                    cursor: 'pointer'
-                                }}>
-                                    <h3 style={{ color: '#fff' }}>{tutorial.title}</h3>
-                                    <p style={{ color: '#666' }}>{tutorial.time} • {tutorial.level}</p>
+                                <div key={i} className="tutorialCard">
+                                    <h3 className="tutorialTitle">{tutorial.title}</h3>
+                                    <p className="tutorialMeta">{tutorial.time} • {tutorial.level}</p>
                                 </div>
                             ))}
                         </div>
@@ -128,41 +98,29 @@ function Dashboard({ user }) {
                 )}
 
                 {activeTab === 'roadmap' && (
-                    <div style={{
-                        background: 'white',
-                        borderRadius: '12px',
-                        padding: '40px',
-                        boxShadow: '0 1px 3px rgba(0,0,0,0.1)'
-                    }}>
-                        <h2 style={{ marginBottom: '30px' }}>Your $10K/Month Roadmap</h2>
-                        <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                    <div className="contentCard">
+                        <h2>Your $10K/Month Roadmap</h2>
+                        <div>
                             {[
                                 { week: 'Week 1', goal: 'First $100', status: 'complete' },
                                 { week: 'Week 2', goal: 'Scale to $500', status: 'current' },
                                 { week: 'Week 3', goal: 'Hit $1,000', status: 'locked' },
                                 { week: 'Week 4', goal: 'Optimize & Automate', status: 'locked' }
                             ].map((item, i) => (
-                                <div key={i} style={{
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    gap: '20px'
-                                }}>
-                                    <div style={{
-                                        width: '40px',
-                                        height: '40px',
-                                        borderRadius: '50%',
-                                        background: item.status === 'complete' ? '#22c55e' : item.status === 'current' ? '#000' : '#e0e0e0',
-                                        display: 'flex',
-                                        alignItems: 'center',
-                                        justifyContent: 'center',
-                                        color: 'white',
-                                        fontWeight: 'bold'
-                                    }}>
+                                <div key={i} className="roadmapItem">
+                                    <div className={
+                                        `roadmapCircle ${item.status === 'complete'
+                                            ? 'roadmapCircleComplete'
+                                            : item.status === 'current'
+                                                ? 'roadmapCircleCurrent'
+                                                : 'roadmapCircleLocked'
+                                        }`
+                                    }>
                                         {item.status === 'complete' ? '✓' : i + 1}
                                     </div>
                                     <div style={{ flex: 1 }}>
-                                        <h3 style={{ margin: '0 0 5px 0', fontSize: '16px' }}>{item.week}</h3>
-                                        <p style={{ margin: 0, fontSize: '14px', color: '#666' }}>{item.goal}</p>
+                                        <h3 className="tutorialTitle" style={{ margin: '0 0 5px 0', fontSize: '16px' }}>{item.week}</h3>
+                                        <p className="tutorialMeta" style={{ margin: 0 }}>{item.goal}</p>
                                     </div>
                                 </div>
                             ))}
@@ -171,14 +129,9 @@ function Dashboard({ user }) {
                 )}
 
                 {activeTab === 'glossary' && (
-                    <div style={{
-                        background: 'white',
-                        borderRadius: '12px',
-                        padding: '40px',
-                        boxShadow: '0 1px 3px rgba(0,0,0,0.1)'
-                    }}>
-                        <h2 style={{ marginBottom: '30px' }}>Internet Money Glossary</h2>
-                        <div style={{ display: 'grid', gap: '20px' }}>
+                    <div className="contentCard">
+                        <h2>Internet Money Glossary</h2>
+                        <div className="tutorialGrid">
                             {[
                                 { term: 'Dropshipping', def: 'Selling products without holding inventory' },
                                 { term: 'POD', def: 'Print on Demand - custom products printed per order' },

@@ -1,4 +1,3202 @@
-* {
+/* Add or update these classes if not already present */
+
+.secondary-nav {
+    margin-top: 100px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.navPillContainer {
+    display: inline-flex;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px;
+    border-radius: 40px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navPillButton {
+    border: none;
+    padding: 12px 24px;
+    border-radius: 34px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: 400;
+    transition: all 0.3s;
+    letter-spacing: -0.2px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.navPillButtonActive {
+    background: rgba(255, 255, 255, 0.95);
+    color: #000;
+    font-weight: 600;
+}
+
+/* Add or update these classes if not already present */
+
+.secondary-nav {
+    margin-top: 100px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.navPillContainer {
+    display: inline-flex;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px;
+    border-radius: 40px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navPillButton {
+    border: none;
+    padding: 12px 24px;
+    border-radius: 34px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: 400;
+    transition: all 0.3s;
+    letter-spacing: -0.2px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.navPillButtonActive {
+    background: rgba(255, 255, 255, 0.95);
+    color: #000;
+    font-weight: 600;
+}
+
+/* Add or update these classes if not already present */
+
+.secondary-nav {
+    margin-top: 100px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.navPillContainer {
+    display: inline-flex;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px;
+    border-radius: 40px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navPillButton {
+    border: none;
+    padding: 12px 24px;
+    border-radius: 34px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: 400;
+    transition: all 0.3s;
+    letter-spacing: -0.2px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.navPillButtonActive {
+    background: rgba(255, 255, 255, 0.95);
+    color: #000;
+    font-weight: 600;
+}
+
+/* Add or update these classes if not already present */
+
+.secondary-nav {
+    margin-top: 100px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.navPillContainer {
+    display: inline-flex;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px;
+    border-radius: 40px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navPillButton {
+    border: none;
+    padding: 12px 24px;
+    border-radius: 34px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: 400;
+    transition: all 0.3s;
+    letter-spacing: -0.2px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.navPillButtonActive {
+    background: rgba(255, 255, 255, 0.95);
+    color: #000;
+    font-weight: 600;
+}
+
+/* Add or update these classes if not already present */
+
+.secondary-nav {
+    margin-top: 100px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.navPillContainer {
+    display: inline-flex;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px;
+    border-radius: 40px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navPillButton {
+    border: none;
+    padding: 12px 24px;
+    border-radius: 34px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: 400;
+    transition: all 0.3s;
+    letter-spacing: -0.2px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.navPillButtonActive {
+    background: rgba(255, 255, 255, 0.95);
+    color: #000;
+    font-weight: 600;
+}
+
+/* Add or update these classes if not already present */
+
+.secondary-nav {
+    margin-top: 100px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.navPillContainer {
+    display: inline-flex;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px;
+    border-radius: 40px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navPillButton {
+    border: none;
+    padding: 12px 24px;
+    border-radius: 34px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: 400;
+    transition: all 0.3s;
+    letter-spacing: -0.2px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.navPillButtonActive {
+    background: rgba(255, 255, 255, 0.95);
+    color: #000;
+    font-weight: 600;
+}
+
+/* Add or update these classes if not already present */
+
+.secondary-nav {
+    margin-top: 100px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.navPillContainer {
+    display: inline-flex;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px;
+    border-radius: 40px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navPillButton {
+    border: none;
+    padding: 12px 24px;
+    border-radius: 34px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: 400;
+    transition: all 0.3s;
+    letter-spacing: -0.2px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.navPillButtonActive {
+    background: rgba(255, 255, 255, 0.95);
+    color: #000;
+    font-weight: 600;
+}
+
+/* Add or update these classes if not already present */
+
+.secondary-nav {
+    margin-top: 100px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.navPillContainer {
+    display: inline-flex;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px;
+    border-radius: 40px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navPillButton {
+    border: none;
+    padding: 12px 24px;
+    border-radius: 34px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: 400;
+    transition: all 0.3s;
+    letter-spacing: -0.2px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.navPillButtonActive {
+    background: rgba(255, 255, 255, 0.95);
+    color: #000;
+    font-weight: 600;
+}
+
+/* Add or update these classes if not already present */
+
+.secondary-nav {
+    margin-top: 100px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.navPillContainer {
+    display: inline-flex;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px;
+    border-radius: 40px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navPillButton {
+    border: none;
+    padding: 12px 24px;
+    border-radius: 34px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: 400;
+    transition: all 0.3s;
+    letter-spacing: -0.2px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.navPillButtonActive {
+    background: rgba(255, 255, 255, 0.95);
+    color: #000;
+    font-weight: 600;
+}
+
+/* Add or update these classes if not already present */
+
+.secondary-nav {
+    margin-top: 100px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.navPillContainer {
+    display: inline-flex;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px;
+    border-radius: 40px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navPillButton {
+    border: none;
+    padding: 12px 24px;
+    border-radius: 34px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: 400;
+    transition: all 0.3s;
+    letter-spacing: -0.2px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.navPillButtonActive {
+    background: rgba(255, 255, 255, 0.95);
+    color: #000;
+    font-weight: 600;
+}
+
+/* Add or update these classes if not already present */
+
+.secondary-nav {
+    margin-top: 100px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.navPillContainer {
+    display: inline-flex;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px;
+    border-radius: 40px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navPillButton {
+    border: none;
+    padding: 12px 24px;
+    border-radius: 34px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: 400;
+    transition: all 0.3s;
+    letter-spacing: -0.2px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.navPillButtonActive {
+    background: rgba(255, 255, 255, 0.95);
+    color: #000;
+    font-weight: 600;
+}
+
+/* Add or update these classes if not already present */
+
+.secondary-nav {
+    margin-top: 100px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.navPillContainer {
+    display: inline-flex;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px;
+    border-radius: 40px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navPillButton {
+    border: none;
+    padding: 12px 24px;
+    border-radius: 34px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: 400;
+    transition: all 0.3s;
+    letter-spacing: -0.2px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.navPillButtonActive {
+    background: rgba(255, 255, 255, 0.95);
+    color: #000;
+    font-weight: 600;
+}
+
+/* Add or update these classes if not already present */
+
+.secondary-nav {
+    margin-top: 100px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.navPillContainer {
+    display: inline-flex;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px;
+    border-radius: 40px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navPillButton {
+    border: none;
+    padding: 12px 24px;
+    border-radius: 34px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: 400;
+    transition: all 0.3s;
+    letter-spacing: -0.2px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.navPillButtonActive {
+    background: rgba(255, 255, 255, 0.95);
+    color: #000;
+    font-weight: 600;
+}
+
+/* Add or update these classes if not already present */
+
+.secondary-nav {
+    margin-top: 100px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.navPillContainer {
+    display: inline-flex;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px;
+    border-radius: 40px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navPillButton {
+    border: none;
+    padding: 12px 24px;
+    border-radius: 34px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: 400;
+    transition: all 0.3s;
+    letter-spacing: -0.2px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.navPillButtonActive {
+    background: rgba(255, 255, 255, 0.95);
+    color: #000;
+    font-weight: 600;
+}
+
+/* Add or update these classes if not already present */
+
+.secondary-nav {
+    margin-top: 100px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.navPillContainer {
+    display: inline-flex;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px;
+    border-radius: 40px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navPillButton {
+    border: none;
+    padding: 12px 24px;
+    border-radius: 34px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: 400;
+    transition: all 0.3s;
+    letter-spacing: -0.2px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.navPillButtonActive {
+    background: rgba(255, 255, 255, 0.95);
+    color: #000;
+    font-weight: 600;
+}
+
+/* Add or update these classes if not already present */
+
+.secondary-nav {
+    margin-top: 100px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.navPillContainer {
+    display: inline-flex;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px;
+    border-radius: 40px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navPillButton {
+    border: none;
+    padding: 12px 24px;
+    border-radius: 34px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: 400;
+    transition: all 0.3s;
+    letter-spacing: -0.2px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.navPillButtonActive {
+    background: rgba(255, 255, 255, 0.95);
+    color: #000;
+    font-weight: 600;
+}
+
+/* Add or update these classes if not already present */
+
+.secondary-nav {
+    margin-top: 100px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.navPillContainer {
+    display: inline-flex;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px;
+    border-radius: 40px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navPillButton {
+    border: none;
+    padding: 12px 24px;
+    border-radius: 34px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: 400;
+    transition: all 0.3s;
+    letter-spacing: -0.2px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.navPillButtonActive {
+    background: rgba(255, 255, 255, 0.95);
+    color: #000;
+    font-weight: 600;
+}
+
+/* Add or update these classes if not already present */
+
+.secondary-nav {
+    margin-top: 100px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.navPillContainer {
+    display: inline-flex;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px;
+    border-radius: 40px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navPillButton {
+    border: none;
+    padding: 12px 24px;
+    border-radius: 34px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: 400;
+    transition: all 0.3s;
+    letter-spacing: -0.2px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.navPillButtonActive {
+    background: rgba(255, 255, 255, 0.95);
+    color: #000;
+    font-weight: 600;
+}
+
+/* Add or update these classes if not already present */
+
+.secondary-nav {
+    margin-top: 100px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.navPillContainer {
+    display: inline-flex;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px;
+    border-radius: 40px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navPillButton {
+    border: none;
+    padding: 12px 24px;
+    border-radius: 34px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: 400;
+    transition: all 0.3s;
+    letter-spacing: -0.2px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.navPillButtonActive {
+    background: rgba(255, 255, 255, 0.95);
+    color: #000;
+    font-weight: 600;
+}
+
+/* Add or update these classes if not already present */
+
+.secondary-nav {
+    margin-top: 100px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.navPillContainer {
+    display: inline-flex;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px;
+    border-radius: 40px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navPillButton {
+    border: none;
+    padding: 12px 24px;
+    border-radius: 34px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: 400;
+    transition: all 0.3s;
+    letter-spacing: -0.2px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.navPillButtonActive {
+    background: rgba(255, 255, 255, 0.95);
+    color: #000;
+    font-weight: 600;
+}
+
+/* Add or update these classes if not already present */
+
+.secondary-nav {
+    margin-top: 100px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.navPillContainer {
+    display: inline-flex;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px;
+    border-radius: 40px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navPillButton {
+    border: none;
+    padding: 12px 24px;
+    border-radius: 34px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: 400;
+    transition: all 0.3s;
+    letter-spacing: -0.2px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.navPillButtonActive {
+    background: rgba(255, 255, 255, 0.95);
+    color: #000;
+    font-weight: 600;
+}
+
+/* Add or update these classes if not already present */
+
+.secondary-nav {
+    margin-top: 100px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.navPillContainer {
+    display: inline-flex;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px;
+    border-radius: 40px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navPillButton {
+    border: none;
+    padding: 12px 24px;
+    border-radius: 34px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: 400;
+    transition: all 0.3s;
+    letter-spacing: -0.2px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.navPillButtonActive {
+    background: rgba(255, 255, 255, 0.95);
+    color: #000;
+    font-weight: 600;
+}
+
+/* Add or update these classes if not already present */
+
+.secondary-nav {
+    margin-top: 100px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.navPillContainer {
+    display: inline-flex;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px;
+    border-radius: 40px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navPillButton {
+    border: none;
+    padding: 12px 24px;
+    border-radius: 34px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: 400;
+    transition: all 0.3s;
+    letter-spacing: -0.2px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.navPillButtonActive {
+    background: rgba(255, 255, 255, 0.95);
+    color: #000;
+    font-weight: 600;
+}
+
+/* Add or update these classes if not already present */
+
+.secondary-nav {
+    margin-top: 100px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.navPillContainer {
+    display: inline-flex;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px;
+    border-radius: 40px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navPillButton {
+    border: none;
+    padding: 12px 24px;
+    border-radius: 34px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: 400;
+    transition: all 0.3s;
+    letter-spacing: -0.2px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.navPillButtonActive {
+    background: rgba(255, 255, 255, 0.95);
+    color: #000;
+    font-weight: 600;
+}
+
+/* Add or update these classes if not already present */
+
+.secondary-nav {
+    margin-top: 100px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.navPillContainer {
+    display: inline-flex;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px;
+    border-radius: 40px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navPillButton {
+    border: none;
+    padding: 12px 24px;
+    border-radius: 34px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: 400;
+    transition: all 0.3s;
+    letter-spacing: -0.2px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.navPillButtonActive {
+    background: rgba(255, 255, 255, 0.95);
+    color: #000;
+    font-weight: 600;
+}
+
+/* Add or update these classes if not already present */
+
+.secondary-nav {
+    margin-top: 100px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.navPillContainer {
+    display: inline-flex;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px;
+    border-radius: 40px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navPillButton {
+    border: none;
+    padding: 12px 24px;
+    border-radius: 34px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: 400;
+    transition: all 0.3s;
+    letter-spacing: -0.2px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.navPillButtonActive {
+    background: rgba(255, 255, 255, 0.95);
+    color: #000;
+    font-weight: 600;
+}
+
+/* Add or update these classes if not already present */
+
+.secondary-nav {
+    margin-top: 100px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.navPillContainer {
+    display: inline-flex;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px;
+    border-radius: 40px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navPillButton {
+    border: none;
+    padding: 12px 24px;
+    border-radius: 34px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: 400;
+    transition: all 0.3s;
+    letter-spacing: -0.2px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.navPillButtonActive {
+    background: rgba(255, 255, 255, 0.95);
+    color: #000;
+    font-weight: 600;
+}
+
+/* Add or update these classes if not already present */
+
+.secondary-nav {
+    margin-top: 100px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.navPillContainer {
+    display: inline-flex;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px;
+    border-radius: 40px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navPillButton {
+    border: none;
+    padding: 12px 24px;
+    border-radius: 34px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: 400;
+    transition: all 0.3s;
+    letter-spacing: -0.2px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.navPillButtonActive {
+    background: rgba(255, 255, 255, 0.95);
+    color: #000;
+    font-weight: 600;
+}
+
+/* Add or update these classes if not already present */
+
+.secondary-nav {
+    margin-top: 100px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.navPillContainer {
+    display: inline-flex;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px;
+    border-radius: 40px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navPillButton {
+    border: none;
+    padding: 12px 24px;
+    border-radius: 34px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: 400;
+    transition: all 0.3s;
+    letter-spacing: -0.2px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.navPillButtonActive {
+    background: rgba(255, 255, 255, 0.95);
+    color: #000;
+    font-weight: 600;
+}
+
+/* Add or update these classes if not already present */
+
+.secondary-nav {
+    margin-top: 100px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.navPillContainer {
+    display: inline-flex;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px;
+    border-radius: 40px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navPillButton {
+    border: none;
+    padding: 12px 24px;
+    border-radius: 34px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: 400;
+    transition: all 0.3s;
+    letter-spacing: -0.2px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.navPillButtonActive {
+    background: rgba(255, 255, 255, 0.95);
+    color: #000;
+    font-weight: 600;
+}
+
+/* Add or update these classes if not already present */
+
+.secondary-nav {
+    margin-top: 100px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.navPillContainer {
+    display: inline-flex;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px;
+    border-radius: 40px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navPillButton {
+    border: none;
+    padding: 12px 24px;
+    border-radius: 34px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: 400;
+    transition: all 0.3s;
+    letter-spacing: -0.2px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.navPillButtonActive {
+    background: rgba(255, 255, 255, 0.95);
+    color: #000;
+    font-weight: 600;
+}
+
+/* Add or update these classes if not already present */
+
+.secondary-nav {
+    margin-top: 100px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.navPillContainer {
+    display: inline-flex;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px;
+    border-radius: 40px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navPillButton {
+    border: none;
+    padding: 12px 24px;
+    border-radius: 34px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: 400;
+    transition: all 0.3s;
+    letter-spacing: -0.2px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.navPillButtonActive {
+    background: rgba(255, 255, 255, 0.95);
+    color: #000;
+    font-weight: 600;
+}
+
+/* Add or update these classes if not already present */
+
+.secondary-nav {
+    margin-top: 100px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.navPillContainer {
+    display: inline-flex;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px;
+    border-radius: 40px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navPillButton {
+    border: none;
+    padding: 12px 24px;
+    border-radius: 34px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: 400;
+    transition: all 0.3s;
+    letter-spacing: -0.2px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.navPillButtonActive {
+    background: rgba(255, 255, 255, 0.95);
+    color: #000;
+    font-weight: 600;
+}
+
+/* Add or update these classes if not already present */
+
+.secondary-nav {
+    margin-top: 100px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.navPillContainer {
+    display: inline-flex;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px;
+    border-radius: 40px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navPillButton {
+    border: none;
+    padding: 12px 24px;
+    border-radius: 34px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: 400;
+    transition: all 0.3s;
+    letter-spacing: -0.2px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.navPillButtonActive {
+    background: rgba(255, 255, 255, 0.95);
+    color: #000;
+    font-weight: 600;
+}
+
+/* Add or update these classes if not already present */
+
+.secondary-nav {
+    margin-top: 100px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.navPillContainer {
+    display: inline-flex;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px;
+    border-radius: 40px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navPillButton {
+    border: none;
+    padding: 12px 24px;
+    border-radius: 34px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: 400;
+    transition: all 0.3s;
+    letter-spacing: -0.2px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.navPillButtonActive {
+    background: rgba(255, 255, 255, 0.95);
+    color: #000;
+    font-weight: 600;
+}
+
+/* Add or update these classes if not already present */
+
+.secondary-nav {
+    margin-top: 100px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.navPillContainer {
+    display: inline-flex;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px;
+    border-radius: 40px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navPillButton {
+    border: none;
+    padding: 12px 24px;
+    border-radius: 34px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: 400;
+    transition: all 0.3s;
+    letter-spacing: -0.2px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.navPillButtonActive {
+    background: rgba(255, 255, 255, 0.95);
+    color: #000;
+    font-weight: 600;
+}
+
+/* Add or update these classes if not already present */
+
+.secondary-nav {
+    margin-top: 100px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.navPillContainer {
+    display: inline-flex;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px;
+    border-radius: 40px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navPillButton {
+    border: none;
+    padding: 12px 24px;
+    border-radius: 34px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: 400;
+    transition: all 0.3s;
+    letter-spacing: -0.2px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.navPillButtonActive {
+    background: rgba(255, 255, 255, 0.95);
+    color: #000;
+    font-weight: 600;
+}
+
+/* Add or update these classes if not already present */
+
+.secondary-nav {
+    margin-top: 100px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.navPillContainer {
+    display: inline-flex;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px;
+    border-radius: 40px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navPillButton {
+    border: none;
+    padding: 12px 24px;
+    border-radius: 34px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: 400;
+    transition: all 0.3s;
+    letter-spacing: -0.2px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.navPillButtonActive {
+    background: rgba(255, 255, 255, 0.95);
+    color: #000;
+    font-weight: 600;
+}
+
+/* Add or update these classes if not already present */
+
+.secondary-nav {
+    margin-top: 100px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.navPillContainer {
+    display: inline-flex;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px;
+    border-radius: 40px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navPillButton {
+    border: none;
+    padding: 12px 24px;
+    border-radius: 34px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: 400;
+    transition: all 0.3s;
+    letter-spacing: -0.2px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.navPillButtonActive {
+    background: rgba(255, 255, 255, 0.95);
+    color: #000;
+    font-weight: 600;
+}
+
+/* Add or update these classes if not already present */
+
+.secondary-nav {
+    margin-top: 100px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.navPillContainer {
+    display: inline-flex;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px;
+    border-radius: 40px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navPillButton {
+    border: none;
+    padding: 12px 24px;
+    border-radius: 34px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: 400;
+    transition: all 0.3s;
+    letter-spacing: -0.2px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.navPillButtonActive {
+    background: rgba(255, 255, 255, 0.95);
+    color: #000;
+    font-weight: 600;
+}
+
+/* Add or update these classes if not already present */
+
+.secondary-nav {
+    margin-top: 100px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.navPillContainer {
+    display: inline-flex;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px;
+    border-radius: 40px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navPillButton {
+    border: none;
+    padding: 12px 24px;
+    border-radius: 34px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: 400;
+    transition: all 0.3s;
+    letter-spacing: -0.2px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.navPillButtonActive {
+    background: rgba(255, 255, 255, 0.95);
+    color: #000;
+    font-weight: 600;
+}
+
+/* Add or update these classes if not already present */
+
+.secondary-nav {
+    margin-top: 100px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.navPillContainer {
+    display: inline-flex;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px;
+    border-radius: 40px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navPillButton {
+    border: none;
+    padding: 12px 24px;
+    border-radius: 34px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: 400;
+    transition: all 0.3s;
+    letter-spacing: -0.2px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.navPillButtonActive {
+    background: rgba(255, 255, 255, 0.95);
+    color: #000;
+    font-weight: 600;
+}
+
+/* Add or update these classes if not already present */
+
+.secondary-nav {
+    margin-top: 100px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.navPillContainer {
+    display: inline-flex;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px;
+    border-radius: 40px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navPillButton {
+    border: none;
+    padding: 12px 24px;
+    border-radius: 34px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: 400;
+    transition: all 0.3s;
+    letter-spacing: -0.2px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.navPillButtonActive {
+    background: rgba(255, 255, 255, 0.95);
+    color: #000;
+    font-weight: 600;
+}
+
+    /* Add or update these classes if not already present */
+
+.secondary-nav {
+    margin-top: 100px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.navPillContainer {
+    display: inline-flex;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px;
+    border-radius: 40px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navPillButton {
+    border: none;
+    padding: 12px 24px;
+    border-radius: 34px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: 400;
+    transition: all 0.3s;
+    letter-spacing: -0.2px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.navPillButtonActive {
+    background: rgba(255, 255, 255, 0.95);
+    color: #000;
+    font-weight: 600;
+}
+
+/* Add or update these classes if not already present */
+
+.secondary-nav {
+    margin-top: 100px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.navPillContainer {
+    display: inline-flex;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px;
+    border-radius: 40px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navPillButton {
+    border: none;
+    padding: 12px 24px;
+    border-radius: 34px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: 400;
+    transition: all 0.3s;
+    letter-spacing: -0.2px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.navPillButtonActive {
+    background: rgba(255, 255, 255, 0.95);
+    color: #000;
+    font-weight: 600;
+}
+
+/* Add or update these classes if not already present */
+
+.secondary-nav {
+    margin-top: 100px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.navPillContainer {
+    display: inline-flex;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px;
+    border-radius: 40px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navPillButton {
+    border: none;
+    padding: 12px 24px;
+    border-radius: 34px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: 400;
+    transition: all 0.3s;
+    letter-spacing: -0.2px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.navPillButtonActive {
+    background: rgba(255, 255, 255, 0.95);
+    color: #000;
+    font-weight: 600;
+}
+
+/* Add or update these classes if not already present */
+
+.secondary-nav {
+    margin-top: 100px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.navPillContainer {
+    display: inline-flex;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px;
+    border-radius: 40px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navPillButton {
+    border: none;
+    padding: 12px 24px;
+    border-radius: 34px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: 400;
+    transition: all 0.3s;
+    letter-spacing: -0.2px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.navPillButtonActive {
+    background: rgba(255, 255, 255, 0.95);
+    color: #000;
+    font-weight: 600;
+}
+
+/* Add or update these classes if not already present */
+
+.secondary-nav {
+    margin-top: 100px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.navPillContainer {
+    display: inline-flex;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px;
+    border-radius: 40px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navPillButton {
+    border: none;
+    padding: 12px 24px;
+    border-radius: 34px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: 400;
+    transition: all 0.3s;
+    letter-spacing: -0.2px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.navPillButtonActive {
+    background: rgba(255, 255, 255, 0.95);
+    color: #000;
+    font-weight: 600;
+}
+
+/* Add or update these classes if not already present */
+
+.secondary-nav {
+    margin-top: 100px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.navPillContainer {
+    display: inline-flex;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px;
+    border-radius: 40px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navPillButton {
+    border: none;
+    padding: 12px 24px;
+    border-radius: 34px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: 400;
+    transition: all 0.3s;
+    letter-spacing: -0.2px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.navPillButtonActive {
+    background: rgba(255, 255, 255, 0.95);
+    color: #000;
+    font-weight: 600;
+}
+
+/* Add or update these classes if not already present */
+
+.secondary-nav {
+    margin-top: 100px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.navPillContainer {
+    display: inline-flex;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px;
+    border-radius: 40px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navPillButton {
+    border: none;
+    padding: 12px 24px;
+    border-radius: 34px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: 400;
+    transition: all 0.3s;
+    letter-spacing: -0.2px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.navPillButtonActive {
+    background: rgba(255, 255, 255, 0.95);
+    color: #000;
+    font-weight: 600;
+}
+
+/* Add or update these classes if not already present */
+
+.secondary-nav {
+    margin-top: 100px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.navPillContainer {
+    display: inline-flex;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px;
+    border-radius: 40px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navPillButton {
+    border: none;
+    padding: 12px 24px;
+    border-radius: 34px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: 400;
+    transition: all 0.3s;
+    letter-spacing: -0.2px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.navPillButtonActive {
+    background: rgba(255, 255, 255, 0.95);
+    color: #000;
+    font-weight: 600;
+}
+
+/* Add or update these classes if not already present */
+
+.secondary-nav {
+    margin-top: 100px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.navPillContainer {
+    display: inline-flex;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px;
+    border-radius: 40px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navPillButton {
+    border: none;
+    padding: 12px 24px;
+    border-radius: 34px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: 400;
+    transition: all 0.3s;
+    letter-spacing: -0.2px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.navPillButtonActive {
+    background: rgba(255, 255, 255, 0.95);
+    color: #000;
+    font-weight: 600;
+}
+
+/* Add or update these classes if not already present */
+
+.secondary-nav {
+    margin-top: 100px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.navPillContainer {
+    display: inline-flex;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px;
+    border-radius: 40px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navPillButton {
+    border: none;
+    padding: 12px 24px;
+    border-radius: 34px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: 400;
+    transition: all 0.3s;
+    letter-spacing: -0.2px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.navPillButtonActive {
+    background: rgba(255, 255, 255, 0.95);
+    color: #000;
+    font-weight: 600;
+}
+
+/* Add or update these classes if not already present */
+
+.secondary-nav {
+    margin-top: 100px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.navPillContainer {
+    display: inline-flex;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px;
+    border-radius: 40px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navPillButton {
+    border: none;
+    padding: 12px 24px;
+    border-radius: 34px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: 400;
+    transition: all 0.3s;
+    letter-spacing: -0.2px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.navPillButtonActive {
+    background: rgba(255, 255, 255, 0.95);
+    color: #000;
+    font-weight: 600;
+}
+
+        /* Add or update these classes if not already present */
+
+.secondary-nav {
+    margin-top: 100px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.navPillContainer {
+    display: inline-flex;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px;
+    border-radius: 40px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navPillButton {
+    border: none;
+    padding: 12px 24px;
+    border-radius: 34px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: 400;
+    transition: all 0.3s;
+    letter-spacing: -0.2px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.navPillButtonActive {
+    background: rgba(255, 255, 255, 0.95);
+    color: #000;
+    font-weight: 600;
+}
+
+/* Add or update these classes if not already present */
+
+.secondary-nav {
+    margin-top: 100px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.navPillContainer {
+    display: inline-flex;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px;
+    border-radius: 40px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navPillButton {
+    border: none;
+    padding: 12px 24px;
+    border-radius: 34px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: 400;
+    transition: all 0.3s;
+    letter-spacing: -0.2px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.navPillButtonActive {
+    background: rgba(255, 255, 255, 0.95);
+    color: #000;
+    font-weight: 600;
+}
+
+/* Add or update these classes if not already present */
+
+.secondary-nav {
+    margin-top: 100px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.navPillContainer {
+    display: inline-flex;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px;
+    border-radius: 40px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navPillButton {
+    border: none;
+    padding: 12px 24px;
+    border-radius: 34px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: 400;
+    transition: all 0.3s;
+    letter-spacing: -0.2px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.navPillButtonActive {
+    background: rgba(255, 255, 255, 0.95);
+    color: #000;
+    font-weight: 600;
+}
+
+/* Add or update these classes if not already present */
+
+.secondary-nav {
+    margin-top: 100px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.navPillContainer {
+    display: inline-flex;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px;
+    border-radius: 40px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navPillButton {
+    border: none;
+    padding: 12px 24px;
+    border-radius: 34px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: 400;
+    transition: all 0.3s;
+    letter-spacing: -0.2px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.navPillButtonActive {
+    background: rgba(255, 255, 255, 0.95);
+    color: #000;
+    font-weight: 600;
+}
+
+/* Add or update these classes if not already present */
+
+.secondary-nav {
+    margin-top: 100px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.navPillContainer {
+    display: inline-flex;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px;
+    border-radius: 40px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navPillButton {
+    border: none;
+    padding: 12px 24px;
+    border-radius: 34px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: 400;
+    transition: all 0.3s;
+    letter-spacing: -0.2px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.navPillButtonActive {
+    background: rgba(255, 255, 255, 0.95);
+    color: #000;
+    font-weight: 600;
+}
+
+/* Add or update these classes if not already present */
+
+.secondary-nav {
+    margin-top: 100px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.navPillContainer {
+    display: inline-flex;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px;
+    border-radius: 40px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navPillButton {
+    border: none;
+    padding: 12px 24px;
+    border-radius: 34px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: 400;
+    transition: all 0.3s;
+    letter-spacing: -0.2px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.navPillButtonActive {
+    background: rgba(255, 255, 255, 0.95);
+    color: #000;
+    font-weight: 600;
+}
+
+/* Add or update these classes if not already present */
+
+.secondary-nav {
+    margin-top: 100px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.navPillContainer {
+    display: inline-flex;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px;
+    border-radius: 40px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navPillButton {
+    border: none;
+    padding: 12px 24px;
+    border-radius: 34px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: 400;
+    transition: all 0.3s;
+    letter-spacing: -0.2px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.navPillButtonActive {
+    background: rgba(255, 255, 255, 0.95);
+    color: #000;
+    font-weight: 600;
+}
+
+/* Add or update these classes if not already present */
+
+.secondary-nav {
+    margin-top: 100px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.navPillContainer {
+    display: inline-flex;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px;
+    border-radius: 40px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navPillButton {
+    border: none;
+    padding: 12px 24px;
+    border-radius: 34px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: 400;
+    transition: all 0.3s;
+    letter-spacing: -0.2px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.navPillButtonActive {
+    background: rgba(255, 255, 255, 0.95);
+    color: #000;
+    font-weight: 600;
+}
+
+/* Add or update these classes if not already present */
+
+.secondary-nav {
+    margin-top: 100px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.navPillContainer {
+    display: inline-flex;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px;
+    border-radius: 40px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navPillButton {
+    border: none;
+    padding: 12px 24px;
+    border-radius: 34px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: 400;
+    transition: all 0.3s;
+    letter-spacing: -0.2px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.navPillButtonActive {
+    background: rgba(255, 255, 255, 0.95);
+    color: #000;
+    font-weight: 600;
+}
+
+/* Add or update these classes if not already present */
+
+.secondary-nav {
+    margin-top: 100px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.navPillContainer {
+    display: inline-flex;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px;
+    border-radius: 40px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navPillButton {
+    border: none;
+    padding: 12px 24px;
+    border-radius: 34px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: 400;
+    transition: all 0.3s;
+    letter-spacing: -0.2px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.navPillButtonActive {
+    background: rgba(255, 255, 255, 0.95);
+    color: #000;
+    font-weight: 600;
+}
+
+/* Add or update these classes if not already present */
+
+.secondary-nav {
+    margin-top: 100px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.navPillContainer {
+    display: inline-flex;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px;
+    border-radius: 40px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navPillButton {
+    border: none;
+    padding: 12px 24px;
+    border-radius: 34px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: 400;
+    transition: all 0.3s;
+    letter-spacing: -0.2px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.navPillButtonActive {
+    background: rgba(255, 255, 255, 0.95);
+    color: #000;
+    font-weight: 600;
+}
+
+/* Add or update these classes if not already present */
+
+.secondary-nav {
+    margin-top: 100px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.navPillContainer {
+    display: inline-flex;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px;
+    border-radius: 40px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navPillButton {
+    border: none;
+    padding: 12px 24px;
+    border-radius: 34px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: 400;
+    transition: all 0.3s;
+    letter-spacing: -0.2px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.navPillButtonActive {
+    background: rgba(255, 255, 255, 0.95);
+    color: #000;
+    font-weight: 600;
+}
+
+/* Add or update these classes if not already present */
+
+.secondary-nav {
+    margin-top: 100px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.navPillContainer {
+    display: inline-flex;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px;
+    border-radius: 40px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navPillButton {
+    border: none;
+    padding: 12px 24px;
+    border-radius: 34px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: 400;
+    transition: all 0.3s;
+    letter-spacing: -0.2px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.navPillButtonActive {
+    background: rgba(255, 255, 255, 0.95);
+    color: #000;
+    font-weight: 600;
+}
+
+/* Add or update these classes if not already present */
+
+.secondary-nav {
+    margin-top: 100px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.navPillContainer {
+    display: inline-flex;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px;
+    border-radius: 40px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navPillButton {
+    border: none;
+    padding: 12px 24px;
+    border-radius: 34px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: 400;
+    transition: all 0.3s;
+    letter-spacing: -0.2px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.navPillButtonActive {
+    background: rgba(255, 255, 255, 0.95);
+    color: #000;
+    font-weight: 600;
+}
+
+/* Add or update these classes if not already present */
+
+.secondary-nav {
+    margin-top: 100px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.navPillContainer {
+    display: inline-flex;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px;
+    border-radius: 40px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navPillButton {
+    border: none;
+    padding: 12px 24px;
+    border-radius: 34px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: 400;
+    transition: all 0.3s;
+    letter-spacing: -0.2px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.navPillButtonActive {
+    background: rgba(255, 255, 255, 0.95);
+    color: #000;
+    font-weight: 600;
+}
+
+/* Add or update these classes if not already present */
+
+.secondary-nav {
+    margin-top: 100px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.navPillContainer {
+    display: inline-flex;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px;
+    border-radius: 40px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navPillButton {
+    border: none;
+    padding: 12px 24px;
+    border-radius: 34px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: 400;
+    transition: all 0.3s;
+    letter-spacing: -0.2px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.navPillButtonActive {
+    background: rgba(255, 255, 255, 0.95);
+    color: #000;
+    font-weight: 600;
+}
+
+/* Add or update these classes if not already present */
+
+.secondary-nav {
+    margin-top: 100px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.navPillContainer {
+    display: inline-flex;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px;
+    border-radius: 40px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navPillButton {
+    border: none;
+    padding: 12px 24px;
+    border-radius: 34px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: 400;
+    transition: all 0.3s;
+    letter-spacing: -0.2px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.navPillButtonActive {
+    background: rgba(255, 255, 255, 0.95);
+    color: #000;
+    font-weight: 600;
+}
+
+/* Add or update these classes if not already present */
+
+.secondary-nav {
+    margin-top: 100px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.navPillContainer {
+    display: inline-flex;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px;
+    border-radius: 40px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navPillButton {
+    border: none;
+    padding: 12px 24px;
+    border-radius: 34px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: 400;
+    transition: all 0.3s;
+    letter-spacing: -0.2px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.navPillButtonActive {
+    background: rgba(255, 255, 255, 0.95);
+    color: #000;
+    font-weight: 600;
+}
+
+/* Add or update these classes if not already present */
+
+.secondary-nav {
+    margin-top: 100px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.navPillContainer {
+    display: inline-flex;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px;
+    border-radius: 40px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navPillButton {
+    border: none;
+    padding: 12px 24px;
+    border-radius: 34px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: 400;
+    transition: all 0.3s;
+    letter-spacing: -0.2px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.navPillButtonActive {
+    background: rgba(255, 255, 255, 0.95);
+    color: #000;
+    font-weight: 600;
+}
+
+/* Add or update these classes if not already present */
+
+.secondary-nav {
+    margin-top: 100px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.navPillContainer {
+    display: inline-flex;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px;
+    border-radius: 40px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navPillButton {
+    border: none;
+    padding: 12px 24px;
+    border-radius: 34px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: 400;
+    transition: all 0.3s;
+    letter-spacing: -0.2px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.navPillButtonActive {
+    background: rgba(255, 255, 255, 0.95);
+    color: #000;
+    font-weight: 600;
+}
+
+/* Add or update these classes if not already present */
+
+.secondary-nav {
+    margin-top: 100px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.navPillContainer {
+    display: inline-flex;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px;
+    border-radius: 40px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navPillButton {
+    border: none;
+    padding: 12px 24px;
+    border-radius: 34px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: 400;
+    transition: all 0.3s;
+    letter-spacing: -0.2px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.navPillButtonActive {
+    background: rgba(255, 255, 255, 0.95);
+    color: #000;
+    font-weight: 600;
+}
+
+/* Add or update these classes if not already present */
+
+.secondary-nav {
+    margin-top: 100px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.navPillContainer {
+    display: inline-flex;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px;
+    border-radius: 40px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navPillButton {
+    border: none;
+    padding: 12px 24px;
+    border-radius: 34px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: 400;
+    transition: all 0.3s;
+    letter-spacing: -0.2px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.navPillButtonActive {
+    background: rgba(255, 255, 255, 0.95);
+    color: #000;
+    font-weight: 600;
+}
+
+/* Add or update these classes if not already present */
+
+.secondary-nav {
+    margin-top: 100px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.navPillContainer {
+    display: inline-flex;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px;
+    border-radius: 40px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navPillButton {
+    border: none;
+    padding: 12px 24px;
+    border-radius: 34px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: 400;
+    transition: all 0.3s;
+    letter-spacing: -0.2px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.navPillButtonActive {
+    background: rgba(255, 255, 255, 0.95);
+    color: #000;
+    font-weight: 600;
+}
+
+/* Add or update these classes if not already present */
+
+.secondary-nav {
+    margin-top: 100px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.navPillContainer {
+    display: inline-flex;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px;
+    border-radius: 40px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navPillButton {
+    border: none;
+    padding: 12px 24px;
+    border-radius: 34px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: 400;
+    transition: all 0.3s;
+    letter-spacing: -0.2px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.navPillButtonActive {
+    background: rgba(255, 255, 255, 0.95);
+    color: #000;
+    font-weight: 600;
+}
+
+/* Add or update these classes if not already present */
+
+.secondary-nav {
+    margin-top: 100px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.navPillContainer {
+    display: inline-flex;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px;
+    border-radius: 40px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navPillButton {
+    border: none;
+    padding: 12px 24px;
+    border-radius: 34px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: 400;
+    transition: all 0.3s;
+    letter-spacing: -0.2px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.navPillButtonActive {
+    background: rgba(255, 255, 255, 0.95);
+    color: #000;
+    font-weight: 600;
+}
+
+/* Add or update these classes if not already present */
+
+.secondary-nav {
+    margin-top: 100px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.navPillContainer {
+    display: inline-flex;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px;
+    border-radius: 40px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navPillButton {
+    border: none;
+    padding: 12px 24px;
+    border-radius: 34px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: 400;
+    transition: all 0.3s;
+    letter-spacing: -0.2px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.navPillButtonActive {
+    background: rgba(255, 255, 255, 0.95);
+    color: #000;
+    font-weight: 600;
+}
+
+/* Add or update these classes if not already present */
+
+.secondary-nav {
+    margin-top: 100px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.navPillContainer {
+    display: inline-flex;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px;
+    border-radius: 40px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navPillButton {
+    border: none;
+    padding: 12px 24px;
+    border-radius: 34px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: 400;
+    transition: all 0.3s;
+    letter-spacing: -0.2px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.navPillButtonActive {
+    background: rgba(255, 255, 255, 0.95);
+    color: #000;
+    font-weight: 600;
+}
+
+/* Add or update these classes if not already present */
+
+.secondary-nav {
+    margin-top: 100px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.navPillContainer {
+    display: inline-flex;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px;
+    border-radius: 40px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navPillButton {
+    border: none;
+    padding: 12px 24px;
+    border-radius: 34px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: 400;
+    transition: all 0.3s;
+    letter-spacing: -0.2px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.navPillButtonActive {
+    background: rgba(255, 255, 255, 0.95);
+    color: #000;
+    font-weight: 600;
+}
+
+                                                                                                                                                                                    * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -87,6 +3285,112 @@ body {
         transform: translateY(-2px);
         box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
     }
+
+.app-section {
+    background: var(--secondary-black);
+    color: var(--text-white);
+    border-top: 1px solid var(--border-gray);
+}
+
+.section-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 30px 20px;
+}
+
+/* Typography + links in dark sections */
+.app-section h1, .app-section h2, .app-section h3, .app-section h4 {
+    margin: 0 0 12px 0;
+    color: var(--text-white);
+}
+
+.app-section p, .app-section li, .app-section small, .app-section span {
+    color: var(--text-gray);
+    line-height: 1.6;
+}
+
+.link {
+    color: var(--text-gray);
+    text-decoration: none;
+}
+
+    .link:hover {
+        color: #cfcfcf;
+    }
+
+/* Common UI blocks */
+.panel, .card {
+    background: var(--primary-black);
+    border: 1px solid var(--border-gray);
+    border-radius: 12px;
+    padding: 16px;
+}
+
+/* Layout helpers */
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.grid-2 {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(2, minmax(0,1fr));
+}
+
+.stack-16 {
+    display: grid;
+    gap: 16px;
+}
+
+/* Roadmap styles */
+.roadmap__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.roadmap__item {
+    background: var(--primary-black);
+    border: 1px solid var(--border-gray);
+    border-radius: 12px;
+    padding: 16px;
+}
+
+.roadmap__itemTitle {
+    margin: 0 0 6px 0;
+}
+
+.roadmap__badge {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 999px;
+    font-size: 12px;
+    border: 1px solid var(--border-gray);
+    color: var(--text-gray);
+}
+
+/* Glossary styles */
+.glossary__term {
+    margin: 0 0 4px 0;
+}
+
+.glossary__def {
+    margin: 0;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+    .section-inner {
+        padding: 20px;
+    }
+
+    .grid-2 {
+        grid-template-columns: 1fr;
+    }
+}
+
 
 /* Hero Section */
 .hero {
@@ -583,6 +3887,118 @@ footer {
 
     .msg-row.align-end {
         justify-content: flex-end;
+    }
+
+    .msg-row.align-center {
+        justify-content: center;
+    }
+
+    .msg-row.align-center {
+        justify-content: center;
+    }
+
+    .msg-row.align-center {
+        justify-content: center;
+    }
+
+    .msg-row.align-center {
+        justify-content: center;
+    }
+
+    .msg-row.align-center {
+        justify-content: center;
+    }
+
+    .msg-row.align-center {
+        justify-content: center;
+    }
+
+    .msg-row.align-center {
+        justify-content: center;
+    }
+
+    .msg-row.align-center {
+        justify-content: center;
+    }
+
+    .msg-row.align-center {
+        justify-content: center;
+    }
+
+    .msg-row.align-center {
+        justify-content: center;
+    }
+
+    .msg-row.align-center {
+        justify-content: center;
+    }
+
+    .msg-row.align-center {
+        justify-content: center;
+    }
+
+    .msg-row.align-center {
+        justify-content: center;
+    }
+
+    .msg-row.align-center {
+        justify-content: center;
+    }
+
+    .msg-row.align-center {
+        justify-content: center;
+    }
+
+    .msg-row.align-center {
+        justify-content: center;
+    }
+
+    .msg-row.align-center {
+        justify-content: center;
+    }
+
+    .msg-row.align-center {
+        justify-content: center;
+    }
+
+    .msg-row.align-center {
+        justify-content: center;
+    }
+
+    .msg-row.align-center {
+        justify-content: center;
+    }
+
+    .msg-row.align-center {
+        justify-content: center;
+    }
+
+    .msg-row.align-center {
+        justify-content: center;
+    }
+
+    .msg-row.align-center {
+        justify-content: center;
+    }
+
+    .msg-row.align-center {
+        justify-content: center;
+    }
+
+    .msg-row.align-center {
+        justify-content: center;
+    }
+
+    .msg-row.align-center {
+        justify-content: center;
+    }
+
+    .msg-row.align-center {
+        justify-content: center;
+    }
+
+    .msg-row.align-center {
+        justify-content: center;
     }
 
 /* Message bubble */
