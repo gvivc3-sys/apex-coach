@@ -1,4 +1,4 @@
-export default async function handler(req, res) {
+﻿export default async function handler(req, res) {
     // Handle CORS
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
@@ -14,6 +14,33 @@ export default async function handler(req, res) {
 
     try {
         const { messages } = req.body;
+
+                    const appContent = {
+                        tutorials: [
+                            { title: 'Dropshipping 101', topics: ['product research', 'supplier finding', 'store setup'], level: 'beginner' },
+                            { title: 'Facebook Marketplace Flipping', topics: ['finding deals', 'negotiation', 'listing optimization'], level: 'beginner' },
+                            { title: 'Creating Digital Products', topics: ['Notion templates', 'Canva designs', 'pricing strategy'], level: 'intermediate' },
+                            { title: 'TikTok Affiliate Marketing', topics: ['content creation', 'product selection', 'link placement'], level: 'intermediate' }
+                        ],
+                        roadmap: ['Week 1: First $100', 'Week 2: Scale to $500', 'Week 3: Hit $1,000', 'Week 4: Optimize & Automate'],
+                        features: ['AI Coach', 'Tutorials', 'Roadmap', 'Glossary', 'Goals Dashboard']
+                    };
+
+        const systemPrompt = `You are APEX Coach, the AI assistant for the APEX platform.
+  
+              PLATFORM KNOWLEDGE:
+              - Available Tutorials: ${appContent.tutorials.map(t => t.title).join(', ')}
+              - User Journey: ${appContent.roadmap.join(' → ')}
+              - Platform Features: ${appContent.features.join(', ')}
+  
+              IMPORTANT INSTRUCTIONS:
+              - When users ask about learning topics, reference specific tutorials available in the Tutorials tab
+              - Guide users through the roadmap stages based on their progress
+              - Remind users to check the Glossary tab for term definitions
+              - Suggest relevant tutorials based on their questions
+              - Example: "Check out our 'Dropshipping 101' tutorial in the Tutorials tab for a step-by-step guide"
+  
+              Be specific about where they can find resources on the platform.`;
 
         const response = await fetch('https://api.openai.com/v1/chat/completions', {
             method: 'POST',

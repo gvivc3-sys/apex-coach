@@ -2,6 +2,58 @@
 import { supabase } from './supabase';
 import './App.css';
 
+const sendMessage = async () => {
+    if (!input.trim()) return;
+
+    // Check usage limits first
+    const { data: { user } } = await supabase.auth.getUser();
+
+    // Get user's subscription tier
+    const { data: subscription } = await supabase
+        .from('subscriptions')
+        .select('tier')
+        .eq('user_id', user.id)
+        .single();
+
+    // Get current month's usage
+    const currentMonth = new Date().toISOString().slice(0, 7);
+    const { data: usage } = await supabase
+        .from('usage_tracking')
+        .select('message_count')
+        .eq('user_id', user.id)
+        .eq('month', currentMonth)
+        .single();
+
+    const limits = {
+        starter: 50,
+        hustler: 500,
+        empire: 9999 // unlimited
+    };
+
+    const currentUsage = usage?.message_count || 0;
+    const limit = limits[subscription?.tier || 'starter'];
+
+    if (currentUsage >= limit) {
+        setMessages(prev => [...prev, {
+            role: 'assistant',
+            content: `You've reached your monthly limit of ${limit} messages. Upgrade to ${subscription?.tier === 'starter' ? 'Hustler' : 'Empire Builder'} for more coaching!`
+        }]);
+        return;
+    }
+
+    // Update usage count
+    await supabase
+        .from('usage_tracking')
+        .upsert({
+            user_id: user.id,
+            month: currentMonth,
+            message_count: currentUsage + 1,
+            updated_at: new Date()
+        });
+
+    // ... rest of your sendMessage code
+};
+
 function AICoach({ messages, setMessages, isMobile }) {
     const [input, setInput] = useState('');
     const [loading, setLoading] = useState(false);

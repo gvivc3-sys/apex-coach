@@ -45,6 +45,52 @@ function Dashboard({ user }) {
         }
     };
 
+    // In Dashboard.jsx
+    useEffect(() => {
+        // Load chat from localStorage on mount
+        const savedChat = localStorage.getItem(`apex_chat_${user.id}`);
+        if (savedChat) {
+            setChatMessages(JSON.parse(savedChat));
+        } else {
+            // Load from Supabase if not in localStorage
+            loadChatHistory();
+        }
+    }, [user.id]);
+
+    // Save to localStorage whenever messages change
+    useEffect(() => {
+        if (chatMessages.length > 1) { // Don't save just the initial message
+            localStorage.setItem(`apex_chat_${user.id}`, JSON.stringify(chatMessages));
+            // Also save to Supabase for long-term storage
+            saveChatToSupabase();
+        }
+    }, [chatMessages]);
+
+    const loadChatHistory = async () => {
+        const { data } = await supabase
+            .from('chat_history')
+            .select('message, role')
+            .eq('user_id', user.id)
+            .order('created_at', { ascending: true })
+            .limit(50); // Last 50 messages
+
+        if (data && data.length > 0) {
+            setChatMessages(data);
+        }
+    };
+
+    const saveChatToSupabase = async () => {
+        // Save last message to Supabase
+        const lastMessage = chatMessages[chatMessages.length - 1];
+        await supabase
+            .from('chat_history')
+            .insert({
+                user_id: user.id,
+                message: lastMessage.content,
+                role: lastMessage.role
+            });
+    };
+
     const handleSignOut = async () => {
         await supabase.auth.signOut();
         window.location.href = '/';
@@ -67,6 +113,21 @@ function Dashboard({ user }) {
             flexDirection: 'column'
         }}>
             <Header user={user} showProfile={showProfile} setShowProfile={setShowProfile} />
+
+            // In Dashboard header area
+            <div style={{
+                position: 'fixed',
+                bottom: '20px',
+                right: '20px',
+                background: '#141414',
+                border: '1px solid #2a2a2a',
+                borderRadius: '12px',
+                padding: '12px 20px',
+                fontSize: '12px',
+                color: '#666'
+            }}>
+                Messages: {currentUsage}/{limit} this month
+            </div>
 
             {/* Secondary Navigation - Better Mobile Responsive */}
             <div style={{
