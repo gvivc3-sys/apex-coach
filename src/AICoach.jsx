@@ -1,6 +1,7 @@
 ﻿import { useState } from 'react';
 import { supabase } from './supabase';
 import './App.css';
+import './AICoach.module.css';
 
 const sendMessage = async () => {
     if (!input.trim()) return;
