@@ -48,15 +48,6 @@ html, body, #root {
     margin-top: auto;
 }
 
-:root {
-    --header-h: 72px;
-}
-/* adjust to your actual header height */
-
-.dashboard-container {
-    padding-top: var(--header-h);
-}
-
 /* Reset */
 * {
     margin: 0;
@@ -73,7 +64,7 @@ body {
 
 /* Tabs secondary nav */
 .secondary-nav {
-    margin-top: 100px;
+    margin-top: 20px;
     padding: 0 20px;
     display: flex;
     justify-content: center;
@@ -110,7 +101,6 @@ body {
 
 /* Navigation */
 .nav-fixed {
-    position: fixed;
     width: 100%;
     top: 0;
     background: var(--primary-black-95);
@@ -1087,11 +1077,26 @@ footer {
     cursor: default;
 }
 
-/* Responsive */
+/* MOBILE HEADER — keep auth buttons visible */
 @media (max-width: 768px) {
     .nav-links {
-        display: none;
+        display: flex; /* was none */
+        gap: 10px; /* tighter on mobile */
+        align-items: center;
     }
+
+        /* Hide only the text links like “Features” / “Pricing” */
+        .nav-links a {
+            display: none;
+        }
+
+        /* Make buttons compact on small screens */
+        .nav-links button {
+            padding: 10px 14px;
+            font-size: 12px;
+            letter-spacing: 1px;
+        }
+}
 
     .hero-title {
         font-size: 40px;
