@@ -3,9 +3,11 @@ import './App.css';
 
 function Header({ user, showProfile, setShowProfile }) {
     const handleSignOut = async () => {
-        await supabase.auth.signOut();
-        // Force a full page reload to clear everything
-        window.location.replace(window.location.origin);
+        const { error } = await supabase.auth.signOut();
+        if (!error) {
+            // optionally redirect to landing page
+            window.location.href = '/';
+        }
     };
 
     return (
