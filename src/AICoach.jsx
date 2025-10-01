@@ -6,8 +6,8 @@ import './AICoach.css';
 
 function AICoach({ messages, setMessages, isMobile }) {
     const [input, setInput] = useState('');
-    const textareaRef = useRef(null);
     const [loading, setLoading] = useState(false);
+    const textareaRef = useRef(null);
 
     // 🔽 smart auto-scroll bits
     const scrollRef = useRef(null);
@@ -33,6 +33,7 @@ function AICoach({ messages, setMessages, isMobile }) {
         // Set height to scrollHeight to fit content
         textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
     };
+
 
     // on mount
     useEffect(() => {
@@ -153,6 +154,7 @@ function AICoach({ messages, setMessages, isMobile }) {
                     Send
                 </button>
             </div>
+        </div>
     );
 }
 
