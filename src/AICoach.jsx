@@ -1,65 +1,50 @@
-﻿import { useState } from 'react';
+﻿import { useState, useEffect, useRef } from 'react';
 import { supabase } from './supabase';
 import './App.css';
 
-const sendMessage = async () => {
-    if (!input.trim()) return;
-
-    // Check usage limits first
-    const { data: { user } } = await supabase.auth.getUser();
-
-    // Get user's subscription tier
-    const { data: subscription } = await supabase
-        .from('subscriptions')
-        .select('tier')
-        .eq('user_id', user.id)
-        .single();
-
-    // Get current month's usage
-    const currentMonth = new Date().toISOString().slice(0, 7);
-    const { data: usage } = await supabase
-        .from('usage_tracking')
-        .select('message_count')
-        .eq('user_id', user.id)
-        .eq('month', currentMonth)
-        .single();
-
-    const limits = {
-        starter: 50,
-        hustler: 500,
-        empire: 9999 // unlimited
-    };
-
-    const currentUsage = usage?.message_count || 0;
-    const limit = limits[subscription?.tier || 'starter'];
-
-    if (currentUsage >= limit) {
-        setMessages(prev => [...prev, {
-            role: 'assistant',
-            content: `You've reached your monthly limit of ${limit} messages. Upgrade to ${subscription?.tier === 'starter' ? 'Hustler' : 'Empire Builder'} for more coaching!`
-        }]);
-        return;
-    }
-
-    // Update usage count
-    await supabase
-        .from('usage_tracking')
-        .upsert({
-            user_id: user.id,
-            month: currentMonth,
-            message_count: currentUsage + 1,
-            updated_at: new Date()
-        });
-
-    // ... rest of your sendMessage code
-};
+/* (You can keep your top-level sendMessage with usage limits here if you use it elsewhere) */
 
 function AICoach({ messages, setMessages, isMobile }) {
     const [input, setInput] = useState('');
     const [loading, setLoading] = useState(false);
 
+    // 🔽 smart auto-scroll bits
+    const scrollRef = useRef(null);
+    const shouldStickRef = useRef(true); // were we near bottom before the update?
+
+    const scrollToBottom = (smooth = true) => {
+        const el = scrollRef.current;
+        if (!el) return;
+        el.scrollTo({ top: el.scrollHeight, behavior: smooth ? 'smooth' : 'auto' });
+    };
+
+    const isNearBottom = () => {
+        const el = scrollRef.current;
+        if (!el) return true;
+        const threshold = 80; // px
+        return el.scrollHeight - el.scrollTop - el.clientHeight < threshold;
+    };
+
+    // on mount
+    useEffect(() => {
+        scrollToBottom(false);
+    }, []);
+
+    // when messages change, only autoscroll if we were near the bottom before the change
+    useEffect(() => {
+        if (shouldStickRef.current) scrollToBottom(true);
+    }, [messages]);
+
+    // when "Thinking..." appears/disappears
+    useEffect(() => {
+        if (loading && shouldStickRef.current) scrollToBottom(true);
+    }, [loading]);
+
     const sendMessage = async () => {
         if (!input.trim()) return;
+
+        // capture whether we're at bottom before UI updates
+        shouldStickRef.current = isNearBottom();
 
         const userMessage = { role: 'user', content: input };
         const newMessages = [...messages, userMessage];
@@ -85,6 +70,9 @@ function AICoach({ messages, setMessages, isMobile }) {
 
             const data = await response.json();
 
+            // again, capture stickiness just before we append assistant reply
+            shouldStickRef.current = isNearBottom();
+
             if (data.choices && data.choices[0]) {
                 setMessages(prev => [...prev, {
                     role: 'assistant',
@@ -93,6 +81,7 @@ function AICoach({ messages, setMessages, isMobile }) {
             }
         } catch (error) {
             console.error('Error:', error);
+            shouldStickRef.current = isNearBottom();
             setMessages(prev => [...prev, {
                 role: 'assistant',
                 content: 'Connection issue. Please try again.'
@@ -102,9 +91,13 @@ function AICoach({ messages, setMessages, isMobile }) {
         }
     };
 
+    // helps keep input visible when mobile keyboard opens
+    const handleFocus = () => setTimeout(() => scrollToBottom(true), 250);
+
     return (
         <div className={`ai-coach ${isMobile ? 'is-mobile' : ''}`}>
-            <div className="ai-coach__scroll">
+            {/* attach the ref here */}
+            <div className="ai-coach__scroll" ref={scrollRef}>
                 {messages.map((msg, i) => (
                     <div
                         key={i}
@@ -134,7 +127,10 @@ function AICoach({ messages, setMessages, isMobile }) {
                     type="text"
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
-                    onKeyDown={(e) => e.key === 'Enter' && !loading && sendMessage()}
+                    onFocus={handleFocus}
+                    onKeyDown={(e) => {
+                        if (e.key === 'Enter' && !loading) sendMessage();
+                    }}
                     placeholder={isMobile ? 'Ask...' : 'Ask about strategies, products, scaling...'}
                     className="composer__input"
                     disabled={loading}
