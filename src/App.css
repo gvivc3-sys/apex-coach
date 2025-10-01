@@ -25,6 +25,38 @@
     --accent-red-05: rgba(220, 38, 38, 0.05);
 }
 
+/* Make the root take the full height */
+html, body, #root {
+    height: 100%;
+}
+
+/* The outer page wrapper (already in your JSX) */
+.dashboard-container {
+    min-height: 100dvh; /* viewport height, mobile-safe */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Let the main content expand to fill leftover space */
+.mainContent {
+    flex: 1 0 auto; /* grows to keep footer at the bottom */
+    /* keep your existing max-width/margins/padding from earlier */
+}
+
+/* Push the footer to the bottom when content is short */
+.site-footer {
+    margin-top: auto;
+}
+
+:root {
+    --header-h: 72px;
+}
+/* adjust to your actual header height */
+
+.dashboard-container {
+    padding-top: var(--header-h);
+}
+
 /* Reset */
 * {
     margin: 0;

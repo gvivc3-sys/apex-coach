@@ -186,9 +186,6 @@ function Dashboard({ user }) {
                 </div>
             </footer>
             );
-        }
-
-
             {showProfile && (
                 <UserProfile user={user} onClose={() => setShowProfile(false)} />
             )}
