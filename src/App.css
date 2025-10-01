@@ -483,6 +483,13 @@ footer {
     text-align: center;
 }
 
+.user-button {
+    background: transparent;
+    border: 1px solid var(--border-gray);
+    color: var(--text-white);
+    cursor: pointer;
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
     .nav-container {
@@ -505,7 +512,7 @@ footer {
     /* Responsive tweaks for dashboard and grids */
     .mainContent {
         max-width: 100%;
-        padding: var(--space-md);
+        padding: var(--space-sm);
     }
     /* Collapse tutorial grid to a single column on small screens */
     .tutorialGrid {
@@ -531,13 +538,6 @@ footer {
     /* Shrink header logo and action button sizes on mobile */
     .logo {
         font-size: 20px;
-    }
-
-    .user-button {
-        background: transparent;
-        border: 1px solid var(--border-gray);
-        color: var(--text-white);
-        cursor: pointer;
     }
 
     .nav-links button {
@@ -592,7 +592,6 @@ footer {
 
     .navPillButtonActive {
         background: var(--color-accent-gold);
-        color: var(--color-bg);
     }
 }
 
@@ -656,7 +655,7 @@ footer {
 .mainContent {
     max-width: 960px;
     margin-inline: auto;
-    padding: var(--space-lg);
+
     display: flex;
     flex-direction: column;
     gap: var(--space-lg);
