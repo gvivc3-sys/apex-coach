@@ -1,6 +1,6 @@
 ﻿import { useState, useEffect } from 'react';
 import { supabase } from './supabase';
-import './app.css';
+import './App.css';
 
 /**
  * UserProfile component

@@ -4,7 +4,7 @@ import AICoach from './AICoach';
 import UserProfile from './UserProfile';
 import Header from './Header';
 import Onboarding from './Onboarding';
-import './app.css';
+import './App.css';
 
 /**
  * Dashboard component
