@@ -1,6 +1,6 @@
 ﻿import { useState, useEffect, useRef } from 'react';
 import { supabase } from './supabase';
-import './aiCoach.css';
+import './AICoach.css';
 
 /* (You can keep your top-level sendMessage with usage limits here if you use it elsewhere) */
 
