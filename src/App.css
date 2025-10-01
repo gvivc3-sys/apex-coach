@@ -589,14 +589,7 @@ footer {
 
 /* Container for the pill buttons */
 .navPillContainer {
-    display: inline-flex;
-    gap: var(--space-sm);
-    background: rgba(255, 255, 255, 0.05);
-    padding: var(--space-sm);
-    border-radius: var(--radius-sm);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 }
 
 /* Each tab button */
@@ -609,7 +602,6 @@ footer {
     cursor: pointer;
     font-size: 14px;
     font-family: inherit;
-    font-weight: 400;
     background: transparent;
     color: var(--color-text-secondary);
     transition: color 0.3s, background 0.3s;
@@ -622,6 +614,7 @@ footer {
 /* Active tab button */
 .navPillButtonActive {
     background: linear-gradient(45deg, var(--color-accent-red), var(--color-accent-gold));
+    color: var(--color-text-primary);
 }
 
 /* Main content area of the dashboard */

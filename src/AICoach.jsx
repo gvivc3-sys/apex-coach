@@ -3,16 +3,14 @@ import { supabase } from './supabase';
 import ReactMarkdown from 'react-markdown';
 import './AICoach.css';
 
-/* (You can keep your top-level sendMessage with usage limits here if you use it elsewhere) */
-
 function AICoach({ messages, setMessages, isMobile }) {
     const [input, setInput] = useState('');
     const [loading, setLoading] = useState(false);
+    const [loadingHistory, setLoadingHistory] = useState(true);
     const textareaRef = useRef(null);
 
-    // 🔽 smart auto-scroll bits
     const scrollRef = useRef(null);
-    const shouldStickRef = useRef(true); // were we near bottom before the update?
+    const shouldStickRef = useRef(true);
 
     const scrollToBottom = (smooth = true) => {
         const el = scrollRef.current;
@@ -23,30 +21,78 @@ function AICoach({ messages, setMessages, isMobile }) {
     const isNearBottom = () => {
         const el = scrollRef.current;
         if (!el) return true;
-        const threshold = 80; // px
+        const threshold = 80;
         return el.scrollHeight - el.scrollTop - el.clientHeight < threshold;
     };
 
     const handleChange = (e) => {
         setInput(e.target.value);
-        // Reset height to let scrollHeight shrink as well
         textareaRef.current.style.height = 'auto';
-        // Set height to scrollHeight to fit content
         textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
     };
 
-
-    // on mount
+    // 🆕 Load chat history on mount
     useEffect(() => {
-        scrollToBottom(false);
+        loadChatHistory();
     }, []);
 
-    // when messages change, only autoscroll if we were near the bottom before the change
+    const loadChatHistory = async () => {
+        try {
+            const { data: { user } } = await supabase.auth.getUser();
+
+            if (!user) {
+                setLoadingHistory(false);
+                return;
+            }
+
+            const { data, error } = await supabase
+                .from('chat_messages')
+                .select('role, content, created_at')
+                .eq('user_id', user.id)
+                .order('created_at', { ascending: true });
+
+            if (error) throw error;
+
+            if (data && data.length > 0) {
+                setMessages(data.map(msg => ({
+                    role: msg.role,
+                    content: msg.content
+                })));
+            }
+        } catch (error) {
+            console.error('Error loading chat history:', error);
+        } finally {
+            setLoadingHistory(false);
+            // Scroll to bottom after loading history
+            setTimeout(() => scrollToBottom(false), 100);
+        }
+    };
+
+    // 🆕 Save a message to Supabase
+    const saveMessage = async (role, content) => {
+        try {
+            const { data: { user } } = await supabase.auth.getUser();
+
+            if (!user) return;
+
+            const { error } = await supabase
+                .from('chat_messages')
+                .insert([{
+                    user_id: user.id,
+                    role: role,
+                    content: content
+                }]);
+
+            if (error) throw error;
+        } catch (error) {
+            console.error('Error saving message:', error);
+        }
+    };
+
     useEffect(() => {
         if (shouldStickRef.current) scrollToBottom(true);
     }, [messages]);
 
-    // when "Thinking..." appears/disappears
     useEffect(() => {
         if (loading && shouldStickRef.current) scrollToBottom(true);
     }, [loading]);
@@ -54,7 +100,6 @@ function AICoach({ messages, setMessages, isMobile }) {
     const sendMessage = async () => {
         if (!input.trim()) return;
 
-        // capture whether we're at bottom before UI updates
         shouldStickRef.current = isNearBottom();
 
         const userMessage = { role: 'user', content: input };
@@ -62,6 +107,9 @@ function AICoach({ messages, setMessages, isMobile }) {
         setMessages(newMessages);
         setInput('');
         setLoading(true);
+
+        // 🆕 Save user message
+        await saveMessage('user', input);
 
         try {
             const { data: { user } } = await supabase.auth.getUser();
@@ -81,33 +129,85 @@ function AICoach({ messages, setMessages, isMobile }) {
 
             const data = await response.json();
 
-            // again, capture stickiness just before we append assistant reply
             shouldStickRef.current = isNearBottom();
 
             if (data.choices && data.choices[0]) {
+                const assistantContent = data.choices[0].message.content;
+
                 setMessages(prev => [...prev, {
                     role: 'assistant',
-                    content: data.choices[0].message.content
+                    content: assistantContent
                 }]);
+
+                // 🆕 Save assistant message
+                await saveMessage('assistant', assistantContent);
             }
         } catch (error) {
             console.error('Error:', error);
             shouldStickRef.current = isNearBottom();
+            const errorContent = 'Connection issue. Please try again.';
+
             setMessages(prev => [...prev, {
                 role: 'assistant',
-                content: 'Connection issue. Please try again.'
+                content: errorContent
             }]);
+
+            await saveMessage('assistant', errorContent);
         } finally {
             setLoading(false);
         }
     };
 
-    // helps keep input visible when mobile keyboard opens
     const handleFocus = () => setTimeout(() => scrollToBottom(true), 250);
+
+    // 🆕 Add clear chat function
+    const clearChat = async () => {
+        if (!window.confirm('Clear all chat history?')) return;
+
+        try {
+            const { data: { user } } = await supabase.auth.getUser();
+
+            if (!user) return;
+
+            const { error } = await supabase
+                .from('chat_messages')
+                .delete()
+                .eq('user_id', user.id);
+
+            if (error) throw error;
+
+            setMessages([]);
+        } catch (error) {
+            console.error('Error clearing chat:', error);
+        }
+    };
+
+    if (loadingHistory) {
+        return (
+            <div className={`ai-coach ${isMobile ? 'is-mobile' : ''}`}>
+                <div className="ai-coach__scroll">
+                    <div className="msg-row align-start">
+                        <div className="bubble from-assistant">
+                            <span className="muted">Loading chat history...</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        );
+    }
 
     return (
         <div className={`ai-coach ${isMobile ? 'is-mobile' : ''}`}>
             <div className="ai-coach__scroll" ref={scrollRef}>
+                {messages.length === 0 && (
+                    <div className="msg-row align-start">
+                        <div className="bubble from-assistant">
+                            <div className="assistant-label">APEX COACH</div>
+                            Hey! Ready to make money online? Ask me anything about dropshipping, affiliate marketing, or flipping.
+                        </div>
+                    </div>
+                )}
+
                 {messages.map((msg, i) => (
                     <div
                         key={i}
@@ -117,7 +217,6 @@ function AICoach({ messages, setMessages, isMobile }) {
                             {msg.role === 'assistant' && (
                                 <div className="assistant-label">APEX COACH</div>
                             )}
-                            {/* 👇 Use ReactMarkdown for assistant messages */}
                             {msg.role === 'assistant' ? (
                                 <ReactMarkdown
                                     components={{
@@ -144,6 +243,15 @@ function AICoach({ messages, setMessages, isMobile }) {
             </div>
 
             <div className="composer">
+                {messages.length > 0 && (
+                    <button
+                        onClick={clearChat}
+                        className="composer__clearBtn"
+                        title="Clear chat history"
+                    >
+                        🗑️
+                    </button>
+                )}
                 <textarea
                     ref={textareaRef}
                     value={input}
@@ -151,11 +259,11 @@ function AICoach({ messages, setMessages, isMobile }) {
                     onFocus={handleFocus}
                     onKeyDown={(e) => {
                         if (e.key === 'Enter' && !e.shiftKey && !loading) {
-                            e.preventDefault(); // Prevent newline
+                            e.preventDefault();
                             sendMessage();
                         }
                     }}
-                    placeholder={isMobile ? 'Ask…' : 'Ask Apex...'}
+                    placeholder={isMobile ? 'Ask…' : 'Ask about strategies, products, scaling…'}
                     className="composer__input"
                     rows={1}
                     style={{ overflowY: 'hidden', resize: 'none' }}
