@@ -1,0 +1,176 @@
+/* Styles for the AICoach chat component */
+/*
+ * This stylesheet provides a sleek dark chat UI that leverages the
+ * design tokens defined in the global redesign.css (colours, spacing,
+ * radii). Import this file in your AICoach.jsx component to replace
+ * the generic App.css styles.
+ */
+
+/* Container for the AI coach */
+.ai-coach {
+    display: flex;
+    flex-direction: column;
+    background: var(--color-bg-alt);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    height: 600px;
+}
+
+    /* Mobile height adjustment */
+    .ai-coach.is-mobile {
+        height: calc(100vh - 250px);
+    }
+
+/* Scrollable message area */
+.ai-coach__scroll {
+    flex: 1;
+    overflow-y: auto;
+    padding: var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    scroll-behavior: smooth;
+    scrollbar-gutter: stable both-edges;
+    overscroll-behavior: contain;
+}
+
+/* Chat rows */
+.msg-row {
+    display: flex;
+}
+
+    .msg-row.align-start {
+        justify-content: flex-start;
+    }
+
+    .msg-row.align-end {
+        justify-content: flex-end;
+    }
+
+/* Chat bubbles */
+.bubble {
+    max-width: 70%;
+    padding: var(--space-md) var(--space-lg);
+    line-height: 1.6;
+    border: 1px solid var(--color-border);
+    font-size: 15px;
+    word-break: break-word;
+    border-radius: var(--radius-lg);
+}
+
+    .bubble.from-user {
+        background: var(--color-border);
+        color: var(--color-text-secondary);
+        border-radius: var(--radius-lg) var(--radius-lg) var(--radius-sm) var(--radius-lg);
+    }
+
+    .bubble.from-assistant {
+        background: var(--color-card-bg);
+        color: var(--color-text-primary);
+        border-radius: var(--radius-lg) var(--radius-lg) var(--radius-lg) var(--radius-sm);
+    }
+
+/* Assistant label */
+.assistant-label {
+    font-size: 11px;
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-xs);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+/* Composer (input + send button) */
+.composer {
+    display: flex;
+    gap: var(--space-md);
+    align-items: center;
+    padding: var(--space-md);
+    background: var(--color-bg);
+    border-top: 1px solid var(--color-border);
+}
+
+.composer__input {
+    flex: 1;
+    padding: var(--space-sm) var(--space-md);
+    background: var(--color-card-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    font-size: 16px;
+    outline: none;
+    color: var(--color-text-primary);
+    transition: border-color 0.2s;
+}
+
+    .composer__input:focus {
+        border-color: var(--color-accent-gold);
+    }
+
+.composer__sendBtn {
+    padding: var(--space-sm) var(--space-md);
+    min-width: 88px;
+    border-radius: var(--radius-lg);
+    border: none;
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+    background: var(--color-accent-gold);
+    color: var(--color-bg);
+    transition: transform 0.15s ease;
+}
+
+    .composer__sendBtn:active {
+        transform: translateY(1px);
+    }
+
+    .composer__sendBtn:disabled {
+        background: var(--color-border);
+        color: var(--color-text-muted);
+        cursor: default;
+    }
+
+/* Micro animation on newest bubble */
+.ai-coach__scroll .msg-row:last-child .bubble {
+    animation: bubbleIn 140ms ease-out;
+}
+
+@keyframes bubbleIn {
+    from {
+        transform: translateY(4px);
+        opacity: 0.85;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Mobile tweaks */
+@media (max-width: 768px) {
+    .ai-coach {
+        height: calc(100vh - 250px);
+        border-radius: var(--radius-md);
+    }
+
+    .ai-coach__scroll {
+        padding: var(--space-md);
+        gap: var(--space-md);
+    }
+
+    .bubble {
+        max-width: 85%;
+        padding: var(--space-sm) var(--space-md);
+        font-size: 14px;
+    }
+
+    .composer {
+        gap: var(--space-sm);
+        padding: var(--space-md);
+    }
+
+    .composer__sendBtn {
+        padding: var(--space-sm) var(--space-md);
+        font-size: 14px;
+    }
+}
