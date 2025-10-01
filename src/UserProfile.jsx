@@ -1,7 +1,14 @@
 ﻿import { useState, useEffect } from 'react';
 import { supabase } from './supabase';
-import './App.css';
+import './app.css';
 
+/**
+ * UserProfile component
+ *
+ * This version ties into the redesigned CSS by using
+ * our colour variables and buttons. The logic remains the same as
+ * the original implementation.
+ */
 function UserProfile({ user, onClose }) {
     const [loading, setLoading] = useState(false);
     const [username, setUsername] = useState('');
@@ -13,11 +20,12 @@ function UserProfile({ user, onClose }) {
     useEffect(() => {
         fetchProfile();
         fetchPreferences();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const fetchProfile = async () => {
         try {
-            const { data, error } = await supabase
+            const { data } = await supabase
                 .from('profiles')
                 .select('username')
                 .eq('id', user.id)
@@ -33,7 +41,7 @@ function UserProfile({ user, onClose }) {
 
     const fetchPreferences = async () => {
         try {
-            const { data, error } = await supabase
+            const { data } = await supabase
                 .from('user_preferences')
                 .select('*')
                 .eq('id', user.id)
@@ -92,44 +100,54 @@ function UserProfile({ user, onClose }) {
     };
 
     const toggleGoal = (goal) => {
-        setPreferences(prev => ({
+        setPreferences((prev) => ({
             ...prev,
             goals: prev.goals.includes(goal)
-                ? prev.goals.filter(g => g !== goal)
+                ? prev.goals.filter((g) => g !== goal)
                 : [...prev.goals, goal]
         }));
     };
 
     return (
-        <div style={{
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            background: 'rgba(0, 0, 0, 0.8)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            zIndex: 2000
-        }}>
-            <div style={{
-                background: 'var(--secondary-black)',
-                border: '1px solid var(--border-gray)',
-                padding: '40px',
-                maxWidth: '600px',
-                width: '90%',
-                maxHeight: '80vh',
-                overflow: 'auto'
-            }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '30px' }}>
+        <div
+            style={{
+                position: 'fixed',
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                background: 'rgba(0, 0, 0, 0.8)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                zIndex: 2000
+            }}
+        >
+            <div
+                style={{
+                    background: 'var(--color-card-bg)',
+                    border: '1px solid var(--color-border)',
+                    padding: '40px',
+                    maxWidth: '600px',
+                    width: '90%',
+                    maxHeight: '80vh',
+                    overflow: 'auto'
+                }}
+            >
+                <div
+                    style={{
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        marginBottom: '30px'
+                    }}
+                >
                     <h2>Your Dashboard</h2>
                     <button
                         onClick={onClose}
                         style={{
                             background: 'transparent',
                             border: 'none',
-                            color: 'var(--text-gray)',
+                            color: 'var(--color-text-secondary)',
                             fontSize: '24px',
                             cursor: 'pointer'
                         }}
@@ -139,15 +157,29 @@ function UserProfile({ user, onClose }) {
                 </div>
 
                 {/* Goals Section */}
-                <div style={{ marginBottom: '40px', padding: '20px', background: 'var(--primary-black)', border: '1px solid var(--border-gray)' }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
+                <div
+                    style={{
+                        marginBottom: '40px',
+                        padding: '20px',
+                        background: 'var(--color-card-bg)',
+                        border: '1px solid var(--color-border)'
+                    }}
+                >
+                    <div
+                        style={{
+                            display: 'flex',
+                            justifyContent: 'space-between',
+                            alignItems: 'center',
+                            marginBottom: '20px'
+                        }}
+                    >
                         <h3 style={{ margin: 0 }}>Your Goals</h3>
                         <button
                             onClick={() => setEditingGoals(!editingGoals)}
                             style={{
                                 background: 'transparent',
-                                border: '1px solid var(--border-gray)',
-                                color: 'var(--text-gray)',
+                                border: `1px solid var(--color-border)`,
+                                color: 'var(--color-text-secondary)',
                                 padding: '5px 15px',
                                 cursor: 'pointer',
                                 fontSize: '12px'
@@ -160,24 +192,47 @@ function UserProfile({ user, onClose }) {
                     {preferences && (
                         <div>
                             <div style={{ marginBottom: '20px' }}>
-                                <p style={{ color: 'var(--text-gray)', fontSize: '12px', marginBottom: '5px' }}>TARGET</p>
-                                <h3 style={{ margin: 0, color: 'var(--accent-gold)' }}>
+                                <p
+                                    style={{
+                                        color: 'var(--color-text-secondary)',
+                                        fontSize: '12px',
+                                        marginBottom: '5px'
+                                    }}
+                                >
+                                    TARGET
+                                </p>
+                                <h3
+                                    style={{ margin: 0, color: 'var(--color-accent-gold)' }}
+                                >
                                     ${parseInt(preferences.monthly_target).toLocaleString()}/month
                                 </h3>
                             </div>
 
                             <div style={{ marginBottom: '20px' }}>
-                                <p style={{ color: 'var(--text-gray)', fontSize: '12px', marginBottom: '10px' }}>SKILL LEVEL</p>
+                                <p
+                                    style={{
+                                        color: 'var(--color-text-secondary)',
+                                        fontSize: '12px',
+                                        marginBottom: '10px'
+                                    }}
+                                >
+                                    SKILL LEVEL
+                                </p>
                                 {editingGoals ? (
                                     <select
                                         value={preferences.skill_level}
-                                        onChange={(e) => setPreferences(prev => ({ ...prev, skill_level: e.target.value }))}
+                                        onChange={(e) =>
+                                            setPreferences((prev) => ({
+                                                ...prev,
+                                                skill_level: e.target.value
+                                            }))
+                                        }
                                         style={{
                                             width: '100%',
                                             padding: '10px',
-                                            background: 'var(--secondary-black)',
-                                            border: '1px solid var(--border-gray)',
-                                            color: 'white',
+                                            background: 'var(--color-card-bg)',
+                                            border: '1px solid var(--color-border)',
+                                            color: 'var(--color-text-primary)',
                                             textTransform: 'capitalize'
                                         }}
                                     >
@@ -186,23 +241,51 @@ function UserProfile({ user, onClose }) {
                                         <option value="advanced">Advanced</option>
                                     </select>
                                 ) : (
-                                    <span style={{ textTransform: 'capitalize' }}>{preferences.skill_level}</span>
+                                    <span style={{ textTransform: 'capitalize' }}>
+                                        {preferences.skill_level}
+                                    </span>
                                 )}
                             </div>
 
                             <div>
-                                <p style={{ color: 'var(--text-gray)', fontSize: '12px', marginBottom: '10px' }}>FOCUS AREAS</p>
+                                <p
+                                    style={{
+                                        color: 'var(--color-text-secondary)',
+                                        fontSize: '12px',
+                                        marginBottom: '10px'
+                                    }}
+                                >
+                                    FOCUS AREAS
+                                </p>
                                 {editingGoals ? (
                                     <div>
-                                        {['dropshipping', 'affiliate', 'digital_products', 'flipping', 'content', 'freelancing', 'amazon_fba', 'print_on_demand'].map(goal => (
-                                            <label key={goal} style={{ display: 'block', marginBottom: '10px', cursor: 'pointer' }}>
+                                        {[
+                                            'dropshipping',
+                                            'affiliate',
+                                            'digital_products',
+                                            'flipping',
+                                            'content',
+                                            'freelancing',
+                                            'amazon_fba',
+                                            'print_on_demand'
+                                        ].map((goal) => (
+                                            <label
+                                                key={goal}
+                                                style={{
+                                                    display: 'block',
+                                                    marginBottom: '10px',
+                                                    cursor: 'pointer'
+                                                }}
+                                            >
                                                 <input
                                                     type="checkbox"
                                                     checked={preferences.goals.includes(goal)}
                                                     onChange={() => toggleGoal(goal)}
                                                     style={{ marginRight: '10px' }}
                                                 />
-                                                <span style={{ textTransform: 'capitalize' }}>{goal.replace('_', ' ')}</span>
+                                                <span style={{ textTransform: 'capitalize' }}>
+                                                    {goal.replace('_', ' ')}
+                                                </span>
                                             </label>
                                         ))}
                                         <button
@@ -215,16 +298,23 @@ function UserProfile({ user, onClose }) {
                                         </button>
                                     </div>
                                 ) : (
-                                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
-                                        {preferences.goals.map(goal => (
+                                    <div
+                                        style={{
+                                            display: 'flex',
+                                            flexWrap: 'wrap',
+                                            gap: '10px'
+                                        }}
+                                    >
+                                        {preferences.goals.map((goal) => (
                                             <span
                                                 key={goal}
                                                 style={{
-                                                    background: 'var(--secondary-black)',
+                                                    background: 'var(--color-card-bg)',
                                                     padding: '5px 15px',
-                                                    border: '1px solid var(--border-gray)',
+                                                    border: '1px solid var(--color-border)',
                                                     fontSize: '12px',
-                                                    textTransform: 'capitalize'
+                                                    textTransform: 'capitalize',
+                                                    color: 'var(--color-text-secondary)'
                                                 }}
                                             >
                                                 {goal.replace('_', ' ')}
@@ -240,7 +330,13 @@ function UserProfile({ user, onClose }) {
                 {/* Profile Settings */}
                 <div style={{ marginBottom: '30px' }}>
                     <h3>Profile Settings</h3>
-                    <label style={{ display: 'block', marginBottom: '10px', color: 'var(--text-gray)' }}>
+                    <label
+                        style={{
+                            display: 'block',
+                            marginBottom: '10px',
+                            color: 'var(--color-text-secondary)'
+                        }}
+                    >
                         Email
                     </label>
                     <input
@@ -250,9 +346,9 @@ function UserProfile({ user, onClose }) {
                         style={{
                             width: '100%',
                             padding: '15px',
-                            background: 'var(--primary-black)',
-                            border: '1px solid var(--border-gray)',
-                            color: 'var(--text-gray)',
+                            background: 'var(--color-card-bg)',
+                            border: '1px solid var(--color-border)',
+                            color: 'var(--color-text-secondary)',
                             fontSize: '16px',
                             opacity: 0.7
                         }}
@@ -260,7 +356,13 @@ function UserProfile({ user, onClose }) {
                 </div>
 
                 <div style={{ marginBottom: '30px' }}>
-                    <label style={{ display: 'block', marginBottom: '10px', color: 'var(--text-gray)' }}>
+                    <label
+                        style={{
+                            display: 'block',
+                            marginBottom: '10px',
+                            color: 'var(--color-text-secondary)'
+                        }}
+                    >
                         Username
                     </label>
                     <input
@@ -271,9 +373,9 @@ function UserProfile({ user, onClose }) {
                         style={{
                             width: '100%',
                             padding: '15px',
-                            background: 'var(--primary-black)',
-                            border: '1px solid var(--border-gray)',
-                            color: 'white',
+                            background: 'var(--color-card-bg)',
+                            border: '1px solid var(--color-border)',
+                            color: 'var(--color-text-primary)',
                             fontSize: '16px'
                         }}
                     />
@@ -289,11 +391,15 @@ function UserProfile({ user, onClose }) {
                 </button>
 
                 {message && (
-                    <p style={{
-                        marginTop: '20px',
-                        color: message.includes('updated') ? 'var(--accent-gold)' : 'var(--accent-red)',
-                        textAlign: 'center'
-                    }}>
+                    <p
+                        style={{
+                            marginTop: '20px',
+                            color: message.includes('updated')
+                                ? 'var(--color-accent-gold)'
+                                : 'var(--color-accent-red)',
+                            textAlign: 'center'
+                        }}
+                    >
                         {message}
                     </p>
                 )}

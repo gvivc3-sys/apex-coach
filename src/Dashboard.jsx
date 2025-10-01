@@ -4,8 +4,15 @@ import AICoach from './AICoach';
 import UserProfile from './UserProfile';
 import Header from './Header';
 import Onboarding from './Onboarding';
-import './App.css';
+import './app.css';
 
+/**
+ * Dashboard component
+ *
+ * This version of the dashboard uses the redesigned CSS tokens defined
+ * in `redesign.css`. It preserves the original layout and logic but
+ * updates the import and a few inline styles to tie into the new theme.
+ */
 function Dashboard({ user }) {
     const [showProfile, setShowProfile] = useState(false);
     const [hasPreferences, setHasPreferences] = useState(false);
@@ -13,7 +20,11 @@ function Dashboard({ user }) {
     const [activeTab, setActiveTab] = useState('chat');
     const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
     const [chatMessages, setChatMessages] = useState([
-        { role: 'assistant', content: 'Ready to build your online empire? Ask me anything - from finding winning products to scaling past $10K/month. No fluff, just actionable strategies.' }
+        {
+            role: 'assistant',
+            content:
+                'Ready to build your online empire? Ask me anything - from finding winning products to scaling past $10K/month. No fluff, just actionable strategies.'
+        }
     ]);
 
     const tutorials = [
@@ -44,7 +55,18 @@ function Dashboard({ user }) {
     };
 
     if (loading) {
-        return <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>Loading...</div>;
+        return (
+            <div
+                style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    height: '100vh'
+                }}
+            >
+                Loading...
+            </div>
+        );
     }
 
     if (!hasPreferences) {
@@ -89,7 +111,9 @@ function Dashboard({ user }) {
                             {tutorials.map((tutorial, i) => (
                                 <div key={i} className="tutorialCard">
                                     <h3 className="tutorialTitle">{tutorial.title}</h3>
-                                    <p className="tutorialMeta">{tutorial.time} • {tutorial.level}</p>
+                                    <p className="tutorialMeta">
+                                        {tutorial.time} • {tutorial.level}
+                                    </p>
                                 </div>
                             ))}
                         </div>
@@ -107,19 +131,29 @@ function Dashboard({ user }) {
                                 { week: 'Week 4', goal: 'Optimize & Automate', status: 'locked' }
                             ].map((item, i) => (
                                 <div key={i} className="roadmapItem">
-                                    <div className={
-                                        `roadmapCircle ${item.status === 'complete'
-                                            ? 'roadmapCircleComplete'
-                                            : item.status === 'current'
-                                                ? 'roadmapCircleCurrent'
-                                                : 'roadmapCircleLocked'
-                                        }`
-                                    }>
+                                    <div
+                                        className={`roadmapCircle ${item.status === 'complete'
+                                                ? 'roadmapCircleComplete'
+                                                : item.status === 'current'
+                                                    ? 'roadmapCircleCurrent'
+                                                    : 'roadmapCircleLocked'
+                                            }`}
+                                    >
                                         {item.status === 'complete' ? '✓' : i + 1}
                                     </div>
                                     <div style={{ flex: 1 }}>
-                                        <h3 className="tutorialTitle" style={{ margin: '0 0 5px 0', fontSize: '16px' }}>{item.week}</h3>
-                                        <p className="tutorialMeta" style={{ margin: 0 }}>{item.goal}</p>
+                                        <h3
+                                            className="tutorialTitle"
+                                            style={{ margin: '0 0 5px 0', fontSize: '16px' }}
+                                        >
+                                            {item.week}
+                                        </h3>
+                                        <p
+                                            className="tutorialMeta"
+                                            style={{ margin: 0 }}
+                                        >
+                                            {item.goal}
+                                        </p>
                                     </div>
                                 </div>
                             ))}
@@ -137,15 +171,36 @@ function Dashboard({ user }) {
                                 { term: 'Affiliate Marketing', def: 'Earning commissions by promoting products' },
                                 { term: 'Digital Products', def: 'Downloadable products like templates, courses' }
                             ].map((item, i) => (
-                                <div key={i} style={{ borderBottom: '1px solid #e0e0e0', paddingBottom: '15px' }}>
-                                    <h4 style={{ margin: '0 0 5px 0', fontSize: '16px' }}>{item.term}</h4>
-                                    <p style={{ margin: 0, fontSize: '14px', color: '#666' }}>{item.def}</p>
+                                <div
+                                    key={i}
+                                    style={{
+                                        borderBottom: `1px solid var(--color-border)`,
+                                        paddingBottom: 'var(--space-md)'
+                                    }}
+                                >
+                                    <h4
+                                        style={{
+                                            margin: '0 0 5px 0',
+                                            fontSize: '16px',
+                                            color: 'var(--color-text-primary)'
+                                        }}
+                                    >
+                                        {item.term}
+                                    </h4>
+                                    <p
+                                        style={{
+                                            margin: 0,
+                                            fontSize: '14px',
+                                            color: 'var(--color-text-secondary)'
+                                        }}
+                                    >
+                                        {item.def}
+                                    </p>
                                 </div>
                             ))}
                         </div>
                     </div>
                 )}
-
             </div>
 
             <footer className={`site-footer ${isMobile ? 'is-mobile' : ''}`}>
@@ -162,18 +217,30 @@ function Dashboard({ user }) {
                         <div className="footer__col">
                             <h4 className="footer__heading">Resources</h4>
                             <div className="footer__list">
-                                <a href="#" className="footer__link">Documentation</a>
-                                <a href="#" className="footer__link">Community</a>
-                                <a href="#" className="footer__link">Blog</a>
+                                <a href="#" className="footer__link">
+                                    Documentation
+                                </a>
+                                <a href="#" className="footer__link">
+                                    Community
+                                </a>
+                                <a href="#" className="footer__link">
+                                    Blog
+                                </a>
                             </div>
                         </div>
 
                         <div className="footer__col">
                             <h4 className="footer__heading">Support</h4>
                             <div className="footer__list">
-                                <a href="#" className="footer__link">Contact</a>
-                                <a href="#" className="footer__link">FAQ</a>
-                                <a href="#" className="footer__link">Terms</a>
+                                <a href="#" className="footer__link">
+                                    Contact
+                                </a>
+                                <a href="#" className="footer__link">
+                                    FAQ
+                                </a>
+                                <a href="#" className="footer__link">
+                                    Terms
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -185,9 +252,7 @@ function Dashboard({ user }) {
                     </p>
                 </div>
             </footer>
-            {showProfile && (
-                <UserProfile user={user} onClose={() => setShowProfile(false)} />
-            )}
+            {showProfile && <UserProfile user={user} onClose={() => setShowProfile(false)} />}
         </div>
     );
 }
