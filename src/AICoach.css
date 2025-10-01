@@ -1,4 +1,4 @@
-/* Styles for the AICoach chat component */
+﻿/* Styles for the AICoach chat component */
 /*
  * This stylesheet provides a sleek dark chat UI that leverages the
  * design tokens defined in the global redesign.css (colours, spacing,
@@ -92,16 +92,19 @@
 }
 
 .composer__input {
-    width: 100%;
     flex: 1;
     padding: var(--space-sm) var(--space-md);
     background: var(--color-card-bg);
     border: 1px solid var(--color-border);
-    border-radius: var(--radius-sm);
+    border-radius: var(--radius-lg);
     font-size: 16px;
-    outline: none;
     color: var(--color-text-primary);
+    outline: none;
     transition: border-color 0.2s;
+    overflow-y: hidden; /* hide scrollbars while auto‑resizing */
+    resize: none; /* prevent manual resizing */
+    min-height: 36px; /* your preferred minimum height */
+    max-height: 160px; /* optional: cap the height so it doesn’t take over */
 }
 
     .composer__input:focus {
@@ -109,7 +112,6 @@
     }
 
 .composer__sendBtn {
-    width: 100%;
     padding-block: var(--space-sm);
     padding-inline: var(--space-lg);
     border: none;
@@ -158,6 +160,9 @@
         border-radius: var(--radius-md);
     }
 
+    .composer__sendBtn {
+        width: 100%;
+    }
     .ai-coach__scroll {
         padding: var(--space-md);
         gap: var(--space-md);

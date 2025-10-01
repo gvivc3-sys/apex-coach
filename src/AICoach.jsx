@@ -6,6 +6,7 @@ import './AICoach.css';
 
 function AICoach({ messages, setMessages, isMobile }) {
     const [input, setInput] = useState('');
+    const textareaRef = useRef(null);
     const [loading, setLoading] = useState(false);
 
     // 🔽 smart auto-scroll bits
@@ -23,6 +24,14 @@ function AICoach({ messages, setMessages, isMobile }) {
         if (!el) return true;
         const threshold = 80; // px
         return el.scrollHeight - el.scrollTop - el.clientHeight < threshold;
+    };
+
+    const handleChange = (e) => {
+        setInput(e.target.value);
+        // Reset height to let scrollHeight shrink as well
+        textareaRef.current.style.height = 'auto';
+        // Set height to scrollHeight to fit content
+        textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
     };
 
     // on mount
@@ -123,27 +132,27 @@ function AICoach({ messages, setMessages, isMobile }) {
             </div>
 
             <div className="composer">
-                <input
-                    type="text"
+                <textarea
+                    ref={textareaRef}
                     value={input}
-                    onChange={(e) => setInput(e.target.value)}
+                    onChange={handleChange}
                     onFocus={handleFocus}
                     onKeyDown={(e) => {
-                        if (e.key === 'Enter' && !loading) sendMessage();
+                        if (e.key === 'Enter' && !e.shiftKey && !loading) {
+                            e.preventDefault(); // Prevent newline
+                            sendMessage();
+                        }
                     }}
-                    placeholder={isMobile ? 'Ask...' : 'Ask Apex'}
+                    placeholder={isMobile ? 'Ask…' : 'Ask about strategies, products, scaling…'}
                     className="composer__input"
+                    rows={1}
+                    style={{ overflowY: 'hidden', resize: 'none' }}
                     disabled={loading}
                 />
-                <button
-                    onClick={sendMessage}
-                    disabled={loading}
-                    className="composer__sendBtn"
-                >
+                <button onClick={sendMessage} disabled={loading} className="composer__sendBtn">
                     Send
                 </button>
             </div>
-        </div>
     );
 }
 

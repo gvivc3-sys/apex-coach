@@ -534,7 +534,7 @@ footer {
     }
 
     .user-button {
-        background: transparent
+        background: transparent;
         border: 1px solid var(--border-gray);
         color: var(--text-white);
         cursor: pointer;
