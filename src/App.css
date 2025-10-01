@@ -594,7 +594,149 @@ footer {
     font-size: 12px;
 }
 
+/* Main content wrapper */
+.mainContent {
+    max-width: 960px; /* practical width */
+    margin: 0 auto; /* center */
+    padding: 24px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Generic content card */
+.contentCard {
+    background: var(--secondary-black);
+    border: 1px solid var(--border-gray);
+    border-radius: 12px;
+    padding: 24px;
+    color: var(--text-white);
+}
+
+    .contentCard > h2 {
+        margin: 0 0 16px 0;
+        font-size: 22px;
+        letter-spacing: -0.2px;
+    }
+
+/* Tutorials */
+.tutorialGrid {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+}
+
+.tutorialCard {
+    background: var(--primary-black);
+    border: 1px solid var(--border-gray);
+    border-radius: 12px;
+    padding: 16px;
+    transition: border-color 0.2s, transform 0.2s;
+}
+
+    .tutorialCard:hover {
+        border-color: var(--accent-gold);
+        transform: translateY(-2px);
+    }
+
+.tutorialTitle {
+    margin: 0 0 6px 0;
+    font-size: 16px;
+    color: var(--text-white);
+}
+
+.tutorialMeta {
+    margin: 0;
+    font-size: 13px;
+    color: var(--text-gray);
+}
+
+/* Roadmap */
+.roadmapItem {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border-gray);
+}
+
+    .roadmapItem:last-child {
+        border-bottom: 0;
+    }
+
+.roadmapCircle {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 14px;
+    flex-shrink: 0;
+    background: var(--primary-black);
+    color: var(--text-gray);
+    border: 1px solid var(--border-gray);
+}
+
+.roadmapCircleComplete {
+    background: linear-gradient(45deg, var(--accent-red), var(--accent-gold));
+    color: var(--text-white);
+    border-color: transparent;
+}
+
+.roadmapCircleCurrent {
+    color: var(--text-white);
+    border-color: var(--accent-gold);
+    box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.15);
+}
+
+.roadmapCircleLocked {
+    opacity: 0.6;
+}
+
+/* Glossary (dark theme) */
+.glossaryRow {
+    border-bottom: 1px solid var(--border-gray);
+    padding-bottom: 15px;
+}
+
+    .glossaryRow:last-child {
+        border-bottom: 0;
+    }
+
+.glossaryTerm {
+    margin: 0 0 5px 0;
+    font-size: 16px;
+    color: var(--text-white);
+}
+
+.glossaryDef {
+    margin: 0;
+    font-size: 14px;
+    color: var(--text-gray);
+}
+
+/* Utility for inline flex:1 replacement */
+.utilFlex1 {
+    flex: 1;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .mainContent {
+        max-width: 100%;
+        padding: 20px;
+    }
+
+    .tutorialGrid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
 /* AICoach container */
+
 .ai-coach {
     height: 600px;
     display: flex;

@@ -73,7 +73,6 @@ function Dashboard({ user }) {
                     ))}
                 </div>
             </div>
-
             <div className="mainContent">
                 {activeTab === 'chat' && (
                     <AICoach
@@ -187,7 +186,6 @@ function Dashboard({ user }) {
                 </div>
             </footer>
             );
-}
 
 
             {showProfile && (
