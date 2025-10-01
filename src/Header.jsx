@@ -11,7 +11,7 @@ function Header({ user, showProfile, setShowProfile }) {
     return (
         <nav className="nav-fixed">
             <div className="nav-container">
-                <div className="logo">APEX</div>
+                <div className="logo"><a href="/">APEX</a></div>
                 <div className="nav-links">
                     {user ? (
                         <>
