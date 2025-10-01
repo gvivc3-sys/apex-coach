@@ -131,7 +131,7 @@ function AICoach({ messages, setMessages, isMobile }) {
                     onKeyDown={(e) => {
                         if (e.key === 'Enter' && !loading) sendMessage();
                     }}
-                    placeholder={isMobile ? 'Ask...' : 'Ask about strategies, products, scaling...'}
+                    placeholder={isMobile ? 'Ask...' : 'Ask Apex'}
                     className="composer__input"
                     disabled={loading}
                 />

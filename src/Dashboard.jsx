@@ -82,8 +82,6 @@ function Dashboard({ user }) {
                     {[
                         { id: 'chat', label: 'AI Coach' },
                         { id: 'tutorials', label: 'Tutorials' },
-                        { id: 'roadmap', label: 'Roadmap' },
-                        { id: 'glossary', label: 'Glossary' }
                     ].map((tab) => (
                         <button
                             key={tab.id}
@@ -113,88 +111,6 @@ function Dashboard({ user }) {
                                     <h3 className="tutorialTitle">{tutorial.title}</h3>
                                     <p className="tutorialMeta">
                                         {tutorial.time} • {tutorial.level}
-                                    </p>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                )}
-
-                {activeTab === 'roadmap' && (
-                    <div className="contentCard">
-                        <h2>Your $10K/Month Roadmap</h2>
-                        <div>
-                            {[
-                                { week: 'Week 1', goal: 'First $100', status: 'complete' },
-                                { week: 'Week 2', goal: 'Scale to $500', status: 'current' },
-                                { week: 'Week 3', goal: 'Hit $1,000', status: 'locked' },
-                                { week: 'Week 4', goal: 'Optimize & Automate', status: 'locked' }
-                            ].map((item, i) => (
-                                <div key={i} className="roadmapItem">
-                                    <div
-                                        className={`roadmapCircle ${item.status === 'complete'
-                                                ? 'roadmapCircleComplete'
-                                                : item.status === 'current'
-                                                    ? 'roadmapCircleCurrent'
-                                                    : 'roadmapCircleLocked'
-                                            }`}
-                                    >
-                                        {item.status === 'complete' ? '✓' : i + 1}
-                                    </div>
-                                    <div style={{ flex: 1 }}>
-                                        <h3
-                                            className="tutorialTitle"
-                                            style={{ margin: '0 0 5px 0', fontSize: '16px' }}
-                                        >
-                                            {item.week}
-                                        </h3>
-                                        <p
-                                            className="tutorialMeta"
-                                            style={{ margin: 0 }}
-                                        >
-                                            {item.goal}
-                                        </p>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                )}
-
-                {activeTab === 'glossary' && (
-                    <div className="contentCard">
-                        <h2>Internet Money Glossary</h2>
-                        <div className="tutorialGrid">
-                            {[
-                                { term: 'Dropshipping', def: 'Selling products without holding inventory' },
-                                { term: 'POD', def: 'Print on Demand - custom products printed per order' },
-                                { term: 'Affiliate Marketing', def: 'Earning commissions by promoting products' },
-                                { term: 'Digital Products', def: 'Downloadable products like templates, courses' }
-                            ].map((item, i) => (
-                                <div
-                                    key={i}
-                                    style={{
-                                        borderBottom: `1px solid var(--color-border)`,
-                                        paddingBottom: 'var(--space-md)'
-                                    }}
-                                >
-                                    <h4
-                                        style={{
-                                            margin: '0 0 5px 0',
-                                            fontSize: '16px',
-                                            color: 'var(--color-text-primary)'
-                                        }}
-                                    >
-                                        {item.term}
-                                    </h4>
-                                    <p
-                                        style={{
-                                            margin: 0,
-                                            fontSize: '14px',
-                                            color: 'var(--color-text-secondary)'
-                                        }}
-                                    >
-                                        {item.def}
                                     </p>
                                 </div>
                             ))}

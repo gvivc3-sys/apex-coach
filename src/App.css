@@ -533,8 +533,15 @@ footer {
         font-size: 20px;
     }
 
+    .user-button {
+        background: transparent
+        border: 1px solid var(--border-gray);
+        color: var(--text-white);
+        cursor: pointer;
+    }
+
     .nav-links button {
-        padding: var(--space-xs) var(--space-sm);
+        padding: var(--space-sm) var(--space-sm);
         font-size: 10px;
     }
     /* Compress pill navigation spacing */

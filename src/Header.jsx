@@ -3,11 +3,9 @@ import './App.css';
 
 function Header({ user, showProfile, setShowProfile }) {
     const handleSignOut = async () => {
-        const { error } = await supabase.auth.signOut();
-        if (!error) {
-            // optionally redirect to landing page
-            window.location.href = '/';
-        }
+        await supabase.auth.signOut();
+        // Force a full page reload to clear everything
+        window.location.replace(window.location.origin);
     };
 
     return (
@@ -17,16 +15,8 @@ function Header({ user, showProfile, setShowProfile }) {
                 <div className="nav-links">
                     {user ? (
                         <>
-                            <button
+                            <button class="user-button"
                                 onClick={() => setShowProfile && setShowProfile(true)}
-                                style={{
-                                    background: 'transparent',
-                                    border: '1px solid var(--border-gray)',
-                                    color: 'var(--text-white)',
-                                    padding: '8px 16px',
-                                    cursor: 'pointer',
-                                    marginRight: '10px'
-                                }}
                             >
                                 {user.email.split('@')[0]}
                             </button>
