@@ -593,7 +593,7 @@ footer {
     gap: var(--space-sm);
     background: rgba(255, 255, 255, 0.05);
     padding: var(--space-sm);
-    border-radius: 9999px;
+    border-radius: var(--radius-sm);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.1);
     margin-bottom: 2rem;
@@ -602,8 +602,10 @@ footer {
 /* Each tab button */
 .navPillButton {
     border: none;
+    font-weight: 700;
+    text-transform: uppercase;
     padding: var(--space-sm) var(--space-md);
-    border-radius: 9999px;
+    border-radius: var(--radius-sm);
     cursor: pointer;
     font-size: 14px;
     font-family: inherit;
@@ -620,7 +622,6 @@ footer {
 /* Active tab button */
 .navPillButtonActive {
     background: linear-gradient(45deg, var(--color-accent-red), var(--color-accent-gold));
-    color: var(--color-bg);
 }
 
 /* Main content area of the dashboard */
