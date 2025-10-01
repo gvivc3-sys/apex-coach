@@ -70,10 +70,10 @@ body {
 
 /* Navigation */
 .nav-fixed {
-    top: 0;
-    left: 0;
+    /* Let the header scroll with the page rather than be fixed.
+   * Positioning is now relative by default. */
+    position: relative;
     width: 100%;
-    z-index: 1000;
     background-color: rgba(13, 14, 18, 0.9);
     backdrop-filter: blur(6px);
     border-bottom: 1px solid var(--color-border);
@@ -499,6 +499,52 @@ footer {
 
     .pricing-card.featured {
         transform: none;
+    }
+
+    /* Responsive tweaks for dashboard and grids */
+    .mainContent {
+        max-width: 100%;
+        padding: var(--space-md);
+    }
+    /* Collapse tutorial grid to a single column on small screens */
+    .tutorialGrid {
+        grid-template-columns: 1fr;
+    }
+    /* Collapse pricing and features grids */
+    .pricing-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+    /* Adjust nav link spacing and hide text links on mobile */
+    .nav-links {
+        gap: var(--space-sm);
+    }
+
+        .nav-links a {
+            display: none;
+        }
+        /* Compress nav buttons on small screens */
+        .nav-links button {
+            padding-block: var(--space-sm);
+            font-size: 12px;
+        }
+    /* Compress pill navigation spacing */
+    .navPillContainer {
+        gap: var(--space-xs);
+        padding: var(--space-xs);
+    }
+
+    .navPillButton {
+        padding: var(--space-xs) var(--space-sm);
+        font-size: 12px;
+    }
+    /* Stack footer columns on mobile */
+    .site-footer .footer__inner {
+        flex-direction: column;
+        gap: var(--space-lg);
     }
 }
 

@@ -19,7 +19,8 @@
 
     /* Mobile height adjustment */
     .ai-coach.is-mobile {
-        height: calc(100vh - 250px);
+        /* Use dynamic viewport units on mobile for a more accurate height */
+        height: calc(100dvh - 250px);
     }
 
 /* Scrollable message area */
@@ -149,7 +150,7 @@
 /* Mobile tweaks */
 @media (max-width: 768px) {
     .ai-coach {
-        height: calc(100vh - 250px);
+        height: calc(100dvh - 250px);
         border-radius: var(--radius-md);
     }
 
@@ -172,5 +173,16 @@
     .composer__sendBtn {
         padding: var(--space-sm) var(--space-md);
         font-size: 14px;
+    }
+
+    /* On very narrow screens stack the input and button */
+    @media (max-width: 480px) {
+        .composer {
+            flex-direction: column;
+        }
+
+        .composer__sendBtn {
+            width: 100%;
+        }
     }
 }
