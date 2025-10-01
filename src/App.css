@@ -502,3 +502,247 @@ footer {
         transform: none;
     }
 }
+
+/* --------------------------------------------------------------------- */
+/* Dashboard styles                                                      */
+/* --------------------------------------------------------------------- */
+
+/* The outer container for the dashboard view. This ensures the page
+ * stretches to fill the viewport and allows the footer to stick to
+ * the bottom when content is short. */
+.dashboard-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Secondary navigation (tab bar) */
+.secondary-nav {
+    margin-top: var(--space-lg);
+    padding-inline: var(--space-lg);
+    display: flex;
+    justify-content: center;
+}
+
+/* Container for the pill buttons */
+.navPillContainer {
+    display: inline-flex;
+    gap: var(--space-sm);
+    background: rgba(255, 255, 255, 0.05);
+    padding: var(--space-sm);
+    border-radius: 9999px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Each tab button */
+.navPillButton {
+    border: none;
+    padding: var(--space-sm) var(--space-md);
+    border-radius: 9999px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: 400;
+    background: transparent;
+    color: var(--color-text-secondary);
+    transition: color 0.3s, background 0.3s;
+}
+
+    .navPillButton:hover {
+        color: var(--color-text-primary);
+    }
+
+/* Active tab button */
+.navPillButtonActive {
+    background: var(--color-text-primary);
+    color: var(--color-bg);
+}
+
+/* Main content area of the dashboard */
+.mainContent {
+    max-width: 960px;
+    margin-inline: auto;
+    padding: var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+    flex: 1 0 auto;
+}
+
+/* Generic content card used for tutorials, roadmap and glossary */
+.contentCard {
+    background: var(--color-card-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--space-lg);
+    color: var(--color-text-primary);
+}
+
+    .contentCard > h2 {
+        margin-bottom: var(--space-md);
+        font-size: 22px;
+    }
+
+/* Tutorials grid */
+.tutorialGrid {
+    display: grid;
+    gap: var(--space-md);
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+}
+
+.tutorialCard {
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--space-md);
+    transition: border-color 0.2s, transform 0.2s;
+}
+
+    .tutorialCard:hover {
+        border-color: var(--color-accent-gold);
+        transform: translateY(-2px);
+    }
+
+.tutorialTitle {
+    margin-bottom: var(--space-xs);
+    font-size: 16px;
+    color: var(--color-text-primary);
+}
+
+.tutorialMeta {
+    font-size: 13px;
+    color: var(--color-text-secondary);
+}
+
+/* Roadmap list items */
+.roadmapItem {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    padding-block: var(--space-sm);
+    border-bottom: 1px solid var(--color-border);
+}
+
+    .roadmapItem:last-child {
+        border-bottom: 0;
+    }
+
+.roadmapCircle {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 14px;
+    flex-shrink: 0;
+    background: var(--color-card-bg);
+    color: var(--color-text-secondary);
+    border: 1px solid var(--color-border);
+}
+
+.roadmapCircleComplete {
+    background: linear-gradient(45deg, var(--color-accent-red), var(--color-accent-gold));
+    color: var(--color-bg);
+    border-color: transparent;
+}
+
+.roadmapCircleCurrent {
+    color: var(--color-text-primary);
+    border-color: var(--color-accent-gold);
+    box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.15);
+}
+
+.roadmapCircleLocked {
+    opacity: 0.6;
+}
+
+/* --------------------------------------------------------------------- */
+/* Footer refinements for dashboard component                             */
+/* --------------------------------------------------------------------- */
+
+.site-footer {
+    margin-top: var(--space-xl);
+    padding: var(--space-xl) var(--space-lg);
+    background: var(--color-bg-alt);
+    border-top: 1px solid var(--color-border);
+    color: var(--color-text-primary);
+}
+
+.footer__inner {
+    max-width: 900px;
+    margin-inline: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: var(--space-lg);
+}
+
+.site-footer.is-mobile .footer__inner {
+    flex-direction: column;
+}
+
+.footer__brandTitle {
+    margin-bottom: var(--space-sm);
+    font-size: 20px;
+    font-weight: 700;
+    background: linear-gradient(45deg, var(--color-text-primary), var(--color-text-secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+}
+
+.footer__brandText {
+    margin: 0;
+    font-size: 14px;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+}
+
+.footer__cols {
+    display: flex;
+    gap: var(--space-lg);
+    flex-wrap: wrap;
+}
+
+.footer__heading {
+    margin-bottom: var(--space-sm);
+    font-size: 12px;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.footer__list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+.footer__link {
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    font-size: 14px;
+}
+
+    .footer__link:hover {
+        color: var(--color-text-primary);
+        text-decoration: none;
+    }
+
+.footer__bottom {
+    max-width: 900px;
+    margin: var(--space-lg) auto 0;
+    padding-top: var(--space-lg);
+    border-top: 1px solid var(--color-border);
+    text-align: center;
+}
+
+.footer__copyright {
+    margin: 0;
+    font-size: 12px;
+    color: var(--color-text-muted);
+}
