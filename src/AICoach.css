@@ -136,6 +136,49 @@
         cursor: default;
     }
 
+/* Markdown formatting inside bubbles */
+    .bubble a {
+    color: #3b82f6;
+    text-decoration: underline;
+    font-weight: 500;
+    }
+
+    .bubble a:hover {
+        color: #2563eb;
+    }
+
+    .bubble ul, .bubble ol {
+        margin: 0.5em 0;
+        padding-left: 1.5em;
+    }
+
+    .bubble li {
+        margin: 0.25em 0;
+    }
+
+    .bubble strong {
+        font-weight: 700;
+        color: inherit;
+    }
+
+    .bubble h2, .bubble h3 {
+        margin: 0.75em 0 0.5em;
+        font-size: 1.1em;
+        font-weight: 700;
+    }
+
+    .bubble p {
+        margin: 0.5em 0;
+    }
+
+    .bubble p:first-child {
+        margin-top: 0;
+    }
+
+    .bubble p:last-child {
+        margin-bottom: 0;
+    }
+
 /* Micro animation on newest bubble */
 .ai-coach__scroll .msg-row:last-child .bubble {
     animation: bubbleIn 140ms ease-out;

@@ -1,5 +1,6 @@
 ﻿import { useState, useEffect, useRef } from 'react';
 import { supabase } from './supabase';
+import ReactMarkdown from 'react-markdown';
 import './AICoach.css';
 
 /* (You can keep your top-level sendMessage with usage limits here if you use it elsewhere) */
@@ -106,7 +107,6 @@ function AICoach({ messages, setMessages, isMobile }) {
 
     return (
         <div className={`ai-coach ${isMobile ? 'is-mobile' : ''}`}>
-            {/* attach the ref here */}
             <div className="ai-coach__scroll" ref={scrollRef}>
                 {messages.map((msg, i) => (
                     <div
@@ -117,7 +117,18 @@ function AICoach({ messages, setMessages, isMobile }) {
                             {msg.role === 'assistant' && (
                                 <div className="assistant-label">APEX COACH</div>
                             )}
-                            {msg.content}
+                            {/* 👇 Use ReactMarkdown for assistant messages */}
+                            {msg.role === 'assistant' ? (
+                                <ReactMarkdown
+                                    components={{
+                                        a: ({ node, ...props }) => <a {...props} target="_blank" rel="noopener noreferrer" />
+                                    }}
+                                >
+                                    {msg.content}
+                                </ReactMarkdown>
+                            ) : (
+                                msg.content
+                            )}
                         </div>
                     </div>
                 ))}
