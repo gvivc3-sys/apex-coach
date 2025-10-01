@@ -31,7 +31,6 @@ function AICoach({ messages, setMessages, isMobile }) {
         textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
     };
 
-    // 🆕 Load chat history on mount
     useEffect(() => {
         loadChatHistory();
     }, []);
@@ -63,12 +62,10 @@ function AICoach({ messages, setMessages, isMobile }) {
             console.error('Error loading chat history:', error);
         } finally {
             setLoadingHistory(false);
-            // Scroll to bottom after loading history
             setTimeout(() => scrollToBottom(false), 100);
         }
     };
 
-    // 🆕 Save a message to Supabase
     const saveMessage = async (role, content) => {
         try {
             const { data: { user } } = await supabase.auth.getUser();
@@ -108,7 +105,6 @@ function AICoach({ messages, setMessages, isMobile }) {
         setInput('');
         setLoading(true);
 
-        // 🆕 Save user message
         await saveMessage('user', input);
 
         try {
@@ -139,7 +135,6 @@ function AICoach({ messages, setMessages, isMobile }) {
                     content: assistantContent
                 }]);
 
-                // 🆕 Save assistant message
                 await saveMessage('assistant', assistantContent);
             }
         } catch (error) {
@@ -160,7 +155,6 @@ function AICoach({ messages, setMessages, isMobile }) {
 
     const handleFocus = () => setTimeout(() => scrollToBottom(true), 250);
 
-    // 🆕 Add clear chat function
     const clearChat = async () => {
         if (!window.confirm('Clear all chat history?')) return;
 
@@ -198,6 +192,19 @@ function AICoach({ messages, setMessages, isMobile }) {
 
     return (
         <div className={`ai-coach ${isMobile ? 'is-mobile' : ''}`}>
+            {/* 🆕 Header */}
+            <div className="ai-coach__header">
+                <h2 className="ai-coach__title">Apex AI Coach</h2>
+                {messages.length > 0 && (
+                    <button
+                        onClick={clearChat}
+                        className="ai-coach__clear"
+                    >
+                        Clear chat log
+                    </button>
+                )}
+            </div>
+
             <div className="ai-coach__scroll" ref={scrollRef}>
                 {messages.length === 0 && (
                     <div className="msg-row align-start">
@@ -243,15 +250,6 @@ function AICoach({ messages, setMessages, isMobile }) {
             </div>
 
             <div className="composer">
-                {messages.length > 0 && (
-                    <button
-                        onClick={clearChat}
-                        className="composer__clearBtn"
-                        title="Clear chat history"
-                    >
-                        🗑️
-                    </button>
-                )}
                 <textarea
                     ref={textareaRef}
                     value={input}

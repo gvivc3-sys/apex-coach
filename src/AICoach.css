@@ -151,6 +151,45 @@
         cursor: default;
     }
 
+/* Header */
+.ai-coach__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #e5e7eb;
+    background: #fafafa;
+}
+
+.ai-coach__title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #374151;
+    margin: 0;
+}
+
+.ai-coach__clear {
+    font-size: 0.875rem;
+    color: #6b7280;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0.25rem 0.5rem;
+    transition: color 0.2s;
+}
+
+    .ai-coach__clear:hover {
+        color: #ef4444;
+    }
+
+/* Update composer to remove the old clear button styles */
+.composer {
+    display: flex;
+    gap: 0.5rem;
+    padding: 1rem;
+    border-top: 1px solid #e5e7eb;
+}
+
 /* Markdown formatting inside bubbles */
     .bubble a {
     color: #3b82f6;
