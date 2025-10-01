@@ -96,7 +96,7 @@
     padding: var(--space-sm) var(--space-md);
     background: var(--color-card-bg);
     border: 1px solid var(--color-border);
-    border-radius: var(--radius-lg);
+    border-radius: var(--radius-sm);
     font-size: 16px;
     color: var(--color-text-primary);
     outline: none;
@@ -225,6 +225,10 @@
     .composer__sendBtn {
         padding: var(--space-sm) var(--space-md);
         font-size: 14px;
+    }
+
+    .composer__input {
+        width: 100%;
     }
 
     /* On very narrow screens stack the input and button */
