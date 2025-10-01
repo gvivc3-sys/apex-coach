@@ -186,6 +186,7 @@ function Dashboard({ user }) {
                 </div>
             </footer>
             );
+        }
 
 
             {showProfile && (
