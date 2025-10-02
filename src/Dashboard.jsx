@@ -172,7 +172,6 @@ function Dashboard({ user }) {
                     </div>
 
                         <div className="mainContent">
-                            <div>test!</div>
                             {activeTab === 'chat' && (
                                 <>
                                     {usageInfo && (
@@ -183,39 +182,19 @@ function Dashboard({ user }) {
                                             borderRadius: 'var(--radius-md)',
                                             marginBottom: 'var(--space-md)'
                                         }}>
-                                            <div>test! 2</div>
                                             <div style={{
                                                 display: 'flex',
                                                 justifyContent: 'space-between',
                                                 alignItems: 'center',
                                                 marginBottom: 'var(--space-sm)',
                                                 fontSize: '12px',
-                                                color: 'var(--color-text-secondary)',
-                                                textTransform: 'uppercase',
-                                                letterSpacing: '1px'
+                                                color: 'var(--color-text-secondary)'
                                             }}>
                                                 <span>Token Usage</span>
-                                                <span style={{ color: 'var(--color-text-primary)' }}>
-                                                    {usageInfo.tokens_used.toLocaleString()} / {usageInfo.tokens_limit.toLocaleString()}
-                                                </span>
-                                            </div>
-                                            <div style={{
-                                                width: '100%',
-                                                height: '6px',
-                                                background: 'var(--color-bg)',
-                                                borderRadius: 'var(--radius-sm)',
-                                                overflow: 'hidden'
-                                            }}>
-                                                <div style={{
-                                                    width: `${Math.min((usageInfo.tokens_used / usageInfo.tokens_limit) * 100, 100)}%`,
-                                                    height: '100%',
-                                                    background: 'linear-gradient(45deg, var(--color-accent-red), var(--color-accent-gold))',
-                                                    transition: 'width 0.3s ease'
-                                                }} />
+                                                <span>{usageInfo.tokens_used} / {usageInfo.tokens_limit}</span>
                                             </div>
                                         </div>
                                     )}
-
                                     <AICoach
                                         messages={chatMessages}
                                         setMessages={setChatMessages}
