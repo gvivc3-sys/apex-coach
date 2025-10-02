@@ -104,6 +104,77 @@
         transform: none;
     }
 
+/* Age input */
+.age-input {
+    width: 100%;
+    padding: var(--space-md);
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    color: var(--color-text-primary);
+    font-size: 18px;
+    margin-bottom: var(--space-lg);
+    transition: border-color 0.2s;
+}
+
+    .age-input:focus {
+        outline: none;
+        border-color: var(--color-accent-gold);
+    }
+
+/* Country grid */
+.country-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-md);
+    margin-bottom: var(--space-lg);
+}
+
+.country-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-xs);
+    padding: var(--space-lg);
+}
+
+.country-flag {
+    font-size: 32px;
+    margin-bottom: var(--space-xs);
+}
+
+/* Skills textarea */
+.step-description {
+    color: var(--color-text-secondary);
+    font-size: 14px;
+    margin-bottom: var(--space-md);
+}
+
+.skills-textarea {
+    width: 100%;
+    padding: var(--space-md);
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    color: var(--color-text-primary);
+    font-size: 16px;
+    font-family: inherit;
+    margin-bottom: var(--space-lg);
+    resize: vertical;
+    transition: border-color 0.2s;
+}
+
+    .skills-textarea:focus {
+        outline: none;
+        border-color: var(--color-accent-gold);
+    }
+
+@media (max-width: 768px) {
+    .country-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
 /* Mobile adjustments */
 @media (max-width: 768px) {
     .onboarding-container {

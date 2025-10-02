@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { supabase } from './supabase';
 import Header from './Header';
 import './Onboarding.css';
@@ -6,6 +6,11 @@ import './Onboarding.css';
 function Onboarding({ user, onComplete }) {
     const [step, setStep] = useState(1);
     const [preferences, setPreferences] = useState({
+        age: '',
+        location: '',
+        is_student: null,
+        country: '',
+        skills: '',
         skill_level: '',
         goals: [],
         hours_available: '',
@@ -25,6 +30,11 @@ function Onboarding({ user, onComplete }) {
                 .from('user_preferences')
                 .upsert({
                     id: user.id,
+                    age: parseInt(preferences.age) || null,
+                    location: preferences.location,
+                    is_student: preferences.is_student,
+                    country: preferences.country,
+                    skills: preferences.skills,
                     skill_level: preferences.skill_level,
                     goals: preferences.goals,
                     hours_available: 20,
@@ -37,7 +47,6 @@ function Onboarding({ user, onComplete }) {
                 throw error;
             }
 
-            // Reload to show personalized message
             window.location.reload();
         } catch (error) {
             console.error('Error saving preferences:', error);
@@ -54,6 +63,15 @@ function Onboarding({ user, onComplete }) {
         }));
     };
 
+    const commonCountries = [
+        { code: 'US', name: 'United States', flag: '🇺🇸' },
+        { code: 'CA', name: 'Canada', flag: '🇨🇦' },
+        { code: 'GB', name: 'United Kingdom', flag: '🇬🇧' },
+        { code: 'AU', name: 'Australia', flag: '🇦🇺' },
+        { code: 'IN', name: 'India', flag: '🇮🇳' },
+        { code: 'OTHER', name: 'Other', flag: '🌍' }
+    ];
+
     return (
         <div className="apex-app">
             <Header user={user} />
@@ -67,7 +85,110 @@ function Onboarding({ user, onComplete }) {
                         Let's customize your journey to internet money
                     </p>
 
+                    {/* Step 1: Age */}
                     {step === 1 && (
+                        <div className="onboarding-step">
+                            <h3 className="step-title">How old are you?</h3>
+                            <input
+                                type="number"
+                                min="13"
+                                max="100"
+                                placeholder="Enter your age"
+                                value={preferences.age}
+                                onChange={(e) => setPreferences(prev => ({ ...prev, age: e.target.value }))}
+                                className="age-input"
+                            />
+                            <button
+                                className="primary-button onboarding-next"
+                                onClick={() => setStep(2)}
+                                disabled={!preferences.age || preferences.age < 13}
+                            >
+                                Next
+                            </button>
+                        </div>
+                    )}
+
+                    {/* Step 2: Country */}
+                    {step === 2 && (
+                        <div className="onboarding-step">
+                            <h3 className="step-title">Where do you live?</h3>
+                            <div className="country-grid">
+                                {commonCountries.map(country => (
+                                    <button
+                                        key={country.code}
+                                        onClick={() => setPreferences(prev => ({ ...prev, country: country.code }))}
+                                        className={`option-button country-button ${preferences.country === country.code ? 'selected' : ''}`}
+                                    >
+                                        <span className="country-flag">{country.flag}</span>
+                                        <strong className="option-title">{country.name}</strong>
+                                    </button>
+                                ))}
+                            </div>
+                            <button
+                                className="primary-button onboarding-next"
+                                onClick={() => setStep(3)}
+                                disabled={!preferences.country}
+                            >
+                                Next
+                            </button>
+                        </div>
+                    )}
+
+                    {/* Step 3: Student Status */}
+                    {step === 3 && (
+                        <div className="onboarding-step">
+                            <h3 className="step-title">Are you currently a student?</h3>
+                            <button
+                                onClick={() => setPreferences(prev => ({ ...prev, is_student: true }))}
+                                className={`option-button ${preferences.is_student === true ? 'selected' : ''}`}
+                            >
+                                <strong className="option-title">Yes</strong>
+                                <div className="option-description">
+                                    I'm currently enrolled in school/college
+                                </div>
+                            </button>
+                            <button
+                                onClick={() => setPreferences(prev => ({ ...prev, is_student: false }))}
+                                className={`option-button ${preferences.is_student === false ? 'selected' : ''}`}
+                            >
+                                <strong className="option-title">No</strong>
+                                <div className="option-description">
+                                    I'm working or looking for opportunities
+                                </div>
+                            </button>
+                            <button
+                                className="primary-button onboarding-next"
+                                onClick={() => setStep(4)}
+                                disabled={preferences.is_student === null}
+                            >
+                                Next
+                            </button>
+                        </div>
+                    )}
+
+                    {/* Step 4: Skills */}
+                    {step === 4 && (
+                        <div className="onboarding-step">
+                            <h3 className="step-title">What are you good at?</h3>
+                            <p className="step-description">Tell us about your skills, talents, or interests</p>
+                            <textarea
+                                placeholder="e.g., graphic design, writing, social media, coding, sales..."
+                                value={preferences.skills}
+                                onChange={(e) => setPreferences(prev => ({ ...prev, skills: e.target.value }))}
+                                className="skills-textarea"
+                                rows="4"
+                            />
+                            <button
+                                className="primary-button onboarding-next"
+                                onClick={() => setStep(5)}
+                            >
+                                {preferences.skills ? 'Next' : 'Skip'}
+                            </button>
+                        </div>
+                    )}
+
+                    {/* Step 5: Experience Level */}
+                    {step === 5 && (
                         <div className="onboarding-step">
                             <h3 className="step-title">What's your experience level?</h3>
                             {['beginner', 'intermediate', 'advanced'].map(level => (
@@ -86,7 +207,7 @@ function Onboarding({ user, onComplete }) {
                             ))}
                             <button
                                 className="primary-button onboarding-next"
-                                onClick={() => setStep(2)}
+                                onClick={() => setStep(6)}
                                 disabled={!preferences.skill_level}
                             >
                                 Next
@@ -94,7 +215,8 @@ function Onboarding({ user, onComplete }) {
                         </div>
                     )}
 
-                    {step === 2 && (
+                    {/* Step 6: Goals */}
+                    {step === 6 && (
                         <div className="onboarding-step">
                             <h3 className="step-title">What interests you? (Select all)</h3>
                             {[
