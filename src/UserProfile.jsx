@@ -91,6 +91,18 @@ function UserProfile({ user, onBack }) {
         }
     };
 
+    const getCountryName = (code) => {
+        const countries = {
+            'US': '🇺🇸 United States',
+            'CA': '🇨🇦 Canada',
+            'GB': '🇬🇧 United Kingdom',
+            'AU': '🇦🇺 Australia',
+            'IN': '🇮🇳 India',
+            'OTHER': '🌍 Other'
+        };
+        return countries[code] || code;
+    };
+
     return (
         <div className="apex-app">
             <Header user={user} />
