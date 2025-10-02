@@ -6,13 +6,6 @@ import Header from './Header';
 import Onboarding from './Onboarding';
 import './App.css';
 
-/**
- * Dashboard component
- *
- * This version of the dashboard uses the redesigned CSS tokens defined
- * in `redesign.css`. It preserves the original layout and logic but
- * updates the import and a few inline styles to tie into the new theme.
- */
 function Dashboard({ user }) {
     const [showProfile, setShowProfile] = useState(false);
     const [hasPreferences, setHasPreferences] = useState(false);
@@ -21,12 +14,6 @@ function Dashboard({ user }) {
     const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
     const [chatMessages, setChatMessages] = useState([]);
     const [userPreferences, setUserPreferences] = useState(null);
-        {
-            role: 'assistant',
-            content:
-                'Ready to build your online empire? Ask me anything - from finding winning products to scaling past $10K/month. No fluff, just actionable strategies.'
-        }
-    ]);
 
     const tutorials = [
         { title: 'Dropshipping 101', time: '15 min', level: 'Beginner' },
@@ -34,59 +21,6 @@ function Dashboard({ user }) {
         { title: 'Creating Digital Products', time: '20 min', level: 'Intermediate' },
         { title: 'TikTok Affiliate Marketing', time: '25 min', level: 'Intermediate' }
     ];
-
-    const checkOnboarding = async () => {
-        try {
-            const { data, error } = await supabase
-                .from('user_preferences')
-                .select('*')
-                .eq('id', user.id)
-                .single();
-
-            if (data && !error) {
-                setHasPreferences(true);
-                setUserPreferences(data);
-
-                // Create personalized initial message
-                const initialMessage = createInitialMessage(data.goals);
-                setChatMessages([{ role: 'assistant', content: initialMessage }]);
-            } else {
-                setHasPreferences(false);
-            }
-        } catch (error) {
-            setHasPreferences(false);
-        } finally {
-            setLoading(false);
-        }
-    };
-
-    const handleSubmit = async () => {
-        try {
-            console.log('Saving preferences:', preferences);
-
-            const { data, error } = await supabase
-                .from('user_preferences')
-                .upsert({
-                    id: user.id,
-                    skill_level: preferences.skill_level,
-                    goals: preferences.goals,
-                    hours_available: 20,
-                    current_income: 0,
-                    strengths: preferences.strengths || ''
-                });
-
-            if (error) {
-                console.error('Supabase error:', error);
-                throw error;
-            }
-
-            // Reload to show personalized message
-            window.location.reload();
-        } catch (error) {
-            console.error('Error saving preferences:', error);
-            alert(`Error: ${error.message}`);
-        }
-    };
 
     const createInitialMessage = (goals) => {
         if (!goals || goals.length === 0) {
@@ -117,11 +51,6 @@ function Dashboard({ user }) {
         }
     };
 
-    useEffect(() => {
-        window.scrollTo(0, 0);
-        checkOnboarding();
-    }, []);
-
     const checkOnboarding = async () => {
         try {
             const { data, error } = await supabase
@@ -130,13 +59,27 @@ function Dashboard({ user }) {
                 .eq('id', user.id)
                 .single();
 
-            setHasPreferences(!!data && !error);
+            if (data && !error) {
+                setHasPreferences(true);
+                setUserPreferences(data);
+
+                // Create personalized initial message
+                const initialMessage = createInitialMessage(data.goals);
+                setChatMessages([{ role: 'assistant', content: initialMessage }]);
+            } else {
+                setHasPreferences(false);
+            }
         } catch (error) {
             setHasPreferences(false);
         } finally {
             setLoading(false);
         }
     };
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+        checkOnboarding();
+    }, []);
 
     if (loading) {
         return (
