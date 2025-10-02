@@ -526,8 +526,8 @@ body {
 }
 
 .mainContent {
-    max-width: 960px;
     margin-inline: auto;
+    max-width: 960px;
     padding-inline: var(--space-lg);
     display: flex;
     flex-direction: column;
@@ -797,7 +797,8 @@ footer {
 
     .mainContent {
         max-width: 100%;
-        padding: var(--space-md);
+        padding: 0 var(--space-xs);
+        margin-inline: 0;
     }
 
     .tutorialGrid,

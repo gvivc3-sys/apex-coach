@@ -63,7 +63,7 @@ function Dashboard({ user }) {
                 setHasPreferences(true);
                 setUserPreferences(data);
 
-                // Create personalized initial message
+                // Always create fresh initial message based on current preferences
                 const initialMessage = createInitialMessage(data.goals);
                 setChatMessages([{ role: 'assistant', content: initialMessage }]);
             } else {

@@ -20,7 +20,7 @@
 }
 
     .ai-coach.is-mobile {
-        height: calc(100dvh - 250px);
+        height: calc(100dvh - 180px);
     }
 
 /* ============================
@@ -222,6 +222,7 @@
 }
 
 .composer__input {
+    width: 100%;
     flex: 1;
     padding: var(--space-sm) var(--space-md);
     background: var(--color-card-bg);

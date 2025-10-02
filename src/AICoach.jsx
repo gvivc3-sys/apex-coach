@@ -201,7 +201,7 @@ function AICoach({ messages, setMessages, isMobile }) {
                         onClick={clearChat}
                         className="ai-coach__clear"
                     >
-                        Clear chat log
+                        Clear Chat
                     </button>
                 )}
             </div>

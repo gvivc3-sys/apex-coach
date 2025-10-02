@@ -37,7 +37,8 @@ function Onboarding({ user, onComplete }) {
                 throw error;
             }
 
-            onComplete();
+            // Reload to show personalized message
+            window.location.reload();
         } catch (error) {
             console.error('Error saving preferences:', error);
             alert(`Error: ${error.message}`);
