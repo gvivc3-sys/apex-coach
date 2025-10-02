@@ -55,14 +55,13 @@ function App() {
             {/* Navigation */}
             <nav className="nav-fixed">
                 <div className="nav-container">
-                    <div className="logo">APEX</div>
+                    <a href="/" className="logo">APEX</a>
                     <div className="nav-links">
                         <a href="#features">Features</a>
                         <a href="#pricing">Pricing</a>
                         <a href="#demo">Demo</a>
                         <button
                             className="secondary-button"
-                            style={{ marginRight: '10px', padding: '12px 30px' }}
                             onClick={() => window.location.href = '/?auth=true'}
                         >
                             Login
