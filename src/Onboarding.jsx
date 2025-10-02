@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { supabase } from './supabase';
 import Header from './Header';
 import './Onboarding.css';
@@ -12,6 +12,10 @@ function Onboarding({ user, onComplete }) {
         current_income: '',
         strengths: ''
     });
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
 
     const handleSubmit = async () => {
         try {
