@@ -12,9 +12,8 @@
 .ai-coach {
     display: flex;
     flex-direction: column;
-    background: var(--color-bg-alt);
     border: 1px solid var(--color-border);
-    border-radius: var(--radius-lg);
+    border-radius: var(--radius-md);
     overflow: hidden;
     height: 720px;
 }
@@ -33,7 +32,7 @@
     align-items: center;
     padding: var(--space-md) var(--space-lg);
     border-bottom: 1px solid var(--color-border);
-    background: var(--color-bg);
+    background: var(--color-bg-alt);
 }
 
 .ai-coach__title {
@@ -217,7 +216,7 @@
     gap: var(--space-md);
     align-items: center;
     padding: var(--space-md);
-    background: var(--color-bg);
+    background: var(--color-bg-alt);
     border-top: 1px solid var(--color-border);
 }
 
@@ -291,7 +290,7 @@
 
 @media (max-width: 768px) {
     .ai-coach {
-        height: calc(100dvh - 250px);
+        height: calc(100dvh - 160px);
         border-radius: var(--radius-md);
     }
 

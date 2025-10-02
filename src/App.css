@@ -554,7 +554,7 @@ body {
 
 .tutorialGrid {
     display: grid;
-    gap: var(--space-md);
+    gap: var(--space-xl);
     grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
 }
 
@@ -883,6 +883,10 @@ footer {
     .pricing-grid,
     .features-grid {
         grid-template-columns: 1fr;
+    }
+
+    .tutorialGrid {
+        gap: var(--space-sm);
     }
 
     .navPillContainer {
