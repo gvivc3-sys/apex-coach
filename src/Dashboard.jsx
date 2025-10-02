@@ -160,26 +160,13 @@ function Dashboard({ user }) {
 
                             {activeTab === 'tutorials' && (
                                 <div className="contentCard">
-                                    <div style={{
-                                        display: 'flex',
-                                        justifyContent: 'space-between',
-                                        alignItems: 'center',
-                                        marginBottom: 'var(--space-lg)'
-                                    }}>
-                                        <h2 style={{ margin: 0 }}>Quick Start Tutorials</h2>
-                                        <label style={{
-                                            display: 'flex',
-                                            alignItems: 'center',
-                                            gap: 'var(--space-sm)',
-                                            color: 'var(--color-text-secondary)',
-                                            fontSize: '14px',
-                                            cursor: 'pointer'
-                                        }}>
+                                    <div className="tutorials-header">
+                                        <h2>Quick Start Tutorials</h2>
+                                        <label className="filter-toggle">
                                             <input
                                                 type="checkbox"
                                                 checked={showOnlyAligned}
                                                 onChange={(e) => setShowOnlyAligned(e.target.checked)}
-                                                style={{ cursor: 'pointer' }}
                                             />
                                             Show only aligned with my goals
                                         </label>
@@ -191,28 +178,24 @@ function Dashboard({ user }) {
                                                 const isAligned = isAlignedWithGoals(tutorial.category);
                                                 return (
                                                     <div
-                                                        key={i}
+                                                        key={tutorial.id || i}
                                                         className={`tutorialCard ${isAligned ? 'aligned' : ''}`}
                                                     >
+                                                        {isAligned && (
+                                                            <div className="tutorialAlignedBadge">
+                                                                ⭐ Aligned with your goals
+                                                            </div>
+                                                        )}
                                                         <h3 className="tutorialTitle">{tutorial.title}</h3>
                                                         <p className="tutorialMeta">
                                                             {tutorial.time_minutes} min • {tutorial.level}
                                                         </p>
-                                                        {isAligned && (
-                                                            <span className="tutorialAlignedTag">
-                                                                Aligned with your goals
-                                                            </span>
-                                                        )}
                                                     </div>
                                                 );
                                             })}
                                         </div>
                                     ) : (
-                                        <p style={{
-                                            color: 'var(--color-text-secondary)',
-                                            textAlign: 'center',
-                                            padding: 'var(--space-xl)'
-                                        }}>
+                                        <p className="no-tutorials-message">
                                             {showOnlyAligned
                                                 ? 'No tutorials match your selected goals yet.'
                                                 : 'No tutorials available yet.'}

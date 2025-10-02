@@ -582,6 +582,84 @@ body {
     color: var(--color-text-secondary);
 }
 
+/* Tutorial header */
+.tutorials-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-lg);
+}
+
+    .tutorials-header h2 {
+        margin: 0;
+    }
+
+.filter-toggle {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    color: var(--color-text-secondary);
+    font-size: 14px;
+    cursor: pointer;
+}
+
+    .filter-toggle input[type="checkbox"] {
+        cursor: pointer;
+    }
+
+/* Tutorial cards */
+.tutorialCard {
+    position: relative;
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--space-md);
+    transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+
+    .tutorialCard.aligned {
+        border-color: var(--color-accent-gold);
+        background: linear-gradient(135deg, var(--color-bg), rgba(212, 175, 55, 0.05));
+        box-shadow: 0 0 0 1px var(--color-accent-gold);
+    }
+
+    .tutorialCard:hover {
+        transform: translateY(-2px);
+    }
+
+    .tutorialCard.aligned:hover {
+        box-shadow: 0 4px 12px rgba(212, 175, 55, 0.2);
+    }
+
+.tutorialAlignedBadge {
+    position: absolute;
+    top: -10px;
+    left: var(--space-md);
+    padding: var(--space-xs) var(--space-sm);
+    background: linear-gradient(45deg, var(--color-accent-red), var(--color-accent-gold));
+    border-radius: var(--radius-sm);
+    font-size: 11px;
+    color: var(--color-text-primary);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 8px rgba(212, 175, 55, 0.3);
+}
+
+.no-tutorials-message {
+    color: var(--color-text-secondary);
+    text-align: center;
+    padding: var(--space-xl);
+}
+
+@media (max-width: 768px) {
+    .tutorials-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--space-sm);
+    }
+}
+
 /* ============================
    ROADMAP
    ============================ */
