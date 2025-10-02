@@ -35,6 +35,7 @@ function Dashboard({ user }) {
     ];
 
     useEffect(() => {
+        window.scrollTo(0, 0);
         checkOnboarding();
     }, []);
 

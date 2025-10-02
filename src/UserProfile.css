@@ -1,65 +1,51 @@
-/* User Profile Modal Styles */
+/* User Profile Page Styles */
 
-.profile-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.8);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 2000;
-    backdrop-filter: blur(4px);
+.profile-page {
+    min-height: 100vh;
+    padding-top: 90px;
+    padding-bottom: var(--space-xl);
+    background: var(--color-bg);
 }
 
-.profile-modal {
-    background: var(--color-card-bg);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
-    padding: var(--space-xl);
-    max-width: 600px;
-    width: 90%;
-    max-height: 80vh;
-    overflow-y: auto;
+.profile-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: var(--space-lg);
 }
 
-.profile-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.profile-header-page {
     margin-bottom: var(--space-xl);
 }
 
-    .profile-header h2 {
-        margin: 0;
-        font-size: 24px;
-        font-weight: 700;
+    .profile-header-page h1 {
+        font-family: var(--font-family-heading);
+        font-size: 36px;
+        font-weight: 900;
+        margin-bottom: var(--space-md);
         color: var(--color-text-primary);
     }
 
-.profile-close {
+.back-button {
     background: transparent;
     border: none;
     color: var(--color-text-secondary);
-    font-size: 32px;
-    line-height: 1;
+    font-size: 14px;
     cursor: pointer;
-    padding: 0;
+    padding: var(--space-sm) 0;
+    margin-bottom: var(--space-md);
     transition: color 0.2s;
 }
 
-    .profile-close:hover {
-        color: var(--color-text-primary);
+    .back-button:hover {
+        color: var(--color-accent-gold);
     }
 
 .profile-section {
     margin-bottom: var(--space-xl);
     padding: var(--space-lg);
-    background: var(--color-bg);
+    background: var(--color-card-bg);
     border: 1px solid var(--color-border);
-    border-radius: var(--radius-sm);
+    border-radius: var(--radius-md);
 }
 
     .profile-section h3 {
@@ -133,7 +119,7 @@
 }
 
 .goal-tag {
-    background: var(--color-card-bg);
+    background: var(--color-bg);
     padding: var(--space-xs) var(--space-md);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-sm);
@@ -157,7 +143,7 @@
 .profile-input {
     width: 100%;
     padding: var(--space-md);
-    background: var(--color-card-bg);
+    background: var(--color-bg);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-sm);
     color: var(--color-text-primary);
@@ -203,14 +189,12 @@
 
 /* Mobile adjustments */
 @media (max-width: 768px) {
-    .profile-modal {
-        width: 95%;
-        padding: var(--space-lg);
-        max-height: 90vh;
+    .profile-container {
+        padding: var(--space-md);
     }
 
-    .profile-header h2 {
-        font-size: 20px;
+    .profile-header-page h1 {
+        font-size: 28px;
     }
 
     .section-header {

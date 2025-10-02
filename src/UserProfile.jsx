@@ -1,8 +1,9 @@
 ﻿import { useState, useEffect } from 'react';
 import { supabase } from './supabase';
+import Header from './Header';
 import './UserProfile.css';
 
-function UserProfile({ user, onClose, onRetakeSurvey }) {
+function UserProfile({ user, onBack }) {
     const [loading, setLoading] = useState(false);
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState(user.email);
@@ -70,7 +71,6 @@ function UserProfile({ user, onClose, onRetakeSurvey }) {
 
     const handleRetakeSurvey = async () => {
         try {
-            // Delete existing preferences so user goes through onboarding again
             const { error } = await supabase
                 .from('user_preferences')
                 .delete()
@@ -78,7 +78,6 @@ function UserProfile({ user, onClose, onRetakeSurvey }) {
 
             if (error) throw error;
 
-            // Force a full page reload to restart the app flow
             window.location.reload();
         } catch (error) {
             setMessage(error.message);
@@ -86,85 +85,89 @@ function UserProfile({ user, onClose, onRetakeSurvey }) {
     };
 
     return (
-        <div className="profile-overlay">
-            <div className="profile-modal">
-                <div className="profile-header">
-                    <h2>Your Dashboard</h2>
-                    <button onClick={onClose} className="profile-close">
-                        ×
-                    </button>
-                </div>
+        <div className="apex-app">
+            <Header user={user} />
 
-                {/* Goals Section */}
-                <div className="profile-section goals-section">
-                    <div className="section-header">
-                        <h3>Your Goals</h3>
-                        <button onClick={handleRetakeSurvey} className="retake-button">
-                            Retake Survey
+            <div className="profile-page">
+                <div className="profile-container">
+                    <div className="profile-header-page">
+                        <button onClick={onBack} className="back-button">
+                            ← Back to Dashboard
                         </button>
+                        <h1>Your Profile</h1>
                     </div>
 
-                    {preferences && (
-                        <div>
-                            <div className="goal-item">
-                                <p className="goal-label">SKILL LEVEL</p>
-                                <span className="goal-value skill-level">
-                                    {preferences.skill_level}
-                                </span>
-                            </div>
+                    {/* Goals Section */}
+                    <div className="profile-section">
+                        <div className="section-header">
+                            <h3>Your Goals</h3>
+                            <button onClick={handleRetakeSurvey} className="retake-button">
+                                Retake Survey
+                            </button>
+                        </div>
 
-                            <div className="goal-item">
-                                <p className="goal-label">FOCUS AREAS</p>
-                                <div className="goal-tags">
-                                    {preferences.goals.map((goal) => (
-                                        <span key={goal} className="goal-tag">
-                                            {goal.replace('_', ' ')}
-                                        </span>
-                                    ))}
+                        {preferences && (
+                            <div>
+                                <div className="goal-item">
+                                    <p className="goal-label">SKILL LEVEL</p>
+                                    <span className="goal-value skill-level">
+                                        {preferences.skill_level}
+                                    </span>
+                                </div>
+
+                                <div className="goal-item">
+                                    <p className="goal-label">FOCUS AREAS</p>
+                                    <div className="goal-tags">
+                                        {preferences.goals.map((goal) => (
+                                            <span key={goal} className="goal-tag">
+                                                {goal.replace('_', ' ')}
+                                            </span>
+                                        ))}
+                                    </div>
                                 </div>
                             </div>
+                        )}
+                    </div>
+
+                    {/* Profile Settings */}
+                    <div className="profile-section">
+                        <h3>Profile Settings</h3>
+
+                        <div className="input-group">
+                            <label className="input-label">Email</label>
+                            <input
+                                type="email"
+                                value={email}
+                                disabled
+                                className="profile-input disabled"
+                            />
                         </div>
-                    )}
-                </div>
 
-                {/* Profile Settings */}
-                <div className="profile-section">
-                    <h3>Profile Settings</h3>
+                        <div className="input-group">
+                            <label className="input-label">Username</label>
+                            <input
+                                type="text"
+                                placeholder="Choose a username"
+                                value={username}
+                                onChange={(e) => setUsername(e.target.value)}
+                                className="profile-input"
+                            />
+                        </div>
 
-                    <div className="input-group">
-                        <label className="input-label">Email</label>
-                        <input
-                            type="email"
-                            value={email}
-                            disabled
-                            className="profile-input disabled"
-                        />
+                        <button
+                            onClick={updateProfile}
+                            disabled={loading}
+                            className="primary-button profile-save"
+                        >
+                            {loading ? 'Saving...' : 'Save Profile'}
+                        </button>
+
+                        {message && (
+                            <p className={`profile-message ${message.includes('updated') ? 'success' : 'error'}`}>
+                                {message}
+                            </p>
+                        )}
                     </div>
-
-                    <div className="input-group">
-                        <label className="input-label">Username</label>
-                        <input
-                            type="text"
-                            placeholder="Choose a username"
-                            value={username}
-                            onChange={(e) => setUsername(e.target.value)}
-                            className="profile-input"
-                        />
-                    </div>
-
-                    <button
-                        onClick={updateProfile}
-                        disabled={loading}
-                        className="primary-button profile-save"
-                    >
-                        {loading ? 'Saving...' : 'Save Profile'}
-                    </button>
-
-                    {message && (
-                        <p className={`profile-message ${message.includes('updated') ? 'success' : 'error'}`}>
-                            {message}
-                        </p>
-                    )}
                 </div>
             </div>
         </div>

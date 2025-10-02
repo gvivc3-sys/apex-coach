@@ -32,6 +32,7 @@ function AICoach({ messages, setMessages, isMobile }) {
     };
 
     useEffect(() => {
+        window.scrollTo(0, 0);
         loadChatHistory();
     }, []);
 

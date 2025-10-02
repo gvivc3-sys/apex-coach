@@ -13,6 +13,7 @@ function App() {
         supabase.auth.getSession().then(({ data: { session } }) => {
             setSession(session);
             setLoading(false);
+        window.scrollTo(0, 0);
         });
 
         // Listen for auth changes
