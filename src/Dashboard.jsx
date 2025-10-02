@@ -51,6 +51,24 @@ function Dashboard({ user }) {
         }
     };
 
+    const [tutorials, setTutorials] = useState([]);
+
+    useEffect(() => {
+        fetchTutorials();
+    }, [userPreferences]);
+
+    const fetchTutorials = async () => {
+        if (!userPreferences?.goals) return;
+
+        const { data } = await supabase
+            .from('tutorials')
+            .select('*')
+            .in('category', userPreferences.goals)
+            .order('level', { ascending: true });
+
+        setTutorials(data || []);
+    };
+
     const checkOnboarding = async () => {
         try {
             const { data, error } = await supabase

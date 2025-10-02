@@ -1,4 +1,6 @@
-﻿export default async function handler(req, res) {
+﻿import { supabase } from './supabase'; // Add this import at the top
+
+export default async function handler(req, res) {
     // Handle CORS
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
@@ -13,34 +15,50 @@
     }
 
     try {
-        const { messages } = req.body;
+        const { messages, userId } = req.body;
 
-        const appContent = {
-            tutorials: [
-                { title: 'Dropshipping 101', topics: ['product research', 'supplier finding', 'store setup'], level: 'beginner' },
-                { title: 'Facebook Marketplace Flipping', topics: ['finding deals', 'negotiation', 'listing optimization'], level: 'beginner' },
-                { title: 'Creating Digital Products', topics: ['Notion templates', 'Canva designs', 'pricing strategy'], level: 'intermediate' },
-                { title: 'TikTok Affiliate Marketing', topics: ['content creation', 'product selection', 'link placement'], level: 'intermediate' }
-            ],
-            roadmap: ['Week 1: First $100', 'Week 2: Scale to $500', 'Week 3: Hit $1,000', 'Week 4: Optimize & Automate'],
-            features: ['AI Coach', 'Tutorials', 'Roadmap', 'Glossary', 'Goals Dashboard']
-        };
+        // Fetch user preferences to know their goals
+        const { data: preferences } = await supabase
+            .from('user_preferences')
+            .select('goals, skill_level')
+            .eq('id', userId)
+            .single();
 
-        const systemPrompt = `You are APEX Coach, the AI assistant for the APEX platform.
-  
-              PLATFORM KNOWLEDGE:
-              - Available Tutorials: ${appContent.tutorials.map(t => t.title).join(', ')}
-              - User Journey: ${appContent.roadmap.join(' → ')}
-              - Platform Features: ${appContent.features.join(', ')}
-  
-              IMPORTANT INSTRUCTIONS:
-              - When users ask about learning topics, reference specific tutorials available in the Tutorials tab
-              - Guide users through the roadmap stages based on their progress
-              - Remind users to check the Glossary tab for term definitions
-              - Suggest relevant tutorials based on their questions
-              - Example: "Check out our 'Dropshipping 101' tutorial in the Tutorials tab for a step-by-step guide"
-  
-              Be specific about where they can find resources on the platform.`;
+        // Fetch relevant tutorials based on user's goals
+        let tutorials = [];
+        if (preferences?.goals) {
+            const { data } = await supabase
+                .from('tutorials')
+                .select('title, category, level, content, key_points')
+                .in('category', preferences.goals)
+                .order('level', { ascending: true });
+
+            tutorials = data || [];
+        }
+
+        // Format tutorials for the system prompt
+        const tutorialContext = tutorials.length > 0
+            ? `\n\nAVAILABLE TUTORIALS:\n${tutorials.map(t =>
+                `- "${t.title}" (${t.level}): ${t.key_points.join(', ')}`
+            ).join('\n')}\n\nWhen users ask about these topics, reference the specific tutorial and offer to guide them through it.`
+            : '';
+
+        const systemPrompt = `You are APEX Coach, an elite internet money strategist.
+Focus on: ${preferences?.goals?.join(', ') || 'making money online'}.
+Be aggressive and direct. Push for immediate action.
+Give specific platforms and dollar amounts.
+Always end with a clear next step.
+
+${tutorialContext}
+
+FORMATTING INSTRUCTIONS:
+- Use **bold** for emphasis on key points
+- Use bullet points (- or *) for lists
+- Use markdown links: [text](url) for any resources
+- Use ## for section headers when appropriate
+- Keep responses scannable and well-structured
+
+When referencing tutorials, say "I recommend checking out our '[Tutorial Name]' tutorial in the Tutorials tab" and give them a quick 2-3 sentence summary of what they'll learn.`;
 
         const response = await fetch('https://api.openai.com/v1/chat/completions', {
             method: 'POST',
@@ -51,21 +69,7 @@
             body: JSON.stringify({
                 model: 'gpt-3.5-turbo',
                 messages: [
-                    {
-                        role: 'system',
-                        content: `You are APEX Coach, an elite internet money strategist. 
-                                    Focus on: dropshipping, affiliate marketing, digital products, flipping.
-                                    Be aggressive and direct. Push for immediate action.
-                                    Give specific platforms and dollar amounts.
-                                    Always end with a clear next step.
-
-                                    FORMATTING INSTRUCTIONS:
-                                    - Use **bold** for emphasis on key points
-                                    - Use bullet points (- or *) for lists
-                                    - Use markdown links: [text](url) for any resources
-                                    - Use ## for section headers when appropriate
-                                    - Keep responses scannable and well-structured`
-                    },
+                    { role: 'system', content: systemPrompt },
                     ...messages
                 ],
                 temperature: 0.8,
