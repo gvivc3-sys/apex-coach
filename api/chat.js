@@ -122,9 +122,6 @@ ${tutorialContext}`;
 
         const tokensUsed = data.usage?.total_tokens || 0;
         console.log('Tokens used this request:', tokensUsed);
-
-        const tokensUsed = data.usage?.total_tokens || 0;
-        console.log('Tokens used this request:', tokensUsed);
         console.log('Usage object exists?', !!usage);
         console.log('Usage id:', usage?.id);
 
