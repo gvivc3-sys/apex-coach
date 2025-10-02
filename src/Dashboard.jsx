@@ -14,6 +14,7 @@ function Dashboard({ user }) {
     const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
     const [chatMessages, setChatMessages] = useState([]);
     const [userPreferences, setUserPreferences] = useState(null);
+    const [usageInfo, setUsageInfo] = useState(null);
     const createInitialMessage = (goals) => {
         if (!goals || goals.length === 0) {
             return 'Ready to build your online empire? Ask me anything - from finding winning products to scaling past $10K/month. No fluff, just actionable strategies.';
@@ -97,9 +98,27 @@ function Dashboard({ user }) {
         }
     };
 
+    const fetchUsage = async () => {
+        try {
+            const { data } = await supabase
+                .from('user_usage')
+                .select('*')
+                .eq('user_id', user.id)
+                .gte('period_end', new Date().toISOString())
+                .single();
+
+            if (data) {
+                setUsageInfo(data);
+            }
+        } catch (error) {
+            console.log('No usage data yet:', error);
+        }
+    };
+
     useEffect(() => {
         window.scrollTo(0, 0);
         checkOnboarding();
+        fetchUsage();
     }, []);
 
     if (loading) {
@@ -150,13 +169,55 @@ function Dashboard({ user }) {
                     </div>
 
                     <div className="mainContent">
-                        {activeTab === 'chat' && (
-                            <AICoach
-                                messages={chatMessages}
-                                setMessages={setChatMessages}
-                                isMobile={isMobile}
-                            />
-                        )}
+                            {activeTab === 'chat' && (
+                                <>
+                                    {usageInfo && (
+                                        <div style={{
+                                            padding: 'var(--space-md)',
+                                            background: 'var(--color-card-bg)',
+                                            border: '1px solid var(--color-border)',
+                                            borderRadius: 'var(--radius-md)',
+                                            marginBottom: 'var(--space-md)'
+                                        }}>
+                                            <div style={{
+                                                display: 'flex',
+                                                justifyContent: 'space-between',
+                                                alignItems: 'center',
+                                                marginBottom: 'var(--space-sm)',
+                                                fontSize: '12px',
+                                                color: 'var(--color-text-secondary)',
+                                                textTransform: 'uppercase',
+                                                letterSpacing: '1px'
+                                            }}>
+                                                <span>Token Usage</span>
+                                                <span style={{ color: 'var(--color-text-primary)' }}>
+                                                    {usageInfo.tokens_used.toLocaleString()} / {usageInfo.tokens_limit.toLocaleString()}
+                                                </span>
+                                            </div>
+                                            <div style={{
+                                                width: '100%',
+                                                height: '6px',
+                                                background: 'var(--color-bg)',
+                                                borderRadius: 'var(--radius-sm)',
+                                                overflow: 'hidden'
+                                            }}>
+                                                <div style={{
+                                                    width: `${Math.min((usageInfo.tokens_used / usageInfo.tokens_limit) * 100, 100)}%`,
+                                                    height: '100%',
+                                                    background: 'linear-gradient(45deg, var(--color-accent-red), var(--color-accent-gold))',
+                                                    transition: 'width 0.3s ease'
+                                                }} />
+                                            </div>
+                                        </div>
+                                    )}
+
+                                    <AICoach
+                                        messages={chatMessages}
+                                        setMessages={setChatMessages}
+                                        isMobile={isMobile}
+                                    />
+                                </>
+                            )}
 
                             {activeTab === 'tutorials' && (
                                 <div className="contentCard">

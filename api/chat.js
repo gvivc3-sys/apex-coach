@@ -1,9 +1,15 @@
 ﻿import { createClient } from '@supabase/supabase-js';
 
-// Create Supabase client directly here
 const supabaseUrl = process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL;
 const supabaseKey = process.env.SUPABASE_ANON_KEY || process.env.VITE_SUPABASE_ANON_KEY;
 const supabase = createClient(supabaseUrl, supabaseKey);
+
+// Token limits per tier
+const TOKEN_LIMITS = {
+    starter: 100000,   // ~100k tokens
+    hustler: 200000,   // ~200k tokens
+    empire: 300000     // ~300k tokens
+};
 
 export default async function handler(req, res) {
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -21,10 +27,30 @@ export default async function handler(req, res) {
     try {
         const { messages, userId } = req.body;
 
+        // Check user's current usage
+        const { data: usage, error: usageError } = await supabase
+            .from('user_usage')
+            .select('*')
+            .eq('user_id', userId)
+            .gte('period_end', new Date().toISOString())
+            .single();
+
+        if (usageError && usageError.code !== 'PGRST116') {
+            console.error('Usage check error:', usageError);
+        }
+
+        // If user has exceeded limit
+        if (usage && usage.tokens_used >= usage.tokens_limit) {
+            return res.status(429).json({
+                error: 'Monthly token limit reached. Upgrade your plan or wait until next billing cycle.',
+                tokensUsed: usage.tokens_used,
+                tokensLimit: usage.tokens_limit
+            });
+        }
+
         let preferences = null;
         let tutorials = [];
 
-        // Try to fetch preferences
         try {
             const { data } = await supabase
                 .from('user_preferences')
@@ -36,12 +62,11 @@ export default async function handler(req, res) {
             console.log('Could not fetch preferences:', err);
         }
 
-        // Try to fetch tutorials
         if (preferences?.goals) {
             try {
                 const { data } = await supabase
                     .from('tutorials')
-                    .select('title, category, level, key_points')
+                    .select('title, slug, category, level, key_points')
                     .in('category', preferences.goals)
                     .order('level', { ascending: true });
                 tutorials = data || [];
@@ -52,8 +77,8 @@ export default async function handler(req, res) {
 
         const tutorialContext = tutorials.length > 0
             ? `\n\nAVAILABLE TUTORIALS:\n${tutorials.map(t =>
-                `- "${t.title}" (${t.level}): ${t.key_points?.join(', ') || 'Key strategies included'}`
-            ).join('\n')}\n\nWhen users ask about these topics, reference the specific tutorial.`
+                `- "${t.title}" (${t.level}) - Key points: ${t.key_points?.join(', ') || 'Core strategies included'}`
+            ).join('\n')}\n\n**When referencing tutorials**: Say "Check out **${tutorials[0]?.title}** in the Tutorials tab" (use the exact tutorial title from the list above).`
             : '';
 
         const systemPrompt = `You are APEX Coach, an elite internet money strategist.
@@ -91,7 +116,26 @@ ${tutorialContext}`;
             return res.status(500).json({ error: data.error?.message || 'OpenAI error' });
         }
 
-        return res.status(200).json(data);
+        // Track token usage
+        const tokensUsed = data.usage?.total_tokens || 0;
+
+        if (usage) {
+            await supabase
+                .from('user_usage')
+                .update({
+                    tokens_used: usage.tokens_used + tokensUsed
+                })
+                .eq('id', usage.id);
+        }
+
+        return res.status(200).json({
+            ...data,
+            usage_info: {
+                tokensUsed: usage ? usage.tokens_used + tokensUsed : tokensUsed,
+                tokensLimit: usage?.tokens_limit || 0,
+                tier: usage?.subscription_tier || 'none'
+            }
+        });
     } catch (error) {
         console.error('Server error:', error);
         return res.status(500).json({ error: error.message });

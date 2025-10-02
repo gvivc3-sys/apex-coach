@@ -3,6 +3,19 @@ import { supabase } from './supabase';
 import Header from './Header';
 import './UserProfile.css';
 
+// Move function outside component to avoid any rendering issues
+const getCountryName = (code) => {
+    const countries = {
+        'US': '🇺🇸 United States',
+        'CA': '🇨🇦 Canada',
+        'GB': '🇬🇧 United Kingdom',
+        'AU': '🇦🇺 Australia',
+        'IN': '🇮🇳 India',
+        'OTHER': '🌍 Other'
+    };
+    return countries[code] || code;
+};
+
 function UserProfile({ user, onBack }) {
     const [loading, setLoading] = useState(false);
     const [username, setUsername] = useState('');
@@ -71,7 +84,6 @@ function UserProfile({ user, onBack }) {
 
     const handleRetakeSurvey = async () => {
         try {
-            // Delete preferences
             const { error: prefError } = await supabase
                 .from('user_preferences')
                 .delete()
@@ -79,7 +91,6 @@ function UserProfile({ user, onBack }) {
 
             if (prefError) throw prefError;
 
-            // Delete chat history so fresh welcome message appears
             await supabase
                 .from('chat_messages')
                 .delete()
@@ -89,18 +100,6 @@ function UserProfile({ user, onBack }) {
         } catch (error) {
             setMessage(error.message);
         }
-    };
-
-    const getCountryName = (code) => {
-        const countries = {
-            'US': '🇺🇸 United States',
-            'CA': '🇨🇦 Canada',
-            'GB': '🇬🇧 United Kingdom',
-            'AU': '🇦🇺 Australia',
-            'IN': '🇮🇳 India',
-            'OTHER': '🌍 Other'
-        };
-        return countries[code] || code;
     };
 
     return (
@@ -116,7 +115,6 @@ function UserProfile({ user, onBack }) {
                         <h1>Your Profile</h1>
                     </div>
 
-                    {/* Demographics Section */}
                     {preferences && (
                         <div className="profile-section">
                             <h3>About You</h3>
@@ -155,7 +153,6 @@ function UserProfile({ user, onBack }) {
                         </div>
                     )}
 
-                    {/* Goals Section */}
                     {preferences && (
                         <div className="profile-section">
                             <div className="section-header">
@@ -187,7 +184,6 @@ function UserProfile({ user, onBack }) {
                         </div>
                     )}
 
-                    {/* Profile Settings */}
                     <div className="profile-section">
                         <h3>Account Settings</h3>
 
