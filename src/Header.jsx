@@ -4,18 +4,18 @@ import './App.css';
 function Header({ user, showProfile, setShowProfile }) {
     const handleSignOut = async () => {
         await supabase.auth.signOut();
-        // Force a full page reload to clear everything
         window.location.replace(window.location.origin);
     };
 
     return (
         <nav className="nav-fixed">
             <div className="nav-container">
-                <div className="logo"><a href="/">APEX</a></div>
+                <a href="/" className="logo">APEX</a>
                 <div className="nav-links">
                     {user ? (
                         <>
-                            <button class="user-button"
+                            <button
+                                className="user-button"
                                 onClick={() => setShowProfile && setShowProfile(true)}
                             >
                                 {user.email.split('@')[0]}
@@ -30,7 +30,6 @@ function Header({ user, showProfile, setShowProfile }) {
                             <a href="#pricing">Pricing</a>
                             <button
                                 className="secondary-button"
-                                style={{ marginRight: '10px', padding: '12px 30px' }}
                                 onClick={() => window.location.href = '/?auth=true'}
                             >
                                 Login
