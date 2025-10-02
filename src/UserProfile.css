@@ -1,8 +1,7 @@
 /* User Profile Page Styles */
 
 .profile-page {
-    min-height: 100vh;
-    padding-top: 90px;
+    margin: var(--space-lg);
     padding-bottom: var(--space-xl);
     background: var(--color-bg);
 }
