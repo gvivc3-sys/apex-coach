@@ -1,4 +1,9 @@
-﻿import { supabase } from './supabase';
+﻿import { createClient } from '@supabase/supabase-js';
+
+// Create Supabase client directly here
+const supabaseUrl = process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL;
+const supabaseKey = process.env.SUPABASE_ANON_KEY || process.env.VITE_SUPABASE_ANON_KEY;
+const supabase = createClient(supabaseUrl, supabaseKey);
 
 export default async function handler(req, res) {
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -19,7 +24,7 @@ export default async function handler(req, res) {
         let preferences = null;
         let tutorials = [];
 
-        // Try to fetch preferences, but don't crash if it fails
+        // Try to fetch preferences
         try {
             const { data } = await supabase
                 .from('user_preferences')
@@ -31,7 +36,7 @@ export default async function handler(req, res) {
             console.log('Could not fetch preferences:', err);
         }
 
-        // Try to fetch tutorials, but don't crash if table doesn't exist
+        // Try to fetch tutorials
         if (preferences?.goals) {
             try {
                 const { data } = await supabase
