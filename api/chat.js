@@ -1,7 +1,6 @@
-﻿import { supabase } from './supabase'; // Add this import at the top
+﻿import { supabase } from './supabase';
 
 export default async function handler(req, res) {
-    // Handle CORS
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
@@ -17,48 +16,51 @@ export default async function handler(req, res) {
     try {
         const { messages, userId } = req.body;
 
-        // Fetch user preferences to know their goals
-        const { data: preferences } = await supabase
-            .from('user_preferences')
-            .select('goals, skill_level')
-            .eq('id', userId)
-            .single();
-
-        // Fetch relevant tutorials based on user's goals
+        let preferences = null;
         let tutorials = [];
-        if (preferences?.goals) {
-            const { data } = await supabase
-                .from('tutorials')
-                .select('title, category, level, content, key_points')
-                .in('category', preferences.goals)
-                .order('level', { ascending: true });
 
-            tutorials = data || [];
+        // Try to fetch preferences, but don't crash if it fails
+        try {
+            const { data } = await supabase
+                .from('user_preferences')
+                .select('goals, skill_level')
+                .eq('id', userId)
+                .single();
+            preferences = data;
+        } catch (err) {
+            console.log('Could not fetch preferences:', err);
         }
 
-        // Format tutorials for the system prompt
+        // Try to fetch tutorials, but don't crash if table doesn't exist
+        if (preferences?.goals) {
+            try {
+                const { data } = await supabase
+                    .from('tutorials')
+                    .select('title, category, level, key_points')
+                    .in('category', preferences.goals)
+                    .order('level', { ascending: true });
+                tutorials = data || [];
+            } catch (err) {
+                console.log('Could not fetch tutorials:', err);
+            }
+        }
+
         const tutorialContext = tutorials.length > 0
             ? `\n\nAVAILABLE TUTORIALS:\n${tutorials.map(t =>
-                `- "${t.title}" (${t.level}): ${t.key_points.join(', ')}`
-            ).join('\n')}\n\nWhen users ask about these topics, reference the specific tutorial and offer to guide them through it.`
+                `- "${t.title}" (${t.level}): ${t.key_points?.join(', ') || 'Key strategies included'}`
+            ).join('\n')}\n\nWhen users ask about these topics, reference the specific tutorial.`
             : '';
 
         const systemPrompt = `You are APEX Coach, an elite internet money strategist.
 Focus on: ${preferences?.goals?.join(', ') || 'making money online'}.
 Be aggressive and direct. Push for immediate action.
-Give specific platforms and dollar amounts.
-Always end with a clear next step.
 
-${tutorialContext}
+FORMATTING:
+- Use **bold** for emphasis
+- Use bullet points for lists
+- Use ## for headers
 
-FORMATTING INSTRUCTIONS:
-- Use **bold** for emphasis on key points
-- Use bullet points (- or *) for lists
-- Use markdown links: [text](url) for any resources
-- Use ## for section headers when appropriate
-- Keep responses scannable and well-structured
-
-When referencing tutorials, say "I recommend checking out our '[Tutorial Name]' tutorial in the Tutorials tab" and give them a quick 2-3 sentence summary of what they'll learn.`;
+${tutorialContext}`;
 
         const response = await fetch('https://api.openai.com/v1/chat/completions', {
             method: 'POST',
