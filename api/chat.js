@@ -10,13 +10,6 @@ const supabaseAdmin = createClient(
     process.env.SUPABASE_SERVICE_ROLE_KEY
 );
 
-// Token limits per tier
-const TOKEN_LIMITS = {
-    starter: 100000,   // ~100k tokens
-    hustler: 200000,   // ~200k tokens
-    empire: 300000     // ~300k tokens
-};
-
 export default async function handler(req, res) {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
@@ -33,8 +26,8 @@ export default async function handler(req, res) {
     try {
         const { messages, userId } = req.body;
 
-        // Check user's current usage
-        const { data: usage, error: usageError } = await supabase
+        // Check user's current usage using admin client
+        const { data: usage, error: usageError } = await supabaseAdmin
             .from('user_usage')
             .select('*')
             .eq('user_id', userId)
@@ -44,24 +37,13 @@ export default async function handler(req, res) {
         console.log('Fetched usage:', usage);
         console.log('Usage error:', usageError);
 
-        if (usageError && usageError.code !== 'PGRST116') {
-            console.error('Usage check error:', usageError);
-        }
-
         // If user has exceeded limit
-        if (usage && tokensUsed > 0) {
-            const { error: updateError } = await supabaseAdmin  // Changed from supabase to supabaseAdmin
-                .from('user_usage')
-                .update({
-                    tokens_used: usage.tokens_used + tokensUsed
-                })
-                .eq('id', usage.id);
-
-            if (updateError) {
-                console.error('Failed to update token usage:', updateError);
-            } else {
-                console.log('Updated tokens_used to:', usage.tokens_used + tokensUsed);
-            }
+        if (usage && usage.tokens_used >= usage.tokens_limit) {
+            return res.status(429).json({
+                error: 'Monthly token limit reached. Upgrade your plan or wait until next billing cycle.',
+                tokensUsed: usage.tokens_used,
+                tokensLimit: usage.tokens_limit
+            });
         }
 
         let preferences = null;
@@ -137,8 +119,9 @@ ${tutorialContext}`;
         console.log('Usage object exists?', !!usage);
         console.log('Usage id:', usage?.id);
 
+        // Update token usage using admin client
         if (usage && tokensUsed > 0) {
-            const { error: updateError } = await supabase
+            const { error: updateError } = await supabaseAdmin
                 .from('user_usage')
                 .update({
                     tokens_used: usage.tokens_used + tokensUsed
