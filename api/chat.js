@@ -4,6 +4,12 @@ const supabaseUrl = process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL;
 const supabaseKey = process.env.SUPABASE_ANON_KEY || process.env.VITE_SUPABASE_ANON_KEY;
 const supabase = createClient(supabaseUrl, supabaseKey);
 
+// Create admin client for updates
+const supabaseAdmin = createClient(
+    supabaseUrl,
+    process.env.SUPABASE_SERVICE_ROLE_KEY
+);
+
 // Token limits per tier
 const TOKEN_LIMITS = {
     starter: 100000,   // ~100k tokens
@@ -43,12 +49,19 @@ export default async function handler(req, res) {
         }
 
         // If user has exceeded limit
-        if (usage && usage.tokens_used >= usage.tokens_limit) {
-            return res.status(429).json({
-                error: 'Monthly token limit reached. Upgrade your plan or wait until next billing cycle.',
-                tokensUsed: usage.tokens_used,
-                tokensLimit: usage.tokens_limit
-            });
+        if (usage && tokensUsed > 0) {
+            const { error: updateError } = await supabaseAdmin  // Changed from supabase to supabaseAdmin
+                .from('user_usage')
+                .update({
+                    tokens_used: usage.tokens_used + tokensUsed
+                })
+                .eq('id', usage.id);
+
+            if (updateError) {
+                console.error('Failed to update token usage:', updateError);
+            } else {
+                console.log('Updated tokens_used to:', usage.tokens_used + tokensUsed);
+            }
         }
 
         let preferences = null;
