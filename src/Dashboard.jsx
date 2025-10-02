@@ -180,7 +180,8 @@ function Dashboard({ user }) {
                         <div className="mainContent">
                             {activeTab === 'chat' && (
                                 <>
-                                    {usageInfo && (
+                                    <div>DEBUG: usageInfo exists? {usageInfo ? 'YES' : 'NO'}</div>
+                                    {usageInfo ? (
                                         <div style={{
                                             padding: 'var(--space-md)',
                                             background: 'var(--color-card-bg)',
@@ -194,12 +195,32 @@ function Dashboard({ user }) {
                                                 alignItems: 'center',
                                                 marginBottom: 'var(--space-sm)',
                                                 fontSize: '12px',
-                                                color: 'var(--color-text-secondary)'
+                                                color: 'var(--color-text-secondary)',
+                                                textTransform: 'uppercase',
+                                                letterSpacing: '1px'
                                             }}>
                                                 <span>Token Usage</span>
-                                                <span>{usageInfo.tokens_used} / {usageInfo.tokens_limit}</span>
+                                                <span style={{ color: 'var(--color-text-primary)' }}>
+                                                    {usageInfo.tokens_used?.toLocaleString() || 0} / {usageInfo.tokens_limit?.toLocaleString() || 0}
+                                                </span>
+                                            </div>
+                                            <div style={{
+                                                width: '100%',
+                                                height: '6px',
+                                                background: 'var(--color-bg)',
+                                                borderRadius: 'var(--radius-sm)',
+                                                overflow: 'hidden'
+                                            }}>
+                                                <div style={{
+                                                    width: `${Math.min((usageInfo.tokens_used / usageInfo.tokens_limit) * 100, 100)}%`,
+                                                    height: '100%',
+                                                    background: 'linear-gradient(45deg, var(--color-accent-red), var(--color-accent-gold))',
+                                                    transition: 'width 0.3s ease'
+                                                }} />
                                             </div>
                                         </div>
+                                    ) : (
+                                        <div>DEBUG: No usage info available</div>
                                     )}
                                     <AICoach
                                         messages={chatMessages}
