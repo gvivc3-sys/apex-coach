@@ -29,9 +29,20 @@ function App() {
         return <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>Loading...</div>;
     }
 
-    // If user is logged in, show dashboard
+    // If user is logged in, handle dashboard/profile routing
     if (session) {
-        return <Dashboard user={session.user} />;
+        return (
+            <>
+                {showProfile ? (
+                    <UserProfile
+                        user={session.user}
+                        onBack={() => setShowProfile(false)}
+                    />
+                ) : (
+                    <Dashboard user={session.user} />
+                )}
+            </>
+        );
     }
 
     // Check URL params for auth
