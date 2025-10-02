@@ -81,8 +81,8 @@ function App() {
             <section className="hero">
                 <div className="hero-content">
                     <h1 className="hero-title">
-                        MASTER THE<br />
-                        <span className="accent">INTERNET MONEY</span>
+                        RUN A BUSINESS<br />
+                        <span className="accent">FROM YOUR LAPTOP</span>
                     </h1>
                     <p className="hero-subtitle">
                         Build a business with just a laptop. No boss. No limits. Pure profit.
