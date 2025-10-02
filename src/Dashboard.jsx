@@ -171,7 +171,8 @@ function Dashboard({ user }) {
                         </div>
                     </div>
 
-                    <div className="mainContent">
+                        <div className="mainContent">
+                            <div>test!</div>
                             {activeTab === 'chat' && (
                                 <>
                                     {usageInfo && (
@@ -182,6 +183,7 @@ function Dashboard({ user }) {
                                             borderRadius: 'var(--radius-md)',
                                             marginBottom: 'var(--space-md)'
                                         }}>
+                                            <div>test! 2</div>
                                             <div style={{
                                                 display: 'flex',
                                                 justifyContent: 'space-between',
