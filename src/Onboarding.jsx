@@ -47,6 +47,12 @@ function Onboarding({ user, onComplete }) {
                 throw error;
             }
 
+            // Clear existing chat messages so fresh welcome message appears
+            await supabase
+                .from('chat_messages')
+                .delete()
+                .eq('user_id', user.id);
+
             window.location.reload();
         } catch (error) {
             console.error('Error saving preferences:', error);

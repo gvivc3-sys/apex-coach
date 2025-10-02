@@ -186,6 +186,29 @@
         color: var(--color-accent-red);
     }
 
+/* Demographics grid */
+.demographics-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-lg);
+}
+
+.demo-item {
+    display: flex;
+    flex-direction: column;
+}
+
+    .demo-item.full-width {
+        grid-column: 1 / -1;
+    }
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .demographics-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
 /* Mobile adjustments */
 @media (max-width: 768px) {
     .profile-container {

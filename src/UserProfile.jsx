@@ -71,12 +71,19 @@ function UserProfile({ user, onBack }) {
 
     const handleRetakeSurvey = async () => {
         try {
-            const { error } = await supabase
+            // Delete preferences
+            const { error: prefError } = await supabase
                 .from('user_preferences')
                 .delete()
                 .eq('id', user.id);
 
-            if (error) throw error;
+            if (prefError) throw prefError;
+
+            // Delete chat history so fresh welcome message appears
+            await supabase
+                .from('chat_messages')
+                .delete()
+                .eq('user_id', user.id);
 
             window.location.reload();
         } catch (error) {
@@ -97,26 +104,65 @@ function UserProfile({ user, onBack }) {
                         <h1>Your Profile</h1>
                     </div>
 
-                    {/* Goals Section */}
-                    <div className="profile-section">
-                        <div className="section-header">
-                            <h3>Your Goals</h3>
-                            <button onClick={handleRetakeSurvey} className="retake-button">
-                                Retake Survey
-                            </button>
-                        </div>
+                    {/* Demographics Section */}
+                    {preferences && (
+                        <div className="profile-section">
+                            <h3>About You</h3>
 
-                        {preferences && (
+                            <div className="demographics-grid">
+                                {preferences.age && (
+                                    <div className="demo-item">
+                                        <p className="goal-label">Age</p>
+                                        <span className="goal-value">{preferences.age}</span>
+                                    </div>
+                                )}
+
+                                {preferences.country && (
+                                    <div className="demo-item">
+                                        <p className="goal-label">Location</p>
+                                        <span className="goal-value">{getCountryName(preferences.country)}</span>
+                                    </div>
+                                )}
+
+                                {preferences.is_student !== null && (
+                                    <div className="demo-item">
+                                        <p className="goal-label">Student Status</p>
+                                        <span className="goal-value">
+                                            {preferences.is_student ? 'Student' : 'Not a student'}
+                                        </span>
+                                    </div>
+                                )}
+
+                                {preferences.skills && (
+                                    <div className="demo-item full-width">
+                                        <p className="goal-label">Skills & Interests</p>
+                                        <span className="goal-value">{preferences.skills}</span>
+                                    </div>
+                                )}
+                            </div>
+                        </div>
+                    )}
+
+                    {/* Goals Section */}
+                    {preferences && (
+                        <div className="profile-section">
+                            <div className="section-header">
+                                <h3>Your Goals</h3>
+                                <button onClick={handleRetakeSurvey} className="retake-button">
+                                    Retake Survey
+                                </button>
+                            </div>
+
                             <div>
                                 <div className="goal-item">
-                                    <p className="goal-label">SKILL LEVEL</p>
+                                    <p className="goal-label">Experience Level</p>
                                     <span className="goal-value skill-level">
                                         {preferences.skill_level}
                                     </span>
                                 </div>
 
                                 <div className="goal-item">
-                                    <p className="goal-label">FOCUS AREAS</p>
+                                    <p className="goal-label">Focus Areas</p>
                                     <div className="goal-tags">
                                         {preferences.goals.map((goal) => (
                                             <span key={goal} className="goal-tag">
@@ -126,12 +172,12 @@ function UserProfile({ user, onBack }) {
                                     </div>
                                 </div>
                             </div>
-                        )}
-                    </div>
+                        </div>
+                    )}
 
                     {/* Profile Settings */}
                     <div className="profile-section">
-                        <h3>Profile Settings</h3>
+                        <h3>Account Settings</h3>
 
                         <div className="input-group">
                             <label className="input-label">Email</label>
