@@ -33,7 +33,6 @@ export default async function handler(req, res) {
             .select('*')
             .eq('user_id', userId)
             .order('period_start', { ascending: false })
-            .limit(1)
             .single();
 
         console.log('Fetched usage:', usage);
