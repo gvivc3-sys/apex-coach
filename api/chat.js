@@ -32,8 +32,12 @@ export default async function handler(req, res) {
             .from('user_usage')
             .select('*')
             .eq('user_id', userId)
-            .gte('period_end', new Date().toISOString())
+            .order('period_start', { ascending: false })
+            .limit(1)
             .single();
+
+        console.log('Fetched usage:', usage);
+        console.log('Usage error:', usageError);
 
         if (usageError && usageError.code !== 'PGRST116') {
             console.error('Usage check error:', usageError);
@@ -116,9 +120,13 @@ ${tutorialContext}`;
             return res.status(500).json({ error: data.error?.message || 'OpenAI error' });
         }
 
-        // 🆕 ADD THIS TOKEN TRACKING CODE HERE:
         const tokensUsed = data.usage?.total_tokens || 0;
         console.log('Tokens used this request:', tokensUsed);
+
+        const tokensUsed = data.usage?.total_tokens || 0;
+        console.log('Tokens used this request:', tokensUsed);
+        console.log('Usage object exists?', !!usage);
+        console.log('Usage id:', usage?.id);
 
         if (usage && tokensUsed > 0) {
             const { error: updateError } = await supabase

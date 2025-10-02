@@ -180,13 +180,7 @@ function Dashboard({ user }) {
                         <div className="mainContent">
                             {activeTab === 'chat' && (
                                 <>
-                                    <AICoach
-                                        messages={chatMessages}
-                                        setMessages={setChatMessages}
-                                        isMobile={isMobile}
-                                    />
-                                    <div>DEBUG: usageInfo exists? {usageInfo ? 'YES' : 'NO'}</div>
-                                    {usageInfo ? (
+                                    {usageInfo && (
                                         <div style={{
                                             padding: 'var(--space-md)',
                                             background: 'var(--color-card-bg)',
@@ -224,9 +218,13 @@ function Dashboard({ user }) {
                                                 }} />
                                             </div>
                                         </div>
-                                    ) : (
-                                        <div>DEBUG: No usage info available</div>
                                     )}
+
+                                    <AICoach
+                                        messages={chatMessages}
+                                        setMessages={setChatMessages}
+                                        isMobile={isMobile}
+                                    />
                                 </>
                             )}
 
