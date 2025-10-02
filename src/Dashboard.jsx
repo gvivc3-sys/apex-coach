@@ -35,9 +35,12 @@ function Dashboard({ user }) {
     ];
 
     useEffect(() => {
-        window.scrollTo(0, 0);
         checkOnboarding();
     }, []);
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [currentView]); // currentView could be 'dashboard', 'profile', 'onboarding', etc.
 
     const checkOnboarding = async () => {
         try {
@@ -169,5 +172,6 @@ function Dashboard({ user }) {
             )}
         </>
     );
+}
 
 export default Dashboard;
