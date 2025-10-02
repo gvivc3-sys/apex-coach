@@ -590,6 +590,9 @@ footer {
 /* Container for the pill buttons */
 .navPillContainer {
     margin-bottom: 1rem;
+    background: background: var(--color-bg-alt);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
 }
 
 /* Each tab button */

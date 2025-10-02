@@ -261,7 +261,7 @@ function AICoach({ messages, setMessages, isMobile }) {
                             sendMessage();
                         }
                     }}
-                    placeholder={isMobile ? 'Ask…' : 'Ask about strategies, products, scaling…'}
+                    placeholder={isMobile ? 'Ask…' : 'Ask Apex…'}
                     className="composer__input"
                     rows={1}
                     style={{ overflowY: 'hidden', resize: 'none' }}
