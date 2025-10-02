@@ -116,16 +116,23 @@ ${tutorialContext}`;
             return res.status(500).json({ error: data.error?.message || 'OpenAI error' });
         }
 
-        // Track token usage
+        // 🆕 ADD THIS TOKEN TRACKING CODE HERE:
         const tokensUsed = data.usage?.total_tokens || 0;
+        console.log('Tokens used this request:', tokensUsed);
 
-        if (usage) {
-            await supabase
+        if (usage && tokensUsed > 0) {
+            const { error: updateError } = await supabase
                 .from('user_usage')
                 .update({
                     tokens_used: usage.tokens_used + tokensUsed
                 })
                 .eq('id', usage.id);
+
+            if (updateError) {
+                console.error('Failed to update token usage:', updateError);
+            } else {
+                console.log('Updated tokens_used to:', usage.tokens_used + tokensUsed);
+            }
         }
 
         return res.status(200).json({
@@ -136,6 +143,7 @@ ${tutorialContext}`;
                 tier: usage?.subscription_tier || 'none'
             }
         });
+
     } catch (error) {
         console.error('Server error:', error);
         return res.status(500).json({ error: error.message });

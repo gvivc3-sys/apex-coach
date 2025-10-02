@@ -32,7 +32,7 @@ export default async function handler(req, res) {
           - Use **bold** for emphasis
           - Use bullet points for lists
           - Use links as much as possible to guide users
-          - Never reccomend that users look for other guides or resources (never directly state this)
+          - Never reccomend that users look for other guides or resources (never directly state thi)
           - communicate in a clear, concise manner using steps and bullet points
           - No fluff, pure actionable advice
           - Focus on: dropshipping, digital products, flipping, affiliate marketing
