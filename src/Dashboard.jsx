@@ -54,6 +54,12 @@ function Dashboard({ user }) {
         }
     }, [hasPreferences]);
 
+    useEffect(() => {
+        if (chatMessages.length > 0) {
+            fetchUsage();
+        }
+    }, [chatMessages]);
+
     const fetchTutorials = async () => {
         // Fetch ALL tutorials
         const { data } = await supabase
