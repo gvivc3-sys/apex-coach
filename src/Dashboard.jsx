@@ -168,7 +168,17 @@ function Dashboard({ user }) {
                     </p>
                 </div>
             </footer>
-            {showProfile && <UserProfile user={user} onClose={() => setShowProfile(false)} />}
+            {showProfile && (
+                <UserProfile
+                    user={user}
+                    onClose={() => setShowProfile(false)}
+                    onRetakeSurvey={() => {
+                        setShowProfile(false);
+                        // The user preferences were deleted in UserProfile.jsx,
+                        // so when the component re-renders, it will trigger onboarding
+                    }}
+                />
+            )}
         </div>
     );
 }

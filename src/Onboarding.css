@@ -1,0 +1,126 @@
+/* Onboarding Component Styles */
+
+.onboarding-container {
+    min-height: 100vh;
+    padding-top: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-bg);
+}
+
+.onboarding-card {
+    max-width: 600px;
+    width: 90%;
+    padding: var(--space-xl);
+    background: var(--color-card-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+}
+
+.onboarding-title {
+    margin-bottom: var(--space-sm);
+    font-family: var(--font-family-heading);
+    font-size: 32px;
+    font-weight: 900;
+}
+
+.onboarding-subtitle {
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-xl);
+    font-size: 16px;
+}
+
+.onboarding-step {
+    width: 100%;
+}
+
+.step-title {
+    margin-bottom: var(--space-lg);
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--color-text-primary);
+}
+
+.option-button {
+    display: block;
+    width: 100%;
+    padding: var(--space-lg);
+    margin-bottom: var(--space-md);
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    color: var(--color-text-primary);
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.2s ease;
+}
+
+    .option-button.compact {
+        padding: var(--space-md);
+        margin-bottom: var(--space-sm);
+    }
+
+    .option-button:hover {
+        border-color: var(--color-accent-gold);
+        transform: translateY(-2px);
+    }
+
+    .option-button.selected {
+        background: linear-gradient(45deg, var(--color-accent-red), var(--color-accent-gold));
+        border-color: transparent;
+    }
+
+    .option-button:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+
+.option-title {
+    display: block;
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: capitalize;
+}
+
+.option-description {
+    font-size: 12px;
+    margin-top: var(--space-xs);
+    opacity: 0.8;
+    color: var(--color-text-secondary);
+}
+
+.option-button.selected .option-description {
+    color: var(--color-text-primary);
+}
+
+.onboarding-next {
+    width: 100%;
+    margin-top: var(--space-lg);
+}
+
+    .onboarding-next:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        transform: none;
+    }
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .onboarding-container {
+        padding-top: 80px;
+    }
+
+    .onboarding-card {
+        width: 95%;
+        padding: var(--space-lg);
+    }
+
+    .onboarding-title {
+        font-size: 24px;
+    }
+
+    .onboarding-subtitle {
+        font-size: 14px;
+    }
+}

@@ -1,14 +1,13 @@
 import { useState } from 'react';
 import { supabase } from './supabase';
 import Header from './Header';
-import './App.css';
+import './Onboarding.css';
 
 function Onboarding({ user, onComplete }) {
     const [step, setStep] = useState(1);
     const [preferences, setPreferences] = useState({
         skill_level: '',
         goals: [],
-        monthly_target: '',
         hours_available: '',
         current_income: '',
         strengths: ''
@@ -24,7 +23,6 @@ function Onboarding({ user, onComplete }) {
                     id: user.id,
                     skill_level: preferences.skill_level,
                     goals: preferences.goals,
-                    monthly_target: parseInt(preferences.monthly_target),
                     hours_available: 20,
                     current_income: 0,
                     strengths: preferences.strengths || ''
@@ -55,52 +53,26 @@ function Onboarding({ user, onComplete }) {
         <div className="apex-app">
             <Header user={user} />
 
-            <div style={{
-                minHeight: '100vh',
-                paddingTop: '100px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                background: 'var(--primary-black)'
-            }}>
-                <div style={{
-                    maxWidth: '600px',
-                    width: '90%',
-                    padding: '40px',
-                    background: 'var(--secondary-black)',
-                    border: '1px solid var(--border-gray)'
-                }}>
-                    <h1 style={{ marginBottom: '10px' }}>
+            <div className="onboarding-container">
+                <div className="onboarding-card">
+                    <h1 className="onboarding-title">
                         Welcome to <span className="accent">APEX</span>
                     </h1>
-                    <p style={{ color: 'var(--text-gray)', marginBottom: '40px' }}>
+                    <p className="onboarding-subtitle">
                         Let's customize your journey to internet money
                     </p>
 
                     {step === 1 && (
-                        <div>
-                            <h3 style={{ marginBottom: '20px' }}>What's your experience level?</h3>
+                        <div className="onboarding-step">
+                            <h3 className="step-title">What's your experience level?</h3>
                             {['beginner', 'intermediate', 'advanced'].map(level => (
                                 <button
                                     key={level}
                                     onClick={() => setPreferences(prev => ({ ...prev, skill_level: level }))}
-                                    style={{
-                                        display: 'block',
-                                        width: '100%',
-                                        padding: '20px',
-                                        marginBottom: '15px',
-                                        background: preferences.skill_level === level
-                                            ? 'linear-gradient(45deg, var(--accent-red), var(--accent-gold))'
-                                            : 'var(--primary-black)',
-                                        border: '1px solid var(--border-gray)',
-                                        color: 'white',
-                                        cursor: 'pointer',
-                                        textAlign: 'left',
-                                        textTransform: 'capitalize'
-                                    }}
+                                    className={`option-button ${preferences.skill_level === level ? 'selected' : ''}`}
                                 >
-                                    <strong>{level}</strong>
-                                    <div style={{ fontSize: '12px', marginTop: '5px', opacity: 0.8 }}>
+                                    <strong className="option-title">{level}</strong>
+                                    <div className="option-description">
                                         {level === 'beginner' && "I've never made money online"}
                                         {level === 'intermediate' && "I've made some money but want to scale"}
                                         {level === 'advanced' && "I'm making money but want to optimize"}
@@ -108,8 +80,7 @@ function Onboarding({ user, onComplete }) {
                                 </button>
                             ))}
                             <button
-                                className="primary-button"
-                                style={{ width: '100%', marginTop: '20px' }}
+                                className="primary-button onboarding-next"
                                 onClick={() => setStep(2)}
                                 disabled={!preferences.skill_level}
                             >
@@ -119,8 +90,8 @@ function Onboarding({ user, onComplete }) {
                     )}
 
                     {step === 2 && (
-                        <div>
-                            <h3 style={{ marginBottom: '20px' }}>What interests you? (Select all)</h3>
+                        <div className="onboarding-step">
+                            <h3 className="step-title">What interests you? (Select all)</h3>
                             {[
                                 { id: 'dropshipping', name: 'Dropshipping', desc: 'Sell products without inventory' },
                                 { id: 'affiliate', name: 'Affiliate Marketing', desc: 'Earn commissions promoting products' },
@@ -134,67 +105,18 @@ function Onboarding({ user, onComplete }) {
                                 <button
                                     key={option.id}
                                     onClick={() => toggleGoal(option.id)}
-                                    style={{
-                                        display: 'block',
-                                        width: '100%',
-                                        padding: '15px',
-                                        marginBottom: '10px',
-                                        background: preferences.goals.includes(option.id)
-                                            ? 'linear-gradient(45deg, var(--accent-red), var(--accent-gold))'
-                                            : 'var(--primary-black)',
-                                        border: '1px solid var(--border-gray)',
-                                        color: 'white',
-                                        cursor: 'pointer',
-                                        textAlign: 'left'
-                                    }}
+                                    className={`option-button compact ${preferences.goals.includes(option.id) ? 'selected' : ''}`}
                                 >
-                                    <strong>{option.name}</strong>
-                                    <div style={{ fontSize: '12px', marginTop: '3px', opacity: 0.8 }}>
+                                    <strong className="option-title">{option.name}</strong>
+                                    <div className="option-description">
                                         {option.desc}
                                     </div>
                                 </button>
                             ))}
                             <button
-                                className="primary-button"
-                                style={{ width: '100%', marginTop: '20px' }}
-                                onClick={() => setStep(3)}
-                                disabled={preferences.goals.length === 0}
-                            >
-                                Next
-                            </button>
-                        </div>
-                    )}
-
-                    {step === 3 && (
-                        <div>
-                            <h3 style={{ marginBottom: '20px' }}>Monthly income goal?</h3>
-                            {['1000', '5000', '10000', '25000'].map(amount => (
-                                <button
-                                    key={amount}
-                                    onClick={() => setPreferences(prev => ({ ...prev, monthly_target: amount }))}
-                                    style={{
-                                        display: 'block',
-                                        width: '100%',
-                                        padding: '20px',
-                                        marginBottom: '15px',
-                                        background: preferences.monthly_target === amount
-                                            ? 'linear-gradient(45deg, var(--accent-red), var(--accent-gold))'
-                                            : 'var(--primary-black)',
-                                        border: '1px solid var(--border-gray)',
-                                        color: 'white',
-                                        cursor: 'pointer',
-                                        fontSize: '18px',
-                                        fontWeight: 'bold'
-                                    }}
-                                >
-                                    ${parseInt(amount).toLocaleString()}/month
-                                </button>
-                            ))}
-                            <button
-                                className="primary-button"
-                                style={{ width: '100%', marginTop: '20px' }}
+                                className="primary-button onboarding-next"
                                 onClick={handleSubmit}
-                                disabled={!preferences.monthly_target}
+                                disabled={preferences.goals.length === 0}
                             >
                                 Start My Journey
                             </button>
