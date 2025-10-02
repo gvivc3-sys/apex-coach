@@ -100,12 +100,15 @@ function Dashboard({ user }) {
 
     const fetchUsage = async () => {
         try {
-            const { data } = await supabase
+            console.log('Fetching usage for user:', user.id);
+            const { data, error } = await supabase
                 .from('user_usage')
                 .select('*')
                 .eq('user_id', user.id)
                 .gte('period_end', new Date().toISOString())
                 .single();
+
+            console.log('Usage data:', data, 'Error:', error);
 
             if (data) {
                 setUsageInfo(data);
