@@ -14,7 +14,6 @@ function Dashboard({ user }) {
     const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
     const [chatMessages, setChatMessages] = useState([]);
     const [userPreferences, setUserPreferences] = useState(null);
-
     const createInitialMessage = (goals) => {
         if (!goals || goals.length === 0) {
             return 'Ready to build your online empire? Ask me anything - from finding winning products to scaling past $10K/month. No fluff, just actionable strategies.';
@@ -45,22 +44,33 @@ function Dashboard({ user }) {
     };
 
     const [tutorials, setTutorials] = useState([]);
+    const [allTutorials, setAllTutorials] = useState([]);
+    const [showOnlyAligned, setShowOnlyAligned] = useState(false);
 
     useEffect(() => {
-        if (userPreferences?.goals) {
+        if (hasPreferences) {
             fetchTutorials();
         }
-    }, [userPreferences]);
+    }, [hasPreferences]);
 
     const fetchTutorials = async () => {
+        // Fetch ALL tutorials
         const { data } = await supabase
             .from('tutorials')
             .select('*')
-            .in('category', userPreferences.goals)
             .order('level', { ascending: true });
 
+        setAllTutorials(data || []);
         setTutorials(data || []);
     };
+
+    const isAlignedWithGoals = (tutorialCategory) => {
+        return userPreferences?.goals?.includes(tutorialCategory);
+    };
+
+    const displayedTutorials = showOnlyAligned
+        ? tutorials.filter(t => isAlignedWithGoals(t.category))
+        : tutorials;
 
     const checkOnboarding = async () => {
         try {
@@ -148,21 +158,68 @@ function Dashboard({ user }) {
                             />
                         )}
 
-                        {activeTab === 'tutorials' && (
-                            <div className="contentCard">
-                                <h2>Quick Start Tutorials</h2>
-                                <div className="tutorialGrid">
-                                    {tutorials.map((tutorial, i) => (
-                                        <div key={i} className="tutorialCard">
-                                            <h3 className="tutorialTitle">{tutorial.title}</h3>
-                                            <p className="tutorialMeta">
-                                                {tutorial.time} • {tutorial.level}
-                                            </p>
+                            {activeTab === 'tutorials' && (
+                                <div className="contentCard">
+                                    <div style={{
+                                        display: 'flex',
+                                        justifyContent: 'space-between',
+                                        alignItems: 'center',
+                                        marginBottom: 'var(--space-lg)'
+                                    }}>
+                                        <h2 style={{ margin: 0 }}>Quick Start Tutorials</h2>
+                                        <label style={{
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            gap: 'var(--space-sm)',
+                                            color: 'var(--color-text-secondary)',
+                                            fontSize: '14px',
+                                            cursor: 'pointer'
+                                        }}>
+                                            <input
+                                                type="checkbox"
+                                                checked={showOnlyAligned}
+                                                onChange={(e) => setShowOnlyAligned(e.target.checked)}
+                                                style={{ cursor: 'pointer' }}
+                                            />
+                                            Show only aligned with my goals
+                                        </label>
+                                    </div>
+
+                                    {displayedTutorials.length > 0 ? (
+                                        <div className="tutorialGrid">
+                                            {displayedTutorials.map((tutorial, i) => {
+                                                const isAligned = isAlignedWithGoals(tutorial.category);
+                                                return (
+                                                    <div
+                                                        key={i}
+                                                        className={`tutorialCard ${isAligned ? 'aligned' : ''}`}
+                                                    >
+                                                        <h3 className="tutorialTitle">{tutorial.title}</h3>
+                                                        <p className="tutorialMeta">
+                                                            {tutorial.time_minutes} min • {tutorial.level}
+                                                        </p>
+                                                        {isAligned && (
+                                                            <span className="tutorialAlignedTag">
+                                                                Aligned with your goals
+                                                            </span>
+                                                        )}
+                                                    </div>
+                                                );
+                                            })}
                                         </div>
-                                    ))}
+                                    ) : (
+                                        <p style={{
+                                            color: 'var(--color-text-secondary)',
+                                            textAlign: 'center',
+                                            padding: 'var(--space-xl)'
+                                        }}>
+                                            {showOnlyAligned
+                                                ? 'No tutorials match your selected goals yet.'
+                                                : 'No tutorials available yet.'}
+                                        </p>
+                                    )}
                                 </div>
-                            </div>
-                        )}
+                            )}
                     </div>
 
                     <footer className={`site-footer ${isMobile ? 'is-mobile' : ''}`}>
