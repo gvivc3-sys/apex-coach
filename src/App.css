@@ -6,18 +6,21 @@
  * need to change, while improving readability, consistency and visual hierarchy.
  */
 
-/* ---------- Tokens ---------- */
+/* ============================
+   DESIGN TOKENS
+   ============================ */
+
 :root {
     /* Primary colour palette */
-    --color-bg: #0d0e12; /* dark background for most sections */
-    --color-bg-alt: #101318; /* slightly lighter dark background */
-    --color-card-bg: #13171d; /* card backgrounds */
-    --color-border: #252a34; /* subtle borders */
-    --color-accent-gold: #d4af37; /* golden accent */
-    --color-accent-red: #e05446; /* soft red accent */
-    --color-text-primary: #f5f5f5; /* near‑white text */
-    --color-text-secondary: #b0b8c1; /* muted text */
-    --color-text-muted: #6a7383; /* more subdued text */
+    --color-bg: #0d0e12;
+    --color-bg-alt: #101318;
+    --color-card-bg: #13171d;
+    --color-border: #252a34;
+    --color-accent-gold: #d4af37;
+    --color-accent-red: #e05446;
+    --color-text-primary: #f5f5f5;
+    --color-text-secondary: #b0b8c1;
+    --color-text-muted: #6a7383;
     /* Typography */
     --font-family-base: "Arial", sans-serif;
     --font-family-heading: "Arial Black", sans-serif;
@@ -35,7 +38,10 @@
     --radius-lg: 20px;
 }
 
-/* Reset defaults and set global box model */
+/* ============================
+   GLOBAL RESETS
+   ============================ */
+
 *, *::before, *::after {
     margin: 0;
     padding: 0;
@@ -56,7 +62,10 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
-/* Utility classes */
+/* ============================
+   UTILITY CLASSES
+   ============================ */
+
 .container {
     width: 100%;
     max-width: 1200px;
@@ -68,10 +77,73 @@ body {
     text-align: center;
 }
 
-/* Navigation */
+/* ============================
+   BUTTONS (UNIFIED)
+   ============================ */
+
+.cta-button,
+.primary-button {
+    padding: var(--space-sm) var(--space-lg);
+    border: none;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--color-text-primary);
+    background: linear-gradient(45deg, var(--color-accent-red), var(--color-accent-gold));
+    border-radius: var(--radius-sm);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+    .cta-button:hover,
+    .primary-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(212, 175, 55, 0.35);
+    }
+
+.secondary-button {
+    padding: var(--space-sm) var(--space-lg);
+    border-radius: var(--radius-sm);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    color: var(--color-accent-gold);
+    background: transparent;
+    border: 1px solid var(--color-border);
+    transition: all 0.2s;
+}
+
+    .secondary-button:hover {
+        border-color: var(--color-accent-gold);
+        color: var(--color-accent-gold);
+    }
+
+.user-button {
+    padding: var(--space-sm) var(--space-lg);
+    background: transparent;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    color: var(--color-text-primary);
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+    .user-button:hover {
+        border-color: var(--color-accent-gold);
+    }
+
+/* ============================
+   NAVIGATION
+   ============================ */
+
 .nav-fixed {
-    /* Let the header scroll with the page rather than be fixed.
-   * Positioning is now relative by default. */
     position: relative;
     width: 100%;
     background-color: rgba(13, 14, 18, 0.9);
@@ -118,34 +190,17 @@ body {
             color: var(--color-accent-gold);
         }
 
-.cta-button {
-    padding-block: var(--space-sm);
-    padding-inline: var(--space-lg);
-    border: none;
-    cursor: pointer;
-    font-size: 12px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: var(--color-text-primary);
-    background: linear-gradient(45deg, var(--color-accent-red), var(--color-accent-gold));
-    border-radius: var(--radius-sm);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
+/* ============================
+   HERO SECTION
+   ============================ */
 
-    .cta-button:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 8px 20px rgba(212, 175, 55, 0.35);
-    }
-
-/* Hero */
 .hero {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     min-height: 90vh;
-    padding-top: 90px; /* offset for fixed nav */
+    padding-top: 90px;
     text-align: center;
     background: radial-gradient(circle at 30% 30%, rgba(212, 175, 55, 0.2), transparent 50%), radial-gradient(circle at 70% 70%, rgba(224, 84, 70, 0.15), transparent 50%);
 }
@@ -181,42 +236,10 @@ body {
     justify-content: center;
 }
 
-/* Buttons (primary and secondary) */
-.primary-button,
-.secondary-button {
-    border-radius: var(--radius-sm);
-    padding: var(--space-sm) var(--space-lg);
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: all 0.2s;
-}
+/* ============================
+   STATS SECTION
+   ============================ */
 
-.primary-button {
-    color: var(--color-bg);
-    background: linear-gradient(45deg, var(--color-accent-red), var(--color-accent-gold));
-    border: none;
-}
-
-    .primary-button:hover {
-        box-shadow: 0 6px 18px rgba(212, 175, 55, 0.3);
-        transform: translateY(-2px);
-    }
-
-.secondary-button {
-    color: var(--color-accent-gold);
-    background: transparent;
-    border: 1px solid var(--color-border);
-}
-
-    .secondary-button:hover {
-        border-color: var(--color-accent-gold);
-        color: var(--color-accent-gold);
-    }
-
-/* Stats Section */
 .stats {
     background-color: var(--color-bg-alt);
     padding-block: var(--space-xl);
@@ -264,7 +287,10 @@ body {
     margin-top: var(--space-sm);
 }
 
-/* Features */
+/* ============================
+   FEATURES SECTION
+   ============================ */
+
 .features {
     padding-block: var(--space-xl);
     background-color: var(--color-bg);
@@ -343,7 +369,10 @@ body {
     line-height: 1.5;
 }
 
-/* Pricing */
+/* ============================
+   PRICING SECTION
+   ============================ */
+
 .pricing {
     padding-block: var(--space-xl);
     background-color: var(--color-bg-alt);
@@ -442,160 +471,32 @@ body {
     margin-top: var(--space-sm);
 }
 
-/* Footer */
-footer {
-    padding-block: var(--space-xl);
-    background-color: var(--color-bg);
-    border-top: 1px solid var(--color-border);
-    color: var(--color-text-secondary);
-}
+/* ============================
+   DASHBOARD
+   ============================ */
 
-.footer-content {
-    max-width: 1200px;
-    margin-inline: auto;
-    padding-inline: var(--space-lg);
-}
-
-.footer-links {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: var(--space-md);
-    margin-bottom: var(--space-md);
-}
-
-    .footer-links a {
-        font-size: 12px;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        color: var(--color-text-secondary);
-        text-decoration: none;
-        transition: color 0.25s;
-    }
-
-        .footer-links a:hover {
-            color: var(--color-accent-gold);
-        }
-
-.copyright {
-    font-size: 12px;
-    color: var(--color-text-muted);
-    text-align: center;
-}
-
-.user-button {
-    background: transparent;
-    border: 1px solid var(--border-gray);
-    color: var(--text-white);
-    cursor: pointer;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .nav-container {
-        padding-inline: var(--space-md);
-        height: 60px;
-    }
-
-    .hero-title {
-        font-size: clamp(32px, 10vw, 56px);
-    }
-
-    .hero-subtitle {
-        font-size: 16px;
-    }
-
-    .pricing-card.featured {
-        transform: none;
-    }
-
-    /* Responsive tweaks for dashboard and grids */
-    .mainContent {
-        max-width: 100%;
-        padding: var(--space-sm);
-    }
-    /* Collapse tutorial grid to a single column on small screens */
-    .tutorialGrid {
-        grid-template-columns: 1fr;
-    }
-    /* Collapse pricing and features grids */
-    .pricing-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .features-grid {
-        grid-template-columns: 1fr;
-    }
-    /* Adjust nav link spacing and hide text links on mobile */
-    .nav-links {
-        gap: var(--space-sm);
-    }
-
-        .nav-links a {
-            display: none;
-        }
-
-    /* Shrink header logo and action button sizes on mobile */
-    .logo {
-        font-size: 20px;
-    }
-
-    .nav-links button {
-        padding: var(--space-sm) var(--space-sm);
-        font-size: 10px;
-    }
-    /* Compress pill navigation spacing */
-    .navPillContainer {
-        gap: var(--space-xs);
-        padding: var(--space-xs);
-    }
-
-    .navPillButton {
-        padding: var(--space-xs) var(--space-sm);
-        font-size: 12px;
-    }
-    /* Stack footer columns on mobile */
-    .site-footer .footer__inner {
-        flex-direction: column;
-        gap: var(--space-lg);
-    }
-
-    /* Rework secondary nav into a segmented control on mobile */
-    .secondary-nav {
-        padding-inline: var(--space-md);
-    }
-}
-
-/* --------------------------------------------------------------------- */
-/* Dashboard styles                                                      */
-/* --------------------------------------------------------------------- */
-
-/* The outer container for the dashboard view. This ensures the page
- * stretches to fill the viewport and allows the footer to stick to
- * the bottom when content is short. */
 .dashboard-container {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
 }
 
-/* Secondary navigation (tab bar) */
 .secondary-nav {
-    margin-top: var(--space-lg);
+    margin: var(--space-lg);
     padding-inline: var(--space-lg);
     display: flex;
     justify-content: center;
 }
 
-/* Container for the pill buttons */
 .navPillContainer {
-    margin-bottom: 1rem;
-    background: background: var(--color-bg-alt);
+    background: var(--color-bg-alt);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-sm);
+    display: flex;
+    gap: var(--space-xs);
+    padding: var(--space-xs);
 }
 
-/* Each tab button */
 .navPillButton {
     border: none;
     font-weight: 700;
@@ -603,7 +504,8 @@ footer {
     padding: var(--space-sm) var(--space-md);
     border-radius: var(--radius-sm);
     cursor: pointer;
-    font-size: 14px;
+    font-size: 12px;
+    letter-spacing: 1px;
     font-family: inherit;
     background: transparent;
     color: var(--color-text-secondary);
@@ -614,24 +516,21 @@ footer {
         color: var(--color-text-primary);
     }
 
-/* Active tab button */
 .navPillButtonActive {
     background: linear-gradient(45deg, var(--color-accent-red), var(--color-accent-gold));
     color: var(--color-text-primary);
 }
 
-/* Main content area of the dashboard */
 .mainContent {
     max-width: 960px;
     margin-inline: auto;
-
+    padding-inline: var(--space-lg);
     display: flex;
     flex-direction: column;
     gap: var(--space-lg);
     flex: 1 0 auto;
 }
 
-/* Generic content card used for tutorials, roadmap and glossary */
 .contentCard {
     background: var(--color-card-bg);
     border: 1px solid var(--color-border);
@@ -645,7 +544,10 @@ footer {
         font-size: 22px;
     }
 
-/* Tutorials grid */
+/* ============================
+   TUTORIALS
+   ============================ */
+
 .tutorialGrid {
     display: grid;
     gap: var(--space-md);
@@ -676,7 +578,10 @@ footer {
     color: var(--color-text-secondary);
 }
 
-/* Roadmap list items */
+/* ============================
+   ROADMAP
+   ============================ */
+
 .roadmapItem {
     display: flex;
     align-items: center;
@@ -720,10 +625,51 @@ footer {
     opacity: 0.6;
 }
 
-/* --------------------------------------------------------------------- */
-/* Footer refinements for dashboard component                             */
-/* --------------------------------------------------------------------- */
+/* ============================
+   FOOTER
+   ============================ */
 
+footer {
+    padding-block: var(--space-xl);
+    background-color: var(--color-bg);
+    border-top: 1px solid var(--color-border);
+    color: var(--color-text-secondary);
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin-inline: auto;
+    padding-inline: var(--space-lg);
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+    margin-bottom: var(--space-md);
+}
+
+    .footer-links a {
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: var(--color-text-secondary);
+        text-decoration: none;
+        transition: color 0.25s;
+    }
+
+        .footer-links a:hover {
+            color: var(--color-accent-gold);
+        }
+
+.copyright {
+    font-size: 12px;
+    color: var(--color-text-muted);
+    text-align: center;
+}
+
+/* Dashboard footer */
 .site-footer {
     margin-top: var(--space-xl);
     padding: var(--space-xl) var(--space-lg);
@@ -753,7 +699,6 @@ footer {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    color: transparent;
 }
 
 .footer__brandText {
@@ -791,7 +736,6 @@ footer {
 
     .footer__link:hover {
         color: var(--color-text-primary);
-        text-decoration: none;
     }
 
 .footer__bottom {
@@ -806,4 +750,74 @@ footer {
     margin: 0;
     font-size: 12px;
     color: var(--color-text-muted);
+}
+
+/* ============================
+   RESPONSIVE
+   ============================ */
+
+@media (max-width: 768px) {
+    .nav-container {
+        padding-inline: var(--space-md);
+        height: 60px;
+    }
+
+    .logo {
+        font-size: 20px;
+    }
+
+    .nav-links {
+        gap: var(--space-sm);
+    }
+
+        .nav-links a {
+            display: none;
+        }
+
+        .nav-links button {
+            padding: var(--space-sm);
+            font-size: 10px;
+        }
+
+    .hero-title {
+        font-size: clamp(32px, 10vw, 56px);
+    }
+
+    .hero-subtitle {
+        font-size: 16px;
+    }
+
+    .pricing-card.featured {
+        transform: none;
+    }
+
+    .mainContent {
+        max-width: 100%;
+        padding: var(--space-md);
+    }
+
+    .tutorialGrid,
+    .pricing-grid,
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .navPillContainer {
+        gap: var(--space-xs);
+        padding: var(--space-xs);
+    }
+
+    .navPillButton {
+        padding: var(--space-xs) var(--space-sm);
+        font-size: 11px;
+    }
+
+    .site-footer .footer__inner {
+        flex-direction: column;
+        gap: var(--space-lg);
+    }
+
+    .secondary-nav {
+        padding-inline: var(--space-md);
+    }
 }
