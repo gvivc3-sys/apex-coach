@@ -78,11 +78,8 @@ function UserProfile({ user, onClose, onRetakeSurvey }) {
 
             if (error) throw error;
 
-            // Close profile and trigger onboarding
-            onClose();
-            if (onRetakeSurvey) {
-                onRetakeSurvey();
-            }
+            // Force a full page reload to restart the app flow
+            window.location.reload();
         } catch (error) {
             setMessage(error.message);
         }

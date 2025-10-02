@@ -1,8 +1,7 @@
 /* Onboarding Component Styles */
 
 .onboarding-container {
-    min-height: 100vh;
-    padding-top: 100px;
+    margin: var(--space-lg);
     display: flex;
     align-items: center;
     justify-content: center;
