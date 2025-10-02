@@ -15,13 +15,6 @@ function Dashboard({ user }) {
     const [chatMessages, setChatMessages] = useState([]);
     const [userPreferences, setUserPreferences] = useState(null);
 
-    const tutorials = [
-        { title: 'Dropshipping 101', time: '15 min', level: 'Beginner' },
-        { title: 'Facebook Marketplace Flipping', time: '10 min', level: 'Beginner' },
-        { title: 'Creating Digital Products', time: '20 min', level: 'Intermediate' },
-        { title: 'TikTok Affiliate Marketing', time: '25 min', level: 'Intermediate' }
-    ];
-
     const createInitialMessage = (goals) => {
         if (!goals || goals.length === 0) {
             return 'Ready to build your online empire? Ask me anything - from finding winning products to scaling past $10K/month. No fluff, just actionable strategies.';
@@ -54,12 +47,12 @@ function Dashboard({ user }) {
     const [tutorials, setTutorials] = useState([]);
 
     useEffect(() => {
-        fetchTutorials();
+        if (userPreferences?.goals) {
+            fetchTutorials();
+        }
     }, [userPreferences]);
 
     const fetchTutorials = async () => {
-        if (!userPreferences?.goals) return;
-
         const { data } = await supabase
             .from('tutorials')
             .select('*')
