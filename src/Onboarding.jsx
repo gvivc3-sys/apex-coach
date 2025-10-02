@@ -47,7 +47,19 @@ function Onboarding({ user, onComplete }) {
                 throw error;
             }
 
-            // Clear existing chat messages so fresh welcome message appears
+            // Create initial usage tracking entry
+            await supabase
+                .from('user_usage')
+                .upsert({
+                    user_id: user.id,
+                    subscription_tier: 'starter', // Default to starter
+                    tokens_used: 0,
+                    tokens_limit: 100000,
+                    period_start: new Date().toISOString(),
+                    period_end: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString() // 30 days from now
+                });
+
+            // Clear existing chat messages
             await supabase
                 .from('chat_messages')
                 .delete()
