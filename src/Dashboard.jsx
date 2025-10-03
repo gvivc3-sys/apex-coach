@@ -79,6 +79,49 @@ function Dashboard({ user }) {
         ? tutorials.filter(t => isAlignedWithGoals(t.category))
         : tutorials;
 
+    const [selectedTutorial, setSelectedTutorial] = useState(null);
+
+    // In the tutorials rendering section:
+    {
+        activeTab === 'tutorials' && (
+            <>
+                <div className="contentCard">
+                    {/* ... existing tutorial grid code ... */}
+                    <div className="tutorialGrid">
+                        {displayedTutorials.map((tutorial, i) => {
+                            const isAligned = isAlignedWithGoals(tutorial.category);
+                            return (
+                                <div
+                                    key={tutorial.id || i}
+                                    className={`tutorialCard ${isAligned ? 'aligned' : ''}`}
+                                    onClick={() => setSelectedTutorial(tutorial.id)}
+                                    style={{ cursor: 'pointer' }}
+                                >
+                                    {isAligned && (
+                                        <div className="tutorialAlignedBadge">
+                                            ⭐ Aligned with your goals
+                                        </div>
+                                    )}
+                                    <h3 className="tutorialTitle">{tutorial.title}</h3>
+                                    <p className="tutorialMeta">
+                                        {tutorial.time_minutes} min • {tutorial.level}
+                                    </p>
+                                </div>
+                            );
+                        })}
+                    </div>
+                </div>
+
+                {selectedTutorial && (
+                    <TutorialDetail
+                        tutorialId={selectedTutorial}
+                        onClose={() => setSelectedTutorial(null)}
+                    />
+                )}
+            </>
+        )
+    }
+
     const checkOnboarding = async () => {
         try {
             const { data, error } = await supabase

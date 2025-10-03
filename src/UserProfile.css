@@ -1,19 +1,18 @@
 /* User Profile Page Styles */
 
 .profile-page {
-    margin: var(--space-lg);
     padding-bottom: var(--space-xl);
     background: var(--color-bg);
 }
 
 .profile-container {
-    max-width: 800px;
+    max-width: 960px;
     margin: 0 auto;
     padding: var(--space-lg);
 }
 
 .profile-header-page {
-    margin-bottom: var(--space-xl);
+    margin: var(--space-md);
 }
 
     .profile-header-page h1 {
@@ -212,7 +211,7 @@
 /* Mobile adjustments */
 @media (max-width: 768px) {
     .profile-container {
-        padding: var(--space-md);
+        padding: var(--space-xs);
     }
 
     .profile-header-page h1 {
