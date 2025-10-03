@@ -151,7 +151,7 @@ function App() {
                             <div className="stat-label">Always Available Coaching</div>
                         </div>
                         <div className="stat-card">
-                            <div className="stat-number">< 30s</div>
+                            <div className="stat-number">&lt; 30s</div>
                             <div className="stat-label">Average Response Time</div>
                         </div>
                     </div>
@@ -210,155 +210,155 @@ function App() {
             </section>
 
             {/* Traditional vs APEX */}
-            <section className="features">
-                <div className="features-container">
-                    <h2 className="section-title">WHY APEX COACH BEATS TRADITIONAL LEARNING</h2>
-
-                    <div style={{
-                        display: 'grid',
-                        gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-                        gap: 'var(--space-xl)',
-                        maxWidth: '1000px',
-                        margin: '0 auto'
+<section className="features">
+    <div className="features-container">
+        <h2 className="section-title">WHY APEX COACH BEATS TRADITIONAL LEARNING</h2>
+        
+        <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+            gap: 'var(--space-xl)',
+            maxWidth: '1000px',
+            margin: '0 auto'
+        }}>
+            {/* Traditional Way */}
+            <div style={{
+                padding: 'var(--space-xl)',
+                background: 'var(--color-bg-alt)',
+                border: '1px solid var(--color-border)',
+                borderRadius: 'var(--radius-md)'
+            }}>
+                <h3 style={{ 
+                    marginBottom: 'var(--space-lg)',
+                    color: 'var(--color-text-secondary)',
+                    textAlign: 'center'
+                }}>
+                    Traditional Learning
+                </h3>
+                <ul style={{ 
+                    listStyle: 'none', 
+                    padding: 0,
+                    color: 'var(--color-text-secondary)'
+                }}>
+                    <li style={{ 
+                        padding: 'var(--space-sm) 0',
+                        borderBottom: '1px solid var(--color-border)'
                     }}>
-                        {/* Traditional Way */}
-                        <div style={{
-                            padding: 'var(--space-xl)',
-                            background: 'var(--color-bg-alt)',
-                            border: '1px solid var(--color-border)',
-                            borderRadius: 'var(--radius-md)'
-                        }}>
-                            <h3 style={{
-                                marginBottom: 'var(--space-lg)',
-                                color: 'var(--color-text-secondary)',
-                                textAlign: 'center'
-                            }}>
-                                Traditional Learning
-                            </h3>
-                            <ul style={{
-                                listStyle: 'none',
-                                padding: 0,
-                                color: 'var(--color-text-secondary)'
-                            }}>
-                                <li style={{
-                                    padding: 'var(--space-sm) 0',
-                                    borderBottom: '1px solid var(--color-border)'
-                                }}>
-                                    ❌ Watch 40+ hour courses
-                                </li>
-                                <li style={{
-                                    padding: 'var(--space-sm) 0',
-                                    borderBottom: '1px solid var(--color-border)'
-                                }}>
-                                    ❌ Search through 100+ YouTube videos
-                                </li>
-                                <li style={{
-                                    padding: 'var(--space-sm) 0',
-                                    borderBottom: '1px solid var(--color-border)'
-                                }}>
-                                    ❌ Pay $2K+ for coaching programs
-                                </li>
-                                <li style={{
-                                    padding: 'var(--space-sm) 0',
-                                    borderBottom: '1px solid var(--color-border)'
-                                }}>
-                                    ❌ Wait days for email responses
-                                </li>
-                                <li style={{
-                                    padding: 'var(--space-sm) 0',
-                                    borderBottom: '1px solid var(--color-border)'
-                                }}>
-                                    ❌ Generic advice that doesn't fit your situation
-                                </li>
-                                <li style={{
-                                    padding: 'var(--space-sm) 0'
-                                }}>
-                                    ❌ Outdated strategies from 2019
-                                </li>
-                            </ul>
-                        </div>
-
-                        {/* APEX Way */}
-                        <div style={{
-                            padding: 'var(--space-xl)',
-                            background: 'linear-gradient(135deg, var(--color-card-bg), var(--color-bg-alt))',
-                            border: '2px solid var(--color-accent-gold)',
-                            borderRadius: 'var(--radius-md)',
-                            boxShadow: '0 8px 24px rgba(212, 175, 55, 0.2)'
-                        }}>
-                            <h3 style={{
-                                marginBottom: 'var(--space-lg)',
-                                color: 'var(--color-accent-gold)',
-                                textAlign: 'center'
-                            }}>
-                                The APEX Way
-                            </h3>
-                            <ul style={{
-                                listStyle: 'none',
-                                padding: 0,
-                                color: 'var(--color-text-primary)'
-                            }}>
-                                <li style={{
-                                    padding: 'var(--space-sm) 0',
-                                    borderBottom: '1px solid var(--color-border)'
-                                }}>
-                                    ✅ Ask one question, get instant answer
-                                </li>
-                                <li style={{
-                                    padding: 'var(--space-sm) 0',
-                                    borderBottom: '1px solid var(--color-border)'
-                                }}>
-                                    ✅ All tutorials condensed into chat
-                                </li>
-                                <li style={{
-                                    padding: 'var(--space-sm) 0',
-                                    borderBottom: '1px solid var(--color-border)'
-                                }}>
-                                    ✅ Starting at $47/month
-                                </li>
-                                <li style={{
-                                    padding: 'var(--space-sm) 0',
-                                    borderBottom: '1px solid var(--color-border)'
-                                }}>
-                                    ✅ 24/7 instant coaching responses
-                                </li>
-                                <li style={{
-                                    padding: 'var(--space-sm) 0',
-                                    borderBottom: '1px solid var(--color-border)'
-                                }}>
-                                    ✅ Personalized to YOUR business model
-                                </li>
-                                <li style={{
-                                    padding: 'var(--space-sm) 0'
-                                }}>
-                                    ✅ Updated with current strategies
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div style={{
-                        textAlign: 'center',
-                        marginTop: 'var(--space-xl)'
+                        ❌ Watch 40+ hour courses
+                    </li>
+                    <li style={{ 
+                        padding: 'var(--space-sm) 0',
+                        borderBottom: '1px solid var(--color-border)'
                     }}>
-                        <p style={{
-                            fontSize: '20px',
-                            fontWeight: '700',
-                            marginBottom: 'var(--space-lg)',
-                            color: 'var(--color-text-primary)'
-                        }}>
-                            Stop wasting months learning. Start making money this week.
-                        </p>
-                        <button
-                            className="primary-button"
-                            onClick={() => window.location.href = '/?auth=true'}
-                            style={{ fontSize: '16px', padding: 'var(--space-md) var(--space-xl)' }}
-                        >
-                            Get APEX Coach Now
-                        </button>
-                    </div>
-                </div>
-            </section>
+                        ❌ Search through 100+ YouTube videos
+                    </li>
+                    <li style={{ 
+                        padding: 'var(--space-sm) 0',
+                        borderBottom: '1px solid var(--color-border)'
+                    }}>
+                        ❌ Pay $2K+ for coaching programs
+                    </li>
+                    <li style={{ 
+                        padding: 'var(--space-sm) 0',
+                        borderBottom: '1px solid var(--color-border)'
+                    }}>
+                        ❌ Wait days for email responses
+                    </li>
+                    <li style={{ 
+                        padding: 'var(--space-sm) 0',
+                        borderBottom: '1px solid var(--color-border)'
+                    }}>
+                        ❌ Generic advice that doesn't fit your situation
+                    </li>
+                    <li style={{ 
+                        padding: 'var(--space-sm) 0'
+                    }}>
+                        ❌ Outdated strategies from 2019
+                    </li>
+                </ul>
+            </div>
+
+            {/* APEX Way */}
+            <div style={{
+                padding: 'var(--space-xl)',
+                background: 'linear-gradient(135deg, var(--color-card-bg), var(--color-bg-alt))',
+                border: '2px solid var(--color-accent-gold)',
+                borderRadius: 'var(--radius-md)',
+                boxShadow: '0 8px 24px rgba(212, 175, 55, 0.2)'
+            }}>
+                <h3 style={{ 
+                    marginBottom: 'var(--space-lg)',
+                    color: 'var(--color-accent-gold)',
+                    textAlign: 'center'
+                }}>
+                    The APEX Way
+                </h3>
+                <ul style={{ 
+                    listStyle: 'none', 
+                    padding: 0,
+                    color: 'var(--color-text-primary)'
+                }}>
+                    <li style={{ 
+                        padding: 'var(--space-sm) 0',
+                        borderBottom: '1px solid var(--color-border)'
+                    }}>
+                        ✅ Ask one question, get instant answer
+                    </li>
+                    <li style={{ 
+                        padding: 'var(--space-sm) 0',
+                        borderBottom: '1px solid var(--color-border)'
+                    }}>
+                        ✅ All tutorials condensed into chat
+                    </li>
+                    <li style={{ 
+                        padding: 'var(--space-sm) 0',
+                        borderBottom: '1px solid var(--color-border)'
+                    }}>
+                        ✅ Starting at $47/month
+                    </li>
+                    <li style={{ 
+                        padding: 'var(--space-sm) 0',
+                        borderBottom: '1px solid var(--color-border)'
+                    }}>
+                        ✅ 24/7 instant coaching responses
+                    </li>
+                    <li style={{ 
+                        padding: 'var(--space-sm) 0',
+                        borderBottom: '1px solid var(--color-border)'
+                    }}>
+                        ✅ Personalized to YOUR business model
+                    </li>
+                    <li style={{ 
+                        padding: 'var(--space-sm) 0'
+                    }}>
+                        ✅ Updated with current strategies
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div style={{ 
+            textAlign: 'center', 
+            marginTop: 'var(--space-xl)' 
+        }}>
+            <p style={{ 
+                fontSize: '20px', 
+                fontWeight: '700',
+                marginBottom: 'var(--space-lg)',
+                color: 'var(--color-text-primary)'
+            }}>
+                Stop wasting months learning. Start making money this week.
+            </p>
+            <button 
+                className="primary-button"
+                onClick={() => window.location.href = '/?auth=true'}
+                style={{ fontSize: '16px', padding: 'var(--space-md) var(--space-xl)' }}
+            >
+                Get APEX Coach Now
+            </button>
+        </div>
+    </div>
+</section>
 
             {/* Features Section */}
             <section className="features" id="features">
