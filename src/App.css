@@ -889,7 +889,7 @@ footer {
     }
 
     .tutorialGrid {
-        gap: var(--space-md);
+        gap: var(--space-sm);
     }
 
     .navPillContainer {

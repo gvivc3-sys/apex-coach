@@ -4,6 +4,7 @@ import AICoach from './AICoach';
 import UserProfile from './UserProfile';
 import Header from './Header';
 import Onboarding from './Onboarding';
+import TutorialDetail from './TutorialDetail';
 import './App.css';
 
 function Dashboard({ user }) {
@@ -15,6 +16,7 @@ function Dashboard({ user }) {
     const [chatMessages, setChatMessages] = useState([]);
     const [userPreferences, setUserPreferences] = useState(null);
     const [usageInfo, setUsageInfo] = useState(null);
+    const [selectedTutorial, setSelectedTutorial] = useState(null);
     const createInitialMessage = (goals) => {
         if (!goals || goals.length === 0) {
             return 'Ready to build your online empire? Ask me anything - from finding winning products to scaling past $10K/month. No fluff, just actionable strategies.';
