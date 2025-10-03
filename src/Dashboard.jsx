@@ -231,59 +231,60 @@ function Dashboard({ user }) {
                                     />
                                 </>
                             )}
-
                             {activeTab === 'tutorials' && (
-                                <div className="contentCard">
-                                    <div className="tutorials-header">
-                                        <h2>Quick Start Tutorials</h2>
-                                        <label className="filter-toggle">
-                                            <input
-                                                type="checkbox"
-                                                checked={showOnlyAligned}
-                                                onChange={(e) => setShowOnlyAligned(e.target.checked)}
-                                            />
-                                            Show only aligned with my goals
-                                        </label>
+                                <>
+                                    <div className="contentCard">
+                                        <div className="tutorials-header">
+                                            <h2>Quick Start Tutorials</h2>
+                                            <label className="filter-toggle">
+                                                <input
+                                                    type="checkbox"
+                                                    checked={showOnlyAligned}
+                                                    onChange={(e) => setShowOnlyAligned(e.target.checked)}
+                                                />
+                                                Show only aligned with my goals
+                                            </label>
+                                        </div>
+                                        {displayedTutorials.length > 0 ? (
+                                            <div className="tutorialGrid">
+                                                {displayedTutorials.map((tutorial, i) => {
+                                                    const isAligned = isAlignedWithGoals(tutorial.category);
+                                                    return (
+                                                        <div
+                                                            key={tutorial.id || i}
+                                                            className={`tutorialCard ${isAligned ? 'aligned' : ''}`}
+                                                            onClick={() => setSelectedTutorial(tutorial.id)}
+                                                            style={{ cursor: 'pointer' }}
+                                                        >
+                                                            {isAligned && (
+                                                                <div className="tutorialAlignedBadge">
+                                                                    ⭐ Aligned with your goals
+                                                                </div>
+                                                            )}
+                                                            <h3 className="tutorialTitle">{tutorial.title}</h3>
+                                                            <p className="tutorialMeta">
+                                                                {tutorial.time_minutes} min • {tutorial.level}
+                                                            </p>
+                                                        </div>
+                                                    );
+                                                })}
+                                            </div>
+                                        ) : (
+                                            <p className="no-tutorials-message">
+                                                {showOnlyAligned
+                                                    ? 'No tutorials match your selected goals yet.'
+                                                    : 'No tutorials available yet.'}
+                                            </p>
+                                        )}
                                     </div>
 
-                                    {displayedTutorials.length > 0 ? (
-                                        <div className="tutorialGrid">
-                                            {displayedTutorials.map((tutorial, i) => {
-                                                const isAligned = isAlignedWithGoals(tutorial.category);
-                                                return (
-                                                    <div
-                                                        key={tutorial.id || i}
-                                                        className={`tutorialCard ${isAligned ? 'aligned' : ''}`}
-                                                        onClick={() => setSelectedTutorial(tutorial.id)}
-                                                        style={{ cursor: 'pointer' }}
-                                                    >
-                                                        {isAligned && (
-                                                            <div className="tutorialAlignedBadge">
-                                                                ⭐ Aligned with your goals
-                                                            </div>
-                                                        )}
-                                                        <h3 className="tutorialTitle">{tutorial.title}</h3>
-                                                        <p className="tutorialMeta">
-                                                            {tutorial.time_minutes} min • {tutorial.level}
-                                                        </p>
-                                                    </div>
-                                                );
-                                            })}
-                                        </div>
-                                        {selectedTutorial && (
+                                    {selectedTutorial && (
                                         <TutorialDetail
                                             tutorialId={selectedTutorial}
                                             onClose={() => setSelectedTutorial(null)}
                                         />
                                     )}
-                                    ) : (
-                                        <p className="no-tutorials-message">
-                                            {showOnlyAligned
-                                                ? 'No tutorials match your selected goals yet.'
-                                                : 'No tutorials available yet.'}
-                                        </p>
-                                    )}
-                                </div>
+                                </>
                             )}
                     </div>
 
