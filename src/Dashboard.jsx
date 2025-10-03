@@ -81,8 +81,6 @@ function Dashboard({ user }) {
         ? tutorials.filter(t => isAlignedWithGoals(t.category))
         : tutorials;
 
-    const [selectedTutorial, setSelectedTutorial] = useState(null);
-
     // In the tutorials rendering section:
     {
         activeTab === 'tutorials' && (
