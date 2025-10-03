@@ -107,6 +107,10 @@
         margin-bottom: var(--space-sm);
     }
 
+    .tutorial-content strong {
+        color: var(--color-accent-gold);
+    }
+
 .tutorial-keypoints {
     margin-top: var(--space-xl);
     padding: var(--space-lg);
