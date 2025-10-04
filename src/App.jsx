@@ -79,9 +79,7 @@ function App() {
                 <div className="nav-container">
                     <a href="/" className="logo">APEX</a>
                     <div className="nav-links">
-                        <a href="#features">Features</a>
                         <a href="#pricing">Pricing</a>
-                        <a href="#demo">Demo</a>
                         <button
                             className="secondary-button"
                             onClick={() => window.location.href = '/?auth=true'}
@@ -133,33 +131,6 @@ function App() {
                     <div className="stat-card">
                         <div className="stat-number">$25K/mo</div>
                         <div className="stat-label">Average Student Internet Income</div>
-                    </div>
-                </div>
-            </section>
-
-                    {/* Capabilities Grid */}
-                    <div className="features-grid">
-                        {[
-                            { icon: '🧠', title: 'Trained on the Best', desc: 'Every high-converting sales letter, every successful product launch, every proven marketing framework—synthesized into actionable advice.' },
-                            { icon: '⚡', title: 'Instant Strategy Sessions', desc: 'No waiting for coaching calls. Ask any question and get strategic responses based on what actually works—not theory.' },
-                            { icon: '🎯', title: 'Personalized to Your Goals', desc: 'Adapts to your experience level, chosen business model, and specific challenges. Like having a personal business consultant.' },
-                            { icon: '📈', title: 'Data-Driven Recommendations', desc: 'References specific tutorials, proven tactics, and real numbers from successful online businesses.' },
-                            { icon: '🔥', title: 'Aggressive & Direct', desc: 'No corporate fluff. Pushes you toward action, gives exact dollar amounts, and tells you what platforms to use—right now.' },
-                            { icon: '💡', title: 'Never Runs Out of Ideas', desc: 'Analyzed thousands of successful case studies and can suggest what works for your specific niche.' }
-                        ].map((feature, i) => (
-                            <div
-                                key={i}
-                                className="feature-card"
-                                style={{
-                                    animation: `fadeInUp 0.6s ease forwards ${i * 0.1}s`,
-                                    opacity: 0
-                                }}
-                            >
-                                <div className="feature-icon">{feature.icon}</div>
-                                <h3 className="feature-title">{feature.title}</h3>
-                                <p className="feature-description">{feature.desc}</p>
-                            </div>
-                        ))}
                     </div>
                 </div>
             </section>
