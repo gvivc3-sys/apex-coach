@@ -41,14 +41,35 @@ function App() {
     }
 
     // Show landing page
-    const handleCheckout = (tier) => {
-        const links = {
-            starter: 'https://buy.stripe.com/test_eVqfZg7083Zz2xU3Dt1ck00',
-            hustler: 'https://buy.stripe.com/test_aFa8wO84c1RrgoKc9Z1ck01',
-            empire: 'https://buy.stripe.com/test_bJe28qesAgMla0m8XN1ck02'
+    const handleCheckout = async (tier) => {
+        // Get the logged-in user (or prompt to sign up first)
+        const { data: { user } } = await supabase.auth.getUser();
+
+        if (!user) {
+            // Redirect to auth if not logged in
+            window.location.href = '/?auth=true';
+            return;
+        }
+
+        const priceIds = {
+            starter: 'price_YOUR_STARTER_PRICE_ID',
+            hustler: 'price_YOUR_HUSTLER_PRICE_ID',
+            empire: 'price_YOUR_EMPIRE_PRICE_ID'
         };
 
-        window.location.href = links[tier];
+        // Create Stripe checkout session
+        const response = await fetch('/api/create-checkout', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                priceId: priceIds[tier],
+                userId: user.id,
+                email: user.email
+            })
+        });
+
+        const { url } = await response.json();
+        window.location.href = url;
     };
 
     return (
@@ -246,60 +267,6 @@ function App() {
                         </div>
                     </div>
 
-                    {/* Interactive Stats Grid */}
-                    <div style={{
-                        display: 'grid',
-                        gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
-                        gap: 'var(--space-lg)',
-                        marginBottom: 'var(--space-xl)'
-                    }}>
-                        {[
-                            { number: '10,000+', label: 'Hours of Training Data', color: '#d4af37' },
-                            { number: '500+', label: 'Business Strategies', color: '#e05446' },
-                            { number: '24/7', label: 'Always Available', color: '#d4af37' },
-                            { number: '< 30s', label: 'Response Time', color: '#e05446' }
-                        ].map((stat, i) => (
-                            <div
-                                key={i}
-                                className="stat-card"
-                                style={{
-                                    cursor: 'pointer',
-                                    transition: 'all 0.3s ease',
-                                    animation: `fadeInUp 0.6s ease forwards ${i * 0.1}s`,
-                                    opacity: 0
-                                }}
-                                onMouseEnter={(e) => {
-                                    e.currentTarget.style.transform = 'translateY(-8px) scale(1.02)';
-                                    e.currentTarget.style.borderColor = stat.color;
-                                }}
-                                onMouseLeave={(e) => {
-                                    e.currentTarget.style.transform = 'translateY(0) scale(1)';
-                                    e.currentTarget.style.borderColor = 'var(--color-border)';
-                                }}
-                            >
-                                <div className="stat-number" style={{ color: stat.color }}>
-                                    {stat.number}
-                                </div>
-                                <div className="stat-label">{stat.label}</div>
-                                {/* Progress bar animation */}
-                                <div style={{
-                                    width: '100%',
-                                    height: '3px',
-                                    background: 'var(--color-border)',
-                                    borderRadius: '2px',
-                                    marginTop: 'var(--space-sm)',
-                                    overflow: 'hidden'
-                                }}>
-                                    <div style={{
-                                        height: '100%',
-                                        background: stat.color,
-                                        width: '0%',
-                                        animation: `fillBar 2s ease forwards ${i * 0.2 + 0.5}s`
-                                    }} />
-                                </div>
-                            </div>
-                        ))}
-                    </div>
 
                     {/* Capabilities Grid */}
                     <div className="features-grid">
@@ -328,79 +295,6 @@ function App() {
                 </div>
             </section>
 
-            {/* Add this to your App.css or create inline style tag */}
-            <style>{`
-    @keyframes float {
-        0%, 100% { transform: translateY(0px); }
-        50% { transform: translateY(-20px); }
-    }
-    @keyframes pulse {
-        0%, 100% { transform: scale(1); opacity: 1; }
-        50% { transform: scale(1.5); opacity: 0.5; }
-    }
-    @keyframes blink {
-        0%, 90%, 100% { height: 20px; }
-        95% { height: 2px; }
-    }
-    @keyframes gridMove {
-        0% { transform: translate(0, 0); }
-        100% { transform: translate(50px, 50px); }
-    }
-    @keyframes fadeInUp {
-        from {
-            opacity: 0;
-            transform: translateY(30px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-    @keyframes fillBar {
-        from { width: 0%; }
-        to { width: 100%; }
-    }
-`}</style>
-
-            {/* Features Section */}
-            <section className="features" id="features">
-                <div className="features-container">
-                    <h2 className="section-title">LAPTOP TO EMPIRE TOOLKIT</h2>
-                    <div className="features-grid">
-                        <div className="feature-card">
-                            <div className="feature-icon">💻</div>
-                            <h3 className="feature-title">Laptop Millionaire Blueprint</h3>
-                            <p className="feature-description">Turn your laptop into an ATM. Copy-paste business models generating $10K+ monthly. WiFi and ambition are all you need.</p>
-                        </div>
-                        <div className="feature-card">
-                            <div className="feature-icon">💸</div>
-                            <h3 className="feature-title">Internet Money Daily</h3>
-                            <p className="feature-description">Wake up to cash-generating tasks. Build stores, launch products, create content that converts. Every click makes money.</p>
-                        </div>
-                        <div className="feature-card">
-                            <div className="feature-icon">🚀</div>
-                            <h3 className="feature-title">Zero-Cost Startups</h3>
-                            <p className="feature-description">Start with nothing but a laptop and internet. We show you businesses that profit from day one - no inventory, no investment.</p>
-                        </div>
-                        <div className="feature-card">
-                            <div className="feature-icon">📱</div>
-                            <h3 className="feature-title">Digital Product Factory</h3>
-                            <p className="feature-description">Create products once, sell forever. Templates, courses, tools - internet money that flows while you sleep.</p>
-                        </div>
-                        <div className="feature-card">
-                            <div className="feature-icon">🌍</div>
-                            <h3 className="feature-title">Location Freedom</h3>
-                            <p className="feature-description">Make money from Bali or your bedroom. Build a laptop business that travels with you. No office, no commute, just profit.</p>
-                        </div>
-                        <div className="feature-card">
-                            <div className="feature-icon">🤖</div>
-                            <h3 className="feature-title">Automate Everything</h3>
-                            <p className="feature-description">Set up systems that print internet money 24/7. One laptop, infinite income streams, zero employees needed.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
             {/* Pricing Section */}
             <section className="pricing" id="pricing">
                 <div className="pricing-container">
@@ -408,63 +302,63 @@ function App() {
                     <div className="pricing-grid">
                         <div className="pricing-card">
                             <div className="pricing-tier">Starter</div>
-                            <div className="pricing-amount">$47</div>
+                            <div className="pricing-amount">$27</div>
                             <div className="pricing-period">per month</div>
                             <ul className="pricing-features">
-                                <li>Daily internet money tasks</li>
-                                <li>5 laptop businesses monthly</li>
-                                <li>Product flipping alerts</li>
-                                <li>Basic digital product templates</li>
-                                <li>Internet money community</li>
+                                <li>AI Coach (100K tokens/month)</li>
+                                <li>Core tutorials library</li>
+                                <li>Basic product templates</li>
+                                <li>Community access</li>
+                                <li>Weekly strategy emails</li>
                             </ul>
                             <button
                                 className="secondary-button"
                                 style={{ width: '100%' }}
                                 onClick={() => handleCheckout('starter')}
                             >
-                                Start Hustling
+                                Start Now
                             </button>
                         </div>
 
                         <div className="pricing-card featured">
                             <div className="pricing-tier">Hustler</div>
-                            <div className="pricing-amount">$197</div>
+                            <div className="pricing-amount">$47</div>
                             <div className="pricing-period">per month</div>
                             <ul className="pricing-features">
-                                <li>Unlimited laptop business coaching</li>
-                                <li>$0-10K internet money blueprint</li>
-                                <li>Hot product alerts (pre-viral)</li>
-                                <li>Done-for-you online stores</li>
-                                <li>50+ laptop income streams</li>
-                                <li>Weekly internet money reports</li>
+                                <li>AI Coach (200K tokens/month)</li>
+                                <li>All tutorials + new releases</li>
+                                <li>Advanced frameworks</li>
+                                <li>Priority support</li>
+                                <li>Private group access</li>
+                                <li>Monthly strategy calls</li>
                             </ul>
                             <button
                                 className="primary-button"
                                 style={{ width: '100%' }}
                                 onClick={() => handleCheckout('hustler')}
                             >
-                                Scale Now
+                                Most Popular
                             </button>
                         </div>
 
                         <div className="pricing-card">
-                            <div className="pricing-tier">Empire Builder</div>
-                            <div className="pricing-amount">$597</div>
+                            <div className="pricing-tier">Empire</div>
+                            <div className="pricing-amount">$67</div>
                             <div className="pricing-period">per month</div>
                             <ul className="pricing-features">
-                                <li>Elite internet money strategies</li>
-                                <li>7-figure laptop business blueprint</li>
-                                <li>Automated income systems</li>
-                                <li>Private mastermind (laptop millionaires)</li>
-                                <li>Custom internet money research</li>
-                                <li>Exit strategy (sell for millions)</li>
+                                <li>AI Coach (300K tokens/month)</li>
+                                <li>Everything in Hustler, plus:</li>
+                                <li>1-on-1 monthly calls</li>
+                                <li>Custom strategy research</li>
+                                <li>Done-for-you templates</li>
+                                <li>Exit planning & scaling help</li>
                             </ul>
                             <button
                                 className="secondary-button"
                                 style={{ width: '100%' }}
                                 onClick={() => handleCheckout('empire')}
                             >
-                                Apply Now
+                                Go Premium
                             </button>
                         </div>
                     </div>

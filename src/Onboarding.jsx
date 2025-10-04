@@ -48,15 +48,21 @@ function Onboarding({ user, onComplete }) {
             }
 
             // Create initial usage tracking entry
+            const tierLimits = {
+                'starter': 100000,
+                'hustler': 200000,
+                'empire': 300000
+            };
+
             await supabase
                 .from('user_usage')
                 .upsert({
-                    user_id: user.id,
-                    subscription_tier: 'starter', // Default to starter
+                    user_id: userId,
+                    subscription_tier: stripeProductName, // 'starter', 'hustler', or 'empire'
                     tokens_used: 0,
-                    tokens_limit: 100000,
+                    tokens_limit: tierLimits[stripeProductName],
                     period_start: new Date().toISOString(),
-                    period_end: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString() // 30 days from now
+                    period_end: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString()
                 });
 
             // Clear existing chat messages
