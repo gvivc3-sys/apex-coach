@@ -7,22 +7,17 @@ export default async function handler(req, res) {
         return res.status(405).json({ error: 'Method not allowed' });
     }
 
-    const { priceId, userId, email } = req.body;
+    const { priceId, tier } = req.body;
 
     try {
         const session = await stripe.checkout.sessions.create({
             mode: 'subscription',
             payment_method_types: ['card'],
-            line_items: [{
-                price: priceId,
-                quantity: 1,
-            }],
-            success_url: `https://withapex.ai/?success=true`,
+            line_items: [{ price: priceId, quantity: 1 }],
+            success_url: `https://withapex.ai/?session_id={CHECKOUT_SESSION_ID}`,
             cancel_url: `https://withapex.ai/?canceled=true`,
-            customer_email: email,
-            metadata: {
-                userId: userId
-            }
+            allow_promotion_codes: true,
+            metadata: { tier }
         });
 
         return res.status(200).json({ url: session.url });

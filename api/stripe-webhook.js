@@ -50,29 +50,45 @@ export default async function handler(req, res) {
 
     if (event.type === 'checkout.session.completed') {
         const session = event.data.object;
-        const userId = session.metadata.userId;
+        const customerEmail = session.customer_email || session.customer_details?.email;
+        const tier = session.metadata.tier || 'starter';
 
-        const subscription = await stripe.subscriptions.retrieve(session.subscription);
-        const priceId = subscription.items.data[0].price.id;
+        console.log('Payment received for:', customerEmail, 'Tier:', tier);
 
-        const priceTierMap = {
-            'price_YOUR_LIVE_STARTER_ID': 'starter',
-            'price_YOUR_LIVE_HUSTLER_ID': 'hustler',
-            'price_YOUR_LIVE_EMPIRE_ID': 'empire'
-        };
+        // Create Supabase user
+        const { data: authData, error: signUpError } = await supabase.auth.admin.createUser({
+            email: customerEmail,
+            email_confirm: true,
+            user_metadata: {
+                tier,
+                stripe_customer_id: session.customer
+            }
+        });
 
-        const tier = priceTierMap[priceId] || 'starter';
+        if (signUpError) {
+            console.error('Error creating user:', signUpError);
+            return res.status(500).json({ error: 'Failed to create user' });
+        }
 
-        await supabase
-            .from('user_usage')
-            .upsert({
-                user_id: userId,
-                subscription_tier: tier,
-                tokens_used: 0,
-                tokens_limit: tierLimits[tier],
-                period_start: new Date().toISOString(),
-                period_end: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString()
-            });
+        if (authData?.user) {
+            // Create usage record
+            const { error: usageError } = await supabase
+                .from('user_usage')
+                .insert({
+                    user_id: authData.user.id,
+                    subscription_tier: tier,
+                    tokens_used: 0,
+                    tokens_limit: tierLimits[tier],
+                    period_start: new Date().toISOString(),
+                    period_end: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString()
+                });
+
+            if (usageError) {
+                console.error('Error creating usage:', usageError);
+            } else {
+                console.log('User and usage created successfully for:', customerEmail);
+            }
+        }
     }
 
     res.status(200).json({ received: true });

@@ -41,17 +41,8 @@ function App() {
     }
 
     const handleCheckout = async (tier) => {
-        // Check if user is logged in
-        const { data: { user } } = await supabase.auth.getUser();
-
-        if (!user) {
-            // Redirect to auth if not logged in
-            window.location.href = '/?auth=true';
-            return;
-        }
-
         const priceIds = {
-            starter: 'price_1SEn0yAar01uwreK3Tg2Ifc2',  // Replace with your actual Stripe Price IDs
+            starter: 'price_1SEn0yAar01uwreK3Tg2Ifc2',
             hustler: 'price_1SEn1NAar01uwreKkxjqEr16',
             empire: 'price_1SEn1hAar01uwreKL4HLzKzS'
         };
@@ -62,18 +53,14 @@ function App() {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     priceId: priceIds[tier],
-                    userId: user.id,
-                    email: user.email
+                    tier: tier
                 })
             });
 
             const { url } = await response.json();
-            if (url) {
-                window.location.href = url;
-            }
+            if (url) window.location.href = url;
         } catch (error) {
             console.error('Checkout error:', error);
-            alert('Error creating checkout session. Please try again.');
         }
     };
 
