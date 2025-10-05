@@ -23,58 +23,48 @@ function Onboarding({ user, onComplete }) {
     }, []);
 
     const handleSubmit = async () => {
-        try {
-            console.log('Saving preferences:', preferences);
+        if (!user || !user.id) {
+            console.error('No user found');
+            return;
+        }
 
-            const { data, error } = await supabase
+        try {
+            // Update or insert preferences
+            const { error: prefError } = await supabase
                 .from('user_preferences')
                 .upsert({
                     id: user.id,
-                    age: parseInt(preferences.age) || null,
-                    location: preferences.location,
-                    is_student: preferences.is_student,
-                    country: preferences.country,
-                    skills: preferences.skills,
-                    skill_level: preferences.skill_level,
-                    goals: preferences.goals,
-                    hours_available: 20,
-                    current_income: 0,
-                    strengths: preferences.strengths || ''
+                    goals: selectedGoals,
+                    skill_level: skillLevel
                 });
 
-            if (error) {
-                console.error('Supabase error:', error);
-                throw error;
+            if (prefError) throw prefError;
+
+            // Check if usage record exists
+            const { data: existingUsage } = await supabase
+                .from('user_usage')
+                .select('*')
+                .eq('user_id', user.id)
+                .single();
+
+            // Only create usage if it doesn't exist (new users from payment will already have it)
+            if (!existingUsage) {
+                await supabase
+                    .from('user_usage')
+                    .insert({
+                        user_id: user.id,
+                        subscription_tier: 'starter',
+                        tokens_used: 0,
+                        tokens_limit: 100000,
+                        period_start: new Date().toISOString(),
+                        period_end: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString()
+                    });
             }
 
-            // Create initial usage tracking entry
-            const tierLimits = {
-                'starter': 100000,
-                'hustler': 200000,
-                'empire': 300000
-            };
-
-            await supabase
-                .from('user_usage')
-                .upsert({
-                    user_id: userId,
-                    subscription_tier: stripeProductName, // 'starter', 'hustler', or 'empire'
-                    tokens_used: 0,
-                    tokens_limit: tierLimits[stripeProductName],
-                    period_start: new Date().toISOString(),
-                    period_end: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString()
-                });
-
-            // Clear existing chat messages
-            await supabase
-                .from('chat_messages')
-                .delete()
-                .eq('user_id', user.id);
-
-            window.location.reload();
+            onComplete();
         } catch (error) {
             console.error('Error saving preferences:', error);
-            alert(`Error: ${error.message}`);
+            alert('Error saving preferences: ' + error.message);
         }
     };
 
