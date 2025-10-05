@@ -44,29 +44,25 @@ export default async function handler(req, res) {
             process.env.STRIPE_WEBHOOK_SECRET
         );
     } catch (err) {
-        console.error('Webhook signature verification failed:', err.message);
+        console.error('Webhook error:', err.message);
         return res.status(400).send(`Webhook Error: ${err.message}`);
     }
 
-    // Handle successful subscription
     if (event.type === 'checkout.session.completed') {
         const session = event.data.object;
         const userId = session.metadata.userId;
 
-        // Get the subscription to find the price
         const subscription = await stripe.subscriptions.retrieve(session.subscription);
         const priceId = subscription.items.data[0].price.id;
 
-        // Map price ID to tier
         const priceTierMap = {
-            'price_YOUR_STARTER_PRICE_ID': 'starter',
-            'price_YOUR_HUSTLER_PRICE_ID': 'hustler',
-            'price_YOUR_EMPIRE_PRICE_ID': 'empire'
+            'price_YOUR_LIVE_STARTER_ID': 'starter',
+            'price_YOUR_LIVE_HUSTLER_ID': 'hustler',
+            'price_YOUR_LIVE_EMPIRE_ID': 'empire'
         };
 
         const tier = priceTierMap[priceId] || 'starter';
 
-        // Create or update user usage
         await supabase
             .from('user_usage')
             .upsert({

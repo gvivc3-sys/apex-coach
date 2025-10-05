@@ -42,22 +42,19 @@ function App() {
 
     // Show landing page
     const handleCheckout = async (tier) => {
-        // Get the logged-in user (or prompt to sign up first)
         const { data: { user } } = await supabase.auth.getUser();
 
         if (!user) {
-            // Redirect to auth if not logged in
             window.location.href = '/?auth=true';
             return;
         }
 
         const priceIds = {
-            starter: 'price_YOUR_STARTER_PRICE_ID',
-            hustler: 'price_YOUR_HUSTLER_PRICE_ID',
-            empire: 'price_YOUR_EMPIRE_PRICE_ID'
+            starter: 'price_1SEn0yAar01uwreK3Tg2Ifc2',
+            hustler: 'price_1SEn1NAar01uwreKkxjqEr16',
+            empire: 'price_1SEn1hAar01uwreKL4HLzKzS'
         };
 
-        // Create Stripe checkout session
         const response = await fetch('/api/create-checkout', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -69,7 +66,7 @@ function App() {
         });
 
         const { url } = await response.json();
-        window.location.href = url;
+        if (url) window.location.href = url;
     };
 
     return (

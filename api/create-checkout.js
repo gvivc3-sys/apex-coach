@@ -17,8 +17,8 @@ export default async function handler(req, res) {
                 price: priceId,
                 quantity: 1,
             }],
-            success_url: `${process.env.NEXT_PUBLIC_URL || 'https://yourdomain.com'}/?success=true`,
-            cancel_url: `${process.env.NEXT_PUBLIC_URL || 'https://yourdomain.com'}/?canceled=true`,
+            success_url: `https://withapex.ai/?success=true`,
+            cancel_url: `https://withapex.ai/?canceled=true`,
             customer_email: email,
             metadata: {
                 userId: userId
