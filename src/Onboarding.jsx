@@ -29,25 +29,30 @@ function Onboarding({ user, onComplete }) {
         }
 
         try {
-            // Update or insert preferences
             const { error: prefError } = await supabase
                 .from('user_preferences')
                 .upsert({
                     id: user.id,
-                    goals: selectedGoals,
-                    skill_level: skillLevel
+                    goals: preferences.goals,
+                    skill_level: preferences.skill_level,
+                    age: preferences.age,
+                    location: preferences.location,
+                    is_student: preferences.is_student,
+                    country: preferences.country,
+                    skills: preferences.skills,
+                    hours_available: preferences.hours_available,
+                    current_income: preferences.current_income,
+                    strengths: preferences.strengths
                 });
 
             if (prefError) throw prefError;
 
-            // Check if usage record exists
             const { data: existingUsage } = await supabase
                 .from('user_usage')
                 .select('*')
                 .eq('user_id', user.id)
                 .single();
 
-            // Only create usage if it doesn't exist (new users from payment will already have it)
             if (!existingUsage) {
                 await supabase
                     .from('user_usage')
