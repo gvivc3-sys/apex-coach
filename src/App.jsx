@@ -9,14 +9,12 @@ function App() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        // Check active session
         supabase.auth.getSession().then(({ data: { session } }) => {
             setSession(session);
             setLoading(false);
             window.scrollTo(0, 0);
         });
 
-        // Listen for auth changes
         const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
             setSession(session);
             setLoading(false);
@@ -29,12 +27,10 @@ function App() {
         return <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>Loading...</div>;
     }
 
-    // If user is logged in, show dashboard
     if (session) {
         return <Dashboard user={session.user} />;
     }
 
-    // Check URL params for auth
     const urlParams = new URLSearchParams(window.location.search);
     if (urlParams.get('auth') === 'true') {
         return <Auth />;
@@ -92,15 +88,20 @@ function App() {
             <section className="hero">
                 <div className="hero-content">
                     <h1 className="hero-title">
-                        RUN A BUSINESS<br />
-                        <span className="accent">FROM YOUR LAPTOP</span>
+                        TIKTOK SHOP<br />
+                        <span className="accent">AFFILIATE MASTERY</span>
                     </h1>
                     <p className="hero-subtitle">
-                        Build a business with just a laptop. No boss. No limits. Pure profit.
+                        Turn TikTok videos into consistent affiliate commissions. No products. No inventory. Just content and cash.
                     </p>
                     <div className="hero-cta">
-                        <button className="primary-button">Join APEX Now</button>
-                        <button className="secondary-button">Watch Demo</button>
+                        <button
+                            className="primary-button"
+                            onClick={() => document.getElementById('pricing').scrollIntoView({ behavior: 'smooth' })}
+                        >
+                            Start Making Commissions
+                        </button>
+                        <button className="secondary-button">See Proof</button>
                     </div>
                 </div>
             </section>
@@ -110,19 +111,152 @@ function App() {
                 <div className="stats-container">
                     <div className="stat-card">
                         <div className="stat-number">$0</div>
-                        <div className="stat-label">Just a Laptop Required</div>
+                        <div className="stat-label">Startup Cost Required</div>
                     </div>
                     <div className="stat-card">
-                        <div className="stat-number">30 Days</div>
-                        <div className="stat-label">To Your First Internet Money</div>
+                        <div className="stat-number">8-15%</div>
+                        <div className="stat-label">Commission on Every Sale</div>
                     </div>
                     <div className="stat-card">
-                        <div className="stat-number">100%</div>
-                        <div className="stat-label">Location Independent</div>
+                        <div className="stat-number">7 Days</div>
+                        <div className="stat-label">To First Commission</div>
                     </div>
                     <div className="stat-card">
-                        <div className="stat-number">$25K/mo</div>
-                        <div className="stat-label">Average Student Internet Income</div>
+                        <div className="stat-number">$5K+</div>
+                        <div className="stat-label">Monthly Potential</div>
+                    </div>
+                </div>
+            </section>
+
+            {/* What You Get */}
+            <section className="features" style={{ background: 'var(--color-bg-alt)' }}>
+                <div className="features-container">
+                    <h2 className="section-title">THE TIKTOK SHOP BLUEPRINT</h2>
+                    <p style={{
+                        textAlign: 'center',
+                        maxWidth: '700px',
+                        margin: '0 auto var(--space-xl)',
+                        fontSize: '18px',
+                        color: 'var(--color-text-secondary)'
+                    }}>
+                        Everything you need to start earning affiliate commissions from TikTok Shop in the next 7 days.
+                    </p>
+
+                    <div className="features-grid">
+                        <div className="feature-card">
+                            <div className="feature-icon">🎯</div>
+                            <h3 className="feature-title">Product Selection Strategy</h3>
+                            <p className="feature-description">
+                                Learn exactly which products convert on TikTok Shop. We show you how to find high-commission items that people actually buy.
+                            </p>
+                        </div>
+                        <div className="feature-card">
+                            <div className="feature-icon">📱</div>
+                            <h3 className="feature-title">Content Templates</h3>
+                            <p className="feature-description">
+                                Proven video scripts and hooks that drive clicks. Copy successful formats that have generated thousands in commissions.
+                            </p>
+                        </div>
+                        <div className="feature-card">
+                            <div className="feature-icon">🤖</div>
+                            <h3 className="feature-title">AI-Powered Coach</h3>
+                            <p className="feature-description">
+                                24/7 access to an AI trained on TikTok affiliate strategies. Get instant answers about products, content, and optimization.
+                            </p>
+                        </div>
+                        <div className="feature-card">
+                            <div className="feature-icon">📈</div>
+                            <h3 className="feature-title">Algorithm Hacks</h3>
+                            <p className="feature-description">
+                                Understand how TikTok's algorithm works and how to get your affiliate content on the For You Page consistently.
+                            </p>
+                        </div>
+                        <div className="feature-card">
+                            <div className="feature-icon">💰</div>
+                            <h3 className="feature-title">Commission Maximization</h3>
+                            <p className="feature-description">
+                                Strategies to increase your average order value and earn more per sale. Turn $50 commissions into $200+.
+                            </p>
+                        </div>
+                        <div className="feature-card">
+                            <div className="feature-icon">🔥</div>
+                            <h3 className="feature-title">Trending Product Alerts</h3>
+                            <p className="feature-description">
+                                Get notified about products going viral before everyone else. Jump on trends early for maximum commission potential.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* How It Works */}
+            <section className="features">
+                <div className="features-container">
+                    <h2 className="section-title">YOUR PATH TO $5K/MONTH</h2>
+
+                    <div style={{
+                        maxWidth: '800px',
+                        margin: '0 auto',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: 'var(--space-xl)'
+                    }}>
+                        {[
+                            {
+                                step: '01',
+                                title: 'Find Winning Products',
+                                desc: 'Use our AI coach to identify TikTok Shop products with high commissions and proven sales history. Takes 15 minutes.'
+                            },
+                            {
+                                step: '02',
+                                title: 'Create Content',
+                                desc: 'Follow our templates to make 3-5 videos per day. No fancy equipment needed - phone camera works perfectly.'
+                            },
+                            {
+                                step: '03',
+                                title: 'Post & Optimize',
+                                desc: 'Upload during peak hours, use our hashtag strategy, and let the algorithm do its work. Most videos hit FYP within 2 hours.'
+                            },
+                            {
+                                step: '04',
+                                title: 'Scale What Works',
+                                desc: 'Double down on products and video styles that convert. Go from $500/month to $5K+ by replicating winners.'
+                            }
+                        ].map((item, i) => (
+                            <div key={i} style={{
+                                display: 'flex',
+                                gap: 'var(--space-lg)',
+                                alignItems: 'flex-start',
+                                padding: 'var(--space-lg)',
+                                background: 'var(--color-card-bg)',
+                                border: '1px solid var(--color-border)',
+                                borderRadius: 'var(--radius-md)'
+                            }}>
+                                <div style={{
+                                    fontSize: '32px',
+                                    fontWeight: '700',
+                                    color: 'var(--color-accent-gold)',
+                                    minWidth: '60px'
+                                }}>
+                                    {item.step}
+                                </div>
+                                <div>
+                                    <h3 style={{
+                                        fontSize: '20px',
+                                        marginBottom: 'var(--space-sm)',
+                                        color: 'var(--color-text-primary)'
+                                    }}>
+                                        {item.title}
+                                    </h3>
+                                    <p style={{
+                                        color: 'var(--color-text-secondary)',
+                                        lineHeight: 1.6
+                                    }}>
+                                        {item.desc}
+                                    </p>
+                                </div>
+                            </div>
+                        ))}
                     </div>
                 </div>
             </section>
@@ -130,18 +264,18 @@ function App() {
             {/* Pricing Section */}
             <section className="pricing" id="pricing">
                 <div className="pricing-container">
-                    <h2 className="section-title">CHOOSE YOUR WEAPON</h2>
+                    <h2 className="section-title">CHOOSE YOUR PLAN</h2>
                     <div className="pricing-grid">
                         <div className="pricing-card">
                             <div className="pricing-tier">Starter</div>
                             <div className="pricing-amount">$27</div>
                             <div className="pricing-period">per month</div>
                             <ul className="pricing-features">
-                                <li>AI Coach (100K tokens/month)</li>
-                                <li>Core tutorials library</li>
-                                <li>Basic product templates</li>
+                                <li>AI Coach access</li>
+                                <li>Core TikTok Shop training</li>
+                                <li>Product research tools</li>
+                                <li>Content templates</li>
                                 <li>Community access</li>
-                                <li>Weekly strategy emails</li>
                             </ul>
                             <button
                                 className="secondary-button"
@@ -157,12 +291,12 @@ function App() {
                             <div className="pricing-amount">$47</div>
                             <div className="pricing-period">per month</div>
                             <ul className="pricing-features">
-                                <li>AI Coach (200K tokens/month)</li>
-                                <li>All tutorials + new releases</li>
-                                <li>Advanced frameworks</li>
-                                <li>Priority support</li>
-                                <li>Private group access</li>
-                                <li>Monthly strategy calls</li>
+                                <li>Everything in Starter</li>
+                                <li>Advanced algorithm strategies</li>
+                                <li>Daily trending product alerts</li>
+                                <li>Viral video breakdowns</li>
+                                <li>Priority AI responses</li>
+                                <li>Weekly group calls</li>
                             </ul>
                             <button
                                 className="primary-button"
@@ -178,12 +312,12 @@ function App() {
                             <div className="pricing-amount">$67</div>
                             <div className="pricing-period">per month</div>
                             <ul className="pricing-features">
-                                <li>AI Coach (300K tokens/month)</li>
-                                <li>Everything in Hustler, plus:</li>
-                                <li>1-on-1 monthly calls</li>
-                                <li>Custom strategy research</li>
-                                <li>Done-for-you templates</li>
-                                <li>Exit planning & scaling help</li>
+                                <li>Everything in Hustler</li>
+                                <li>1-on-1 strategy calls</li>
+                                <li>Custom niche research</li>
+                                <li>Account audit & optimization</li>
+                                <li>Scaling blueprint ($10K+/mo)</li>
+                                <li>Private mastermind group</li>
                             </ul>
                             <button
                                 className="secondary-button"
@@ -196,6 +330,7 @@ function App() {
                     </div>
                 </div>
             </section>
+
             {/* Footer */}
             <footer>
                 <div className="footer-content">
@@ -203,10 +338,9 @@ function App() {
                         <a href="#">Terms</a>
                         <a href="#">Privacy</a>
                         <a href="#">Contact</a>
-                        <a href="#">Careers</a>
                     </div>
                     <div className="copyright">
-                        © 2025 APEX. Internet money. Laptop lifestyle. Total freedom.
+                        © 2025 APEX. TikTok Shop Affiliate Training.
                     </div>
                 </div>
             </footer>
