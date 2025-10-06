@@ -232,7 +232,6 @@ body {
     color: var(--color-text-secondary);
     font-size: 18px;
     margin-bottom: var(--space-lg);
-    max-width: 600px;
     letter-spacing: 0.5px;
 }
 
