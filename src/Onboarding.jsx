@@ -86,65 +86,6 @@ function Onboarding({ user, onComplete }) {
         }
     };
 
-    try {
-        // Build preferences object, only including non-empty values
-        const preferencesData = {
-            id: user.id,
-            goals: preferences.goals,
-            skill_level: preferences.skill_level || null,
-            skills: preferences.skills || null,
-            location: preferences.location || null,
-            country: preferences.country || null,
-            strengths: preferences.strengths || null
-        };
-
-        // Only add integer/boolean fields if they have actual values
-        if (preferences.age && preferences.age !== '') {
-            preferencesData.age = parseInt(preferences.age);
-        }
-        if (preferences.hours_available && preferences.hours_available !== '') {
-            preferencesData.hours_available = parseInt(preferences.hours_available);
-        }
-        if (preferences.current_income && preferences.current_income !== '') {
-            preferencesData.current_income = parseFloat(preferences.current_income);
-        }
-        if (preferences.is_student !== null) {
-            preferencesData.is_student = preferences.is_student;
-        }
-
-        const { error: prefError } = await supabase
-            .from('user_preferences')
-            .upsert(preferencesData);
-
-        if (prefError) throw prefError;
-
-        const { data: existingUsage } = await supabase
-            .from('user_usage')
-            .select('*')
-            .eq('user_id', user.id)
-            .single();
-
-        if (!existingUsage) {
-            await supabase
-                .from('user_usage')
-                .insert({
-                    user_id: user.id,
-                    subscription_tier: 'starter',
-                    tokens_used: 0,
-                    tokens_limit: 100000,
-                    period_start: new Date().toISOString(),
-                    period_end: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString()
-                });
-        }
-
-        onComplete();
-    } catch (error) {
-        console.error('Error saving preferences:', error);
-        alert('Error saving preferences: ' + error.message);
-    }
-};
-    };
-
     const toggleGoal = (goal) => {
         setPreferences(prev => ({
             ...prev,
