@@ -473,7 +473,6 @@ function App() {
                 </div>
             </section>
 
-            <!-- FAQ -->
             <section class="stats">
                 <div class="container" style="max-width: 900px;">
                     <h2 class="section-title">Frequently Asked Questions</h2>
