@@ -532,8 +532,8 @@ function App() {
                     <div className="copyright">
                         © 2025 APEX. TikTok Shop Affiliate Training.
                     </div>
+                </div>
             </footer>
-        </footer>
         </div >
     );
 }
