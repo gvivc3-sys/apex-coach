@@ -106,304 +106,425 @@ function App() {
                 </div>
             </section>
 
-            {/* Stats Section */}
-            <section className="stats">
-                <div className="stats-container">
-                    <div className="stat-card">
-                        <div className="stat-number">$0</div>
-                        <div className="stat-label">Startup Cost Required</div>
-                    </div>
-                    <div className="stat-card">
-                        <div className="stat-number">8-15%</div>
-                        <div className="stat-label">Commission on Every Sale</div>
-                    </div>
-                    <div className="stat-card">
-                        <div className="stat-number">7 Days</div>
-                        <div className="stat-label">To First Commission</div>
-                    </div>
-                    <div className="stat-card">
-                        <div className="stat-number">$5K+</div>
-                        <div className="stat-label">Monthly Potential</div>
+
+            <section class="hero">
+                <div class="hero-content container">
+                    <h1 class="hero-title">
+                        Master TikTok Affiliate Marketing<br>
+                            <span class="accent">With AI In 72 Hours</span>
+                    </h1>
+                    <p class="hero-subtitle">
+                        Learn the exact system helping beginners generate $1K-$5K/month in TikTok commissions<br>
+                            using AI to create viral content—without showing your face or building an audience
+                    </p>
+                    <div class="hero-cta">
+                        <button class="cta-button" onclick="document.getElementById('pricing').scrollIntoView({behavior: 'smooth'})">
+                            Start Learning Now
+                        </button>
+                        <button class="secondary-button" onclick="document.getElementById('demo').scrollIntoView({behavior: 'smooth'})">
+                            Watch 3-Min Demo
+                        </button>
                     </div>
                 </div>
             </section>
 
-            {/* What You Get */}
-            <section className="features" style={{ background: 'var(--color-bg-alt)' }}>
-                <div className="features-container">
-                    <h2 className="section-title">THE TIKTOK SHOP BLUEPRINT</h2>
-                    <p style={{
-                        textAlign: 'center',
-                        maxWidth: '700px',
-                        margin: '0 auto var(--space-xl)',
-                        fontSize: '18px',
-                        color: 'var(--color-text-secondary)'
-                    }}>
-                        Everything you need to start earning affiliate commissions from TikTok Shop in the next 7 days.
+
+            <section class="stats">
+                <div class="stats-container">
+                    <div class="stat-card">
+                        <div class="stat-number">8,400+</div>
+                        <div class="stat-label">Active Students</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">$2.3M+</div>
+                        <div class="stat-label">Student Commissions</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">7-14</div>
+                        <div class="stat-label">Days To First Sale</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">4.9/5</div>
+                        <div class="stat-label">Student Rating</div>
+                    </div>
+                </div>
+            </section>
+
+
+            <section class="features" id="demo">
+                <div class="container">
+                    <h2 class="section-title">Why Most People Fail At TikTok (And How We Fix It)</h2>
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">❌</div>
+                            <h3 class="feature-title">The Old Way: Build Audience First</h3>
+                            <p class="feature-description">
+                                Spend 6-12 months growing followers, then figure out how to monetize. Most people quit before making a single dollar.
+                            </p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">❌</div>
+                            <h3 class="feature-title">The Old Way: Be "Creative"</h3>
+                            <p class="feature-description">
+                                Spend hours brainstorming, scripting, and editing videos. Stare at a blank screen wondering what to post.
+                            </p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">❌</div>
+                            <h3 class="feature-title">The Old Way: Show Your Face</h3>
+                            <p class="feature-description">
+                                Force yourself on camera even if you're uncomfortable. Let everyone know your identity and business.
+                            </p>
+                        </div>
+                    </div>
+
+                    <h2 class="section-title" style="margin-top: 40px;">The APEX Way: Proven AI System</h2>
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">✅</div>
+                            <h3 class="feature-title">Monetize Day 1</h3>
+                            <p class="feature-description">
+                                Start promoting products immediately with zero followers. TikTok Shop pushes affiliate content regardless of your audience size.
+                            </p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">✅</div>
+                            <h3 class="feature-title">AI Does The Work</h3>
+                            <p class="feature-description">
+                                AI generates concepts, scripts, voiceovers, and edits your videos in under 5 minutes. You just post and collect commissions.
+                            </p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">✅</div>
+                            <h3 class="feature-title">Stay Anonymous</h3>
+                            <p class="feature-description">
+                                Never show your face or use your voice. The "invisible influencer" method lets you build income completely privately.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <section class="stats" style="background-color: var(--color-bg);">
+                <div class="container" style="max-width: 900px;">
+                    <h2 class="section-title">Real Students. Real Results.</h2>
+                    <div style="display: grid; gap: 24px; margin-top: 40px;">
+                        <div class="contentCard">
+                            <h3 style="color: var(--color-accent-gold); margin-bottom: 8px;">"Made $3,200 My First Month. I'm Shocked."</h3>
+                            <p style="color: var(--color-text-secondary); margin-bottom: 8px; font-style: italic;">
+                                "I was skeptical about the $27 price. Thought it would be some basic garbage. But this is LEGIT. The AI content method is insane. I made my first sale in 11 days. First month total: $3,200. I've already quit my part-time job."
+                            </p>
+                            <p style="color: var(--color-text-muted); font-size: 14px;">— Marcus T., College Student</p>
+                        </div>
+
+                        <div class="contentCard">
+                            <h3 style="color: var(--color-accent-gold); margin-bottom: 8px;">"Finally Something That Actually Works"</h3>
+                            <p style="color: var(--color-text-secondary); margin-bottom: 8px; font-style: italic;">
+                                "I've wasted thousands on courses that promised easy money. All BS. APEX-AFFILIATE is different. It's simple, practical, and it WORKS. I'm making $1,800/month now and I work maybe 45 minutes a day. This is the real deal."
+                            </p>
+                            <p style="color: var(--color-text-muted); font-size: 14px;">— Jennifer K., Stay-at-Home Mom</p>
+                        </div>
+
+                        <div class="contentCard">
+                            <h3 style="color: var(--color-accent-gold); margin-bottom: 8px;">"$4,100 Last Month. Never Showed My Face Once."</h3>
+                            <p style="color: var(--color-text-secondary); margin-bottom: 8px; font-style: italic;">
+                                "I'm a private person. Showing my face online? No thanks. APEX teaches you how to stay completely anonymous. AI makes all my videos. I just post and collect commissions. Made $4,100 last month. This is life-changing."
+                            </p>
+                            <p style="color: var(--color-text-muted); font-size: 14px;">— David R., Warehouse Worker</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <section class="features">
+                <div class="container">
+                    <h2 class="section-title">What You'll Learn Inside APEX-AFFILIATE</h2>
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">📚</div>
+                            <h3 class="feature-title">Module 1: Foundation</h3>
+                            <p class="feature-description">
+                                How TikTok affiliate marketing works, account setup, profile optimization, and the math behind $5K/month income.
+                            </p>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-icon">🤖</div>
+                            <h3 class="feature-title">Module 2: AI Content System</h3>
+                            <p class="feature-description">
+                                4-minute video framework, AI prompts for viral concepts, voice AI tools, and batch creation methods. Create 7 days of content in 30 minutes.
+                            </p>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-icon">💰</div>
+                            <h3 class="feature-title">Module 3: Product Selection</h3>
+                            <p class="feature-description">
+                                Find high-converting products (8-15% rates), avoid losers, seasonal strategies, and competitive research shortcuts.
+                            </p>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-icon">📈</div>
+                            <h3 class="feature-title">Module 4: Algorithm Hacking</h3>
+                            <p class="feature-description">
+                                Decode the 2025 TikTok algorithm, 7-second hook patterns, optimal posting times, and For You Page triggers.
+                            </p>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-icon">💵</div>
+                            <h3 class="feature-title">Module 5: First Sales</h3>
+                            <p class="feature-description">
+                                14-day sprint to $500-$1,000, conversion psychology, CTA formulas, and troubleshooting common issues.
+                            </p>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-icon">📊</div>
+                            <h3 class="feature-title">Module 6: Tracking & Optimization</h3>
+                            <p class="feature-description">
+                                Analytics mastery, A/B testing, scaling from $1K to $5K/month using the multiplication method.
+                            </p>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-icon">⚡</div>
+                            <h3 class="feature-title">Module 7: Advanced Strategies</h3>
+                            <p class="feature-description">
+                                Multiple accounts, automation tools, brand sponsorships, and the $10K/month roadmap.
+                            </p>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-icon">🛡️</div>
+                            <h3 class="feature-title">Module 8: Risk Management</h3>
+                            <p class="feature-description">
+                                TikTok terms of service, avoiding shadowbans, handling competitors, and legal/tax basics.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <section class="stats">
+                <div class="container" style="max-width: 900px;">
+                    <h2 class="section-title">Exclusive Bonuses Included</h2>
+                    <div style="display: grid; gap: 16px; margin-top: 40px;">
+                        <div class="stat-card" style="text-align: left;">
+                            <h3 style="font-size: 18px; margin-bottom: 8px; color: var(--color-accent-gold);">🎁 The Viral Hook Library ($47 Value)</h3>
+                            <p style="color: var(--color-text-secondary); font-size: 14px;">200+ proven hooks for any niche. Never stare at a blank screen again.</p>
+                        </div>
+
+                        <div class="stat-card" style="text-align: left;">
+                            <h3 style="font-size: 18px; margin-bottom: 8px; color: var(--color-accent-gold);">🎁 Product Vault ($67 Value)</h3>
+                            <p style="color: var(--color-text-secondary); font-size: 14px;">300+ pre-researched high-converting products with commission rates and examples.</p>
+                        </div>
+
+                        <div class="stat-card" style="text-align: left;">
+                            <h3 style="font-size: 18px; margin-bottom: 8px; color: var(--color-accent-gold);">🎁 AI Prompt Cheat Sheet ($37 Value)</h3>
+                            <p style="color: var(--color-text-secondary); font-size: 14px;">Copy/paste prompts for ChatGPT, Claude, and other AI tools. Instant viral content.</p>
+                        </div>
+
+                        <div class="stat-card" style="text-align: left;">
+                            <h3 style="font-size: 18px; margin-bottom: 8px; color: var(--color-accent-gold);">🎁 First $1K Roadmap ($77 Value)</h3>
+                            <p style="color: var(--color-text-secondary); font-size: 14px;">Day-by-day action plan for your first 30 days. Sales by week 2 guaranteed.</p>
+                        </div>
+
+                        <div class="stat-card" style="text-align: left;">
+                            <h3 style="font-size: 18px; margin-bottom: 8px; color: var(--color-accent-gold);">🎁 TikTok Trends Calendar ($47 Value)</h3>
+                            <p style="color: var(--color-text-secondary); font-size: 14px;">Monthly updates on trending products and content styles. Stay ahead of the curve.</p>
+                        </div>
+                    </div>
+                    <p style="text-align: center; margin-top: 24px; font-size: 20px; color: var(--color-text-primary);">
+                        <strong>Total Bonus Value: $275</strong>
+                    </p>
+                </div>
+            </section>
+
+
+            <section class="pricing" id="pricing">
+                <div class="pricing-container">
+                    <h2 class="section-title">Choose Your Path To $5K/Month</h2>
+                    <p style="text-align: center; color: var(--color-text-secondary); margin-bottom: 40px; max-width: 700px; margin-left: auto; margin-right: auto;">
+                        All tiers include the complete 8-module course, all bonuses, and lifetime access. The only difference? How many AI conversations you get with our intelligent assistant to help you succeed faster.
                     </p>
 
-                    <div className="features-grid">
-                        <div className="feature-card">
-                            <div className="feature-icon">🎯</div>
-                            <h3 className="feature-title">Product Selection Strategy</h3>
-                            <p className="feature-description">
-                                Learn exactly which products convert on TikTok Shop. We show you how to find high-commission items that people actually buy.
-                            </p>
-                        </div>
-                        <div className="feature-card">
-                            <div className="feature-icon">📱</div>
-                            <h3 className="feature-title">Content Templates</h3>
-                            <p className="feature-description">
-                                Proven video scripts and hooks that drive clicks. Copy successful formats that have generated thousands in commissions.
-                            </p>
-                        </div>
-                        <div className="feature-card">
-                            <div className="feature-icon">🤖</div>
-                            <h3 className="feature-title">AI-Powered Coach</h3>
-                            <p className="feature-description">
-                                24/7 access to an AI trained on TikTok affiliate strategies. Get instant answers about products, content, and optimization.
-                            </p>
-                        </div>
-                        <div className="feature-card">
-                            <div className="feature-icon">📈</div>
-                            <h3 className="feature-title">Algorithm Hacks</h3>
-                            <p className="feature-description">
-                                Understand how TikTok's algorithm works and how to get your affiliate content on the For You Page consistently.
-                            </p>
-                        </div>
-                        <div className="feature-card">
-                            <div className="feature-icon">💰</div>
-                            <h3 className="feature-title">Commission Maximization</h3>
-                            <p className="feature-description">
-                                Strategies to increase your average order value and earn more per sale. Turn $50 commissions into $200+.
-                            </p>
-                        </div>
-                        <div className="feature-card">
-                            <div className="feature-icon">🔥</div>
-                            <h3 className="feature-title">Trending Product Alerts</h3>
-                            <p className="feature-description">
-                                Get notified about products going viral before everyone else. Jump on trends early for maximum commission potential.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </section>
+                    <div class="pricing-grid">
 
-            {/* AI Coach Spotlight */}
-            <section className="features">
-                <div className="features-container">
-                    <div style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'space-between',
-                        gap: 'var(--space-xl)',
-                        marginBottom: 'var(--space-xl)',
-                        flexWrap: 'wrap'
-                    }}>
-                        {/* Content */}
-                        <div style={{ flex: '2', minWidth: '300px' }}>
-                            <h2 className="section-title" style={{ textAlign: 'left', marginBottom: 'var(--space-md)' }}>
-                                YOUR TIKTOK EXPERT, 24/7
-                            </h2>
-                            <p style={{
-                                fontSize: '18px',
-                                color: 'var(--color-text-secondary)',
-                                marginBottom: 'var(--space-lg)',
-                                lineHeight: 1.8
-                            }}>
-                                Most courses give you videos and leave you stuck. We give you an AI trained on
-                                <span style={{ color: 'var(--color-accent-gold)', fontWeight: '700' }}> 1,000+ hours</span> of
-                                TikTok Shop strategies, viral video breakdowns, and commission-generating tactics.
-                            </p>
-                            <ul style={{
-                                listStyle: 'none',
-                                padding: 0,
-                                display: 'flex',
-                                flexDirection: 'column',
-                                gap: 'var(--space-sm)'
-                            }}>
-                                {[
-                                    'Ask which products to promote right now',
-                                    'Get video script ideas in seconds',
-                                    'Troubleshoot why your videos aren\'t converting',
-                                    'Learn trending hashtag strategies',
-                                    'Optimize your account for maximum reach'
-                                ].map((item, i) => (
-                                    <li key={i} style={{
-                                        display: 'flex',
-                                        alignItems: 'flex-start',
-                                        gap: 'var(--space-sm)',
-                                        color: 'var(--color-text-primary)'
-                                    }}>
-                                        <span style={{ color: 'var(--color-accent-gold)', fontSize: '20px' }}>✓</span>
-                                        <span>{item}</span>
-                                    </li>
-                                ))}
+                        <div class="pricing-card">
+                            <div class="pricing-tier">Starter</div>
+                            <div class="pricing-amount">$27</div>
+                            <div class="pricing-period">One-time payment</div>
+                            <ul class="pricing-features">
+                                <li>✅ Complete 8-Module Course</li>
+                                <li>✅ All 5 Exclusive Bonuses</li>
+                                <li>✅ Lifetime Access + Updates</li>
+                                <li>✅ 40-50 AI Conversations</li>
+                                <li>✅ 200-250 AI Questions</li>
+                                <li>✅ 30-Day Money Back Guarantee</li>
                             </ul>
+                            <button class="cta-button">Start With Starter</button>
+                            <p style="margin-top: 12px; font-size: 12px; color: var(--color-text-muted);">Perfect for testing the system</p>
+                        </div>
+
+
+                        <div class="pricing-card featured">
+                            <div class="pricing-tier">Hustler</div>
+                            <div class="pricing-amount">$47</div>
+                            <div class="pricing-period">One-time payment</div>
+                            <ul class="pricing-features">
+                                <li>✅ Complete 8-Module Course</li>
+                                <li>✅ All 5 Exclusive Bonuses</li>
+                                <li>✅ Lifetime Access + Updates</li>
+                                <li>✅ 80-100 AI Conversations</li>
+                                <li>✅ 400-500 AI Questions</li>
+                                <li>✅ 30-Day Money Back Guarantee</li>
+                                <li>🔥 Priority Support</li>
+                            </ul>
+                            <button class="cta-button">Get Hustler Access</button>
+                            <p style="margin-top: 12px; font-size: 12px; color: var(--color-text-muted);">Best value for serious learners</p>
+                        </div>
+
+
+                        <div class="pricing-card">
+                            <div class="pricing-tier">Empire</div>
+                            <div class="pricing-amount">$67</div>
+                            <div class="pricing-period">One-time payment</div>
+                            <ul class="pricing-features">
+                                <li>✅ Complete 8-Module Course</li>
+                                <li>✅ All 5 Exclusive Bonuses</li>
+                                <li>✅ Lifetime Access + Updates</li>
+                                <li>✅ 120-150 AI Conversations</li>
+                                <li>✅ 600-750 AI Questions</li>
+                                <li>✅ 30-Day Money Back Guarantee</li>
+                                <li>🔥 Priority Support</li>
+                                <li>🔥 Advanced Strategy Sessions</li>
+                            </ul>
+                            <button class="cta-button">Unlock Empire</button>
+                            <p style="margin-top: 12px; font-size: 12px; color: var(--color-text-muted);">Maximum support for scaling to $10K+</p>
                         </div>
                     </div>
 
-                    {/* Stats Grid */}
-                    <div style={{
-                        display: 'grid',
-                        gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-                        gap: 'var(--space-lg)',
-                        marginTop: 'var(--space-xl)'
-                    }}>
-                        {[
-                            { number: '1,000+', label: 'Hours TikTok Training', color: '#d4af37' },
-                            { number: '500+', label: 'Viral Videos Analyzed', color: '#e05446' },
-                            { number: '24/7', label: 'Instant Answers', color: '#d4af37' },
-                            { number: '< 10s', label: 'Response Time', color: '#e05446' }
-                        ].map((stat, i) => (
-                            <div
-                                key={i}
-                                className="stat-card"
-                                style={{
-                                    cursor: 'pointer',
-                                    transition: 'all 0.3s ease',
-                                    animation: `fadeInUp 0.6s ease forwards ${i * 0.1}s`,
-                                    opacity: 0
-                                }}
-                            >
-                                <div className="stat-number" style={{ color: stat.color }}>
-                                    {stat.number}
-                                </div>
-                                <div className="stat-label">{stat.label}</div>
-                            </div>
-                        ))}
+                    <div style="text-align: center; margin-top: 40px; padding: 24px; background: var(--color-card-bg); border-radius: var(--radius-md); border: 1px solid var(--color-border); max-width: 700px; margin-left: auto; margin-right: auto;">
+                        <h3 style="color: var(--color-accent-gold); margin-bottom: 12px;">🔒 30-Day Money-Back Guarantee</h3>
+                        <p style="color: var(--color-text-secondary); margin-bottom: 0; font-size: 14px;">
+                            Try APEX-AFFILIATE risk-free for 30 days. If you're not satisfied for any reason, we'll refund every penny. No questions asked.
+                        </p>
                     </div>
+                </div>
+            </section>
 
-                    {/* Example Interaction */}
-                    <div style={{
-                        marginTop: 'var(--space-xl)',
-                        padding: 'var(--space-xl)',
-                        background: 'var(--color-bg-alt)',
-                        border: '1px solid var(--color-border)',
-                        borderRadius: 'var(--radius-md)',
-                        maxWidth: '700px',
-                        margin: 'var(--space-xl) auto 0'
-                    }}>
-                        <h3 style={{
-                            fontSize: '18px',
-                            marginBottom: 'var(--space-lg)',
-                            color: 'var(--color-text-primary)',
-                            textAlign: 'center'
-                        }}>
-                            Example: Ask Anything About TikTok Shop
-                        </h3>
-                        <div style={{
-                            background: 'var(--color-card-bg)',
-                            padding: 'var(--space-md)',
-                            borderRadius: 'var(--radius-sm)',
-                            marginBottom: 'var(--space-md)',
-                            borderLeft: '3px solid var(--color-accent-gold)'
-                        }}>
-                            <p style={{
-                                color: 'var(--color-text-secondary)',
-                                fontSize: '14px',
-                                marginBottom: '4px'
-                            }}>
-                                You:
-                            </p>
-                            <p style={{ color: 'var(--color-text-primary)' }}>
-                                "What beauty products are converting best this week?"
+            <section class="features">
+                <div class="container">
+                    <h2 class="section-title">Why APEX-AFFILIATE Works When Others Fail</h2>
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">🎯</div>
+                            <h3 class="feature-title">Beginner-Friendly</h3>
+                            <p class="feature-description">
+                                Zero experience required. If you can scroll TikTok and check email, you can do this. Everything explained step-by-step.
                             </p>
                         </div>
-                        <div style={{
-                            background: 'var(--color-card-bg)',
-                            padding: 'var(--space-md)',
-                            borderRadius: 'var(--radius-sm)',
-                            borderLeft: '3px solid var(--color-accent-red)'
-                        }}>
-                            <p style={{
-                                color: 'var(--color-text-secondary)',
-                                fontSize: '14px',
-                                marginBottom: '4px'
-                            }}>
-                                AI Coach:
+
+                        <div class="feature-card">
+                            <div class="feature-icon">⚡</div>
+                            <h3 class="feature-title">Fast Results</h3>
+                            <p class="feature-description">
+                                Most students see their first sale within 7-14 days. First $1,000 typically happens within 30-45 days of consistent work.
                             </p>
-                            <p style={{ color: 'var(--color-text-primary)' }}>
-                                "Top 3 right now: Viral lash serums (12% commission), LED face masks ($8-15 per sale),
-                                and Korean skincare sets. Lash serums are exploding because of the 'before/after' hook.
-                                Try the CeraVe dupe angle for skincare - it's crushing. Here's a script template..."
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-icon">🚀</div>
+                            <h3 class="feature-title">AI-Powered</h3>
+                            <p class="feature-description">
+                                AI does 90% of the heavy lifting. Content creation that used to take hours now takes 5 minutes. Work smarter, not harder.
+                            </p>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-icon">💰</div>
+                            <h3 class="feature-title">Low Risk</h3>
+                            <p class="feature-description">
+                                No inventory, no shipping, no customer service. Just content creation and commissions. Start with zero capital beyond the course.
+                            </p>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-icon">📱</div>
+                            <h3 class="feature-title">Platform Independent</h3>
+                            <p class="feature-description">
+                                While focused on TikTok, the same strategies work on Instagram Reels, YouTube Shorts, and any short-form video platform.
+                            </p>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-icon">🔄</div>
+                            <h3 class="feature-title">Scalable System</h3>
+                            <p class="feature-description">
+                                Start at $1K/month, scale to $5K, then $10K+. The system grows with you through multiple accounts and automation.
                             </p>
                         </div>
                     </div>
                 </div>
             </section>
 
-            {/* How It Works */}
-            <section className="features">
-                <div className="features-container">
-                    <h2 className="section-title">YOUR PATH TO $5K/MONTH</h2>
+            <!-- FAQ -->
+            <section class="stats">
+                <div class="container" style="max-width: 900px;">
+                    <h2 class="section-title">Frequently Asked Questions</h2>
+                    <div style="display: grid; gap: 16px; margin-top: 40px;">
+                        <div class="contentCard">
+                            <h3 style="color: var(--color-accent-gold); margin-bottom: 8px;">Do I need to show my face or use my voice?</h3>
+                            <p style="color: var(--color-text-secondary); margin-bottom: 0;">Absolutely not. The "invisible influencer" method lets you stay 100% anonymous. AI handles voices, you never appear on camera.</p>
+                        </div>
 
-                    <div style={{
-                        maxWidth: '800px',
-                        margin: '0 auto',
-                        display: 'flex',
-                        flexDirection: 'column',
-                        gap: 'var(--space-xl)'
-                    }}>
-                        {[
-                            {
-                                step: '01',
-                                title: 'Find Winning Products',
-                                desc: 'Use our AI coach to identify TikTok Shop products with high commissions and proven sales history. Takes 15 minutes.'
-                            },
-                            {
-                                step: '02',
-                                title: 'Create Content',
-                                desc: 'Follow our templates to make 3-5 videos per day. No fancy equipment needed - phone camera works perfectly.'
-                            },
-                            {
-                                step: '03',
-                                title: 'Post & Optimize',
-                                desc: 'Upload during peak hours, use our hashtag strategy, and let the algorithm do its work. Most videos hit FYP within 2 hours.'
-                            },
-                            {
-                                step: '04',
-                                title: 'Scale What Works',
-                                desc: 'Double down on products and video styles that convert. Go from $500/month to $5K+ by replicating winners.'
-                            }
-                        ].map((item, i) => (
-                            <div key={i} style={{
-                                display: 'flex',
-                                gap: 'var(--space-lg)',
-                                alignItems: 'flex-start',
-                                padding: 'var(--space-lg)',
-                                background: 'var(--color-card-bg)',
-                                border: '1px solid var(--color-border)',
-                                borderRadius: 'var(--radius-md)'
-                            }}>
-                                <div style={{
-                                    fontSize: '32px',
-                                    fontWeight: '700',
-                                    color: 'var(--color-accent-gold)',
-                                    minWidth: '60px'
-                                }}>
-                                    {item.step}
-                                </div>
-                                <div>
-                                    <h3 style={{
-                                        fontSize: '20px',
-                                        marginBottom: 'var(--space-sm)',
-                                        color: 'var(--color-text-primary)'
-                                    }}>
-                                        {item.title}
-                                    </h3>
-                                    <p style={{
-                                        color: 'var(--color-text-secondary)',
-                                        lineHeight: 1.6
-                                    }}>
-                                        {item.desc}
-                                    </p>
-                                </div>
-                            </div>
-                        ))}
+                        <div class="contentCard">
+                            <h3 style="color: var(--color-accent-gold); margin-bottom: 8px;">How much time does this take?</h3>
+                            <p style="color: var(--color-text-secondary); margin-bottom: 0;">Initial setup: 2-3 hours. Daily maintenance: 30-60 minutes. You can batch-create content on weekends and post during the week.</p>
+                        </div>
+
+                        <div class="contentCard">
+                            <h3 style="color: var(--color-accent-gold); margin-bottom: 8px;">Do I need followers to make money?</h3>
+                            <p style="color: var(--color-text-secondary); margin-bottom: 0;">No. TikTok Shop content gets pushed regardless of follower count. Students make sales with 0-100 followers all the time.</p>
+                        </div>
+
+                        <div class="contentCard">
+                            <h3 style="color: var(--color-accent-gold); margin-bottom: 8px;">What's the difference between the tiers?</h3>
+                            <p style="color: var(--color-text-secondary); margin-bottom: 0;">All tiers include the complete course and bonuses. The only difference is AI conversation limits. Starter gives you 40-50 conversations to get help, Hustler gives 80-100, and Empire gives 120-150 for maximum support.</p>
+                        </div>
+
+                        <div class="contentCard">
+                            <h3 style="color: var(--color-accent-gold); margin-bottom: 8px;">Is there a monthly fee?</h3>
+                            <p style="color: var(--color-text-secondary); margin-bottom: 0;">No. One-time payment. Lifetime access. No hidden fees. Ever.</p>
+                        </div>
+
+                        <div class="contentCard">
+                            <h3 style="color: var(--color-accent-gold); margin-bottom: 8px;">How fast can I see results?</h3>
+                            <p style="color: var(--color-text-secondary); margin-bottom: 0;">Most students get their first sale within 7-14 days. First $1,000 typically happens within 30-45 days if you're consistent.</p>
+                        </div>
+
+                        <div class="contentCard">
+                            <h3 style="color: var(--color-accent-gold); margin-bottom: 8px;">What if TikTok gets banned?</h3>
+                            <p style="color: var(--color-text-secondary); margin-bottom: 0;">The same strategies work on Instagram Reels, YouTube Shorts, and any short-form video platform. Plus you keep the AI skills forever.</p>
+                        </div>
+
+                        <div class="contentCard">
+                            <h3 style="color: var(--color-accent-gold); margin-bottom: 8px;">Is this a "get rich quick" scheme?</h3>
+                            <p style="color: var(--color-text-secondary); margin-bottom: 0;">No. This requires work. You need to create content, post consistently, and learn as you go. But the system is proven and the results are real.</p>
+                        </div>
                     </div>
                 </div>
             </section>
+
+
+
+
+
 
             {/* Pricing Section */}
             <section className="pricing" id="pricing">
