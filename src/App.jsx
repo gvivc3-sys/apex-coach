@@ -200,79 +200,6 @@ function App() {
                         marginBottom: 'var(--space-xl)',
                         flexWrap: 'wrap'
                     }}>
-                        {/* AI Visual */}
-                        <div style={{ flex: '1', minWidth: '300px' }}>
-                            <div style={{
-                                width: '200px',
-                                height: '200px',
-                                margin: '0 auto',
-                                position: 'relative',
-                                animation: 'float 3s ease-in-out infinite'
-                            }}>
-                                <div style={{
-                                    width: '120px',
-                                    height: '100px',
-                                    background: 'linear-gradient(135deg, var(--color-accent-gold), var(--color-accent-red))',
-                                    borderRadius: '20px',
-                                    position: 'absolute',
-                                    top: '20px',
-                                    left: '40px',
-                                    boxShadow: '0 10px 40px rgba(212, 175, 55, 0.3)',
-                                }}>
-                                    <div style={{
-                                        width: '20px',
-                                        height: '20px',
-                                        background: 'var(--color-bg)',
-                                        borderRadius: '50%',
-                                        position: 'absolute',
-                                        top: '30px',
-                                        left: '25px',
-                                        animation: 'blink 3s infinite'
-                                    }} />
-                                    <div style={{
-                                        width: '20px',
-                                        height: '20px',
-                                        background: 'var(--color-bg)',
-                                        borderRadius: '50%',
-                                        position: 'absolute',
-                                        top: '30px',
-                                        right: '25px',
-                                        animation: 'blink 3s infinite 0.1s'
-                                    }} />
-                                    <div style={{
-                                        width: '3px',
-                                        height: '30px',
-                                        background: 'var(--color-accent-gold)',
-                                        position: 'absolute',
-                                        top: '-30px',
-                                        left: '50%',
-                                        transform: 'translateX(-50%)'
-                                    }}>
-                                        <div style={{
-                                            width: '10px',
-                                            height: '10px',
-                                            background: 'var(--color-accent-red)',
-                                            borderRadius: '50%',
-                                            position: 'absolute',
-                                            top: '-5px',
-                                            left: '-3.5px',
-                                            animation: 'pulse 2s infinite'
-                                        }} />
-                                    </div>
-                                </div>
-                                <div style={{
-                                    width: '140px',
-                                    height: '80px',
-                                    background: 'linear-gradient(135deg, var(--color-card-bg), var(--color-bg-alt))',
-                                    border: '2px solid var(--color-accent-gold)',
-                                    borderRadius: '15px',
-                                    position: 'absolute',
-                                    top: '120px',
-                                    left: '30px',
-                                }} />
-                            </div>
-                        </div>
-
                         {/* Content */}
                         <div style={{ flex: '2', minWidth: '300px' }}>
                             <h2 className="section-title" style={{ textAlign: 'left', marginBottom: 'var(--space-md)' }}>
@@ -405,31 +332,6 @@ function App() {
                     </div>
                 </div>
             </section>
-
-            <style>{`
-                @keyframes float {
-                    0%, 100% { transform: translateY(0px); }
-                    50% { transform: translateY(-20px); }
-                }
-                @keyframes pulse {
-                    0%, 100% { transform: scale(1); opacity: 1; }
-                    50% { transform: scale(1.5); opacity: 0.5; }
-                }
-                @keyframes blink {
-                    0%, 90%, 100% { height: 20px; }
-                    95% { height: 2px; }
-                }
-                @keyframes fadeInUp {
-                    from {
-                        opacity: 0;
-                        transform: translateY(30px);
-                    }
-                    to {
-                        opacity: 1;
-                        transform: translateY(0);
-                    }
-                }
-            `}</style>
 
             {/* How It Works */}
             <section className="features">
