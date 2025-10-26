@@ -88,25 +88,25 @@ function App() {
             <section className="hero">
                 <div className="hero-content">
                     <h1 className="hero-title">
-                        Master TikTok Affiliate Marketing<br />
-                        <span className="accent">With AI In 72 Hours</span>
+                        AI-Powered Crypto Trading Signals<br />
+                        <span className="accent">Catch Every Market Move</span>
                     </h1>
                     <p className="hero-subtitle">
-                        Learn the exact system helping beginners generate $1K-$5K/month in TikTok commissions<br />
-                        using AI to create viral content—without showing your face or building an audience
+                        Our AI monitors charts, scanners, and market patterns 24/7<br />
+                        Get high-probability trading calls delivered in real-time—no analysis paralysis, just profitable setups
                     </p>
                     <div className="hero-cta">
                         <button
                             className="primary-button"
                             onClick={() => document.getElementById('pricing').scrollIntoView({ behavior: 'smooth' })}
                         >
-                            Start Learning Now
+                            Start Trading Smarter
                         </button>
                         <button
                             className="secondary-button"
                             onClick={() => document.getElementById('demo').scrollIntoView({ behavior: 'smooth' })}
                         >
-                            Watch 3-Min Demo
+                            See Live Signals
                         </button>
                     </div>
                 </div>
@@ -116,20 +116,20 @@ function App() {
             <section className="stats">
                 <div className="stats-container">
                     <div className="stat-card">
-                        <div className="stat-number">8,400+</div>
-                        <div className="stat-label">Active Students</div>
+                        <div className="stat-number">87%</div>
+                        <div className="stat-label">Win Rate (30 Days)</div>
                     </div>
                     <div className="stat-card">
-                        <div className="stat-number">$2.3M+</div>
-                        <div className="stat-label">Student Commissions</div>
+                        <div className="stat-number">24/7</div>
+                        <div className="stat-label">Market Monitoring</div>
                     </div>
                     <div className="stat-card">
-                        <div className="stat-number">7-14</div>
-                        <div className="stat-label">Days To First Sale</div>
+                        <div className="stat-number">15-50</div>
+                        <div className="stat-label">Signals Per Week</div>
                     </div>
                     <div className="stat-card">
-                        <div className="stat-number">4.9/5</div>
-                        <div className="stat-label">Student Rating</div>
+                        <div className="stat-number">3.2x</div>
+                        <div className="stat-label">Avg Return Multiple</div>
                     </div>
                 </div>
             </section>
@@ -137,281 +137,237 @@ function App() {
             {/* Why Most Fail Section */}
             <section className="features" id="demo">
                 <div className="container">
-                    <h2 className="section-title">Why Most People Fail At TikTok (And How We Fix It)</h2>
+                    <h2 className="section-title">Why Most Traders Fail (And How Our AI Fixes It)</h2>
                     <div className="features-grid">
                         <div className="feature-card">
                             <div className="feature-icon">❌</div>
-                            <h3 className="feature-title">The Old Way: Build Audience First</h3>
+                            <h3 className="feature-title">The Old Way: Emotional Trading</h3>
                             <p className="feature-description">
-                                Spend 6-12 months growing followers, then figure out how to monetize. Most people quit before making a single dollar.
+                                Spending hours staring at charts, making impulsive decisions based on FOMO and fear. 90% of manual traders lose money.
                             </p>
                         </div>
-                        <div className="feature-card">
-                            <div className="feature-icon">❌</div>
-                            <h3 className="feature-title">The Old Way: Be "Creative"</h3>
-                            <p className="feature-description">
-                                Spend hours brainstorming, scripting, and editing videos. Stare at a blank screen wondering what to post.
-                            </p>
-                        </div>
-                        <div className="feature-card">
-                            <div className="feature-icon">❌</div>
-                            <h3 className="feature-title">The Old Way: Show Your Face</h3>
-                            <p className="feature-description">
-                                Force yourself on camera even if you're uncomfortable. Let everyone know your identity and business.
-                            </p>
-                        </div>
-                    </div>
 
-                    <h2 className="section-title" style={{ marginTop: '40px' }}>The APEX Way: Proven AI System</h2>
-                    <div className="features-grid">
                         <div className="feature-card">
                             <div className="feature-icon">✅</div>
-                            <h3 className="feature-title">Monetize Day 1</h3>
+                            <h3 className="feature-title">The APEX Way: AI-Driven Precision</h3>
                             <p className="feature-description">
-                                Start promoting products immediately with zero followers. TikTok Shop pushes affiliate content regardless of your audience size.
-                            </p>
-                        </div>
-                        <div className="feature-card">
-                            <div className="feature-icon">✅</div>
-                            <h3 className="feature-title">AI Does The Work</h3>
-                            <p className="feature-description">
-                                AI generates concepts, scripts, voiceovers, and edits your videos in under 5 minutes. You just post and collect commissions.
-                            </p>
-                        </div>
-                        <div className="feature-card">
-                            <div className="feature-icon">✅</div>
-                            <h3 className="feature-title">Stay Anonymous</h3>
-                            <p className="feature-description">
-                                Never show your face or use your voice. The "invisible influencer" method lets you build income completely privately.
+                                Our AI analyzes 1000+ data points per second, identifies high-probability setups, and sends you clear entry/exit signals. No emotions, just data.
                             </p>
                         </div>
                     </div>
                 </div>
             </section>
 
-            {/* Testimonials */}
-            <section className="stats" style={{ backgroundColor: 'var(--color-bg)' }}>
-                <div className="container" style={{ maxWidth: '900px' }}>
-                    <h2 className="section-title">Real Students. Real Results.</h2>
-                    <div style={{ display: 'grid', gap: '24px', marginTop: '40px' }}>
-                        <div className="stat-card" style={{ textAlign: 'left', padding: 'var(--space-lg)' }}>
-                            <h3 style={{ color: 'var(--color-accent-gold)', marginBottom: '8px' }}>"Made $3,200 My First Month. I'm Shocked."</h3>
-                            <p style={{ color: 'var(--color-text-secondary)', marginBottom: '8px', fontStyle: 'italic' }}>
-                                "I was skeptical about the $27 price. Thought it would be some basic garbage. But this is LEGIT. The AI content method is insane. I made my first sale in 11 days. First month total: $3,200. I've already quit my part-time job."
-                            </p>
-                            <p style={{ color: 'var(--color-text-muted)', fontSize: '14px' }}>— Marcus T., College Student</p>
+            {/* Live Signals Preview */}
+            <section className="demo">
+                <div className="container">
+                    <h2 className="section-title">REAL-TIME SIGNAL FEED</h2>
+                    <div className="chat-container">
+                        <div className="chat-header">
+                            <div className="chat-avatar">🤖</div>
+                            <div>
+                                <div style={{ fontWeight: 'bold' }}>APEX AI Trading System</div>
+                                <div style={{ fontSize: '12px', opacity: 0.9 }}>Live Market Scanner</div>
+                            </div>
                         </div>
-
-                        <div className="stat-card" style={{ textAlign: 'left', padding: 'var(--space-lg)' }}>
-                            <h3 style={{ color: 'var(--color-accent-gold)', marginBottom: '8px' }}>"Finally Something That Actually Works"</h3>
-                            <p style={{ color: 'var(--color-text-secondary)', marginBottom: '8px', fontStyle: 'italic' }}>
-                                "I've wasted thousands on courses that promised easy money. All BS. APEX-AFFILIATE is different. It's simple, practical, and it WORKS. I'm making $1,800/month now and I work maybe 45 minutes a day. This is the real deal."
-                            </p>
-                            <p style={{ color: 'var(--color-text-muted)', fontSize: '14px' }}>— Jennifer K., Stay-at-Home Mom</p>
+                        <div className="chat-messages">
+                            <div className="message ai">
+                                <div className="chat-avatar" style={{ background: 'var(--color-accent-gold)', width: '30px', height: '30px', fontSize: '16px' }}>🎯</div>
+                                <div className="message-content">
+                                    <strong>🟢 LONG SIGNAL: BTC/USDT</strong><br />
+                                    Entry: $43,250 - $43,400<br />
+                                    Target 1: $44,100 (2%)<br />
+                                    Target 2: $44,800 (3.5%)<br />
+                                    Target 3: $45,500 (5.2%)<br />
+                                    Stop Loss: $42,800<br />
+                                    <span style={{ color: 'var(--color-accent-gold)' }}>Risk/Reward: 1:4.3 | Confidence: HIGH</span>
+                                </div>
+                            </div>
+                            <div className="message ai">
+                                <div className="chat-avatar" style={{ background: 'var(--color-accent-purple)', width: '30px', height: '30px', fontSize: '16px' }}>📊</div>
+                                <div className="message-content">
+                                    <strong>⚡ BREAKOUT ALERT: ETH/USDT</strong><br />
+                                    Bullish flag pattern confirmed on 4H<br />
+                                    Volume spike detected (+230%)<br />
+                                    Entry Zone: $2,280 - $2,295<br />
+                                    Projected Move: +8-12% (24-48 hours)<br />
+                                    <span style={{ color: 'var(--color-accent-purple)' }}>Pattern Success Rate: 78%</span>
+                                </div>
+                            </div>
+                            <div className="message ai">
+                                <div className="chat-avatar" style={{ background: 'var(--color-accent-blue)', width: '30px', height: '30px', fontSize: '16px' }}>💎</div>
+                                <div className="message-content">
+                                    <strong>🔵 ALTCOIN GEM: SOL/USDT</strong><br />
+                                    AI detected accumulation phase complete<br />
+                                    Smart money flowing in (Whale Alert)<br />
+                                    Current Price: $98.45<br />
+                                    Expected Move: $115-125 (7-10 days)<br />
+                                    <span style={{ color: 'var(--color-accent-blue)' }}>AI Confidence Score: 92/100</span>
+                                </div>
+                            </div>
                         </div>
-
-                        <div className="stat-card" style={{ textAlign: 'left', padding: 'var(--space-lg)' }}>
-                            <h3 style={{ color: 'var(--color-accent-gold)', marginBottom: '8px' }}>"$4,100 Last Month. Never Showed My Face Once."</h3>
-                            <p style={{ color: 'var(--color-text-secondary)', marginBottom: '8px', fontStyle: 'italic' }}>
-                                "I'm a private person. Showing my face online? No thanks. APEX teaches you how to stay completely anonymous. AI makes all my videos. I just post and collect commissions. Made $4,100 last month. This is life-changing."
-                            </p>
-                            <p style={{ color: 'var(--color-text-muted)', fontSize: '14px' }}>— David R., Warehouse Worker</p>
-                        </div>
+                    </div>
+                    <div style={{ textAlign: 'center', marginTop: '20px' }}>
+                        <p style={{ color: 'var(--color-text-secondary)' }}>Live signals updating every 30 seconds • Members-only access</p>
                     </div>
                 </div>
             </section>
 
-            {/* Modules */}
+            {/* What You Get Section */}
             <section className="features">
                 <div className="container">
-                    <h2 className="section-title">What You'll Learn Inside APEX-AFFILIATE</h2>
+                    <h2 className="section-title">What Our AI Tracks For You 24/7</h2>
                     <div className="features-grid">
                         <div className="feature-card">
-                            <div className="feature-icon">📚</div>
-                            <h3 className="feature-title">Module 1: Foundation</h3>
-                            <p className="feature-description">
-                                How TikTok affiliate marketing works, account setup, profile optimization, and the math behind $5K/month income.
-                            </p>
-                        </div>
-
-                        <div className="feature-card">
-                            <div className="feature-icon">🤖</div>
-                            <h3 className="feature-title">Module 2: AI Content System</h3>
-                            <p className="feature-description">
-                                4-minute video framework, AI prompts for viral concepts, voice AI tools, and batch creation methods. Create 7 days of content in 30 minutes.
-                            </p>
-                        </div>
-
-                        <div className="feature-card">
-                            <div className="feature-icon">💰</div>
-                            <h3 className="feature-title">Module 3: Product Selection</h3>
-                            <p className="feature-description">
-                                Find high-converting products (8-15% rates), avoid losers, seasonal strategies, and competitive research shortcuts.
-                            </p>
-                        </div>
-
-                        <div className="feature-card">
                             <div className="feature-icon">📈</div>
-                            <h3 className="feature-title">Module 4: Algorithm Hacking</h3>
+                            <h3 className="feature-title">Technical Analysis</h3>
                             <p className="feature-description">
-                                Decode the 2025 TikTok algorithm, 7-second hook patterns, optimal posting times, and For You Page triggers.
+                                Monitors 50+ indicators across all timeframes. RSI, MACD, Bollinger Bands, Fibonacci levels, and more—all automated.
                             </p>
                         </div>
 
                         <div className="feature-card">
-                            <div className="feature-icon">💵</div>
-                            <h3 className="feature-title">Module 5: First Sales</h3>
+                            <div className="feature-icon">🐋</div>
+                            <h3 className="feature-title">Whale Movements</h3>
                             <p className="feature-description">
-                                14-day sprint to $500-$1,000, conversion psychology, CTA formulas, and troubleshooting common issues.
+                                Tracks large wallet movements and exchange flows. Know when smart money is accumulating or distributing.
                             </p>
                         </div>
 
                         <div className="feature-card">
                             <div className="feature-icon">📊</div>
-                            <h3 className="feature-title">Module 6: Tracking & Optimization</h3>
+                            <h3 className="feature-title">Market Sentiment</h3>
                             <p className="feature-description">
-                                Analytics mastery, A/B testing, scaling from $1K to $5K/month using the multiplication method.
+                                Analyzes social media, news, and fear/greed index in real-time. Catches momentum shifts before they happen.
+                            </p>
+                        </div>
+
+                        <div className="feature-card">
+                            <div className="feature-icon">🎯</div>
+                            <h3 className="feature-title">Pattern Recognition</h3>
+                            <p className="feature-description">
+                                Identifies chart patterns with 85%+ historical success rates. Flags, wedges, triangles—nothing escapes our AI.
                             </p>
                         </div>
 
                         <div className="feature-card">
                             <div className="feature-icon">⚡</div>
-                            <h3 className="feature-title">Module 7: Advanced Strategies</h3>
+                            <h3 className="feature-title">Volume Analysis</h3>
                             <p className="feature-description">
-                                Multiple accounts, automation tools, brand sponsorships, and the $10K/month roadmap.
+                                Detects unusual volume spikes and order book imbalances. Spots breakouts before they explode.
                             </p>
                         </div>
 
                         <div className="feature-card">
-                            <div className="feature-icon">🛡️</div>
-                            <h3 className="feature-title">Module 8: Risk Management</h3>
+                            <div className="feature-icon">🔔</div>
+                            <h3 className="feature-title">Instant Alerts</h3>
                             <p className="feature-description">
-                                TikTok terms of service, avoiding shadowbans, handling competitors, and legal/tax basics.
+                                Get signals via Telegram, Discord, or SMS. Never miss a profitable setup, even while you sleep.
                             </p>
                         </div>
                     </div>
-                </div>
-            </section>
-
-            {/* Bonuses */}
-            <section className="stats">
-                <div className="container" style={{ maxWidth: '900px' }}>
-                    <h2 className="section-title">Exclusive Bonuses Included</h2>
-                    <div style={{ display: 'grid', gap: '16px', marginTop: '40px' }}>
-                        <div className="stat-card" style={{ textAlign: 'left' }}>
-                            <h3 style={{ fontSize: '18px', marginBottom: '8px', color: 'var(--color-accent-gold)' }}>🎁 The Viral Hook Library ($47 Value)</h3>
-                            <p style={{ color: 'var(--color-text-secondary)', fontSize: '14px' }}>200+ proven hooks for any niche. Never stare at a blank screen again.</p>
-                        </div>
-
-                        <div className="stat-card" style={{ textAlign: 'left' }}>
-                            <h3 style={{ fontSize: '18px', marginBottom: '8px', color: 'var(--color-accent-gold)' }}>🎁 Product Vault ($67 Value)</h3>
-                            <p style={{ color: 'var(--color-text-secondary)', fontSize: '14px' }}>300+ pre-researched high-converting products with commission rates and examples.</p>
-                        </div>
-
-                        <div className="stat-card" style={{ textAlign: 'left' }}>
-                            <h3 style={{ fontSize: '18px', marginBottom: '8px', color: 'var(--color-accent-gold)' }}>🎁 AI Prompt Cheat Sheet ($37 Value)</h3>
-                            <p style={{ color: 'var(--color-text-secondary)', fontSize: '14px' }}>Copy/paste prompts for ChatGPT, Claude, and other AI tools. Instant viral content.</p>
-                        </div>
-
-                        <div className="stat-card" style={{ textAlign: 'left' }}>
-                            <h3 style={{ fontSize: '18px', marginBottom: '8px', color: 'var(--color-accent-gold)' }}>🎁 First $1K Roadmap ($77 Value)</h3>
-                            <p style={{ color: 'var(--color-text-secondary)', fontSize: '14px' }}>Day-by-day action plan for your first 30 days. Sales by week 2 guaranteed.</p>
-                        </div>
-
-                        <div className="stat-card" style={{ textAlign: 'left' }}>
-                            <h3 style={{ fontSize: '18px', marginBottom: '8px', color: 'var(--color-accent-gold)' }}>🎁 TikTok Trends Calendar ($47 Value)</h3>
-                            <p style={{ color: 'var(--color-text-secondary)', fontSize: '14px' }}>Monthly updates on trending products and content styles. Stay ahead of the curve.</p>
-                        </div>
-                    </div>
-                    <p style={{ textAlign: 'center', marginTop: '24px', fontSize: '20px', color: 'var(--color-text-primary)' }}>
-                        <strong>Total Bonus Value: $275</strong>
-                    </p>
                 </div>
             </section>
 
             {/* Pricing Section */}
             <section className="pricing" id="pricing">
-                <div className="pricing-container">
-                    <h2 className="section-title">Choose Your Path To $5K/Month</h2>
-                    <p style={{ textAlign: 'center', color: 'var(--color-text-secondary)', marginBottom: '40px', maxWidth: '700px', marginLeft: 'auto', marginRight: 'auto' }}>
-                        All tiers include the complete 8-module course, all bonuses, and lifetime access. The only difference? How many AI conversations you get with our intelligent assistant to help you succeed faster.
+                <div className="container">
+                    <h2 className="section-title">Choose Your Trading Edge</h2>
+                    <p className="section-subtitle">
+                        Start with any plan. Upgrade anytime. Cancel anytime.
                     </p>
 
                     <div className="pricing-grid">
+                        {/* Starter Plan */}
                         <div className="pricing-card">
-                            <div className="pricing-tier">Starter</div>
-                            <div className="pricing-amount">$27</div>
-                            <div className="pricing-period">One-time payment</div>
-                            <ul className="pricing-features">
-                                <li>✅ Complete 8-Module Course</li>
-                                <li>✅ All 5 Exclusive Bonuses ($275 value)</li>
-                                <li>✅ Lifetime Access + Updates</li>
-                                <li>✅ ~40-50 AI Conversations/month</li>
-                                <li>✅ ~200-250 AI Questions/month</li>
-                                <li>✅ 30-Day Money Back Guarantee</li>
-                            </ul>
-                            <button
-                                className="secondary-button"
-                                style={{ width: '100%' }}
-                                onClick={() => handleCheckout('starter')}
-                            >
-                                Start With Starter
-                            </button>
-                            <p style={{ marginTop: '12px', fontSize: '12px', color: 'var(--color-text-muted)' }}>Perfect for testing the system</p>
-                        </div>
-
-                        <div className="pricing-card featured">
-                            <div className="pricing-tier">Hustler</div>
-                            <div className="pricing-amount">$47</div>
-                            <div className="pricing-period">One-time payment</div>
-                            <ul className="pricing-features">
-                                <li>✅ Complete 8-Module Course</li>
-                                <li>✅ All 5 Exclusive Bonuses ($275 value)</li>
-                                <li>✅ Lifetime Access + Updates</li>
-                                <li>✅ ~80-100 AI Conversations/month</li>
-                                <li>✅ ~400-500 AI Questions/month</li>
-                                <li>✅ 30-Day Money Back Guarantee</li>
-                                <li>🔥 Priority Support</li>
+                            <div className="plan-badge" style={{ background: 'var(--color-accent-blue)' }}>BEGINNER</div>
+                            <h3 className="plan-name">Starter Signals</h3>
+                            <div className="plan-price">
+                                <span style={{ fontSize: '36px', fontWeight: 'bold' }}>$97</span>
+                                <span style={{ fontSize: '16px', opacity: 0.8 }}>/month</span>
+                            </div>
+                            <ul className="plan-features">
+                                <li>✅ 10-15 Trading Signals/Week</li>
+                                <li>✅ Major Pairs Only (BTC, ETH, SOL)</li>
+                                <li>✅ Entry & Exit Points</li>
+                                <li>✅ Stop Loss Levels</li>
+                                <li>✅ Telegram Alerts</li>
+                                <li>✅ Basic Market Analysis</li>
+                                <li>❌ Altcoin Gems</li>
+                                <li>❌ 1-on-1 Support</li>
                             </ul>
                             <button
                                 className="primary-button"
                                 style={{ width: '100%' }}
-                                onClick={() => handleCheckout('hustler')}
+                                onClick={() => handleCheckout('starter')}
                             >
-                                Get Hustler Access
+                                Start Trading
                             </button>
-                            <p style={{ marginTop: '12px', fontSize: '12px', color: 'var(--color-text-muted)' }}>Best value for serious learners</p>
+                            <p style={{ marginTop: '12px', fontSize: '12px', color: 'var(--color-text-muted)' }}>Perfect for beginners with $500-5K portfolios</p>
                         </div>
 
-                        <div className="pricing-card">
-                            <div className="pricing-tier">Empire</div>
-                            <div className="pricing-amount">$67</div>
-                            <div className="pricing-period">One-time payment</div>
-                            <ul className="pricing-features">
-                                <li>✅ Complete 8-Module Course</li>
-                                <li>✅ All 5 Exclusive Bonuses ($275 value)</li>
-                                <li>✅ Lifetime Access + Updates</li>
-                                <li>✅ ~120-150 AI Conversations/month</li>
-                                <li>✅ ~600-750 AI Questions/month</li>
-                                <li>✅ 30-Day Money Back Guarantee</li>
+                        {/* Pro Plan */}
+                        <div className="pricing-card featured">
+                            <div className="plan-badge" style={{ background: 'var(--color-accent-gold)' }}>MOST POPULAR</div>
+                            <h3 className="plan-name">Pro Trader</h3>
+                            <div className="plan-price">
+                                <span style={{ fontSize: '36px', fontWeight: 'bold' }}>$297</span>
+                                <span style={{ fontSize: '16px', opacity: 0.8 }}>/month</span>
+                            </div>
+                            <ul className="plan-features">
+                                <li>✅ 25-35 Trading Signals/Week</li>
+                                <li>✅ All Cryptocurrencies</li>
+                                <li>✅ Detailed Entry/Exit Strategy</li>
+                                <li>✅ Risk Management Guide</li>
+                                <li>✅ Telegram + Discord Access</li>
+                                <li>✅ Daily Market Reports</li>
+                                <li>🔥 Altcoin Gems (10x potential)</li>
                                 <li>🔥 Priority Support</li>
-                                <li>🔥 Advanced Strategy Sessions</li>
+                            </ul>
+                            <button
+                                className="cta-button"
+                                style={{ width: '100%', background: 'var(--color-accent-gold)', color: 'var(--color-bg-primary)' }}
+                                onClick={() => handleCheckout('hustler')}
+                            >
+                                Go Pro Now
+                            </button>
+                            <p style={{ marginTop: '12px', fontSize: '12px', color: 'var(--color-text-muted)' }}>Best value for serious traders</p>
+                        </div>
+
+                        {/* VIP Plan */}
+                        <div className="pricing-card">
+                            <div className="plan-badge" style={{ background: 'var(--color-accent-purple)' }}>VIP ACCESS</div>
+                            <h3 className="plan-name">Whale Club</h3>
+                            <div className="plan-price">
+                                <span style={{ fontSize: '36px', fontWeight: 'bold' }}>$997</span>
+                                <span style={{ fontSize: '16px', opacity: 0.8 }}>/month</span>
+                            </div>
+                            <ul className="plan-features">
+                                <li>✅ UNLIMITED Signals</li>
+                                <li>✅ All Features from Pro</li>
+                                <li>✅ Futures & Options Calls</li>
+                                <li>✅ ICO/IDO Early Access</li>
+                                <li>✅ Private Discord Channel</li>
+                                <li>✅ Weekly Strategy Calls</li>
+                                <li>💎 1-on-1 Coaching (2hrs/month)</li>
+                                <li>💎 Custom AI Bot Access</li>
+                                <li>💎 Copy Trading Integration</li>
                             </ul>
                             <button
                                 className="secondary-button"
                                 style={{ width: '100%' }}
                                 onClick={() => handleCheckout('empire')}
                             >
-                                Unlock Empire
+                                Join Whale Club
                             </button>
-                            <p style={{ marginTop: '12px', fontSize: '12px', color: 'var(--color-text-muted)' }}>Maximum support for scaling to $10K+</p>
+                            <p style={{ marginTop: '12px', fontSize: '12px', color: 'var(--color-text-muted)' }}>For traders managing $50K+ portfolios</p>
                         </div>
                     </div>
 
                     <div style={{ textAlign: 'center', marginTop: '40px', padding: '24px', background: 'var(--color-card-bg)', borderRadius: 'var(--radius-md)', border: '1px solid var(--color-border)', maxWidth: '700px', marginLeft: 'auto', marginRight: 'auto' }}>
-                        <h3 style={{ color: 'var(--color-accent-gold)', marginBottom: '12px' }}>🔒 30-Day Money-Back Guarantee</h3>
+                        <h3 style={{ color: 'var(--color-accent-gold)', marginBottom: '12px' }}>🔒 7-Day Money-Back Guarantee</h3>
                         <p style={{ color: 'var(--color-text-secondary)', marginBottom: 0, fontSize: '14px' }}>
-                            Try APEX-AFFILIATE risk-free for 30 days. If you're not satisfied for any reason, we'll refund every penny. No questions asked.
+                            Try APEX risk-free for 7 days. If our signals don't perform as advertised, get a full refund. No questions asked.
                         </p>
                     </div>
                 </div>
@@ -420,53 +376,53 @@ function App() {
             {/* Why It Works */}
             <section className="features">
                 <div className="container">
-                    <h2 className="section-title">Why APEX-AFFILIATE Works When Others Fail</h2>
+                    <h2 className="section-title">Why APEX Beats Human Traders</h2>
                     <div className="features-grid">
                         <div className="feature-card">
-                            <div className="feature-icon">🎯</div>
-                            <h3 className="feature-title">Beginner-Friendly</h3>
+                            <div className="feature-icon">🧠</div>
+                            <h3 className="feature-title">Zero Emotions</h3>
                             <p className="feature-description">
-                                Zero experience required. If you can scroll TikTok and check email, you can do this. Everything explained step-by-step.
+                                AI doesn't panic sell or FOMO buy. Every decision is based on pure data and probability, not fear or greed.
                             </p>
                         </div>
 
                         <div className="feature-card">
                             <div className="feature-icon">⚡</div>
-                            <h3 className="feature-title">Fast Results</h3>
+                            <h3 className="feature-title">Lightning Fast</h3>
                             <p className="feature-description">
-                                Most students see their first sale within 7-14 days. First $1,000 typically happens within 30-45 days of consistent work.
+                                Analyzes 1000+ data points per second. Catches opportunities in microseconds that humans would miss.
                             </p>
                         </div>
 
                         <div className="feature-card">
-                            <div className="feature-icon">🚀</div>
-                            <h3 className="feature-title">AI-Powered</h3>
+                            <div className="feature-icon">🎯</div>
+                            <h3 className="feature-title">Battle-Tested</h3>
                             <p className="feature-description">
-                                AI does 90% of the heavy lifting. Content creation that used to take hours now takes 5 minutes. Work smarter, not harder.
+                                Backtested on 5+ years of market data. Every signal is based on patterns with proven success rates.
                             </p>
                         </div>
 
                         <div className="feature-card">
-                            <div className="feature-icon">💰</div>
-                            <h3 className="feature-title">Low Risk</h3>
+                            <div className="feature-icon">📚</div>
+                            <h3 className="feature-title">Always Learning</h3>
                             <p className="feature-description">
-                                No inventory, no shipping, no customer service. Just content creation and commissions. Start with zero capital beyond the course.
+                                Our AI improves daily by analyzing millions of trades. It gets smarter while you sleep.
                             </p>
                         </div>
 
                         <div className="feature-card">
-                            <div className="feature-icon">📱</div>
-                            <h3 className="feature-title">Platform Independent</h3>
+                            <div className="feature-icon">🌍</div>
+                            <h3 className="feature-title">24/7 Coverage</h3>
                             <p className="feature-description">
-                                While focused on TikTok, the same strategies work on Instagram Reels, YouTube Shorts, and any short-form video platform.
+                                Crypto never sleeps, neither does our AI. Catch Asian pumps, European dumps, and American rallies.
                             </p>
                         </div>
 
                         <div className="feature-card">
                             <div className="feature-icon">🔄</div>
-                            <h3 className="feature-title">Scalable System</h3>
+                            <h3 className="feature-title">Multi-Strategy</h3>
                             <p className="feature-description">
-                                Start at $1K/month, scale to $5K, then $10K+. The system grows with you through multiple accounts and automation.
+                                Combines scalping, swing trading, and position trading. Profits in bull markets, bear markets, and sideways action.
                             </p>
                         </div>
                     </div>
@@ -479,43 +435,43 @@ function App() {
                     <h2 className="section-title">Frequently Asked Questions</h2>
                     <div style={{ display: 'grid', gap: '16px', marginTop: '40px' }}>
                         <div className="stat-card" style={{ textAlign: 'left', padding: 'var(--space-lg)' }}>
-                            <h3 style={{ color: 'var(--color-accent-gold)', marginBottom: '8px' }}>Do I need to show my face or use my voice?</h3>
-                            <p style={{ color: 'var(--color-text-secondary)', marginBottom: 0 }}>Absolutely not. The "invisible influencer" method lets you stay 100% anonymous. AI handles voices, you never appear on camera.</p>
+                            <h3 style={{ color: 'var(--color-accent-gold)', marginBottom: '8px' }}>Do I need trading experience?</h3>
+                            <p style={{ color: 'var(--color-text-secondary)', marginBottom: 0 }}>No. Our signals include exact entry points, targets, and stop losses. Just follow the instructions. We also provide educational content for beginners.</p>
                         </div>
 
                         <div className="stat-card" style={{ textAlign: 'left', padding: 'var(--space-lg)' }}>
-                            <h3 style={{ color: 'var(--color-accent-gold)', marginBottom: '8px' }}>How much time does this take?</h3>
-                            <p style={{ color: 'var(--color-text-secondary)', marginBottom: 0 }}>Initial setup: 2-3 hours. Daily maintenance: 30-60 minutes. You can batch-create content on weekends and post during the week.</p>
+                            <h3 style={{ color: 'var(--color-accent-gold)', marginBottom: '8px' }}>What's your average win rate?</h3>
+                            <p style={{ color: 'var(--color-text-secondary)', marginBottom: 0 }}>87% over the last 30 days, 82% over the last 6 months. We focus on high-probability setups with favorable risk/reward ratios.</p>
                         </div>
 
                         <div className="stat-card" style={{ textAlign: 'left', padding: 'var(--space-lg)' }}>
-                            <h3 style={{ color: 'var(--color-accent-gold)', marginBottom: '8px' }}>Do I need followers to make money?</h3>
-                            <p style={{ color: 'var(--color-text-secondary)', marginBottom: 0 }}>No. TikTok Shop content gets pushed regardless of follower count. Students make sales with 0-100 followers all the time.</p>
+                            <h3 style={{ color: 'var(--color-accent-gold)', marginBottom: '8px' }}>Which exchanges do you support?</h3>
+                            <p style={{ color: 'var(--color-text-secondary)', marginBottom: 0 }}>All major exchanges: Binance, Coinbase, Kraken, Bybit, OKX, etc. Our signals work on any platform that trades the pairs we analyze.</p>
                         </div>
 
                         <div className="stat-card" style={{ textAlign: 'left', padding: 'var(--space-lg)' }}>
-                            <h3 style={{ color: 'var(--color-accent-gold)', marginBottom: '8px' }}>What's the difference between the tiers?</h3>
-                            <p style={{ color: 'var(--color-text-secondary)', marginBottom: 0 }}>All tiers include the complete course and bonuses. The only difference is AI conversation limits. Starter gives you ~40-50 conversations to get help, Hustler gives ~80-100, and Empire gives ~120-150 for maximum support.</p>
+                            <h3 style={{ color: 'var(--color-accent-gold)', marginBottom: '8px' }}>How much capital do I need?</h3>
+                            <p style={{ color: 'var(--color-text-secondary)', marginBottom: 0 }}>You can start with as little as $500. We recommend $2,000+ for optimal position sizing and risk management.</p>
                         </div>
 
                         <div className="stat-card" style={{ textAlign: 'left', padding: 'var(--space-lg)' }}>
-                            <h3 style={{ color: 'var(--color-accent-gold)', marginBottom: '8px' }}>Is there a monthly fee?</h3>
-                            <p style={{ color: 'var(--color-text-secondary)', marginBottom: 0 }}>No. One-time payment. Lifetime access. No hidden fees. Ever.</p>
+                            <h3 style={{ color: 'var(--color-accent-gold)', marginBottom: '8px' }}>Do you offer futures/leverage trading?</h3>
+                            <p style={{ color: 'var(--color-text-secondary)', marginBottom: 0 }}>Yes, in our Pro and VIP plans. We provide both spot and futures signals with clear leverage recommendations (usually 2-5x max).</p>
                         </div>
 
                         <div className="stat-card" style={{ textAlign: 'left', padding: 'var(--space-lg)' }}>
-                            <h3 style={{ color: 'var(--color-accent-gold)', marginBottom: '8px' }}>How fast can I see results?</h3>
-                            <p style={{ color: 'var(--color-text-secondary)', marginBottom: 0 }}>Most students get their first sale within 7-14 days. First $1,000 typically happens within 30-45 days if you're consistent.</p>
+                            <h3 style={{ color: 'var(--color-accent-gold)', marginBottom: '8px' }}>Can I cancel anytime?</h3>
+                            <p style={{ color: 'var(--color-text-secondary)', marginBottom: 0 }}>Yes. No contracts, no hidden fees. Cancel anytime from your dashboard. You'll keep access until the end of your billing period.</p>
                         </div>
 
                         <div className="stat-card" style={{ textAlign: 'left', padding: 'var(--space-lg)' }}>
-                            <h3 style={{ color: 'var(--color-accent-gold)', marginBottom: '8px' }}>What if TikTok gets banned?</h3>
-                            <p style={{ color: 'var(--color-text-secondary)', marginBottom: 0 }}>The same strategies work on Instagram Reels, YouTube Shorts, and any short-form video platform. Plus you keep the AI skills forever.</p>
+                            <h3 style={{ color: 'var(--color-accent-gold)', marginBottom: '8px' }}>How are signals delivered?</h3>
+                            <p style={{ color: 'var(--color-text-secondary)', marginBottom: 0 }}>Instantly via Telegram and/or Discord. VIP members also get SMS alerts for high-priority signals.</p>
                         </div>
 
                         <div className="stat-card" style={{ textAlign: 'left', padding: 'var(--space-lg)' }}>
-                            <h3 style={{ color: 'var(--color-accent-gold)', marginBottom: '8px' }}>Is this a "get rich quick" scheme?</h3>
-                            <p style={{ color: 'var(--color-text-secondary)', marginBottom: 0 }}>No. This requires work. You need to create content, post consistently, and learn as you go. But the system is proven and the results are real.</p>
+                            <h3 style={{ color: 'var(--color-accent-gold)', marginBottom: '8px' }}>Is this financial advice?</h3>
+                            <p style={{ color: 'var(--color-text-secondary)', marginBottom: 0 }}>No. We provide trading signals based on AI analysis. All trading carries risk. Never invest more than you can afford to lose.</p>
                         </div>
                     </div>
                 </div>
@@ -530,7 +486,7 @@ function App() {
                         <a href="#">Contact</a>
                     </div>
                     <div className="copyright">
-                        © 2025 APEX. TikTok Shop Affiliate Training.
+                        © 2025 APEX. AI-Powered Crypto Trading Signals.
                     </div>
                 </div>
             </footer>
